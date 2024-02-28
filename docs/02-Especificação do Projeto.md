@@ -106,13 +106,31 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001  |                                                                     |        |
+|RF-001  | O sistema deve permitir o usuário criar lembretes para outros usuários.                                                                     | ALTA       |
+|RF-002  | O sistema deve permitir o usuário visualizar lembretes atribuídos a ele.                                                                         | ALTA       |
+|RF-003  | O sistema deve permitir o usuário visualizar lembretes que ele atribuiu a outros usuários.                                                                        | ALTA       |
+|RF-004  | O sistema deve permitir usuário editar lembretes criados por ele .                                                                           | ALTA       |
+|RF-005  | O sistema deve possuir sistema de notificação baseado no prazo do lembrete, envia-las baseadas no prazo limite do lembrete.                                                                  | MÉDIA      |
+
+
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001 |              |        |
+|RNF-001 | A aplicação deve ser responsiva, permitindo a visualização em diferentes resoluções de dispositivos.             | ALTA       |
+|RNF-002 |Aplicação deve ser multi plataforma, estando disponível para mobile e para web.                                                               | ALTA       |
+|RNF-004 | A aplicação deve ser compatível com as versões mais recentes dos principais sistemas operacionais móveis (iOS e Android). | ALTA       |
+|RNF-005 | A aplicação deve permitir somente super usuário criar contas.                                                               | ALTA      |
+|RNF-006 | A aplicação deve possuir seu banco de dados em nosql.                                                               | ALTA      |
+|RNF-007 | A aplicação deve permitir a criação de lembretes via web e app.                                                               | ALTA      |
+|RNF-008 | A aplicação deve permitir usuários a atribuírem lembretes a si mesmo.                                                               | MÉDIA      |
+|RNF-009 | A aplicação deve possuir limite de 255 caracteres para a descrição de lembretes.                                                               | ALTA      |
+|RNF-010 | A aplicação deve possuir limite de 50 caracteres para o título de lembretes.                                                               | MÉDIA      |
+|RNF-011 | A aplicação deve possuir prazo estimado para fechamento de lembretes.                                                                | ALTA      |
+|RNF-012 | A aplicação deve possuir status para os lembretes, sendo eles ativo (quando estão dentro do prazo) ou inativo (lembretes que já acabaram seu prazo).                                                                  | ALTA      |
+|RNF-013 | A aplicação deve ordenar lembretes pelo seu tempo restante.                                                              | MÉDIA      |
+|RNF-014 | A aplicação deve agrupar lembretes em concluídos ou não concluídos.                                                            | MÉDIA      |
 
 ## Restrições
 
@@ -121,8 +139,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
 |01| O projeto deverá ser entregue até o final do semestre |
-|02| O projeto deverá ter banco de dados NoSQL       |
-
+|02| A equipe não pode subcontratar o desenvolvimento do trabalho.|
+|03| O projeto deve conter API. |
+|04| O sistema deverá se conectar com um banco de dados NoSQL - MongoDB.   |
 ## Diagrama de Casos de Uso
 
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
