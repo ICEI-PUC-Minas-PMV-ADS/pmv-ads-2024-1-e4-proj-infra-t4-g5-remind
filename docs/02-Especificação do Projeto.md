@@ -63,11 +63,11 @@ Partindo das informações que as Personas apresentaram, chegou-se à conclusão
 
 ### Análise da Situação Atual
 
-A necessidade de uma comunicação eficaz, gestão de tempo otimizada e delegação eficiente de tarefas é sentida em diversos ambientes, seja no profissional, acadêmico ou pessoal. Desafios como a desorganização de tarefas, falhas na comunicação entre equipes e a ineficiência no gerenciamento de projetos e compromissos pessoais são comuns. O E-note surge como uma solução inovadora destinada a superar esses obstáculos, fornecendo uma plataforma integrada que facilita a organização, comunicação e colaboração entre usuários.
+A necessidade de uma comunicação eficaz, gestão de tempo otimizada e delegação eficiente de tarefas é sentida em diversos ambientes, seja no profissional, acadêmico ou pessoal. Desafios como a desorganização de tarefas, falhas na comunicação entre equipes e a ineficiência no gerenciamento de projetos e compromissos pessoais são comuns. O Remind surge como uma solução inovadora destinada a superar esses obstáculos, fornecendo uma plataforma integrada que facilita a organização, comunicação e colaboração entre usuários.
 
 ### Descrição Geral da Proposta
 
-O E-note tem como proposta oferecer uma plataforma única que integra ferramentas de comunicação instantânea, melhor comunicação entre equipes e visando a otimização consistencia e a eficácia na delegação e execução de tarefas.
+O Remind tem como proposta oferecer uma plataforma única que integra ferramentas de comunicação instantânea, melhor comunicação entre equipes e visando a otimização consistencia e a eficácia na delegação e execução de tarefas.
 
 ### Processo 1 – Sistema de Compra 
 

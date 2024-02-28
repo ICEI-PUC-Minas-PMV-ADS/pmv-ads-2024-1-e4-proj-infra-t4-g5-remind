@@ -1,4 +1,4 @@
-# E-Notes
+# Reminds
 
 `Analise e Desenvolvimento de Sistemas`
 

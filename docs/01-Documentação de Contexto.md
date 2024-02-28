@@ -8,7 +8,7 @@ No mundo corporativo contemporâneo, a comunicação eficaz e a delegação de t
 
 ## Objetivos
 
-O E-note surge como uma solução inovadora para esses problemas, oferecendo um espaço virtual dedicado exclusivamente à otimização da comunicação interna, à delegação de tarefas e ao gerenciamento eficiente de lembretes, assegurando que cada membro da equipe esteja sempre informado e focado em suas responsabilidades. Visando aprimorar a eficiência e a clareza na delegação de responsabilidades. Entre os objetivos específicos do aplicativo, destacam-se:
+O Remind surge como uma solução inovadora para esses problemas, oferecendo um espaço virtual dedicado exclusivamente à otimização da comunicação interna, à delegação de tarefas e ao gerenciamento eficiente de lembretes, assegurando que cada membro da equipe esteja sempre informado e focado em suas responsabilidades. Visando aprimorar a eficiência e a clareza na delegação de responsabilidades. Entre os objetivos específicos do aplicativo, destacam-se:
 
 ● Facilitar a Comunicação Interna: Proporcionar um canal direto e eficiente para a troca de mensagens e lembretes entre os colaboradores, eliminando barreiras comunicacionais e garantindo que a informação chegue ao destinatário de maneira clara e objetiva.
 
@@ -16,15 +16,15 @@ O E-note surge como uma solução inovadora para esses problemas, oferecendo um 
 
 ● Melhorar a Gestão de Lembretes: Oferecer uma plataforma onde os lembretes possam ser criados, gerenciados e visualizados de forma centralizada, garantindo que todos os membros da equipe estejam cientes de seus prazos e responsabilidades.
 
-● Aumentar a Produtividade e Agilidade: Ao reduzir a confusão e o tempo gasto na procura de informações ou na clarificação de tarefas, o E-note busca aumentar a produtividade individual e coletiva.
+● Aumentar a Produtividade e Agilidade: Ao reduzir a confusão e o tempo gasto na procura de informações ou na clarificação de tarefas, o Remind busca aumentar a produtividade individual e coletiva.
 
-Com esses objetivos, o E-note se posiciona como uma ferramenta essencial para empresas que buscam superar os desafios da comunicação interna e da gestão de tarefas, contribuindo para a construção de uma cultura de trabalho mais eficiente, organizada e integrada.
+Com esses objetivos, o Remind se posiciona como uma ferramenta essencial para empresas que buscam superar os desafios da comunicação interna e da gestão de tarefas, contribuindo para a construção de uma cultura de trabalho mais eficiente, organizada e integrada.
 
 
 ## Justificativa
 
-A concepção do E-note é uma resposta direta e bem fundamentada às exigências contemporâneas do ambiente de trabalho, refletindo uma compreensão profunda das complexidades e desafios enfrentados pelas organizações no que tange à comunicação interna e à gestão de tarefas. Em um contexto onde a eficácia na comunicação e na delegação de responsabilidades se torna cada vez mais vital para o sucesso organizacional, o E-note emerge como uma ferramenta essencial. Ao oferecer uma plataforma dedicada à troca eficiente de mensagens e ao gerenciamento de lembretes, este aplicativo não apenas visa aprimorar a interação entre os membros da equipe, mas também a otimizar os processos internos, promovendo um ambiente de trabalho mais organizado e produtivo. A justificativa para o desenvolvimento do E-note reside, portanto, na sua capacidade de atender a estas necessidades emergentes, proporcionando uma solução inovadora que facilita a comunicação, melhora a gestão de tarefas e aumenta a eficiência operacional das equipes, transformando fundamentalmente a dinâmica de trabalho 
+A concepção do Remind é uma resposta direta e bem fundamentada às exigências contemporâneas do ambiente de trabalho, refletindo uma compreensão profunda das complexidades e desafios enfrentados pelas organizações no que tange à comunicação interna e à gestão de tarefas. Em um contexto onde a eficácia na comunicação e na delegação de responsabilidades se torna cada vez mais vital para o sucesso organizacional, o Remind emerge como uma ferramenta essencial. Ao oferecer uma plataforma dedicada à troca eficiente de mensagens e ao gerenciamento de lembretes, este aplicativo não apenas visa aprimorar a interação entre os membros da equipe, mas também a otimizar os processos internos, promovendo um ambiente de trabalho mais organizado e produtivo. A justificativa para o desenvolvimento do Remind reside, portanto, na sua capacidade de atender a estas necessidades emergentes, proporcionando uma solução inovadora que facilita a comunicação, melhora a gestão de tarefas e aumenta a eficiência operacional das equipes, transformando fundamentalmente a dinâmica de trabalho 
 
 ## Público-Alvo
 
-O público-alvo do E-note é abrangente e diversificado, incluindo tanto equipes de trabalho em pequenas e médias empresas quanto em grandes corporações, abarcando diversos setores da economia. Isso inclui gestores que necessitam delegar tarefas de forma eficaz, equipes que colaboram em projetos compartilhados e precisam manter todos os membros alinhados
+O público-alvo do Remind é abrangente e diversificado, incluindo tanto equipes de trabalho em pequenas e médias empresas quanto em grandes corporações, abarcando diversos setores da economia. Isso inclui gestores que necessitam delegar tarefas de forma eficaz, equipes que colaboram em projetos compartilhados e precisam manter todos os membros alinhados
