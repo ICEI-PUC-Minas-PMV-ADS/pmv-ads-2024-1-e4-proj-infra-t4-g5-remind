@@ -1,36 +1,50 @@
 
 # Projeto de Interface
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Visão geral da interação do usuário pelas telas do sistema e protótipo interativo das telas com as funcionalidades que fazem parte do sistema (wireframes).
-
- Apresente as principais interfaces da plataforma. Discuta como ela foi elaborada de forma a atender os requisitos funcionais, não funcionais e histórias de usuário abordados nas <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a>.
+O projeto de interface, também conhecido como design de interface de usuário (UI), é uma parte fundamental do desenvolvimento de aplicativos, sites e sistemas digitais. É por meio do design de interface que buscamos criar uma experiência de usuário intuitiva e agradável. Nesse processo, nos concentramos em como os elementos visuais e interativos são organizados e apresentados aos usuários.
 
 ## Diagrama de Fluxo
 
-O diagrama apresenta o estudo do fluxo de interação do usuário com o sistema interativo e  muitas vezes sem a necessidade do desenho do design das telas da interface. Isso permite que o design das interações seja bem planejado e gere impacto na qualidade no design do wireframe interativo que será desenvolvido logo em seguida.
+O diagrama de fluxo desempenha um papel crucial na modelagem dos processos que são parte de um sistema de software. Eles fornecem uma representação clara de como o sistema funciona, desde a entrada de dados até a saída de resultados, permitindo uma análise detalhada e a identificação de possíveis pontos de melhoria ou otimização.
 
-O diagrama de fluxo pode ser desenvolvido com “boxes” que possuem internamente a indicação dos principais elementos de interface - tais como menus e acessos - e funcionalidades, tais como editar, pesquisar, filtrar, configurar - e a conexão entre esses boxes a partir do processo de interação. Você pode ver mais explicações e exemplos https://www.lucidchart.com/blog/how-to-make-a-user-flow-diagram.
+Para o nosso projeto, precisaremos desenvolver dois fluxogramas, uma vez que envolvemos a criação de dois aplicativos que funcionam em conjunto. Esses fluxogramas são essenciais para visualizar e documentar o fluxo de processos em cada um dos aplicativos e como eles interagem entre si.
 
-![Exemplo de Diagrama de Fluxo](img/diagramafluxo2.jpg)
+### Fluxograma dos clientes
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas de Fluxo”.
+O fluxograma do cliente acompanha o usuário desde o momento em que ele realiza o cadastro até a conclusão de um pedido. Além disso, descreve variás funcionalidades adicionais para melhorar a experiência do cliente, como a possibilidade de editar seu perfil, verificar suas notificações, pesquisar por comércios, verificar seus pedidos anteriores e realizar a ação de escanear um QR code.
 
-> **Links Úteis**:
-> - [Fluxograma online: seis sites para fazer gráfico sem instalar nada | Produtividade | TechTudo](https://www.techtudo.com.br/listas/2019/03/fluxograma-online-seis-sites-para-fazer-grafico-sem-instalar-nada.ghtml)
+![fluxograma cliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/83622295/d5351261-158b-4e65-90fd-46391029773a)
+
+### Fluxograma dos restaurantes
+
+Similarmente, o fluxograma do restaurante acompanha o usuário desde o momento em que ele realiza o cadastro até a conclusão de um pedido. Entretanto, a aplicação vai além e atua no auxílio do gerenciamento das demandas dos estabelecimentos ao mesmo tempo que, descreve as cruciais funcionalidades da aplicação dos comerciantes.
+
+![fluxograma restaurante](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/83622295/8ae0595b-6651-4e1f-abf6-93f71c565998)
+
+Aqui está uma vizualização de ambos os diagramas para uma melhor compreensão e análise do fluxo da aplicação. 
+
+![fluxograma cliente-restaurante](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/83622295/3c5faf64-5529-421c-94c9-c6e088234f79)
 
 ## Wireframes
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+Os wireframes são uma parte fundamental do processo de design, especialmente no desenvolvimento de interfaces de usuário para aplicativos, sites e outros sistemas digitais. Eles representam um estágio inicial e esquemático do design, onde as ideias começam a ganhar forma de maneira visual, porém sem manter uma fidelidade de cores, formas ou estilos.
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
- 
-> **Links Úteis**:
-> - [Protótipos vs Wireframes](https://www.nngroup.com/videos/prototypes-vs-wireframes-ux-projects/)
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [Axure](https://www.axure.com/edu) (Licença Educacional)
-> - [InvisionApp](https://www.invisionapp.com/) (Licença Educacional)
+Como dito anteriormente, dado que nosso projeto envolve o desenvolvimento de duas aplicações que precisam trabalhar em conjunto, será necessário criar dois wireframes distintos. Cada um desses wireframes será uma representação esquemática da interface de usuário de um dos aplicativos.
+
+### Wireframe do cliente
+
+O wireframe da aplicação do cliente guia o usuário do seu cadastro até a finalização de um pedido, descrevendo graficamente as telas e funcionalidade do processo.
+
+![Wireframe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/83622295/40fcc6c3-bd14-49d8-8b72-1d0457ba3d27)
+
+Por ser um fluxo de difícil vizualização disponibilizaremos um pdf para download. Ele contem todas as telas do wireframe da aplicação do cliente.
+
+[Wireframe Cliente Telas.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/files/12640813/Wireframe.Cliente.Telas.pdf) (clique para baixar)
+
+Link para o Wireframe interaetivo
+
+[Wireframe Interativo](https://www.figma.com/file/WIQsNCrYzfaeuzN6XljVvx/Ashop?type=design&node-id=278%3A6660&mode=design&t=QPxvcLayCy9Se8mo-1)
+
+### Wireframe do restaurante
+
+![Wireframe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/blob/main/docs/img/WireFrame%20restaurantes.png)

@@ -1,24 +1,29 @@
-# TÍTULO DO PROJETO
+# E-Notes
 
-`CURSO`
+`Analise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
 
-`SEMESTRE`
+`Projeto: Desenvolvimento de uma Aplicação Móvel em um Ambiente de Negócio`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+`Eixo 4 - 2024/1`
+
+Aplicativo que visa aprimorar experiência na comunicação entre funcionarios, criando um espaço virtual oferecendo como principal função a possibilidade enviar "mensagens"/"lembrentes" e gerenciamento de espaço virtual.
+
+Resolvendo problemas como demora no atendimento, erros em cardápios físicos, equívocos em pedidos e dificuldade organização interna, o aplicativo oferece sugestões geográficas de estabelecimento baseado na localização do usuário, cardápios através escaneamento de QR-codes, gerenciamento de espaço dos estabelecimentos baseado em pedidos ativos e muito mais.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Álvaro Soares
+* André Azevedo Ferreira Carvalho
+* Carlos Eduardo Reinis
+* Florisvaldo Alves Moreira Neto
+* Breno Morais Goncalves
+* Vitor Silva Oliveira
 
 ## Orientador
 
-* Nome completo do professor 1
-
+* Pedro Alves de Oliveira
+  
 ## Instruções de utilização
 
 Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
