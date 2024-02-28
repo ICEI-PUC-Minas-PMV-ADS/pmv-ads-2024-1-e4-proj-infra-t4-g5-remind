@@ -69,19 +69,21 @@ A necessidade de uma comunicação eficaz, gestão de tempo otimizada e delegaç
 
 O Remind tem como proposta oferecer uma plataforma única que integra ferramentas de comunicação instantânea, melhor comunicação entre equipes e visando a otimização consistencia e a eficácia na delegação e execução de tarefas.
 
-### Processo 1 – Sistema de Compra 
+### Processo 1 – Listar Lembretes
 
-Esse sistema de compra simplifica a forma de como o cliente irá realizar sua refeição do dia, nele contém a forma do cliente achar um restaurante pelo app, efetuar o pedido e reservar uma mesa, caso deseje consumir no local, ou até mesmo apenas retira-lo. 
+![ListarLembretes](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/34ccfcba-fb65-448a-8b12-732403ad964f)
 
-![IMAGEM 1]()
+### Processo 2 – Criação de Lembretes
 
+![CriarLembrete](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/00776b51-d248-4ad0-9374-eedb388c8992)
 
-### Processo 2 – Preparos dos Produtos 
+### Processo 3 – Criação de Perfil de Usuário 
 
-No preparo dos pedidos vemos uma grande praticidade e agilidade por meio do app, que faz o gerenciamento dos pedidos e verifica automaticamente se há ou não disponibilidade de realizar o preparo do pedido. 
+![CriarUsuario](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/5c251cc8-e917-48ec-a7d6-44dcd19d75d3)
 
-![IMAGEM 2]()
+### Processo 4 – Edição de Perfil de Usuário
 
+![EditarPerfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/6800edf5-473b-4617-930c-5d3e40b0ea2d)
 
 ## Indicadores de Desempenho
 
