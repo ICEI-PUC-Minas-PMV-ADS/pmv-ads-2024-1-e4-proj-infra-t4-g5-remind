@@ -121,8 +121,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RF-003  | O sistema deve permitir o usuário visualizar lembretes que ele atribuiu a outros usuários.                                                                        | ALTA       |
 |RF-004  | O sistema deve permitir usuário editar lembretes criados por ele .                                                                           | ALTA       |
 |RF-005  | O sistema deve possuir sistema de notificação baseado no prazo do lembrete, envia-las baseadas no prazo limite do lembrete.                                                                  | MÉDIA      |
-
-
+|RF-006  | O sistema deve possuir Segurança e Privacidade tendo que garantir que os dados das tarefas são armazenados de forma segura e que apenas o funcionário autorizado pode acessar suas próprias informações de lembretes.  | ALTA     |
+|RF-007  | O sistema deve permitir acesso mnovél ao usuario para que permita aos funcionários visualizar, adicionar e gerenciar tarefas mesmo quando estão fora do escritório.                                                    | ALTA     |
+|RF-008  | O sistema de possuir acessibilidade garantindo para que o aplicativo seja acessível para usuários com deficiências, incluindo suporte para leitores de tela, teclado e outras tecnologias assistivas.                  | BAIXA    |
 
 ### Requisitos não Funcionais
 
