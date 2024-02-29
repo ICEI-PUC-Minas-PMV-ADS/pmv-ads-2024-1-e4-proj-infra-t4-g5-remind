@@ -69,21 +69,29 @@ A necessidade de uma comunicação eficaz, gestão de tempo otimizada e delegaç
 
 O Remind tem como proposta oferecer uma plataforma única que integra ferramentas de comunicação instantânea, melhor comunicação entre equipes e visando a otimização consistencia e a eficácia na delegação e execução de tarefas.
 
-### Processo 1 – Listar Lembretes
+### Processo 1 – Listar Lembretes Atribuídos
+
+![ListarLembreteAtribuido](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/d960dcd5-1ce9-457a-9f7b-8d02f7d6c728)
+
+### Processo 2 – Listar Lembretes Criados
 
 ![ListarLembretes](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/34ccfcba-fb65-448a-8b12-732403ad964f)
 
-### Processo 2 – Criação de Lembretes
+### Processo 3 – Criação de Lembretes
 
 ![CriarLembrete](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/00776b51-d248-4ad0-9374-eedb388c8992)
 
-### Processo 3 – Criação de Perfil de Usuário 
+### Processo 4 – Edição de Lembretes
 
-![CriarUsuario](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/5c251cc8-e917-48ec-a7d6-44dcd19d75d3)
+![EditarLembrete](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/4395283c-5ba4-4eb1-8afd-d91bf8ed70c4)
 
-### Processo 4 – Edição de Perfil de Usuário
+### Processo 5 – Criação de Perfil de Usuário 
 
-![EditarPerfil](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/6800edf5-473b-4617-930c-5d3e40b0ea2d)
+![CriarUsuario](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/4efd476b-e466-49cd-9ae3-abe3c83331c9)
+
+### Processo 6 – Edição de Perfil de Usuário
+
+![EditarUsuario](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/8350fe31-c48b-4b42-8579-263da70540cb)
 
 ## Indicadores de Desempenho
 
