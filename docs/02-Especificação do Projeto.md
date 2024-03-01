@@ -52,12 +52,12 @@ Partindo das informações que as Personas apresentaram, chegou-se à conclusão
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|**João Carlos**     | RF- 001 Como um gerente de equipe, quero poder criar lembretes para os membros da minha equipe para garantir que todos estejam cientes de tarefas importantes e prazos.| Melhorar a comunicação e a eficiência na gestão de projetos. |
-|**Carlos Eduardo**  | RF- 003 Como um designer gráfico em uma agência de publicidade,Quero poder visualizar os lembretes que atribuí a outros membros da equipe para acompanhar o progresso das tarefas e garantir que as solicitações sejam concluídas dentro do prazo. | Organizar melhor sua carga de trabalho e evitar perder prazos importantes.|
-|**Roberto Fonseca** | Centralizar a comunicação e gestão de tarefas em uma única plataforma.| Facilitar a visibilidade sobre o progresso das tarefas e melhorar a comunicação da equipe. |
-|**Karen Luíza**     | RF- 002 Como Analista de Marketing Digital em um e-commerce, quero poder visualizar lembretes atribuídos a mim no sistema para garantir que eu esteja ciente de tarefas importantes relacionadas à gestão de campanhas online e análise de desempenho.| Evitar o sobrecarrego com múltiplas tarefas e melhorar a organização pessoal. |
-|**Fernanda Lima**   | Facilitar a comunicação com a equipe de design e clientes, integrando feedbacks em uma única plataforma.| Agilizar o processo de revisão e entrega dos projetos arquitetônicos. |
-|**Luísa Rocha**     | Gerenciar lembretes para consultas, cirurgias, e compartilhar informações importantes de forma eficiente com a equipe médica.| Melhorar a organização pessoal e a comunicação eficiente com a equipe de saúde. |
+|**João Carlos**     | Como um gerente de equipe, quero poder criar lembretes para os membros da minha equipe para garantir que todos estejam cientes de tarefas importantes e prazos.| Melhorar a comunicação e a eficiência na gestão de projetos sem perder o controle sobre a segurança das informações da empresa. |
+|**Carlos Eduardo**  | Como um designer gráfico em uma agência de publicidade,Quero poder visualizar os lembretes que atribuí a outros membros da equipe para acompanhar o progresso das tarefas e garantir que as solicitações sejam concluídas dentro do prazo. | Organizar melhor sua carga de trabalho e evitar perder prazos importantes.|
+|**Roberto Fonseca** | Centralizar a comunicação e gestão de tarefas em uma única plataforma.| Garantir a acessibilidade em um sistema de comunicação entre as equipes da empresa. |
+|**Karen Luíza**     | Como Analista de Marketing Digital em um e-commerce, quero poder criar, visualizar e editar lembretes atribuídos a mim no sistema para garantir que eu esteja ciente de tarefas importantes relacionadas à gestão de campanhas online e análise de desempenho.| Dinamizar e melhorar a precisão e qualidade da informação trocada em mensagens em sua equipe. |
+|**Fernanda Lima**   | Facilitar a comunicação com a equipe de design e clientes, integrando feedbacks em uma única plataforma.| Criar, visualizar, editar e atualizar mensagens rápidas e curtas, e organizar e gerenciar prazos para a sua equipe em projetos de arquitetura que trabalham em diversos locais diferentes. |
+|**Luísa Rocha**     | Gerenciar lembretes para consultas, cirurgias, e compartilhar informações importantes de forma eficiente com a equipe médica.| Criar, visualizar, editar mensagens rápidas e curtas, e organizar e gerenciar prazos e compromissos individuais (consultas) e para as diversas equipes com que trabalha no Hospital. |
 
 ## Modelagem do Processo de Negócio 
 
