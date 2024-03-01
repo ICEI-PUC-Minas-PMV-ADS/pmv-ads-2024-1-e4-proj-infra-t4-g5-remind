@@ -166,11 +166,11 @@ O diagrama de casos de uso é o próximo passo após a elicitação de requisito
 
 A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. Com o objetivo de mapear e explicitar as dependências internas e externas do projeto, desenvolvemos uma matriz de rastreabilidade de requisitos (Requirements Traceability Matrix - RTM).
 
-![matriz de rastreabilidade]()
+![matriz de rastreabilidade](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/4e3449b593cf348bd11c7f861e8a856c53822ab0/docs/img/02-Matriz_Rastreabilidade_V01.png)
 
 Estabeleceu-se também um formato auxiliar que será empregado em todos os requisitos funcionais de maior importância para o projeto, um modelo horizontal, associativo e descritivo com todos vínculos de artefatos, status e estado. A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema e estará em constante atualização durante o desenvolvimento deste projeto, sendo atualizada à medida em que é avançado o projeto.
 
-![matriz de rastreabilidade de requisitos detalhada]()
+![matriz de rastreabilidade de requisitos detalhada](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/4e3449b593cf348bd11c7f861e8a856c53822ab0/docs/img/02-Matriz_Rastr_Detalhada_V01.png)
 
 ### Gerencia de Rastreabilidade de Requisitos
 
