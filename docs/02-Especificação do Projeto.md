@@ -174,14 +174,15 @@ Estabeleceu-se também um formato auxiliar que será empregado em todos os requi
 
 ### Gerencia de Rastreabilidade de Requisitos
 
-Atualização da Matriz de Rastreabilidade de Requisitos ao final do desenvolvimento da Etapa 3 do Projeto. A avaliação é positiva e o desenvolvimento esta a ocorrer como planejado no Gerenciamento de Projeto, Gerenciamento de Pessoal e de Tempo.
+A gerência de rastreabilidade de requisitos apresentará versões atualizadas de acordo com o amadurecimento do projeto e a produção dos artefactos prefistos para atender aos requisitos funcionais definidos no projeto. Esta atividade será atualizada em momentos oportunos durante todo om desenvolvimento do projeto até a sua entrega final. Abaixo pode-se ver as versões atualizadas e informações cruzadas com outras importantes gerências deste projeto.
 
 ![matriz de rastreabilidade de requisitos detalhada]()
 
 Abaixo segue a versão final da Matriz de Rastreabilidade de Requisitos.
+
 ![matriz de rastreabilidade de requisitos detalhada]()
 
-### Planilha de Rastreabilidade de Artefactos Produzidos - Entregáves
+### Planilha de Rastreabilidade de Artefactos Produzidos - Entregáveis
 
 ![matriz de rastreabilidade de requisitos detalhada]()
 
