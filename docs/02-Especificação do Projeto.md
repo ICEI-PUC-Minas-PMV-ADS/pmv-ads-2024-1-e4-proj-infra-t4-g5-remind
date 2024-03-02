@@ -116,32 +116,34 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001  | O sistema deve permitir o usuário criar lembretes para outros usuários.                                                                     | ALTA       |
-|RF-002  | O sistema deve permitir o usuário visualizar lembretes atribuídos a ele.                                                                         | ALTA       |
-|RF-003  | O sistema deve permitir o usuário visualizar lembretes que ele atribuiu a outros usuários.                                                                        | ALTA       |
-|RF-004  | O sistema deve permitir usuário editar lembretes criados por ele .                                                                           | ALTA       |
-|RF-005  | O sistema deve possuir sistema de notificação baseado no prazo do lembrete, envia-las baseadas no prazo limite do lembrete.                                                                  | MÉDIA      |
-|RF-006  | O sistema deve possuir Segurança e Privacidade tendo que garantir que os dados das tarefas são armazenados de forma segura e que apenas o funcionário autorizado pode acessar suas próprias informações de lembretes.  | ALTA     |
-|RF-007  | O sistema deve permitir acesso mnovél ao usuario para que permita aos funcionários visualizar, adicionar e gerenciar tarefas mesmo quando estão fora do escritório.                                                    | ALTA     |
-|RF-008  | O sistema de possuir acessibilidade garantindo para que o aplicativo seja acessível para usuários com deficiências, incluindo suporte para leitores de tela, teclado e outras tecnologias assistivas.                  | BAIXA    |
+|RF-001  | O sistema deve permitir o usuário visualizar, editar e criar lembretes para outros usuários.                                                 | ALTA |
+|RF-002  | O sistema deve permitir o usuário visualizar lembretes atribuídos a ele.                                                                     | ALTA |
+|RF-003  | O sistema deve possuir sistema de notificação baseado no prazo do lembrete, envia-las baseadas no prazo limite do lembrete.                  | MÉDIA |
+|RF-004  | O sistema deve possuir opção de não pertube para interromper notificações         | BAIXA |
+|RF-005  | O sistema deve permitir criação e edição de usuários.      | ALTA     |
+|RF-006  | O sitema deve permitir o usuário realizar login e logout em sua conta.    | ALTA     |
+|RF-007  | O sitema deve permitir o usuário a pesquisar seus lembretes.   | ALTA     |
+|RF-008  | O sitema deve permitir o usuário a encerrar lembretes atribuídos a ele.   | ALTA     |
+|RF-009  | O sitema deve permitir o usuário a visualizar lembretes já encerrados.   | MÉDIA     |
+|RF-010  | O sistema deve permitir a pesquisa de usuários.  | ALTA     |
 
 ### Requisitos não Funcionais
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
 |RNF-001 | A aplicação deve ser responsiva, permitindo a visualização em diferentes resoluções de dispositivos.             | ALTA       |
-|RNF-002 |Aplicação deve ser multi plataforma, estando disponível para mobile e para web.                                                               | ALTA       |
+|RNF-002 | A aplicação deve ser multi plataforma, estando disponível para mobile e para web.                                                               | ALTA       |
 |RNF-004 | A aplicação deve ser compatível com as versões mais recentes dos principais sistemas operacionais móveis (iOS e Android). | ALTA       |
-|RNF-005 | A aplicação deve permitir somente super usuário criar contas.                                                               | ALTA      |
+|RNF-005 | A aplicação deve permitir somente super usuário criar e editar contas de usuários.                                                               | ALTA      |
 |RNF-006 | A aplicação deve possuir seu banco de dados em nosql.                                                               | ALTA      |
 |RNF-007 | A aplicação deve permitir a criação de lembretes via web e app.                                                               | ALTA      |
-|RNF-008 | A aplicação deve permitir usuários a atribuírem lembretes a si mesmo.                                                               | MÉDIA      |
-|RNF-009 | A aplicação deve possuir limite de 255 caracteres para a descrição de lembretes.                                                               | ALTA      |
-|RNF-010 | A aplicação deve possuir limite de 50 caracteres para o título de lembretes.                                                               | MÉDIA      |
-|RNF-011 | A aplicação deve possuir prazo estimado para fechamento de lembretes.                                                                | ALTA      |
-|RNF-012 | A aplicação deve possuir status para os lembretes, sendo eles ativo (quando estão dentro do prazo) ou inativo (lembretes que já acabaram seu prazo).                                                                  | ALTA      |
-|RNF-013 | A aplicação deve ordenar lembretes pelo seu tempo restante.                                                              | MÉDIA      |
-|RNF-014 | A aplicação deve agrupar lembretes em concluídos ou não concluídos.                                                            | MÉDIA      |
+|
+|RNF-008 | A aplicação deve possuir limite de 255 caracteres para a descrição de lembretes.                                                               | ALTA      |
+|RNF-009 | A aplicação deve possuir limite de 50 caracteres para o título de lembretes.                                                               | MÉDIA      |
+|RNF-010 | A aplicação deve possuir prazo estimado para fechamento de lembretes.                                                                | ALTA      |
+|RNF-011 | A aplicação deve possuir situação para os lembretes, sendo eles ativo (quando estão dentro do prazo) ou encerrado (lembretes que já acabaram seu prazo).   
+| ALTA      |
+|RNF-012 | A aplicação deve permitir somente super usuário pesquiar usuários.                                                               | ALTA      |
 
 ## Restrições
 
@@ -153,6 +155,7 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |02| A equipe não pode subcontratar o desenvolvimento do trabalho.|
 |03| O projeto deve conter API. |
 |04| O sistema deverá se conectar com um banco de dados NoSQL - MongoDB.   |
+
 ## Diagrama de Casos de Uso
 
 O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico para representar o sistema. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
