@@ -137,13 +137,11 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-005 | A aplicação deve permitir somente super usuário criar e editar contas de usuários.                                                               | ALTA      |
 |RNF-006 | A aplicação deve possuir seu banco de dados em nosql.                                                               | ALTA      |
 |RNF-007 | A aplicação deve permitir a criação de lembretes via web e app.                                                               | ALTA      |
-|
 |RNF-008 | A aplicação deve possuir limite de 255 caracteres para a descrição de lembretes.                                                               | ALTA      |
 |RNF-009 | A aplicação deve possuir limite de 50 caracteres para o título de lembretes.                                                               | MÉDIA      |
 |RNF-010 | A aplicação deve possuir prazo estimado para fechamento de lembretes.                                                                | ALTA      |
-|RNF-011 | A aplicação deve possuir situação para os lembretes, sendo eles ativo (quando estão dentro do prazo) ou encerrado (lembretes que já acabaram seu prazo).   
-| ALTA      |
-|RNF-012 | A aplicação deve permitir somente super usuário pesquiar usuários.                                                               | ALTA      |
+|RNF-011 | A aplicação deve possuir situação para os lembretes, sendo eles ativo (quando estão dentro do prazo) ou encerrado (lembretes que já acabaram seu prazo).   | ALTA      |
+|RNF-012 | A aplicação deve permitir somente super usuário pesquiar usuários.                                                               | MÉDIA      |
 
 ## Restrições
 
