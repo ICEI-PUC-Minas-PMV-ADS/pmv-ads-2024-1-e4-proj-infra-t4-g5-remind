@@ -4,27 +4,25 @@
 
 Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
-![Arquitetura da Solução](img/02-mob-arch.png)
+![Arquitetura da Solução](img\Arquitetura-de-solucao.png)
 
 ## Diagrama de Classes
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
 
-![diagramadeclassepuc drawio (2)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/69819769/990faa20-98c4-4d5a-b842-9a83629af441)
+
 
 
 
 ## Modelo ER
 
-O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.]
+O Modelo ER representa através de um diagrama como as entidades (coisas, objetos) se relacionam entre si na aplicação interativa.
 
-![comandasER](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/13721147/9d5cade7-2de7-40cd-969d-0d308e572fea)
 
 ## Esquema Relacional
 
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
  
-![comandasESQUEMARELACIONAL](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/13721147/ec664d83-51d8-4c5c-9eb6-0b8c04b12c83)
 
 ## Modelo Físico
 Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
@@ -38,7 +36,7 @@ Linguagens de progamação utilizadas:
 Frameworks Utilizados:
 
 - NodeJs (back-end): O Node. js é um framework que permite a criação de APIs, aplicações de chat e microsserviços.
-- ReactNative (front-end): É uma estrutura de aplicativo móvel popular, baseada na linguagem JavaScript, que permite criar aplicativos móveis renderizados nativamente para iOS e Android
+- ReactNative (front-end): É uma estrutura de aplicativo móvel e web, baseada na linguagem JavaScript, que permite a reutilização de componentes em mais de uma plataforma, assim provendo maior disponibilidades em plataformas. 
 
 
 ## Qualidade de Software
