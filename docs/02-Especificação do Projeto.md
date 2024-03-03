@@ -118,8 +118,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |------|-----------------------------------------|----|
 |RF-001  | O sistema deve permitir o usuário visualizar, editar e criar tarefas para outros usuários.                                                 | ALTA |
 |RF-002  | O sistema deve permitir o usuário visualizar tarefas atribuídas a ele.                                                                     | ALTA |
-|RF-003  | O sistema deve possuir sistema de notificação baseado no prazo da tarefa e na situação da tarefa, quanto menor o prazo, mais recorrente a notificação, e quando a situação mudar, enviar uma notificação para todas pessoas envolvidas na tarefa.                  | MÉDIA |
-|RF-004  | O sistema deve possuir opção de não perturbe para interromper notificações         | BAIXA |
+|RF-003  | O sistema deve possuir função de notificação.                  | MÉDIA |
+|RF-004  | O sistema deve possuir configurações editáveis pelo usuário.         | BAIXA |
 |RF-005  | O sistema deve permitir criação e edição de usuários.      | ALTA     |
 |RF-006  | O sistema deve permitir o usuário realizar login e logout em sua conta.    | ALTA     |
 |RF-007  | O sistema deve permitir o usuário a pesquisar suas tarefa.   | ALTA     |
@@ -142,6 +142,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 |RNF-010 | A aplicação deve possuir prazo estimado para fechamento de tarefa.                                                                | ALTA      |
 |RNF-011 | A aplicação deve possuir situações para as tarefas, sendo elas ativa (quando estão dentro do prazo) ou encerrada (tarefas que já acabaram seu prazo).   | ALTA      |
 |RNF-012 | A aplicação deve permitir somente super usuário pesquisar usuários.                                                               | MÉDIA      |
+|RNF-013 | A aplicação deve ter sua função de notificações baseada no prazo da tarefa e na situação da tarefa, quanto menor o prazo, mais recorrente a notificação, e quando a situação mudar, enviar uma notificação para todas pessoas envolvidas na tarefa.                                                        | MÉDIA      |
 
 ## Restrições
 
