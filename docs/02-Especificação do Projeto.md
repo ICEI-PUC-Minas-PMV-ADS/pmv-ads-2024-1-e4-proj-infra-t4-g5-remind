@@ -214,3 +214,21 @@ O gerenciamento adequado de tarefas contribuirá para que o projeto alcance alto
 O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
 
 ![Orçamento]()
+
+| DESPESAS | FEV | MAR | ABRIL | MAI | JUN | TOTAL | 
+|----------|-----|-----|-----|-----|-----|-------|
+| Gerente de projeto | R$ 8.500,00 | R$ 8.500,00 | R$ 8.500,00 | R$ 8.500,00 | R$ 8.500,00 | R$ 42.500,00  
+| Analista de Sistema Backend | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 12.500,00  
+| Analista de Sistema Backend | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 22.500,00  
+| Analista de Sistema Frontend | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 22.500,00  
+| Analista de Sistema Frontend | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 4.500,00 | R$ 22.500,00  
+| Designer UX | R$ 2.500,00 | R$ 2.500,00 | R$ 2.500,00 | R$ 2.500,00 | R$ 2.500,00 | R$ 12.500,00  
+| Computadores | R$ 21.000,00 | R$ 0,00 | R$ 0,00 | R$ 0,00 | R$ 0,00 | R$ 21.000,00 
+| Internet | R$ 200,00 | R$ 200,00 | R$ 200,00 | R$ 200,00 | R$ 200,00 | R$ 1.000,00 
+| Luz | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 10.000,00  
+| Manutenção | R$ 1.000,00 | R$ 1.000,00 | R$ 1.000,00 | R$ 1.000,00 | R$ 333,33 | R$ 5.000,00  
+| Segurança | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 2.000,00 | R$ 10.000,00  
+| Limpeza | R$ 550,00 | R$ 550,00 | R$ 550,00 | R$ 550,00 | R$ 550,00 | R$ 2.750,00  
+| Aluguel | R$ 5.000,00 | R$ 5.000,00 | R$ 5.000,00 | R$ 5.000,00 | R$ 5.000,00 | R$ 25.000,00  
+| Alimentação | R$ 500,00 | R$ 500,00 | R$ 500,00 | R$ 500,00 | R$ 500,00 | R$ 2.500,00  
+| **DESPESAS TOTAIS** | **R$ 60.750** | **R$ 39.750,00** | **R$ 39.750,00** | **R$ 39.750,00** | **R$ 39.750,00** | **R$ 234.750,00** | 
