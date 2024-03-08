@@ -1,4 +1,4 @@
-# Reminds
+# Remind
 
 `Analise e Desenvolvimento de Sistemas`
 
