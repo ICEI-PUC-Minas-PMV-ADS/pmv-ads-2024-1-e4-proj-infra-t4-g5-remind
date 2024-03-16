@@ -7,10 +7,14 @@ async function createNotes(req, res) {
 
     try {
         const { titulo, descricao, destinatario,criador ,datafinal,situacao } = req.body;
+
+        const criadorId = req.user._id
+        console.log()
+
         const newNote = new Notes({
             titulo,
             descricao,
-            criador,
+            criador: criadorId,
             destinatario,
             datafinal,
             situacao
