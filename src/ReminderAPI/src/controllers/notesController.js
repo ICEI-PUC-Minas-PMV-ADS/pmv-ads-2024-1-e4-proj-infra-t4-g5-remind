@@ -9,7 +9,6 @@ async function createNotes(req, res) {
         const { titulo, descricao, destinatario,criador ,datafinal,situacao } = req.body;
 
         const criadorId = req.user._id
-        console.log()
 
         const newNote = new Notes({
             titulo,
@@ -58,10 +57,11 @@ async function update(req, res){
 async function getCriadorById(req, res){
 
     try {
-        const userId = req.user._id; // Obtém o ID do usuário autenticado
+        const userId = req.user._id;
         const notes = await Notes.find({ criador: userId });
     
         res.status(200).json(notes);
+        console.log(notes)
     } catch (error) {
         console.error("Erro ao buscar usuário por ID:", error);
         res.status(500).json({ mensagem: "Erro interno do servidor" });
