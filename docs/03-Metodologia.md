@@ -9,11 +9,11 @@ A documentação do Projeto em formatação ABNT será desenvolvida e disponibil
 |              Ambiente              |  Plataforma  |                                    Link de Acesso                                    |
 |:----------------------------------:|:------------:|:------------------------------------------------------------------------------------:|
 |     Repositório de código fonte e Documentação do projeto    |    GitHub    | https://github.com/creinis/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/tree/main      |
-| Projeto de Interface e  Wireframes |   Figma  |  https://www.figma.com/                              |
-| Diagramas			     | Diagrams.net |  https://www.diagrams.net/                             |
-|      Gerenciamento do Projeto      |    Trello    | [https://trello.com/b/79Q3om0J/gest%C3%A3o-projeto-vagas](https://trello.com/b/IAWJMwHt/kanban-quadro-modelo)    |
+| Projeto de Interface e  Wireframes |   Figma  |  [https://www.figma.com/](https://www.figma.com/file/hLrvuGxl8XvxbKgXAvWnDJ/todo-list?type=design&node-id=1%3A2&mode=design&t=bJmaEKFhfXjJrSR6-1)                              |
+|              Diagramas	     | Diagrams.net |  https://www.diagrams.net/                             |
+|      Gerenciamento do Projeto      |    Trello    | [https://trello.com/b/79Q3om0J/gest%C3%A3o-projeto-vagas](https://trello.com/b/mzAYjlKm/projeto-puc-remind)    |
 |      Gerenciamento e Comunicação   |    WhatsApp    | https://chat.whatsapp.com/F10LE4hwG8DE7CPlMCEx4X   |
-|      Comunicação Reunião Semanal   |    Teams     | https://teams.microsoft.com/l/meetup-join/19:9eabe43a8e2148aeb5fa261d1fcffe0e@thread.tacv2/1693430496252?context=%7B%22Tid%22:%2214cbd5a7-ec94-46ba-b314-cc0fc972a161%22,%22Oid%22:%22518fbd50-f1f2-4481-a4d2-8d851bf014b4%22%7D   |
+|      Comunicação Reunião Semanal   |    Teams     | https://teams.microsoft.com/l/meetup-join/19%3a6tHyHGSkgm-BQNoJzYbiA0SuQfiQQafe3LNo5LKAieU1%40thread.tacv2/1709924208397?context=%7b%22Tid%22%3a%2214cbd5a7-ec94-46ba-b314-cc0fc972a161%22%2c%22Oid%22%3a%221e583fad-0204-4a7d-89e4-e66c5c3866bd%22%7d   |
 
 
 ## Controle de Versão
@@ -51,7 +51,7 @@ A divisão dos papéis individuais dos integrantes da equipe esta apresentado à
 
 A organização da equipe se dá da seguinte forma:
 
-+ Scrum Master: Vitor Silva
++ Scrum Master: Álvaro Emanuel
 + Product Owner: Breno Morais
 
 + Equipe de Desenvolvimento:
@@ -79,7 +79,7 @@ A plataforma Trello foi escolhida como centro de gerenciamento de tarefas estand
 **Organização:**
 
 - **`Informações`:** 
-	Lista os links de principal acesso para a equipe para as ferramentas usadas no projeto, como: Google Drive, GitHub, MarvelApp, reunião semanal com a orientadora, e possíveis avisos importantes.
+	Lista os links de principal acesso para a equipe para as ferramentas usadas no projeto, como: GitHub, Figma, Trello, Diagrams, reunião semanal, e possíveis avisos importantes.
 
 - **`Backlog`:** 
 	Lista os Requisitos Funcionais a serem desenvolvidos pela equipe de desenvolvimento. 
