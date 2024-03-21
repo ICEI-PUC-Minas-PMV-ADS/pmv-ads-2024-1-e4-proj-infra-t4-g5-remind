@@ -100,11 +100,11 @@ A plataforma Trello foi escolhida como centro de gerenciamento de tarefas estand
 	Lista dedicada a tarefas relativas aos códigos fonte do projeto que devem ser testados por outros membros da equipe a fim de garantir a qualidade do software e atendendo às especificações da metodologia adotada. 
 
 O ambiente de gerenciamento de tarefas Trello deste Projeto pode ser acessado em: 
-[Trello](https://trello.com/b/IAWJMwHt/kanban-quadro-modelo)
+[Trello](https://trello.com/b/mzAYjlKm/projeto-puc-remind)
 
 A Figura abaixo ilustra o gerenciador de tarefas criado: 
  
- ![Foto representativa]() LINK VAZIO
+ ![Foto representativa](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/ebf15146397d7e10eadf6bc334cc2b550ef5bbe9/docs/img/03_Trello.png)
  
 
 ### Ferramentas
