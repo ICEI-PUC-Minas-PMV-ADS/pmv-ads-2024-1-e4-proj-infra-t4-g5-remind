@@ -8,8 +8,7 @@ A documentação do Projeto em formatação ABNT será desenvolvida e disponibil
 
 |              Ambiente              |  Plataforma  |                                    Link de Acesso                                    |
 |:----------------------------------:|:------------:|:------------------------------------------------------------------------------------:|
-|     Repositório de código fonte    |    GitHub    | https://github.com/creinis/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/tree/main      |
-|        Documentos do projeto       | |  |
+|     Repositório de código fonte e Documentação do projeto    |    GitHub    | https://github.com/creinis/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/tree/main      |
 | Projeto de Interface e  Wireframes |   Figma  |  https://www.figma.com/                              |
 | Diagramas			     | Diagrams.net |  https://www.diagrams.net/                             |
 |      Gerenciamento do Projeto      |    Trello    | [https://trello.com/b/79Q3om0J/gest%C3%A3o-projeto-vagas](https://trello.com/b/IAWJMwHt/kanban-quadro-modelo)    |
