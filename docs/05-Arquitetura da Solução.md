@@ -58,41 +58,47 @@ Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do ba
 
 ## Qualidade de Software
 
-A qualidade de um aplicativo móvel de controle financeiro depende de vários fatores, incluindo funcionalidade, usabilidade, desempenho, segurança e manutenibilidade. Aqui estão algumas considerações importantes para avaliar a qualidade do software de um aplicativo móvel de controle financeiro: 
+A qualidade do software do Remind é avaliada segundo diversos critérios essenciais, tais como funcionalidade, eficiência de desempenho, usabilidade, manutenibilidade e segurança. Essas dimensões são fundamentais para garantir a entrega de um produto que não apenas atenda às necessidades do nosso público-alvo, mas também proporcione uma experiência de uso positiva. Abaixo estão as considerações específicas para a qualidade do software do Remind, baseadas na ISO/IEC 25002:2024:
 
-- Funcionalidade: O aplicativo deve fornecer todas as funcionalidades necessárias para gerenciar as finanças do usuário, como a capacidade de monitorar gastos, gerenciar orçamentos, visualizar relatórios e realizar transações financeiras.  
+### Funcionalidade
 
-- Usabilidade: O aplicativo deve ser fácil de usar e intuitivo, com uma interface clara e organizada que permita aos usuários navegar facilmente pelas diferentes funcionalidades. O aplicativo também deve ser acessível e ter boa usabilidade para usuários com deficiências visuais ou motoras. 
+O Remind oferece um conjunto de funcionalidades focadas na otimização da comunicação interna, na delegação de tarefas e no gerenciamento eficiente de lembretes, garantindo que os membros da equipe estejam sempre alinhados e focados em suas responsabilidades.
 
-- Desempenho: O aplicativo deve ser rápido e responsivo, com tempos de carregamento curtos e operações suaves. Ele deve ser capaz de lidar com grandes quantidades de dados de forma eficiente e sem travar. 
+### Eficiência de Desempenho
 
-- Segurança: O aplicativo deve proteger as informações financeiras do usuário, incluindo senhas e outras informações sensíveis.  
+O aplicativo é projetado para ser rápido e responsivo, garantindo um desempenho eficiente mesmo sob carga de trabalho intensa, usando recursos de maneira otimizada.
 
-- Manutenibilidade: O aplicativo deve ser fácil de manter e atualizar, com um código bem estruturado e documentado que permita a correção de bugs e a implementação de novas funcionalidades. Ele também deve ser capaz de se integrar com ferramentas de monitoramento e análise para ajudar a identificar problemas e melhorias. 
+### Usabilidade
 
-A qualidade do software de um aplicativo móvel de controle financeiro pode ser avaliada por meio de testes de usabilidade, testes de segurança e testes de desempenho. Além disso, é importante ouvir feedback dos usuários e responder rapidamente a quaisquer problemas ou sugestões de melhoria. 
-|Característica de Qualidade| Subcaracterísticas |Justificativa      |
-|--------------------|------------------------------------|----------------------------------------|
-| ● Adequação Funcional  |         Adequação   <BR>  <BR>     Acurácia  <BR>  <BR>  Conformidade  | Prover um conjunto apropriado de funções para tarefas e objetivos do usuário especificados.<BR> <BR> Prover, com o grau de precisão necessário, resultados ou efeitos corretos ou conforme acordados.<BR><BR> O software deve estar de acordo com normas, convenções ou regulamentações previstas em leis e prescrições similares relacionadas à funcionalidade.
-|    ●  Eficiência de Desempenho          |   Comportamento em relação aos recursos           |  Capacidade do produto de software de usar tipos e quantidades apropriados de recursos, quando o software executa suas funções sob condições estabelecidas.
-|● Usabilidade                            |    Inteligibilidade    <BR>  <BR> Apreensibilidade    <BR>  <BR> Operacionalidade     |  Capacidade do produto de software de possibilitar ao usuário compreender se o software é apropriado e como ele pode ser usado para tarefas e condições de uso específicas. <BR>  <BR> Capacidade do produto de software de possibilitar ao usuário aprender sua aplicação. <BR>  <BR> Capacidade do produto de software de possibilitar ao usuário operá-lo e controlá-lo.
-| ● Manutenibilidade   |   Modularidade   <BR>   <BR> Modificabilidade    <BR>  <BR> Testabilidade    |   A modularização (ou componentização) é o mecanismo que permite que um sistema de software seja dividido em partes que interagem entre si. <BR> <BR> Capacidade do produto de software de permitir que uma modificação especificada seja implementada. <BR>  <BR> Capacidade do produto de software de permitir que o software, quando modificado, seja validado.
-| ● Segurança   |  Confidencialidade             |Capacidade do produto de software de proteger informações e dados, de forma que pessoas ou sistemas não autorizados não possam lê-los nem modificá-los e que não seja negado o acesso às pessoas ou sistemas autorizados.
+Com uma interface intuitiva e fácil de navegar, o Remind se destaca pela facilidade de uso, permitindo que usuários de todos os níveis técnicos interajam com o aplicativo sem dificuldades.
 
-|Subcaracterísticas| Métrica |Escala      |Peso      |
-|--------------------|------------------------------------|----------------------------------------|----------------------------------------|
-|Adequação | O sistema propõe-se a fazer o que é apropriado? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende       |ALTO      |
-|Acurácia| O sistema gera resultados corretos conforme acordado?|1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende    |ALTO        |
-|Conformidade| O sistema está de acordo com normas e convenções previstas em leis e descrições similares?|1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende     |ALTO        |
-|Comportamento em relação aos recursos| Quanto recurso o sistema utiliza? |1) Muito <BR>2) Suficiente<BR> 3) Pouco       |ALTO        |
-|Interoperabilidade| O sistema é capaz de interagir com os sistemas especificados? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende      |ALTO        |
-|Inteligibilidade| É fácil entender como utilizar o software ? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende      |ALTO        |
-|Apreensibilidade| É fácil aprender a usar? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende      |ALTO        |
-|Operacionalidade| É fácil de operar e controlar a operação? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende    |ALTO        |
-|Modularidade| As partes (módulos) do sistema estão interagindo entre si ? |1) Atende completamente<BR> 2) Atende parcialmente<BR> 3) Não atende     |ALTO        |
-|Modificabilidade| Qual a complexidade de implementar modificações ? |1) Alta <br>2) Média <br>3) Baixa      |ALTO        |
-|Testabilidade| Qual a complexidade de se validar o software ?  |1) Alta <br>2) Média <br>3) Baixa       |ALTO        |
-|Coexistência| O sistema de software pode coexistir com outros produtos de software independentes ? |1) Sim <BR>2) Não       |ALTO        |
-|Tolerância a falhas | Ocorrendo falhas, o sistema está parametrizado para reagir ? |1) Sim <BR>2) Não       |ALTO        |
-|Confidencialidade | O sistema evita acesso não autorizado, acidental ou deliberado a programas de dados? |1) Sim <BR>2) Não       |ALTO        |
+### Manutenibilidade
+
+O código do Remind é estruturado e documentado de maneira a facilitar atualizações e manutenções, assegurando a longevidade e a adaptabilidade do software.
+
+### Segurança
+
+A proteção das informações dos usuários é prioritária. O Remind implementa medidas de segurança robustas para garantir a confidencialidade e integridade dos dados.
+
+| Característica de Qualidade     | Subcaracterísticas                                        | Justificativa                                                                                                          |
+|---------------------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
+| **Adequação Funcional**         | Adequação, Acurácia, Conformidade                         | Atende às necessidades específicas de comunicação e gestão de tarefas com precisão e conformidade com padrões.        |
+| **Eficiência de Desempenho**    | Comportamento em relação aos recursos                     | Utiliza recursos de forma eficiente, assegurando alta performance e responsividade.                                    |
+| **Usabilidade**                 | Inteligibilidade, Apreensibilidade, Operacionalidade      | Fácil de aprender, usar e operar, independente do nível técnico do usuário.                                            |
+| **Manutenibilidade**            | Modularidade, Modificabilidade, Testabilidade             | Facilita atualizações e manutenções, promovendo a adaptabilidade e evolução contínua do software.                      |
+| **Segurança**                   | Confidencialidade                                         | Assegura a proteção dos dados dos usuários contra acessos não autorizados.                                             |
+
+### Métricas de Avaliação da Qualidade
+
+A avaliação da qualidade do Remind é feita através de métricas específicas para cada subcaracterística de qualidade, considerando escalas que variam de "Atende Completamente" a "Não Atende", com um peso atribuído como "ALTO" para todas as características, refletindo a importância de cada uma no contexto do nosso aplicativo.
+
+| Subcaracterísticas             | Métrica                                          | Escala                                      | Peso  |
+|--------------------------------|-------------------------------------------------|---------------------------------------------|-------|
+| Adequação                      | O sistema atende às necessidades de comunicação?| Atende Completamente / Parcialmente / Não  | ALTO  |
+| Acurácia                       | O sistema gera resultados precisos?             | Atende Completamente / Parcialmente / Não  | ALTO  |
+| Conformidade                   | O sistema está em conformidade com normas?      | Atende Completamente / Parcialmente / Não  | ALTO  |
+| Comportamento em relação aos recursos | O sistema usa recursos eficientemente?       | Muito / Suficiente / Pouco                  | ALTO  |
+| Inteligibilidade               | O sistema é fácil de entender?                  | Atende Completamente / Parcialmente / Não  | ALTO  |
+| Apreensibilidade               | O sistema é fácil de aprender?                  | Atende Completamente / Parcialmente /
+
 
