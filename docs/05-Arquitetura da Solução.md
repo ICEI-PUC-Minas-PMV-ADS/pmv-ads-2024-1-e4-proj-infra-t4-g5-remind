@@ -29,14 +29,31 @@ Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do ba
 
 ## Tecnologias Utilizadas
 
-Linguagens de progamação utilizadas:
+**Linguagens de Programação:**
 
-- Javascript: Linguagem de progamação utilizada no frontend e no back end.
+* JavaScript: Linguagem de programação utilizada no frontend e no back-end.
 
-Frameworks Utilizados:
+**Frameworks:**
 
-- NodeJs (back-end): O Node. js é um framework que permite a criação de APIs, aplicações de chat e microsserviços.
-- ReactNative (front-end): É uma estrutura de aplicativo móvel e web, baseada na linguagem JavaScript, que permite a reutilização de componentes em mais de uma plataforma, assim provendo maior disponibilidades em plataformas. 
+* NodeJS (back-end): O Node.js é um framework que permite a criação de APIs, aplicações de chat e microsserviços.
+* React Native (front-end): É uma estrutura de aplicativo móvel e web, baseada na linguagem JavaScript, que permite a reutilização de componentes em mais de uma plataforma, assim provendo maior disponibilidades em plataformas.
+* React (web): É uma biblioteca JavaScript de código aberto para a construção de interfaces de usuário interativas e eficientes.
+
+**Documentação de API:**
+
+* Swagger: É uma ferramenta de código aberto para a criação de documentação de APIs RESTful.
+
+**Testes Unitários:**
+
+* Jest: É um framework de testes unitários JavaScript de código aberto.
+
+**Visualização de Dados do Banco:**
+
+* MongoDbCompass: É uma ferramenta gráfica de código aberto para gerenciar bancos de dados MongoDB.
+
+**Banco de Dados Back-end:**
+
+* Mongoose: É uma biblioteca JavaScript de código aberto para interagir com bancos de dados MongoDB.
 
 
 ## Qualidade de Software
