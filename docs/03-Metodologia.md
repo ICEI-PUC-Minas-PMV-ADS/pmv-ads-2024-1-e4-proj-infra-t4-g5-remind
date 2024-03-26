@@ -8,12 +8,12 @@ A documentação do Projeto em formatação ABNT será desenvolvida e disponibil
 
 |              Ambiente              |  Plataforma  |                                    Link de Acesso                                    |
 |:----------------------------------:|:------------:|:------------------------------------------------------------------------------------:|
-|     Repositório de código fonte e Documentação do projeto    |    GitHub    | https://github.com/creinis/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/tree/main      |
-| Projeto de Interface e  Wireframes |   Figma  |  [https://www.figma.com/](https://www.figma.com/file/hLrvuGxl8XvxbKgXAvWnDJ/todo-list?type=design&node-id=1%3A2&mode=design&t=bJmaEKFhfXjJrSR6-1)                              |
-|              Diagramas	     | Diagrams.net |  https://www.diagrams.net/                             |
-|      Gerenciamento do Projeto      |    Trello    | [https://trello.com/b/79Q3om0J/gest%C3%A3o-projeto-vagas](https://trello.com/b/mzAYjlKm/projeto-puc-remind)    |
-|      Gerenciamento e Comunicação   |    WhatsApp    | https://chat.whatsapp.com/F10LE4hwG8DE7CPlMCEx4X   |
-|      Comunicação Reunião Semanal   |    Teams     | https://teams.microsoft.com/l/meetup-join/19%3a6tHyHGSkgm-BQNoJzYbiA0SuQfiQQafe3LNo5LKAieU1%40thread.tacv2/1709924208397?context=%7b%22Tid%22%3a%2214cbd5a7-ec94-46ba-b314-cc0fc972a161%22%2c%22Oid%22%3a%221e583fad-0204-4a7d-89e4-e66c5c3866bd%22%7d   |
+|     Repositório de código fonte e Documentação do projeto    |    GitHub    | https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind      |
+| Projeto de Interface e  Wireframes |   Figma  |  [https://www.figma.com/](https://www.figma.com/file/hLrvuGxl8XvxbKgXAvWnDJ/todo-list?type=design&node-id=1%3A2&mode=design&t=oaAKwQqDO4iJ1Qte-1)                              |
+|              Diagramas	     | Diagrams.net |  https://www.diagrams.net                           |
+|      Gerenciamento do Projeto      |    Trello    | [https://trello.com/](https://trello.com/b/mzAYjlKm/projeto-puc-remind)    |
+|      Gerenciamento e Comunicação   |    WhatsApp    |    |
+|      Comunicação Reunião Semanal   |    Teams     | https://teams.microsoft.com   |
 
 
 ## Controle de Versão
