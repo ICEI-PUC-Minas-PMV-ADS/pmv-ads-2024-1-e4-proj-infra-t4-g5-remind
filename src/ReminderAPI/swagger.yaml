@@ -57,7 +57,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao criar usuário. 
+          description: Erro ao criar usuário. Mensagem de erro específica é retornada no corpo da resposta.
       security:
         - api_key: []
         - bearerAuth: []
@@ -82,7 +82,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoginOutput'
         '400':
-          description: Credenciais inválidas. 
+          description: Credenciais inválidas. Mensagem de erro específica é retornada no corpo da resposta.
       security:
         - api_key: []
 
@@ -113,9 +113,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao atualizar usuário. 
+          description: Erro ao atualizar usuário. Mensagem de erro específica é retornada no corpo da resposta.
         '404':
-          description: Usuário não encontrado. 
+          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
       security:
         - api_key: []
         - bearerAuth: []
@@ -162,7 +162,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '404':
-          description: Usuário não encontrado. 
+          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
         '500':
           description: Erro interno do servidor ao buscar o usuário por ID.
       security:
@@ -190,9 +190,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao excluir usuário.
+          description: Erro ao excluir usuário. Mensagem de erro específica é retornada no corpo da resposta.
         '404':
-          description: Usuário não encontrado. 
+          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
         '500':
           description: Erro interno do servidor ao excluir o usuário por ID.
       security:
@@ -200,3 +200,78 @@ paths:
         - bearerAuth: []
 
 
+
+components:
+  schemas:
+    UserInput:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: João Silva
+        email:
+          type: string
+          format: email
+          example: joao@example.com
+        senha:
+          type: string
+          example: SenhaSegura123
+        cargo:
+          type: string
+          example: Gerente de Vendas
+        setor:
+          type: string
+          example: Vendas
+        permissao:
+          type: integer
+          example: 1
+      required:
+        - nome
+        - email
+        - senha
+        - cargo
+        - setor
+        - permissao
+
+    UserOutput:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 1234567890abcdef
+        nome:
+          type: string
+          example: João Silva
+        email:
+          type: string
+          format: email
+          example: joao@example.com
+        cargo:
+          type: string
+          example: Gerente de Vendas
+        setor:
+          type: string
+          example: Vendas
+        permissao:
+          type: integer
+          example: 1
+
+    UserUpdateInput:
+      type: object
+      properties:
+        nome:
+          type: string
+          example: João Silva
+        email:
+          type: string
+          format: email
+          example: joao@example.com
+        cargo:
+          type: string
+          example: Gerente de Vendas
+        setor:
+          type: string
+          example: Vendas
+        permissao:
+          type: integer
+          example: 1

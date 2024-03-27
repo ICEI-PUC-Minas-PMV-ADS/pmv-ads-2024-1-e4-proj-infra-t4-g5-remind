@@ -13,10 +13,4 @@ router.get('/get/destinatario/',protect, notesController.getDestinatarioById);
 router.delete('/delete/:id', protect, notesController.deleteById)
 
 
-
-
-
-
-
-
 module.exports = router;
