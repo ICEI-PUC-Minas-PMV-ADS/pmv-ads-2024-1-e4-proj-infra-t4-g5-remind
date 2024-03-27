@@ -5,9 +5,12 @@ info:
   description: |-
     Documentação da API para a aplicação App Remind.  
 
-  termsOfService: http://swagger.io/terms/
-  contact:
-    email: apiteam@swagger.io
+    Links úteis:
+    - [Remind App repository](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind.git)
+    - [Swagger Termos de Serviço](http://swagger.io/terms/)
+
+  contact: 
+    email: teste@gmail.com
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -23,18 +26,8 @@ security:
 tags:
   - name: User
     description: Operações relacionadas aos usuários.
-
-components:
-  securitySchemes:
-    api_key:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Chave de API (ex: `Bearer <api_key>`)
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+  - name: Notes
+    description: Operações relacionadas às Notas de mensagem aos usuários.
 
 paths:
   /users/criar:
@@ -57,7 +50,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao criar usuário. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Usuario já existe.
       security:
         - api_key: []
         - bearerAuth: []
@@ -82,7 +75,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/LoginOutput'
         '400':
-          description: Credenciais inválidas. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Credenciais inválidas.
       security:
         - api_key: []
 
@@ -113,9 +106,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao atualizar usuário. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Erro ao atualizar usuário. 
         '404':
-          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Usuário não encontrado.
       security:
         - api_key: []
         - bearerAuth: []
@@ -162,7 +155,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '404':
-          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Usuário não encontrado.
         '500':
           description: Erro interno do servidor ao buscar o usuário por ID.
       security:
@@ -190,15 +183,144 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao excluir usuário. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Erro ao excluir usuário.
         '404':
-          description: Usuário não encontrado. Mensagem de erro específica é retornada no corpo da resposta.
+          description: Usuário não encontrado.
         '500':
           description: Erro interno do servidor ao excluir o usuário por ID.
       security:
         - api_key: []
         - bearerAuth: []
+    /notes/criar:
+    post:
+      tags:
+        - Notes
+      summary: Cria uma nova nota
+      description: Cria uma nova nota com os dados fornecidos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NoteInput'
+      responses:
+        '201':
+          description: Nota criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoteOutput'
+        '500':
+          description: Erro ao criar nota.
+      security:
+        - api_key: []
+        - bearerAuth: []
 
+  /notes/update/{id}:
+    put:
+      tags:
+        - Notes
+      summary: Atualiza uma nota existente
+      description: Atualiza os detalhes de uma nota existente com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID da nota a ser atualizada
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NoteInput'
+      responses:
+        '200':
+          description: Nota atualizada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoteOutput'
+        '400':
+          description: Erro ao atualizar nota.
+        '404':
+          description: Nota não encontrada.
+      security:
+        - api_key: []
+        - bearerAuth: []
+
+  /notes/get/criador:
+    get:
+      tags:
+        - Notes
+      summary: Obtém todas as notas criadas pelo usuário
+      description: Retorna uma lista de todas as notas criadas pelo usuário autenticado.
+      responses:
+        '200':
+          description: Lista de notas do criador recuperada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NoteOutput'
+        '500':
+          description: Erro interno do servidor ao buscar todas as notas do criador.
+      security:
+        - api_key: []
+        - bearerAuth: []
+
+  /notes/get/destinatario:
+    get:
+      tags:
+        - Notes
+      summary: Obtém todas as notas destinadas ao usuário
+      description: Retorna uma lista de todas as notas destinadas ao usuário autenticado.
+      responses:
+        '200':
+          description: Lista de notas do destinatário recuperada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NoteOutput'
+        '500':
+          description: Erro interno do servidor ao buscar todas as notas do destinatário.
+      security:
+        - api_key: []
+        - bearerAuth: []
+
+  /notes/delete/{id}:
+    delete:
+      tags:
+        - Notes
+      summary: Exclui uma nota pelo ID
+      description: Exclui uma nota com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID da nota a ser excluída
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Nota excluída com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoteOutput'
+        '400':
+          description: Erro ao excluir nota.
+        '404':
+          description: Nota não encontrada.
+        '500':
+          description: Erro interno do servidor ao excluir a nota por ID.
+      security:
+        - api_key: []
+        - bearerAuth: []
 
 
 components:
@@ -275,3 +397,68 @@ components:
         permissao:
           type: integer
           example: 1
+
+    NoteInput:
+      type: object
+      properties:
+        titulo:
+          type: string
+          example: Título da nota
+        descricao:
+          type: string
+          example: Descrição da nota
+        destinatario:
+          type: string
+          example: ID do destinatário da nota
+        datafinal:
+          type: string
+          format: date
+          example: 2024-03-30
+        situacao:
+          type: string
+          example: Pendente
+      required:
+        - titulo
+        - descricao
+        - destinatario
+        - datafinal
+        - situacao
+
+    NoteOutput:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 1234567890abcdef
+        titulo:
+          type: string
+          example: Título da nota
+        descricao:
+          type: string
+          example: Descrição da nota
+        criador:
+          type: string
+          example: ID do criador da nota
+        destinatario:
+          type: string
+          example: ID do destinatário da nota
+        datafinal:
+          type: string
+          format: date
+          example: 2024-03-30
+        situacao:
+          type: string
+          example: Pendente
+
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Chave de API (ex: `Bearer <api_key>`)
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+
