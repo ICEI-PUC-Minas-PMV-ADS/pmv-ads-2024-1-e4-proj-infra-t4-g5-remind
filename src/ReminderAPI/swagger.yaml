@@ -18,10 +18,23 @@ servers:
 
 security:
   - api_key: []
+  - bearerAuth: []
 
 tags:
   - name: User
     description: Operações relacionadas aos usuários.
+
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Chave de API (ex: `Bearer <api_key>`)
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 paths:
   /users/criar:
@@ -44,9 +57,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
-          description: Erro ao criar usuário.
+          description: Erro ao criar usuário. 
       security:
         - api_key: []
+        - bearerAuth: []
 
   /users/login:
     post:
@@ -69,89 +83,120 @@ paths:
                 $ref: '#/components/schemas/LoginOutput'
         '400':
           description: Credenciais inválidas. 
+      security:
+        - api_key: []
 
-components:
-  schemas:
-    UserInput:
-      type: object
-      properties:
-        nome:
-          type: string
-          example: João Silva
-        email:
-          type: string
-          format: email
-          example: joao@example.com
-        senha:
-          type: string
-          example: SenhaSegura123
-        cargo:
-          type: string
-          example: Gerente de Vendas
-        setor:
-          type: string
-          example: Vendas
-        permissao:
-          type: integer
-          example: 1
-      required:
-        - nome
-        - email
-        - senha
-        - cargo
-        - setor
-        - permissao
+  /users/update/{id}:
+    put:
+      tags:
+        - User
+      summary: Atualiza um usuário existente
+      description: Atualiza os detalhes de um usuário existente com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID do usuário a ser atualizado
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdateInput'
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOutput'
+        '400':
+          description: Erro ao atualizar usuário. 
+        '404':
+          description: Usuário não encontrado. 
+      security:
+        - api_key: []
+        - bearerAuth: []
 
-    UserOutput:
-      type: object
-      properties:
-        _id:
-          type: string
-          example: 1234567890abcdef
-        nome:
-          type: string
-          example: João Silva
-        email:
-          type: string
-          format: email
-          example: joao@example.com
-        cargo:
-          type: string
-          example: Gerente de Vendas
-        setor:
-          type: string
-          example: Vendas
-        permissao:
-          type: integer
-          example: 1
+  /users/get:
+    get:
+      tags:
+        - User
+      summary: Obtém todos os usuários
+      description: Retorna uma lista de todos os usuários cadastrados.
+      responses:
+        '200':
+          description: Lista de usuários recuperada com sucesso
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserOutput'
+        '500':
+          description: Erro interno do servidor ao buscar todos os usuários.
+      security:
+        - api_key: []
+        - bearerAuth: []
 
-    LoginInput:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          example: joao@example.com
-        senha:
-          type: string
-          example: SenhaSegura123
-      required:
-        - email
-        - senha
+  /users/get/{id}:
+    get:
+      tags:
+        - User
+      summary: Obtém um usuário pelo ID
+      description: Retorna um usuário com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID do usuário a ser obtido
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuário encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOutput'
+        '404':
+          description: Usuário não encontrado. 
+        '500':
+          description: Erro interno do servidor ao buscar o usuário por ID.
+      security:
+        - api_key: []
+        - bearerAuth: []
 
-    LoginOutput:
-      type: object
-      properties:
-        _id:
-          type: string
-          example: 1234567890abcdef
-        nome:
-          type: string
-          example: João Silva
-        email:
-          type: string
-          format: email
-          example: joao@example.com
-        token:
-          type: string
-          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+  /users/delete/{id}:
+    delete:
+      tags:
+        - User
+      summary: Exclui um usuário pelo ID
+      description: Exclui um usuário com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID do usuário a ser excluído
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Usuário excluído com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOutput'
+        '400':
+          description: Erro ao excluir usuário.
+        '404':
+          description: Usuário não encontrado. 
+        '500':
+          description: Erro interno do servidor ao excluir o usuário por ID.
+      security:
+        - api_key: []
+        - bearerAuth: []
+
+
