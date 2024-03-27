@@ -28,7 +28,7 @@ app.use('/notes', notesRoutes);
 console.log("dsasd")
 
 //swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/V1', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(port, () => {
   console.log(`********* Servidor rodando em http://localhost:${port} *********`);
