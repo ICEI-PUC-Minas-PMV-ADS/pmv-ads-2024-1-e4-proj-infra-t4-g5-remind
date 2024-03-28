@@ -1,3 +1,4 @@
+'use strict';
 const User = require('../models/userModel');
 const generateToken = require("../functions/generateToken")
 const Auth = require("../middleware/auth")

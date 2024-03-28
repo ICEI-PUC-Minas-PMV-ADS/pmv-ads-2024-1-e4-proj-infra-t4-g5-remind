@@ -1,3 +1,4 @@
+'use strict';
 const Notes = require('../models/notesModel');
 const validacao = require('../functions/validations');
 const Auth = require("../middleware/auth");
