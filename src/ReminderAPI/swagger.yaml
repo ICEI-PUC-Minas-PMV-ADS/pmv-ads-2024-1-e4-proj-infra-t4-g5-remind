@@ -18,7 +18,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:3000/api-docs
+  - url: http://localhost:3000/api/V1
 
 security:
   - api_key: []
@@ -31,7 +31,7 @@ tags:
     description: Operações relacionadas às Notas de mensagem aos usuários.
 
 paths:
-  user/criar:
+  /users/criar:
     post:
       tags:
         - User
@@ -59,7 +59,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /user/login:
+  /users/login:
     post:
       tags:
         - User
@@ -83,7 +83,7 @@ paths:
       security:
         - api_key: []
 
-  /user/update/{id}:
+  /users/update/{id}:
     put:
       tags:
         - User
@@ -117,7 +117,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /user/get:
+  /users/get:
     get:
       tags:
         - User
@@ -138,7 +138,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /user/get/{id}:
+  /users/get/{id}:
     get:
       tags:
         - User
@@ -166,7 +166,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /user/delete/{id}:
+  /users/delete/{id}:
     delete:
       tags:
         - User
