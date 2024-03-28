@@ -31,7 +31,7 @@ tags:
     description: Operações relacionadas às Notas de mensagem aos usuários.
 
 paths:
-  /users/criar:
+  user/criar:
     post:
       tags:
         - User
@@ -50,13 +50,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserOutput'
+          links:
+            - rel: self
+              href: "/users/{id}"
         '400':
           description: Usuario já existe.
       security:
         - api_key: []
         - bearerAuth: []
 
-  /users/login:
+  /user/login:
     post:
       tags:
         - User
@@ -80,7 +83,7 @@ paths:
       security:
         - api_key: []
 
-  /users/update/{id}:
+  /user/update/{id}:
     put:
       tags:
         - User
@@ -114,7 +117,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /users/get:
+  /user/get:
     get:
       tags:
         - User
@@ -135,7 +138,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /users/get/{id}:
+  /user/get/{id}:
     get:
       tags:
         - User
@@ -163,7 +166,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /users/delete/{id}:
+  /user/delete/{id}:
     delete:
       tags:
         - User
@@ -192,7 +195,8 @@ paths:
       security:
         - api_key: []
         - bearerAuth: []
-    /notes/criar:
+  
+  /notes/criar:
     post:
       tags:
         - Notes
@@ -378,6 +382,10 @@ components:
         permissao:
           type: integer
           example: 1
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
 
     UserUpdateInput:
       type: object
@@ -398,6 +406,10 @@ components:
         permissao:
           type: integer
           example: 1
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
 
     NoteInput:
       type: object
@@ -450,6 +462,19 @@ components:
         situacao:
           type: string
           example: Pendente
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+
+    Link:
+      type: object
+      properties:
+        rel:
+          type: string
+        href:
+          type: string
+
 
   securitySchemes:
     api_key:
