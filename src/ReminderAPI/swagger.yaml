@@ -61,7 +61,10 @@ paths:
           links:
             - rel: self
               href: "/users/{id}"
-
+            
+      security:
+        - api_key: []
+        - bearerAuth: []
 
 
   /users/login:
@@ -510,6 +513,15 @@ components:
           type: string
 
 
-
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Chave de API (ex: `Bearer <api_key>`)
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 
