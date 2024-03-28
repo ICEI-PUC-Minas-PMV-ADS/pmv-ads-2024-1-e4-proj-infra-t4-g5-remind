@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const notesController = require('../controllers/notesController');
 const protect = require('../middleware/auth');

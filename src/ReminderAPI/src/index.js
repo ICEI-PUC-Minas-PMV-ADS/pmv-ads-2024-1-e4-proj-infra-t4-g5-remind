@@ -1,4 +1,6 @@
+'use strict';
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+require("./db-connection.js");
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
@@ -13,14 +15,6 @@ const swaggerDocument = YAML.load('./swagger.yaml');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
-
-const uri = process.env.MONGODB_URI 
-
-mongoose.connect(uri, { 
-  //foi descontinuado, não tem mais efeito. Mas retorna aviso no terminal, por isso comentei
-  //useNewUrlParser: true, 
-  //useUnifiedTopology: true 
-});
 
 app.use('/users', userRoutes);
 

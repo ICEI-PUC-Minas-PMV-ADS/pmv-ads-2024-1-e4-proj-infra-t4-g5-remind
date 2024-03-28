@@ -1,4 +1,3 @@
-
 openapi: 3.1.0
 
 info:
@@ -54,10 +53,16 @@ paths:
             - rel: self
               href: "/users/{id}"
         '400':
-          description: Usuario já existe.
-      security:
-        - api_key: []
-        - bearerAuth: []
+          description: Usuário já existe.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            - rel: self
+              href: "/users/{id}"
+
+
 
   /users/login:
     post:
@@ -74,12 +79,18 @@ paths:
       responses:
         '200':
           description: Login bem-sucedido. Retorna informações do usuário e token de acesso.
+          links:
+            - rel: self
+              href: "/users/{id}"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginOutput'
         '400':
           description: Credenciais inválidas.
+          links:
+            - rel: self
+              href: "/users"
       security:
         - api_key: []
 
@@ -105,14 +116,23 @@ paths:
       responses:
         '200':
           description: Usuário atualizado com sucesso
+          links:
+            - rel: self
+              href: "/users/{id}"
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserOutput'
         '400':
           description: Erro ao atualizar usuário. 
+          links:
+            - rel: self
+              href: "/users/{id}"
         '404':
           description: Usuário não encontrado.
+          links:
+            - rel: self
+              href: "/users/{id}"
       security:
         - api_key: []
         - bearerAuth: []
@@ -382,10 +402,6 @@ components:
         permissao:
           type: integer
           example: 1
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
 
     LoginInput:
           type: object
@@ -432,10 +448,6 @@ components:
         permissao:
           type: integer
           example: 1
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
 
     NoteInput:
       type: object
@@ -488,10 +500,6 @@ components:
         situacao:
           type: string
           example: Pendente
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
 
     Link:
       type: object
@@ -502,15 +510,6 @@ components:
           type: string
 
 
-  securitySchemes:
-    api_key:
-      type: apiKey
-      in: header
-      name: Authorization
-      description: Chave de API (ex: `Bearer <api_key>`)
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
+
 
 

@@ -1,5 +1,5 @@
 function validarUsuario(req, res) {
-
+  'use strict';
     if(userExists){
         res.status(400).json('Usuario ja existe')
       }
