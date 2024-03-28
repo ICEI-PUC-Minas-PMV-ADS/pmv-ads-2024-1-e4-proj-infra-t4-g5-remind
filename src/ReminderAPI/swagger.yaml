@@ -387,6 +387,32 @@ components:
           items:
             $ref: '#/components/schemas/Link'
 
+    LoginInput:
+          type: object
+          properties:
+            email:
+              type: string
+              format: email
+              example: joao@example.com
+            senha:
+              type: string
+              example: SenhaSegura123
+          required:
+            - email
+            - senha
+
+    LoginOutput:
+          type: object
+          properties:
+            token:
+              type: string
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE2MzQ2NDI2MzF9.ZTcEbbhBvwgc44LT-dzgk8Ux4FC7hAFS-W1CYI2tD2Y
+            usuario:
+              $ref: '#/components/schemas/UserOutput'
+          required:
+            - token
+            - usuario
+
     UserUpdateInput:
       type: object
       properties:
