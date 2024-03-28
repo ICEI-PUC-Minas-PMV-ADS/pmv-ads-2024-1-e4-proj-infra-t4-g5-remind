@@ -3,7 +3,6 @@ const generateToken = require("../functions/generateToken")
 const Auth = require("../middleware/auth")
 
 
-
 async function create(req, res) {
     const {nome, email, senha, cargo,setor, permissao} = req.body;
     const userExists = await User.findOne({email})
