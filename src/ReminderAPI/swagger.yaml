@@ -17,7 +17,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:3000/api/V1
+  - url: http://localhost:3000
 
 security:
   - api_key: []
