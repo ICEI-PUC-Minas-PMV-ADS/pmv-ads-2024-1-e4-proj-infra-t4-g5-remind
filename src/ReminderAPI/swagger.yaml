@@ -32,7 +32,7 @@ tags:
 paths:
   /users/criar:
     post:
-      operandId: createUser
+      operationId: createUser
       tags:
         - User
       summary: Cria um novo usuário
@@ -52,9 +52,9 @@ paths:
                 $ref: '#/components/schemas/UserOutput'
           links:
             self:
-              operationId: getUserById 
+              operationId: getUserById
               parameters:
-                id: '$response.body#/_id' 
+                id: '$response.body#/_id'
         '400':
           description: Usuário já existe.
           content:
@@ -65,7 +65,7 @@ paths:
             self:
               operationId: getUserById
               parameters:
-                id: '$response.body#/_id' 
+                id: '$response.body#/_id'
             
       security:
         - api_key: []
@@ -74,7 +74,7 @@ paths:
 
   /users/login:
     post:
-      operandId: loginUser
+      operationId: loginUser
       tags:
         - User
       summary: Faz login com um usuário existente
@@ -88,9 +88,6 @@ paths:
       responses:
         '200':
           description: Login bem-sucedido. Retorna informações do usuário e token de acesso.
-          links:
-            - rel: self
-              href: "/users/{id}"
           content:
             application/json:
               schema:
@@ -115,7 +112,7 @@ paths:
 
   /users/update/{id}:
     put:
-      operandId: updateUser
+      operationId: updateUser
       tags:
         - User
       summary: Atualiza um usuário existente
@@ -136,9 +133,6 @@ paths:
       responses:
         '200':
           description: Usuário atualizado com sucesso
-          links:
-            - rel: self
-              href: "/users/{id}"
           content:
             application/json:
               schema:
@@ -169,13 +163,14 @@ paths:
             self:
               operationId: createUser
               parameters: {}
+
       security:
         - api_key: []
         - bearerAuth: []
 
   /users/get:
     get:
-      operandId: getAllUsers
+      operationId: getAllUsers
       tags:
         - User
       summary: Obtém todos os usuários
@@ -191,13 +186,14 @@ paths:
                   $ref: '#/components/schemas/UserOutput'
         '500':
           description: Erro interno do servidor ao buscar todos os usuários.
+
       security:
         - api_key: []
         - bearerAuth: []
 
   /users/get/{id}:
     get:
-      operandId: getUserById
+      operationId: getUserById
       tags:
         - User
       summary: Obtém um usuário pelo ID
@@ -290,6 +286,7 @@ paths:
         - bearerAuth: []
   
   /notes/criar:
+    operationId: createNote
     post:
       tags:
         - Notes
@@ -308,6 +305,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteOutput'
+          links:
+            self:
+              operationId: getNoteById
+              parameters:
+                id: '$response.body#/_id'
         '500':
           description: Erro ao criar nota.
       security:
@@ -316,6 +318,7 @@ paths:
 
   /notes/update/{id}:
     put:
+      operationId: updateNote
       tags:
         - Notes
       summary: Atualiza uma nota existente
@@ -340,16 +343,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteOutput'
+          links:
+            self:
+              operationId: getNoteById
+              parameters:
+                id: '$response.body#/_id'
         '400':
           description: Erro ao atualizar nota.
         '404':
           description: Nota não encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: createNote
+              parameters: {}
       security:
         - api_key: []
         - bearerAuth: []
 
   /notes/get/criador:
     get:
+      operationId: getNotesByCreator
       tags:
         - Notes
       summary: Obtém todas as notas criadas pelo usuário
@@ -371,6 +388,7 @@ paths:
 
   /notes/get/destinatario:
     get:
+      operationId: getNotesByRecipient
       tags:
         - Notes
       summary: Obtém todas as notas destinadas ao usuário
@@ -392,6 +410,7 @@ paths:
 
   /notes/delete/{id}:
     delete:
+      operationId: deleteNote
       tags:
         - Notes
       summary: Exclui uma nota pelo ID
@@ -410,10 +429,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NoteOutput'
+          links:
+            self:
+              operationId: createNote
+              parameters: {}
         '400':
           description: Erro ao excluir nota.
         '404':
           description: Nota não encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: createNote
+              parameters: {}
         '500':
           description: Erro interno do servidor ao excluir a nota por ID.
       security:
@@ -573,14 +604,6 @@ components:
         situacao:
           type: string
           example: Pendente
-
-    Link:
-      type: object
-      properties:
-        rel:
-          type: string
-        href:
-          type: string
 
 
   securitySchemes:
