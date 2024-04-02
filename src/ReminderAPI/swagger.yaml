@@ -61,6 +61,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Usuário já existe"
+                code: 400
           links:
             self:
               operationId: getUserById
@@ -103,6 +106,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Credenciais inválidas"
+                code: 400
           links:
             self:
               operationId: createUser
@@ -148,6 +154,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Erro ao atualizar usuário"
+                code: 400
           links:
             self:
               operationId: getUserById
@@ -159,6 +168,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Usuário não encontrado."
+                code: 404
           links:
             self:
               operationId: createUser
@@ -223,6 +235,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Usuário não encontrado."
+                code: 404
+              
           links:
             self:
               operationId: createUser
@@ -264,6 +280,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Erro ao atualizar usuário"
+                code: 400
           links:
             self:
               operationId: getUserById
@@ -275,6 +294,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Usuário não encontrado."
+                code: 404
           links:
             self:
               operationId: createUser
@@ -286,8 +308,8 @@ paths:
         - bearerAuth: []
   
   /notes/criar:
-    operationId: createNote
     post:
+      operationId: createNote
       tags:
         - Notes
       summary: Cria uma nova nota
@@ -356,6 +378,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Nota não encontrada."
+                code: 404
           links:
             self:
               operationId: createNote
@@ -441,6 +466,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+              example:
+                message: "Nota não encontrada."
+                code: 404
           links:
             self:
               operationId: createNote
@@ -604,6 +632,16 @@ components:
         situacao:
           type: string
           example: Pendente
+
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Detalhes do erro
+        code:
+          type: integer
+          description: Código de erro HTTP
 
 
   securitySchemes:
