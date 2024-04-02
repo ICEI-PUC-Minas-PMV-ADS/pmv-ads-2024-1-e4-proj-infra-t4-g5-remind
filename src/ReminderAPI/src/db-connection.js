@@ -1,5 +1,7 @@
 'use strict';
-const dotenv = require('dotenv');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(process.cwd(), './src/.env') }); // Carrega as variáveis de ambiente do arquivo .env
+
 const mongoose = require('mongoose');
 
 const db = mongoose.connect(process.env.MONGODB_URI, {});

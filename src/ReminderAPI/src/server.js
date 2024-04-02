@@ -1,4 +1,5 @@
-require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
+const path = require('path');
+require('dotenv').config({ path: path.resolve(process.cwd(), './src/.env') }); // Carrega as variáveis de ambiente do arquivo .env
 const app = require('./app');
 const http = require('http');
 const { Server } = require('socket.io');
