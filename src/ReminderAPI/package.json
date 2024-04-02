@@ -2,11 +2,11 @@
   "name": "api-reminder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon --inspect index.js",
-    "nodemon": "nodemon src/index.js"
+    "start:dev": "nodemon --inspect server.js",
+    "nodemon": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,8 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-environment-node": "^29.7.0"
+    "jest-environment-node": "^29.7.0",
+    "prettier": "^3.2.5",
+    "supertest": "^6.3.4"
   }
 }
