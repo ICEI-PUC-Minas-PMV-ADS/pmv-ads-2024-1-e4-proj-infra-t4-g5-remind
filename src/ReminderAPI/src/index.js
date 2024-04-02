@@ -1,7 +1,5 @@
 require('dotenv').config(); // Carrega as variáveis de ambiente do arquivo .env
-require("./db-connection.js");
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const notesRoutes = require('./routes/notesRoutes')
 const userRoutes = require('./routes/userRoutes')
@@ -14,10 +12,6 @@ const { Server } = require('socket.io');
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
-
-const uri = process.env.MONGODB_URI
-
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Socket necessita de um server http
 // Adaptando o servidor express para um servidor http
@@ -52,5 +46,5 @@ app.use('/notes', notesRoutes);
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 httpServer.listen(port, () => {
-  console.log(`********* Servidor rodando em http://localhost:${port} *********`);
+  console.log(`********* Servidor rodando em http://localhost:${port} *********\n********* Docs http://localhost:${port}/api *********`);
 })
