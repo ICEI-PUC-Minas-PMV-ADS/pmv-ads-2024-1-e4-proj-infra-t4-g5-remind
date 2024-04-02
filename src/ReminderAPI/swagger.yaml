@@ -32,6 +32,7 @@ tags:
 paths:
   /users/criar:
     post:
+      operandId: createUser
       tags:
         - User
       summary: Cria um novo usuário
@@ -50,8 +51,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOutput'
           links:
-            - rel: self
-              href: "/users/{id}"
+            self:
+              operationId: getUserById 
+              parameters:
+                id: '$response.body#/_id' 
         '400':
           description: Usuário já existe.
           content:
@@ -59,8 +62,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           links:
-            - rel: self
-              href: "/users/{id}"
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/_id' 
             
       security:
         - api_key: []
@@ -69,6 +74,7 @@ paths:
 
   /users/login:
     post:
+      operandId: loginUser
       tags:
         - User
       summary: Faz login com um usuário existente
@@ -89,16 +95,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LoginOutput'
+          links:
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/usuario/_id'
         '400':
           description: Credenciais inválidas.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
           links:
-            - rel: self
-              href: "/users"
+            self:
+              operationId: createUser
+              parameters: {}
       security:
         - api_key: []
 
   /users/update/{id}:
     put:
+      operandId: updateUser
       tags:
         - User
       summary: Atualiza um usuário existente
@@ -126,22 +143,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserOutput'
-        '400':
-          description: Erro ao atualizar usuário. 
           links:
-            - rel: self
-              href: "/users/{id}"
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/_id'
+        '400':
+          description: Erro ao atualizar usuário.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/_id'
         '404':
           description: Usuário não encontrado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
           links:
-            - rel: self
-              href: "/users/{id}"
+            self:
+              operationId: createUser
+              parameters: {}
       security:
         - api_key: []
         - bearerAuth: []
 
   /users/get:
     get:
+      operandId: getAllUsers
       tags:
         - User
       summary: Obtém todos os usuários
@@ -163,6 +197,7 @@ paths:
 
   /users/get/{id}:
     get:
+      operandId: getUserById
       tags:
         - User
       summary: Obtém um usuário pelo ID
@@ -181,8 +216,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserOutput'
+          links:
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/_id'
         '404':
           description: Usuário não encontrado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: createUser
+              parameters: {}
         '500':
           description: Erro interno do servidor ao buscar o usuário por ID.
       security:
@@ -191,6 +239,7 @@ paths:
 
   /users/delete/{id}:
     delete:
+      operationId: deleteUser
       tags:
         - User
       summary: Exclui um usuário pelo ID
@@ -209,10 +258,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UserOutput'
+          links:
+            self:
+              operationId: createUser
+              parameters: {}
         '400':
           description: Erro ao excluir usuário.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: getUserById
+              parameters:
+                id: '$response.body#/_id'
         '404':
           description: Usuário não encontrado.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          links:
+            self:
+              operationId: createUser
+              parameters: {}
         '500':
           description: Erro interno do servidor ao excluir o usuário por ID.
       security:
