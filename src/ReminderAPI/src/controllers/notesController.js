@@ -62,7 +62,6 @@ async function getCriadorById(req, res){
         const notes = await Notes.find({ criador: userId });
     
         res.status(200).json(notes);
-        console.log(notes)
     } catch (error) {
         console.error("Erro ao buscar usuário por ID:", error);
         res.status(500).json({ mensagem: "Erro interno do servidor" });
