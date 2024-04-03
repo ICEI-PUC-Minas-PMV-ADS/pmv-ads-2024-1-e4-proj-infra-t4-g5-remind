@@ -34,18 +34,18 @@ async function login(req, res) {
   const user = await User.findOne({ email })
 
   if (!user) {
-    res.status(400).json("Usuario não existe")
+    return res.status(400).json('Usuario não existe');
   }
 
-  if (await user.matchPassword(senha)) {
-    res.status(200).json({
+  if (await User.matchPassword(senha, user.senha)) {
+    return res.status(200).json({
       _id: user.id,
       nome: user.nome,
       email: user.email,
-      token: generateToken(user._id)
-    })
+      token: generateToken(user._id),
+    });
   } else {
-    res.status(400).json("Email ou senha invalido")
+    return res.status(400).json('Email ou senha invalido');
   }
 
 }
@@ -55,7 +55,7 @@ async function update(req, res) {
     const user = await User.findById(req.params.id)
 
     if (!user) {
-      res.status(404).json("Usuario nao existe")
+      return res.status(404).json('Usuario nao existe');
     }
 
     user.nome = req.body.nome || user.nome;
@@ -65,25 +65,25 @@ async function update(req, res) {
     user.permissao = req.body.permissao || user.permissao;
 
     const updateUser = await user.save()
-    res.status(201).json(updateUser)
+    return res.status(201).json(updateUser);
   } catch (error) {
-    res.status(400).json(error)
+    return res.status(400).json(error);
   }
 }
 
 async function getById(req, res) {
   try {
-    const userId = req.params.id
+    const userId = req.params.id;
     const user = await User.findById(userId);
 
     if (!user) {
-      return res.status(404).json({ mensagem: "Usuário não encontrado" });
+      return res.status(404).json({ mensagem: 'Usuário não encontrado' });
     }
 
-    res.status(200).json(user);
+    return res.status(200).json(user);
   } catch (error) {
-    console.error("Erro ao buscar usuário por ID:", error);
-    res.status(500).json({ mensagem: "Erro interno do servidor" });
+    console.error('Erro ao buscar usuário por ID:', error);
+    return res.status(500).json({ mensagem: 'Erro interno do servidor' });
   }
 }
 
@@ -91,10 +91,10 @@ async function getAll(req, res) {
   try {
     const users = await User.find();
 
-    res.status(200).json(users);
+    return res.status(200).json(users);
   } catch (error) {
-    console.error("Erro ao buscar todos os usuários:", error);
-    res.status(500).json({ mensagem: "Erro interno do servidor" });
+    console.error('Erro ao buscar todos os usuários:', error);
+    return res.status(500).json({ mensagem: 'Erro interno do servidor' });
   }
 }
 
@@ -111,10 +111,15 @@ async function deleteById(req, res) {
         return res.status(404).json({ mensagem: "Usuário não encontrado" });
       }
 
-      res.status(200).json({ mensagem: "Usuário excluído com sucesso", usuario: deletedUser });
+      return res
+        .status(200)
+        .json({
+          mensagem: 'Usuário excluído com sucesso',
+          usuario: deletedUser,
+        });
     } catch (error) {
       console.error("Erro ao excluir usuário por ID:", error);
-      res.status(500).json({ mensagem: "Erro interno do servidor" });
+      return res.status(500).json({ mensagem: 'Erro interno do servidor' });
     }
   }
 }
