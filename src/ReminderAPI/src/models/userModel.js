@@ -33,8 +33,8 @@ const userSchema = new mongoose.Schema({
 
 );
 
-userSchema.statics.matchPassword = async function (senhaLogin, senhaDB) {
-  return await bcrypt.compare(senhaLogin, senhaDB);
+userSchema.methods.matchPassword = async function (senhaLogin) {
+  return await bcrypt.compare(senhaLogin, this.senha);
 };
 
 userSchema.pre("save", async function(next){
