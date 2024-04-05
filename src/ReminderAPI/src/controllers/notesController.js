@@ -43,7 +43,7 @@ async function update(req, res) {
     notes.situacao = req.body.situacao || notes.situacao;
 
     const updateNote = await notes.save();
-    res.status(201).json(updateNote);
+    res.status(200).json(updateNote);
   } catch (error) {
     res.status(500).json({ mensagem: 'Erro ao atualizar nota' });
   }
