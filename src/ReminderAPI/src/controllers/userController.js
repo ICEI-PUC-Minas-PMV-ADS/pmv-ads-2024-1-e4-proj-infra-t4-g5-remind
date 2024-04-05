@@ -50,25 +50,35 @@ async function login(req, res) {
 
 async function update(req, res) {
   try {
-    const user = await User.findById(req.params.id);
+    const { id } = req.params;
+    const { nome, email, cargo, setor, permissao } = req.body;
 
     if (req.user.permissao === 0) {
-      res.status(403).json('Seu usuário nao tem permissao de modificar conta');
+      return res
+        .status(403)
+        .json('Seu usuário nao tem permissao de modificar conta');
     }
 
+    const user = await User.findById(id);
     if (!user) {
       return res.status(404).json('Usuário nao existe');
     }
 
-    user.nome = req.body.nome || user.nome;
-    user.email = req.body.email || user.email;
-    user.cargo = req.body.cargo || user.cargo;
-    user.setor = req.body.setor || user.setor;
-    user.permissao = req.body.permissao || user.permissao;
+    const duplicateUser = await User.findOne({ email });
+    if (duplicateUser && String(duplicateUser._id) !== id) {
+      return res.status(409).json('Email já cadastrado');
+    }
 
-    const updateUser = await user.save();
-    return res.status(200).json(updateUser);
+    user.nome = nome || user.nome;
+    user.email = email || user.email;
+    user.cargo = cargo || user.cargo;
+    user.setor = setor || user.setor;
+    user.permissao = permissao || user.permissao;
+
+    const updatedUser = await user.save();
+    return res.status(200).json(updatedUser);
   } catch (error) {
+    console.error('Erro ao atualizar usuário:', error);
     return res.status(500).json(error);
   }
 }
