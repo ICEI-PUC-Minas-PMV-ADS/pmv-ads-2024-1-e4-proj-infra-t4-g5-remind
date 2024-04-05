@@ -5,7 +5,7 @@ const notesRoutes = require('./routes/notesRoutes');
 const userRoutes = require('./routes/userRoutes');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
+const swaggerDocument = YAML.load('../ReminderAPI/swagger.yaml');
 
 const app = express();
 
