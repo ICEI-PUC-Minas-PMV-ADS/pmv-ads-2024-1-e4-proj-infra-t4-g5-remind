@@ -4,7 +4,7 @@ const app = require('./app');
 const http = require('http');
 const { Server } = require('socket.io');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 // Socket necessita de um server http
 // Adaptando o servidor express para um servidor http
