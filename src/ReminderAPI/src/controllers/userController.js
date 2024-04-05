@@ -97,7 +97,7 @@ async function getAll(req, res) {
 }
 
 async function deleteById(req, res) {
-  if (req.user.permissao === 1) {
+  if (req.user.permissao === 0) {
     res.status(400).json('Seu usuario nao tem permissao de deletar conta');
   } else {
     try {
