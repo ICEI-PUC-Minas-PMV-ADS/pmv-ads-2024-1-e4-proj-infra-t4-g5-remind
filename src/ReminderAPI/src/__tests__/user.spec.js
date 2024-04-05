@@ -1,11 +1,11 @@
 const path = require('path');
 const dotenv = require('dotenv');
 const request = require('supertest');
-const app = require('../../app');
+const app = require('../app');
 const mongoose = require('mongoose');
 
 // Função própria para lidar com erros do supertest
-const checkStatusCode = require('../../functions/supertestErrorHandler');
+const checkStatusCode = require('../functions/supertestErrorHandler');
 
 dotenv.config({ path: path.resolve(process.cwd(), './src/.env') });
 
@@ -87,8 +87,7 @@ describe('User Controller Integration', () => {
     it('should return a list of users', async () => {
       const response = await request(app)
         .get('/users/get')
-        .set('Authorization', `Bearer ${adminToken}`)
-        .set('x-api-key', `${process.env.API_KEY}`);
+        .set('Authorization', `Bearer ${adminToken}`);
       checkStatusCode(response, 200);
 
       expect(response.status).toBe(200);
