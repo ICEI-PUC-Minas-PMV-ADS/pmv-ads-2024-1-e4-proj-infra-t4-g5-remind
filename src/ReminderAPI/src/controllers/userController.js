@@ -6,10 +6,10 @@ async function create(req, res) {
   const userExists = await User.findOne({ email });
 
   if (userExists) {
-    res.status(400).json('Usuario ja existe');
+    res.status(409).json('Usuario ja existe');
   } else if (req.user.permissao === 0) {
     res
-      .status(400)
+      .status(403)
       .json('Seu usuario nao tem permissao de criar uma nova conta');
   } else {
     try {
@@ -23,7 +23,7 @@ async function create(req, res) {
       });
       res.status(201).json(user);
     } catch (error) {
-      res.status(400).json(error);
+      res.status(500).json(error);
     }
   }
 }
@@ -33,7 +33,7 @@ async function login(req, res) {
   const user = await User.findOne({ email });
 
   if (!user) {
-    return res.status(400).json('Usuario não existe');
+    return res.status(404).json('Usuario não existe');
   }
 
   if (await user.matchPassword(senha)) {
@@ -52,8 +52,12 @@ async function update(req, res) {
   try {
     const user = await User.findById(req.params.id);
 
+    if (req.user.permissao === 0) {
+      res.status(403).json('Seu usuário nao tem permissao de modificar conta');
+    }
+
     if (!user) {
-      return res.status(404).json('Usuario nao existe');
+      return res.status(404).json('Usuário nao existe');
     }
 
     user.nome = req.body.nome || user.nome;
@@ -65,7 +69,7 @@ async function update(req, res) {
     const updateUser = await user.save();
     return res.status(200).json(updateUser);
   } catch (error) {
-    return res.status(400).json(error);
+    return res.status(500).json(error);
   }
 }
 
@@ -98,7 +102,7 @@ async function getAll(req, res) {
 
 async function deleteById(req, res) {
   if (req.user.permissao === 0) {
-    res.status(400).json('Seu usuario nao tem permissao de deletar conta');
+    res.status(403).json('Seu usuario nao tem permissao de deletar conta');
   } else {
     try {
       const userId = req.params.id;

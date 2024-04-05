@@ -55,7 +55,7 @@ paths:
               operationId: getUserById
               parameters:
                 id: '$response.body#/_id'
-        '400':
+        '409':
           description: Usuário já existe.
           content:
             application/json:
@@ -63,7 +63,7 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 message: "Usuário já existe"
-                code: 400
+                code: 409
           links:
             self:
               operationId: getUserById
@@ -100,7 +100,7 @@ paths:
               operationId: getUserById
               parameters:
                 id: '$response.body#/usuario/_id'
-        '400':
+        '401':
           description: Credenciais inválidas.
           content:
             application/json:
@@ -108,7 +108,7 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 message: "Credenciais inválidas"
-                code: 400
+                code: 401
           links:
             self:
               operationId: createUser
@@ -148,7 +148,7 @@ paths:
               operationId: getUserById
               parameters:
                 id: '$response.body#/_id'
-        '400':
+        '500':
           description: Erro ao atualizar usuário.
           content:
             application/json:
@@ -156,7 +156,7 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 message: "Erro ao atualizar usuário"
-                code: 400
+                code: 500
           links:
             self:
               operationId: getUserById
@@ -274,7 +274,7 @@ paths:
             self:
               operationId: createUser
               parameters: {}
-        '400':
+        '500':
           description: Erro ao excluir usuário.
           content:
             application/json:
@@ -282,7 +282,7 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 message: "Erro ao atualizar usuário"
-                code: 400
+                code: 500
           links:
             self:
               operationId: getUserById
