@@ -5,7 +5,11 @@ const notesRoutes = require('./routes/notesRoutes');
 const userRoutes = require('./routes/userRoutes');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./src/swagger.yaml');
+const path = require('path');
+
+const swaggerYaml = path.resolve(process.cwd(), './swagger.yaml');
+
+const swaggerDocument = YAML.load(swaggerYaml);
 
 const app = express();
 
