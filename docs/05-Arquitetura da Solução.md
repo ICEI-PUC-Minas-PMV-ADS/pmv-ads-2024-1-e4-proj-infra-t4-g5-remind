@@ -9,6 +9,10 @@ Definição de como o software é estruturado em termos dos componentes que faze
 ## Diagrama de Classes
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
+
+![Diagrama de Classe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/96ec135e-8810-435e-a59c-074deb80a781)
+
+O modelo NoSQL simplifica bastante a estrutura do projeto, neste caso, o projeto terá duas coleções, uma representando os usuários e outra representando seus lembretes.
  
 ## Modelo Físico
 Entregar um arquivo banco.sql contendo os scripts de criação das tabelas do banco de dados. Este arquivo deverá ser incluído dentro da pasta src\bd.
