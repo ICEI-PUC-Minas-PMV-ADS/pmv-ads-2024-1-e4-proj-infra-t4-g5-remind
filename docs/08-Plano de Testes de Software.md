@@ -35,13 +35,13 @@
 - Passos: Enviar um GET para a rota API/users/get.
 - Critério de Êxito: Retorno do código 200.
 
-## Caso de teste 04 - Consultar dados de um usuário específico
+## Caso de teste 05 - Consultar dados de um usuário específico
 
 - Objetivo do Teste: Verificar se é possível visualizar todos os dados de um usuário específico.
 - Passos: Enviar um GET para a rota API/users/get/{id}.
 - Critério de Êxito: Retorno do código 200.
 
-## Caso de teste 05 - Apagar um Usuário
+## Caso de teste 06 - Apagar um Usuário
 
 - Objetivo do Teste: Verificar se o usuário será apagado.
 - Passos: Enviar um DELETE para a rota API/users/delete/{id} com os campos solicitados.
