@@ -258,3 +258,6 @@ it('should delete the note with the specified ID', async () => {
 
 ### Resultado:
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/b6a1207a-41c7-444d-ab38-842feabcc9f4)
+
+## Resultado Total Tarefas:
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/cde97729-cee1-4146-b775-e0ad0ce4b669)
