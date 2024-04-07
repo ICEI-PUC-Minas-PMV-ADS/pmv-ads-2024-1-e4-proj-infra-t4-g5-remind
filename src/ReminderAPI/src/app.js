@@ -33,7 +33,7 @@ app.use(
   '/api',
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument, {
-    customCss: CSS_URL,
+    customCssUrl: CSS_URL,
     customSiteTitle: 'RemindApi Docs',
   }),
 );
