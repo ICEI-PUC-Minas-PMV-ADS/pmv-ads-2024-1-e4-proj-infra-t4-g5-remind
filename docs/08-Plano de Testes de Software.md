@@ -1,19 +1,88 @@
 # Plano de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Especificação do Projeto</a></span>, <a href="3-Projeto de Interface.md"> Projeto de Interface</a>
+# Casos de Teste Usuários 
 
-Apresente os cenários de testes utilizados na realização dos testes da sua aplicação. Escolha cenários de testes que demonstrem os requisitos sendo satisfeitos.
+| Casos de Teste | Descrição 
+| --- | --- | 
+| `CT-001`| *Cadastro de usuário* 
+| `CT-002`| *Login de usuário* 
+| `CT-003`| *Atualização de dados do usuário* 
+| `CT-004`| *Consultar dados de todos usuários cadastrados* 
+| `CT-005`| *Consultar dados de um usuário específico* 
+| `CT-006`| *Apagar um usuário* 
 
-Enumere quais cenários de testes foram selecionados para teste. Neste tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo de usuários que foi escolhido para participar do teste e as ferramentas utilizadas.
- 
-## Ferramentas de Testes (Opcional)
+## Caso de teste 01 - Cadastro do Usuário
 
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
+- Objetivo do Teste: Verificar se o cadastro será realizado.
+- Passos: Enviar um POST para a rota API/users/criar com os campos solicitados.
+- Critério de Êxito: Retorno do código 201.
+
+## Caso de teste 02 - Login de Usuário
+
+- Objetivo do Teste: Verificar se o usuário conseguirá realizar o login com sucesso.
+- Passos: Enviar um POST para a rota API/users/login com os campos solicitados.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 03 - Atualização de dados do usuário
+
+- Objetivo do Teste: Verificar se o cadastro da tarefa será realizado.
+- Passos: Enviar um PUT para a rota API/users/update/{id} com os campos solicitados.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 04 - Consultar dados de todos usuários cadastrados
+
+- Objetivo do Teste: Verificar se é possível visualizar todos os dados de todos usuários cadastrados.
+- Passos: Enviar um GET para a rota API/users/get.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 04 - Consultar dados de um usuário específico
+
+- Objetivo do Teste: Verificar se é possível visualizar todos os dados de um usuário específico.
+- Passos: Enviar um GET para a rota API/users/get/{id}.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 05 - Apagar um Usuário
+
+- Objetivo do Teste: Verificar se o usuário será apagado.
+- Passos: Enviar um DELETE para a rota API/users/delete/{id} com os campos solicitados.
+- Critério de Êxito: Retorno do código 200.
+
+# Casos de Teste Tarefas 
+
+| Casos de Teste | Descrição 
+| --- | --- | 
+| `CT-001`| *Cadastro de tarefa* 
+| `CT-002`| *Atualização de dados do tarefa* 
+| `CT-003`| *Consultar todas tarefas criadas por um usuário específico* 
+| `CT-004`| *Consultar todas tarefas destinadas a um usuário específico* 
+| `CT-005`| *Apagar uma tarefa* 
+
+## Caso de teste 01 - Cadastro de Tarefa
+
+- Objetivo do Teste: Verificar se o cadastro será realizado.
+- Passos: Enviar um POST para a rota API/notes/criar com os campos solicitados.
+- Critério de Êxito: Retorno do código 201.
+
+## Caso de teste 02 - Atualização de dados do tarefa
+
+- Objetivo do Teste: Verificar se o cadastro da tarefa será realizado.
+- Passos: Enviar um PUT para a rota API/notes/update/{id} com os campos solicitados.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 03 - Consultar todas tarefas criadas por um usuário específico
+
+- Objetivo do Teste: Verificar se é possível visualizar todas as tarefas criadas por um usuário específico.
+- Passos: Enviar um GET para a rota API/notes/get/criador.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 04 - Consultar todas tarefas destinadas a um usuário específico
+
+- Objetivo do Teste: Verificar se é possível visualizar todos as tarefas destinadas a um usuário específico.
+- Passos: Enviar um GET para a rota API/notes/get/destinatario.
+- Critério de Êxito: Retorno do código 200.
+
+## Caso de teste 05 - Apagar uma Tarefa
+
+- Objetivo do Teste: Verificar se a tarefa será apagada.
+- Passos: Enviar um DELETE para a rota API/ntoes/delete/{id} com os campos solicitados.
+- Critério de Êxito: Retorno do código 200.
