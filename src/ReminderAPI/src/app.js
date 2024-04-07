@@ -17,9 +17,6 @@ const swaggerYaml = path.resolve(
 
 const swaggerDocument = YAML.load(swaggerYaml);
 
-const CSS_URL =
-  'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css';
-
 const app = express();
 
 app.use(bodyParser.json());
@@ -33,7 +30,6 @@ app.use(
   '/api',
   swaggerUi.serve,
   swaggerUi.setup(swaggerDocument, {
-    customCssUrl: CSS_URL,
     customSiteTitle: 'RemindApi Docs',
   }),
 );
