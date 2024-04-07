@@ -30,13 +30,9 @@ O wireframe da aplicação mobile, guia o usuário do seu cadastro até execuç�
 
 Por ser um fluxo de difícil vizualização disponibilizaremos link de visualização do figma e um pdf para download. Ele contem todas as telas do wireframe da aplicação mobile.
 
-[Wireframe mobile Figma](https://www.figma.com/file/kYaALXFlzQYyEllhSEPfj2/todo-list?type=design&node-id=2%3A3&mode=design&t=vmeZD6cSgBgfsC2X-1)
+[Wireframe mobile interativo Figma](https://www.figma.com/file/kYaALXFlzQYyEllhSEPfj2/todo-list?type=design&node-id=40%3A7903&mode=design&t=vmeZD6cSgBgfsC2X-1)(em construção 70%)
 
-[Wireframe mobile Telas.pdf]() (clique para baixar)
-
-Link para o Wireframe interativo
-
-[Wireframe Interativo]()
+[Wireframe mobile Telas.pdf]() (Pendente)
 
 ### Wireframe Web
 
