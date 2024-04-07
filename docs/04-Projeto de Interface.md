@@ -7,13 +7,12 @@ O projeto de interface, também conhecido como design de interface de usuário (
 
 O diagrama de fluxo desempenha um papel crucial na modelagem dos processos que são parte de um sistema de software. Eles fornecem uma representação clara de como o sistema funciona, desde a entrada de dados até a saída de resultados, permitindo uma análise detalhada e a identificação de possíveis pontos de melhoria ou otimização.
 
-Para o nosso projeto, precisaremos desenvolver dois fluxogramas, uma vez que envolvemos a criação de dois aplicativos que funcionam em conjunto. Esses fluxogramas são essenciais para visualizar e documentar o fluxo de processos em cada um dos aplicativos e como eles interagem entre si.
 
-### Fluxograma dos clientes
+### Fluxograma 
 
-O fluxograma do cliente acompanha o usuário desde o momento em que ele realiza o cadastro até a conclusão de um pedido. Além disso, descreve variás funcionalidades adicionais para melhorar a experiência do cliente, como a possibilidade de editar seu perfil, verificar suas notificações, pesquisar por comércios, verificar seus pedidos anteriores e realizar a ação de escanear um QR code.
+O fluxograma do cliente acompanha o usuário desde o momento em que ele realiza o cadastro até a conclusão de alguma tarefa. Além disso, descreve variás funcionalidades adicionais para melhorar a experiência do usuario, como a visualizar tarefas, delegar tarefas, pesquisar por tarefa atribuidas ao usuario, pesquisar por tarefa atribuidas a terceiros e com funções de admin, como a Criar cadastros de terceiros, editar informaçoes de usurios e excluir usuarios.
 
-![fluxograma cliente](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-2-e3-proj-mov-t2-g3-comandas/assets/83622295/d5351261-158b-4e65-90fd-46391029773a)
+![fluxograma mobile](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/main/docs/img/Diagrama%20de%20Fluxo.jpeg)
 
 ### Fluxograma dos restaurantes
 
