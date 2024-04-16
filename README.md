@@ -9,8 +9,6 @@
 
 Aplicativo que visa aprimorar experiência na comunicação entre funcionarios, criando um espaço virtual oferecendo como principal função a possibilidade enviar "mensagens"/"lembrentes" e gerenciamento de espaço virtual.
 
-Resolvendo problemas como demora no atendimento, erros em cardápios físicos, equívocos em pedidos e dificuldade organização interna, o aplicativo oferece sugestões geográficas de estabelecimento baseado na localização do usuário, cardápios através escaneamento de QR-codes, gerenciamento de espaço dos estabelecimentos baseado em pedidos ativos e muito mais.
-
 ## Integrantes
 
 * Álvaro Soares
