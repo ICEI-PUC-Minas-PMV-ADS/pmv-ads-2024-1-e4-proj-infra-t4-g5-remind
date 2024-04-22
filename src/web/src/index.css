@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 300ms ease-in-out;
+}
+
+body{
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.dflex{
+  @apply
+  flex
+  justify-center
+  items-center
+}
+
+.wave1{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("./assets/images/wave1.png");
+  background-repeat: repeat; 
+  animation-delay: 0s;
+}
+
+.wave2{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("./assets/images/wave2.png");
+  background-repeat: repeat; 
+  animation-delay: 3s;
+}
+
+.wave1{
+  animation: waveAnimate 30s alternate infinite;
+}
+
+.wave2{
+  animation: waveAnimate 30s alternate-reverse infinite;
+}
+
+@keyframes waveAnimate {
+  0%{
+    background-position-x: 0px;
+  }
+  100%{
+    background-position-x: 1000px;
+  }
+  
+}
+
+/* body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} */
