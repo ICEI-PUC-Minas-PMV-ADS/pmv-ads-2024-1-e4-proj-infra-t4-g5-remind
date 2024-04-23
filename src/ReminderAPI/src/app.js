@@ -7,6 +7,7 @@ const notesRoutes = require('./routes/notesRoutes');
 const userRoutes = require('./routes/userRoutes');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+const cors = require('cors');
 
 const developEnv = process.env.DEVELOP;
 
@@ -23,6 +24,8 @@ const CSS_URL =
 const app = express();
 
 app.use(bodyParser.json());
+
+app.use(cors({ origin: '*' }));
 
 app.use('/users', userRoutes);
 
