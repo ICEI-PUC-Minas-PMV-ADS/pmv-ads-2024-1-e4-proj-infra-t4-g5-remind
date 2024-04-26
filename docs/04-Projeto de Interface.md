@@ -41,3 +41,5 @@ Por ser um fluxo de difícil vizualização disponibilizaremos link de visualiza
 ![Create Tasks](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/27358e8a-2e04-47f2-ab9f-1f47abc36d84)
 
 ![Users-1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/acd4233d-641f-4edd-9e51-47a2756daf2c)
+
+Para o wireframe interativo acesse: https://www.figma.com/file/R8LNlxGXkceVKoOiKvc9Tn/Wireframe?type=design&node-id=0%3A1&mode=design&t=w7KYq0vNlWU2GH9D-1
