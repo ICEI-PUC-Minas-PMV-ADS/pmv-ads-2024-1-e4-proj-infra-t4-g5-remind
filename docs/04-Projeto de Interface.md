@@ -8,12 +8,15 @@ O projeto de interface, também conhecido como design de interface de usuário (
 O diagrama de fluxo desempenha um papel crucial na modelagem dos processos que são parte de um sistema de software. Eles fornecem uma representação clara de como o sistema funciona, desde a entrada de dados até a saída de resultados, permitindo uma análise detalhada e a identificação de possíveis pontos de melhoria ou otimização.
 
 
-### Fluxograma 
+### Fluxograma WEB
 
 O fluxograma do cliente acompanha o usuário desde o momento em que ele realiza o cadastro até a conclusão de alguma tarefa. Além disso, descreve variás funcionalidades adicionais para melhorar a experiência do usuario, como a visualizar tarefas, delegar tarefas, pesquisar por tarefa atribuidas ao usuario, pesquisar por tarefa atribuidas a terceiros e com funções de admin, como a Criar cadastros de terceiros, editar informaçoes de usurios e excluir usuarios.
 
 ![fluxograma mobile](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/main/docs/img/Diagrama%20de%20Fluxo.jpeg)
 
+### Fluxograma Mobile 
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/89494470/95ca95e2-7124-4696-9597-f9fd70fe4f33)
 
 
 ## Wireframes
