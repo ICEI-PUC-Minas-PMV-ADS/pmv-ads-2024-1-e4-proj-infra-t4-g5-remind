@@ -36,4 +36,8 @@ Por ser um fluxo de difícil vizualização disponibilizaremos link de visualiza
 
 ### Wireframe Web
 
-![Wireframe]()
+![Login](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/9a8662a0-6f3c-4c9a-b7e5-b71f794647fa)
+
+![Create Tasks](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/27358e8a-2e04-47f2-ab9f-1f47abc36d84)
+
+![Users-1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/83622295/acd4233d-641f-4edd-9e51-47a2756daf2c)
