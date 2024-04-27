@@ -25,7 +25,9 @@ const app = express();
 
 app.use(bodyParser.json());
 
-app.use(cors({ origin: '*' }));
+app.use(cors());
+
+app.options('*', cors());
 
 app.use('/users', userRoutes);
 
