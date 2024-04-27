@@ -23,8 +23,8 @@ export default function Login() {
       !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(values.email)
     ) {
       errors.email = 'O email deve ser válido.';
-    } else if (values.password.length < 6) {
-      errors.password = 'A senha deve ter no mínimo 6 caracteres.';
+    } else if (values.password.length < 4) {
+      errors.password = 'A senha deve ter no mínimo 4 caracteres.';
     }
 
     if (Object.keys(errors).length > 0) {
@@ -45,18 +45,19 @@ export default function Login() {
     } catch (err) {
       if (err.response.status == 404) {
         errors.general = 'Usuário ou senha inválidos.';
-        console.error(err);
+        console.error(err.response.data);
         setError(errors);
         setLoading(false);
         return;
       } else if (err.response.status == 400) {
         errors.general = 'Usuário não encontrado.';
-        console.error(err);
+        console.error(err.response.data);
         setError(errors);
         setLoading(false);
         return;
       } else {
         errors.general = 'Algo deu errado, tente novamente.';
+        console.error(err.response.data);
         console.error(err);
         setError(errors);
         setLoading(false);
