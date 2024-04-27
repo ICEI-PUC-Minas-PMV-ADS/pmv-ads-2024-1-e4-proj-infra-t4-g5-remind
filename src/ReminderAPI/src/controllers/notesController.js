@@ -3,8 +3,14 @@ const Notes = require('../models/notesModel');
 
 async function createNotes(req, res) {
   try {
-    const { titulo, descricao, destinatario, criador, datafinal, situacao } =
-      req.body;
+    const {
+      titulo,
+      descricao,
+      destinatario,
+      datainicial,
+      datafinal,
+      situacao,
+    } = req.body;
 
     const criadorId = req.user._id;
 
@@ -13,6 +19,7 @@ async function createNotes(req, res) {
       descricao,
       criador: criadorId,
       destinatario,
+      datainicial,
       datafinal,
       situacao,
     });

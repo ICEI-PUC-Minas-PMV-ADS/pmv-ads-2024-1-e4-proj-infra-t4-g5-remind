@@ -2,7 +2,6 @@
 const mongoose = require('mongoose');
 
 const NotesSchema = new mongoose.Schema({
-
   titulo: {
     type: String,
     required: true,
@@ -17,6 +16,10 @@ const NotesSchema = new mongoose.Schema({
   },
   destinatario: {
     type: String,
+    required: true,
+  },
+  datainicial: {
+    type: Date,
     required: true,
   },
   datafinal: {

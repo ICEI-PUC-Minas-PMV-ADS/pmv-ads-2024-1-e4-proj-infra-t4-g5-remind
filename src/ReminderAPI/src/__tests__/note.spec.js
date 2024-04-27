@@ -24,7 +24,8 @@ describe('Note Controller Integration', () => {
         titulo: 'Título da nota',
         descricao: 'Descrição da nota',
         destinatario: '65f37cd454bcbb6b9b3f04c1',
-        datafinal: new Date(),
+        datainicial: new Date(),
+        datafinal: new Date().setMonth(new Date().getMonth() + 1),
         situacao: 'Pendente',
       };
 

@@ -30,6 +30,7 @@ async function create(req, res) {
 
 async function login(req, res) {
   const { email, senha } = req.body;
+
   const user = await User.findOne({ email });
 
   if (!user) {
@@ -51,7 +52,7 @@ async function login(req, res) {
 async function update(req, res) {
   try {
     const { id } = req.params;
-    const { nome, email, cargo, setor, permissao } = req.body;
+    const { nome, email, cargo, setor, permissao, senha } = req.body;
 
     if (req.user.permissao === 0) {
       return res
@@ -74,6 +75,7 @@ async function update(req, res) {
     user.cargo = cargo || user.cargo;
     user.setor = setor || user.setor;
     user.permissao = permissao || user.permissao;
+    user.senha = senha || user.senha;
 
     const updatedUser = await user.save();
     return res.status(200).json(updatedUser);
