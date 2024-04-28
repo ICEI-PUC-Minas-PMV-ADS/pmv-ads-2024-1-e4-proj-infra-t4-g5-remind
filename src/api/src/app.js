@@ -13,7 +13,7 @@ const developEnv = process.env.DEVELOP;
 
 const swaggerYaml = path.resolve(
   process.cwd(),
-  `${developEnv ? './swagger.yaml' : './src/ReminderAPI/swagger.yaml'}`,
+  `${developEnv ? './swagger.yaml' : './src/api/swagger.yaml'}`,
 );
 
 const swaggerDocument = YAML.load(swaggerYaml);
