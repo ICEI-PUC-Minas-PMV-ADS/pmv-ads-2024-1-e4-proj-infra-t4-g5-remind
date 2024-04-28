@@ -36,7 +36,7 @@ export default function Login() {
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/users/login`,
-        values,
+        { email: values.email, senha: values.password },
       );
 
       console.log(res);
