@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Input from '../components/Input';
 import Title from '../components/Title';
 import Logo from '../assets/images/logo.png';
-import axios from 'axios';
+import { login } from '../services/userServices';
 
 export default function Login() {
   const [error, setError] = useState('');
@@ -34,12 +34,8 @@ export default function Login() {
     }
 
     try {
-      const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/users/login`,
-        { email: values.email, senha: values.password },
-      );
+      const res = await login(values);
 
-      console.log(res);
       setLoading(false);
       return;
     } catch (err) {
