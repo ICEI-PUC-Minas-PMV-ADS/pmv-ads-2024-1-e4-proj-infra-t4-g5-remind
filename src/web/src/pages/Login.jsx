@@ -3,10 +3,13 @@ import Input from '../components/Input';
 import Title from '../components/Title';
 import Logo from '../assets/images/logo.png';
 import { login } from '../services/userServices';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     const formData = new FormData(e.target);
@@ -34,9 +37,10 @@ export default function Login() {
     }
 
     try {
-      const res = await login(values);
+      await login(values);
 
       setLoading(false);
+      navigate('/');
       return;
     } catch (err) {
       if (err.response.status == 404) {
@@ -63,7 +67,7 @@ export default function Login() {
   }
 
   return (
-    <div className="dflex h-[100vh]">
+    <div className="h-screen dflex">
       <div className="dflex flex-col gap-12 w-[500px] h-[500px]">
         <div>
           <img src={Logo} alt="" />
