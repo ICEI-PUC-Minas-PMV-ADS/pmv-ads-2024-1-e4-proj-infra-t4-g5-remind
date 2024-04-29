@@ -20,6 +20,15 @@ body{
   overflow-x: hidden;
 }
 
+.svgPrimaryGroupHover > path {
+  @apply
+  group-hover:stroke-primary
+}
+
+li{
+  list-style: none;
+}
+
 .dflex{
   @apply
   flex
