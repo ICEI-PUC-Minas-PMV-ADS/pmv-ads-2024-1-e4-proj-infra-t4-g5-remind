@@ -7,7 +7,7 @@ export default function SideBarRoot({ children }) {
 
   return (
     <aside
-      className={`relative w-[40vw] h-screen bg-[#F9F8FE] p-4 pt-2 md:w-[15vw] lg:w-[15vw] ${!open && '!w-[10vw] lg:!w-[5vw] md:!w-[5vw] !p-2 flex flex-col items-center'}`}
+      className={`sticky w-[40vw] h-screen bg-[#F9F8FE] p-4 pt-2 md:w-[20vw] lg:w-[10vw] ${!open && '!w-[12vw] lg:!w-[3vw] md:!w-[5vw] !p-[4px] flex flex-col items-center'}`}
     >
       <img
         src={open ? Logo : PartialLogo}
@@ -16,7 +16,7 @@ export default function SideBarRoot({ children }) {
       />
 
       <button
-        className="absolute w-[4px] h-[20px] bg-subtleBlack right-5 top-1/2 rounded-xl hover:scale-125 md:w-[6px] md:h-[24px]"
+        className="absolute w-[4px] h-[20px] bg-subtleBlack right-3 top-1/2 rounded-xl hover:scale-125 md:w-[6px] md:h-[24px]"
         onClick={() => setOpen((prev) => !prev)}
       />
 

@@ -1,7 +1,12 @@
-import SideBarItem from './SideBarItem';
-import SideBarRoot from './SideBarRoot';
+import HomeIcon from '../../assets/icons/HomeIcon';
+import { SideBarModel } from './SideBarModel';
 
-export const SideBar = {
-  Root: SideBarRoot,
-  Item: SideBarItem,
-};
+export function SideBar() {
+  return (
+    <div className="flex">
+      <SideBarModel.Root>
+        <SideBarModel.Item Icon={HomeIcon} text="Home" href="/" />
+      </SideBarModel.Root>
+    </div>
+  );
+}

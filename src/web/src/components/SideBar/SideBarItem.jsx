@@ -1,16 +1,19 @@
-export default function SideBarItem({ Icon, text, open, ...rest }) {
+import { Link, useLocation } from 'react-router-dom';
+import TopicItem from './TopicItem';
+
+export default function SideBarItem({ Icon, text, open, href, ...rest }) {
+  const { pathname } = useLocation();
+
   return (
-    <li
-      {...rest}
-      className={`flex items-center gap-2 cursor-pointer group ${open && 'hover:ml-1'}`}
-    >
-      <Icon />
-      <a
-        href=""
-        className={`font-medium text-textSecondary group-hover:!text-primary ${!open && 'hidden'}`}
-      >
-        {text}
-      </a>
+    <li {...rest} className={`w-full ${open && 'hover:ml-1'}`}>
+      <Link to={href}>
+        <TopicItem
+          Icon={Icon}
+          text={text}
+          open={open}
+          active={pathname == href}
+        />
+      </Link>
     </li>
   );
 }
