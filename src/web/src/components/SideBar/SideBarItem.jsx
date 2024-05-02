@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import TopicItem from './TopicItem';
+import TopicItem from '../TopicItem';
 
 export default function SideBarItem({ Icon, text, open, href, ...rest }) {
   const { pathname } = useLocation();

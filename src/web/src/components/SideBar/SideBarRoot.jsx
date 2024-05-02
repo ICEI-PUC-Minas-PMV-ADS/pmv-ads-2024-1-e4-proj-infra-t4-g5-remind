@@ -7,7 +7,7 @@ export default function SideBarRoot({ children }) {
 
   return (
     <aside
-      className={`sticky w-[40vw] h-screen bg-[#F9F8FE] p-4 pt-2 md:w-[20vw] lg:w-[10vw] ${!open && '!w-[12vw] lg:!w-[3vw] md:!w-[5vw] !p-[4px] flex flex-col items-center'}`}
+      className={`sticky w-[40vw] h-screen bg-[#F9F8FE] p-4 pt-2 md:w-[20vw] lg:w-[10vw] ${!open && '!w-[12vw] md:!w-[5vw] lg:!w-[3vw] !p-[4px] flex flex-col items-center'}`}
     >
       <img
         src={open ? Logo : PartialLogo}

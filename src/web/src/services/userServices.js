@@ -15,7 +15,8 @@ export const login = async (values) => {
 
     return res.data;
   } catch (error) {
-    console.error('login error:', error);
+    console.error('login error:', error?.response.status, error?.response.data);
+    throw error;
   }
 };
 
@@ -32,6 +33,11 @@ export const getUser = async (userId) => {
 
     return userInfo.data;
   } catch (error) {
-    console.error('getUser error:', error);
+    console.error(
+      'getUser error:',
+      error?.response.status,
+      error?.response.data,
+    );
+    throw error;
   }
 };
