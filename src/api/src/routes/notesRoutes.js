@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.post('/criar',protect, notesController.createNotes);
 router.put('/update/:id',protect, notesController.update);
+router.get('/get/:id', protect, notesController.getById);
 router.get('/get/criador/',protect, notesController.getCriadorById);
 router.get('/get/destinatario/',protect, notesController.getDestinatarioById);
 

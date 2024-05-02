@@ -80,6 +80,23 @@ async function getDestinatarioById(req, res) {
   }
 }
 
+async function getById(req, res) {
+  try {
+    const noteId = req.params.id;
+    const foundNote = await Notes.findById(noteId);
+
+    if (!foundNote) {
+      return res.status(404).json({ mensagem: 'Nota não encontrada' });
+    }
+
+    res.status(200).json(foundNote);
+  } catch (error) {
+    console.error('Erro ao exibir nota por ID:', error);
+    res.status(500).json({ mensagem: 'Erro interno do servidor' });
+  }
+}
+
+
 async function deleteById(req, res) {
   try {
     const noteId = req.params.id;
@@ -98,10 +115,10 @@ async function deleteById(req, res) {
 
 
 module.exports = {
-    createNotes,
-    update,
-    getCriadorById,
-    getDestinatarioById,
-    deleteById,
-    
+  createNotes,
+  update,
+  getCriadorById,
+  getDestinatarioById,
+  deleteById,
+  getById,
 };
