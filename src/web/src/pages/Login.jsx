@@ -4,10 +4,12 @@ import Title from '../components/Title';
 import Logo from '../assets/images/logo.png';
 import { login } from '../services/userServices';
 import { useNavigate } from 'react-router-dom';
+import useUser from '../context/UserContextHook';
 
 export default function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const { setSigned } = useUser();
 
   const navigate = useNavigate();
 
@@ -40,25 +42,22 @@ export default function Login() {
       await login(values);
 
       setLoading(false);
+      setSigned(true);
       navigate('/');
       return;
     } catch (err) {
-      if (err.response.status == 404) {
+      if (err?.response.status == 404) {
         errors.general = 'Usuário ou senha inválidos.';
-        console.error(err.response.data);
         setError(errors);
         setLoading(false);
         return;
-      } else if (err.response.status == 400) {
+      } else if (err?.response.status == 400) {
         errors.general = 'Usuário não encontrado.';
-        console.error(err.response.data);
         setError(errors);
         setLoading(false);
         return;
       } else {
         errors.general = 'Algo deu errado, tente novamente.';
-        console.error(err.response.data);
-        console.error(err);
         setError(errors);
         setLoading(false);
         return;
