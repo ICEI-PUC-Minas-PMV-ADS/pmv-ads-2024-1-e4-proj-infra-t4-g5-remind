@@ -58,8 +58,39 @@ async function update(req, res) {
 
 async function getCriadorById(req, res) {
   try {
-    const userId = req.user._id;
-    const notes = await Notes.find({ criador: userId });
+    const userId = req.user._id.toString(); // Obtém o ID do usuário autenticado
+    // necessário o cast para string para que o ID seja comparável ao id do destinatario que é String
+    const notes = await Notes.collection
+      .aggregate([
+        {
+          // Filtra as notas que possuem o ID do usuário autenticado como criador
+          $match: {
+            criador: userId,
+          },
+        },
+        // Converte o ID do criador para ObjectId
+        { $set: { criador: { $toObjectId: '$criador' } } },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'criador',
+            foreignField: '_id',
+            // Remove os campos desnecessários do usuário
+            pipeline: [
+              {
+                $project: {
+                  senha: 0,
+                  createdAt: 0,
+                  updatedAt: 0,
+                  __v: 0,
+                },
+              },
+            ],
+            as: 'destinatarioInfo',
+          },
+        },
+      ])
+      .toArray();
 
     res.status(200).json(notes);
   } catch (error) {
@@ -70,8 +101,39 @@ async function getCriadorById(req, res) {
 
 async function getDestinatarioById(req, res) {
   try {
-    const userId = req.user._id; // Obtém o ID do usuário autenticado
-    const notes = await Notes.find({ destinatario: userId });
+    const userId = req.user._id.toString(); // Obtém o ID do usuário autenticado
+    // necessário o cast para string para que o ID seja comparável ao id do destinatario que é String
+    const notes = await Notes.collection
+      .aggregate([
+        {
+          // Filtra as notas que possuem o ID do usuário autenticado como destinatário
+          $match: {
+            destinatario: userId,
+          },
+        },
+        // Converte o ID do destinatário para ObjectId
+        { $set: { destinatario: { $toObjectId: '$destinatario' } } },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'destinatario',
+            foreignField: '_id',
+            // Remove os campos desnecessários do usuário
+            pipeline: [
+              {
+                $project: {
+                  senha: 0,
+                  createdAt: 0,
+                  updatedAt: 0,
+                  __v: 0,
+                },
+              },
+            ],
+            as: 'criadorInfo',
+          },
+        },
+      ])
+      .toArray();
 
     res.status(200).json(notes);
   } catch (error) {
