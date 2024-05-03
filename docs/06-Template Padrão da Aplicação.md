@@ -4,7 +4,7 @@
 
 Layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
-<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/f6f0a798f8d1fb049a8967f1ce2de1342186950d/docs/img/06_01_Colors.png&auto=format&fit=crop&w=1974&q=80">
+<img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/blob/f6f0a798f8d1fb049a8967f1ce2de1342186950d/docs/img/06_01_Colors.png">
 
 
 > **Links Úteis**:
