@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback } from 'react';
 import { getUser } from '../services/userServices';
 
 export const UserContext = createContext();
@@ -7,12 +7,12 @@ export default function UserProvider({ children }) {
   const [signed, setSigned] = useState(undefined);
   const [user, setUser] = useState(null);
 
-  function logout() {
+  const logout = useCallback(() => {
     localStorage.removeItem('USER_TOKEN');
     localStorage.removeItem('USER_ID');
     setSigned(false);
     setUser(null);
-  }
+  }, []);
 
   useEffect(() => {
     const loadSigned = async () => {

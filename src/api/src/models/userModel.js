@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-
   nome: {
     type: String,
     required: true,
@@ -13,7 +12,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  senha:{
+  senha: {
     type: String,
     required: true,
   },
@@ -28,10 +27,8 @@ const userSchema = new mongoose.Schema({
   permissao: {
     type: Number,
     required: true,
-  }
-}
-
-);
+  },
+});
 
 userSchema.methods.matchPassword = async function (senhaLogin) {
   return await bcrypt.compare(senhaLogin, this.senha);

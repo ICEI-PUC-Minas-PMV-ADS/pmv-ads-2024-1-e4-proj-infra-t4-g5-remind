@@ -328,6 +328,53 @@ paths:
         - api_key: []
         - bearerAuth: []
 
+  /notes/get/{id}:
+    get:
+      operationId: getNoteById
+      tags:
+        - Notes
+      summary: Obtém uma nota pelo ID
+      description: Retorna uma nota com base no ID fornecido.
+      parameters:
+        - in: path
+          name: id
+          description: ID da nota a ser obtida
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Nota encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NoteOutput'
+          links:
+            self:
+              operationId: getNoteById
+              parameters:
+                id: '$response.body#/_id'
+        '404':
+          description: Nota não encontrada.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                message: "Nota não encontrada."
+                code: 404
+              
+          links:
+            self:
+              operationId: getNoteById
+              parameters:
+                id: '$response.body#/_id'
+        '500':
+          description: Erro interno do servidor ao buscar a nota por ID.
+      security:
+        - api_key: []
+        - bearerAuth: []
+
   /notes/update/{id}:
     put:
       operationId: updateNote
