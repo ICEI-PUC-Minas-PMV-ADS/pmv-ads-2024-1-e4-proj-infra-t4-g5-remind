@@ -86,9 +86,11 @@ async function getCriadorById(req, res) {
                 },
               },
             ],
-            as: 'destinatarioInfo',
+            as: 'userInfo',
           },
         },
+        // Desconstrói o array userInfo
+        { $unwind: '$userInfo' },
       ])
       .toArray();
 
@@ -129,9 +131,11 @@ async function getDestinatarioById(req, res) {
                 },
               },
             ],
-            as: 'criadorInfo',
+            as: 'userInfo',
           },
         },
+        // Desconstrói o array userInfo
+        { $unwind: '$userInfo' },
       ])
       .toArray();
 
