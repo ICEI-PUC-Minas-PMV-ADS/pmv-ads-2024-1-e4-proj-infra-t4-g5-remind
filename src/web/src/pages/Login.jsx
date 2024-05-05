@@ -74,6 +74,7 @@ export default function Login() {
           <Title>Login</Title>
         </div>
         <form
+          id="login-form"
           className="flex-col gap-6 dflex"
           noValidate
           onSubmit={(e) => {
@@ -81,7 +82,9 @@ export default function Login() {
             handleSubmit(e);
           }}
         >
-          <h1 className="text-lg text-red-500">{error.general}</h1>
+          <h1 id="error-general" className="text-lg text-red-500">
+            {error.general}
+          </h1>
 
           <div className="flex flex-col">
             <p className="font-semibold">Usuário</p>
@@ -90,9 +93,12 @@ export default function Login() {
               min={3}
               type="email"
               name="email"
+              id="email"
               disabled={loading}
             />
-            <small className="text-red-500 text-md">{error.email}</small>
+            <small id="error-email" className="text-red-500 text-md">
+              {error.email}
+            </small>
           </div>
 
           <div className="flex flex-col">
@@ -101,19 +107,23 @@ export default function Login() {
               error={error.password || error.general}
               type="password"
               name="password"
+              id="password"
               disabled={loading}
             />
-            <small className="text-red-500 text-md">{error.password}</small>
+            <small id="error-password" className="text-red-500 text-md">
+              {error.password}
+            </small>
           </div>
 
           <button
+            id="btn-login"
             disabled={loading}
             className="bg-[#317BE9] text-white font-semibold w-52 h-12 hover:scale-110 hover:rounded-md mt-6 disabled:bg-slate-400 disabled:hover:scale-100 disabled:rounded-md lg:w-72"
           >
             Continuar
           </button>
 
-          <small className="mt-[-15px] w-52 text-xs font-medium text-center  text-gray-500 tracking-wide opacity-[85%] md:text-left lg:w-72">
+          <small className="mt-[-15px] w-52 text-xs font-medium text-center  text-gray-500 tracking-wide opacity-[85%] md:text-left lg:w-72 z-10">
             Caso não consiga se conectar entre em contato com seu administrador
           </small>
         </form>

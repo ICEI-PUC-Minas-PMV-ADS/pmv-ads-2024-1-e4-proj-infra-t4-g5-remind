@@ -6,6 +6,7 @@ export function SideBar() {
     <SideBarModel.Root>
       <SideBarModel.Item Icon={HomeIcon} text="Recebidas" href="/" />
       <SideBarModel.Item Icon={HomeIcon} text="Enviadas" href="/e" />
+      <SideBarModel.Item Icon={HomeIcon} text="Usuários" href="/u" />
     </SideBarModel.Root>
   );
 }

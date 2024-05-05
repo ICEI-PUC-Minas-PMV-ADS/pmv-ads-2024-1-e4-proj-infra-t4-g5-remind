@@ -13,6 +13,7 @@ export default function Home() {
   const { user } = useUser();
   const [notes, setNotes] = useState([]);
 
+  // Função para buscar as notas do usuário.
   useEffect(() => {
     const getNotes = async () => {
       const res = await getUserNotesAssigned();
@@ -23,6 +24,7 @@ export default function Home() {
     getNotes();
   }, []);
 
+  // Se o usuário não estiver carregado, exibe um loading.
   if (!user) {
     return <Loading />;
   }
