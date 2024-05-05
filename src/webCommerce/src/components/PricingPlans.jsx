@@ -1,6 +1,7 @@
 import { pricingPlans } from '../constants';
+import PropTypes from 'prop-types';
 
-const PricingPlans = () => {
+const PricingPlans = ({onButtonClick}) => {
   return (
     <div className='mx-auto grid max-w-7xl grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8'>
       {pricingPlans.map((plan) => (
@@ -34,7 +35,8 @@ const PricingPlans = () => {
             ))}
           </ul>
 
-          <a href='#'
+          <button href='#'
+          onClick={onButtonClick}
           className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 
           ${
             plan.mostPopular
@@ -44,12 +46,16 @@ const PricingPlans = () => {
           `}
           >
             {plan.cta}
-          </a>
+          </button>
 
         </div>
       ))}
     </div>
   );
+};
+
+PricingPlans.propTypes = {
+  onButtonClick: PropTypes.func.isRequired,
 };
 
 export default PricingPlans;

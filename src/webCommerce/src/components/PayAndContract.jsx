@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const PayAndContract = () => {
+const PayAndContract = ({ onButtonClick }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
 
   return (
@@ -24,14 +25,19 @@ const PayAndContract = () => {
             Depósito Bancário
           </label>
         </div>
-        <a href='#'
+        <button href='#'
+          onClick={onButtonClick}
           className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 ${paymentMethod ? 'btn-buynow' : 'btn-disabled'}`}
         >
           Pagar
-        </a>
+        </button>
       </form>
     </div>
   );
 };
+
+PayAndContract.propTypes = {
+    onButtonClick: PropTypes.func.isRequired,
+  };
 
 export default PayAndContract;
