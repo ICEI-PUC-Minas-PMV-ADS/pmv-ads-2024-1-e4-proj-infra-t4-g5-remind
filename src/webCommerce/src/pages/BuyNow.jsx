@@ -1,13 +1,14 @@
-'use strict';
-
-import { useGSAP } from '@gsap/react' 
-import { animateWithGsap } from '../utils/animations'; 
+import { useState } from 'react';
+import { useGSAP } from '@gsap/react';
+import { animateWithGsap } from '../utils/animations';
 import PricingPlans from '../components/PricingPlans';
+import Register from '../components/Register';
+import PayAndContract from '../components/PayAndContract';
 
 const BuyNow = () => {
+  const [step, setStep] = useState('pricing');
 
-   useGSAP(() => {
-
+  useGSAP(() => {
     animateWithGsap('.g_fadeIn', {
       opacity: 1,
       y: 0,
@@ -15,6 +16,23 @@ const BuyNow = () => {
       ease: 'power2.inOut'
     })
   }, []);
+
+  const handleButtonClick = () => {
+    if (step === 'pricing') {
+      setStep('register');
+    } else if (step === 'register') {
+      setStep('pay');
+    }
+  };
+
+  let Component;
+  if (step === 'pricing') {
+    Component = <PricingPlans onButtonClick={handleButtonClick} />;
+  } else if (step === 'register') {
+    Component = <Register onButtonClick={handleButtonClick} />;
+  } else if (step === 'pay') {
+    Component = <PayAndContract onButtonClick={handleButtonClick} />;
+  }
 
   return (
     <section id="buynow" className="common-padding">
@@ -33,7 +51,7 @@ const BuyNow = () => {
         <div className="mb-10">
           <div className="relative h-full flex-center">
             
-            <PricingPlans/>
+            {Component}
             
           </div>
               <div className="top-0 flex-1 flex justify-center flex-col g_fadeIn mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -69,7 +87,7 @@ const BuyNow = () => {
               </div>
             </div>
     </section>
-  )
-}
+  );
+};
 
-export default BuyNow
+export default BuyNow;
