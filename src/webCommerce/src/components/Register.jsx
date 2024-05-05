@@ -15,19 +15,21 @@ const Register = ({ onButtonClick }) => {
         <h2>Registre-se</h2>
       </div>
         <div className=' pb-4'>
-          <label htmlFor="userName">Nome</label>
-          <input type="text" id="userName" name="userName" required />
+          <label htmlFor="userName" className='text-sm'>Nome</label>
+          <input className='w-full' type="text" id="userName" name="userName" required />
         </div>
         <div className=' pb-4'>
-          <label htmlFor="email">E-mail</label>
-          <input type="email" id="email" name="email" required />
+          <label htmlFor="email" className='text-sm'>E-mail</label>
+          <input className='w-full' type="email" id="email" name="email" required />
         </div>
-        <div className=' pb-4'>
-          <label htmlFor="password">Senha</label>
-          <input type={showPassword ? "text" : "password"} id="password" name="password" required />
-          <button className='text-xs text-purple-400 pb-4' type="button" onClick={() => setShowPassword(!showPassword)}>
+        <div className='pb-4'>
+          <label htmlFor="password" className='text-sm'>Senha</label>
+          <input className='w-full' type={showPassword ? "text" : "password"} id="password" name="password" required />
+          <div className="flex justify-end mt-2">
+          <button className='flex justify-end text-xs text-purple-400 pb-4' type="button" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? 'Esconder' : 'Mostrar'}
           </button>
+          </div>
         </div>
         <div className=" flex-1 flex max-w-7xl -ml-2">
           <input type="checkbox" id="terms" name="terms" className='mx-2' required />
