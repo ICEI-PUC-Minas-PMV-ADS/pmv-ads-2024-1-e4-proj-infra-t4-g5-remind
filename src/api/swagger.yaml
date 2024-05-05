@@ -328,7 +328,7 @@ paths:
         - api_key: []
         - bearerAuth: []
 
-  /notes/get/{id}:
+  /notes/get/nota/{id}:
     get:
       operationId: getNoteById
       tags:

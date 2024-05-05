@@ -47,6 +47,7 @@ async function update(req, res) {
     notes.criador = req.body.criador || notes.criador;
     notes.destinatario = req.body.destinatario || notes.destinatario;
     notes.datafinal = req.body.datafinal || notes.datafinal;
+    notes.dataconclusao = req.body.dataconclusao || notes.dataconclusao;
     notes.situacao = req.body.situacao || notes.situacao;
 
     const updateNote = await notes.save();

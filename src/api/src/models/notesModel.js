@@ -26,6 +26,10 @@ const NotesSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  dataconclusao: {
+    type: Date,
+    required: false,
+  },
   situacao: {
     type: String,
     required: true,
