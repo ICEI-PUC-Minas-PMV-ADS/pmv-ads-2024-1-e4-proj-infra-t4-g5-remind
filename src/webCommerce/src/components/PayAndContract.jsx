@@ -1,8 +1,20 @@
 import { useState } from 'react';
+import Loader from './Loader';
 import PropTypes from 'prop-types';
 
-const PayAndContract = ({ onButtonClick }) => {
+const PayAndContract = () => {
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsLoading(true);
+  
+    setTimeout(() => {
+      setIsLoading(false);
+      window.location.href = 'http://localhost:5173/';
+    }, 1500);
+  };
+  
 
   return (
     <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
@@ -39,12 +51,17 @@ const PayAndContract = ({ onButtonClick }) => {
                         <br/>
                     </label>
                     </div>
-                    <button href='#'
-                    onClick={onButtonClick}
-                    className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 ${paymentMethod ? 'btn-buynow' : 'btn-disabled'}`}
-                    >
-                    Pagar
-                    </button>
+
+                    {isLoading ? (
+                        <Loader />
+                        ) : (
+                        <button href='#'
+                            onClick={handleButtonClick}
+                            className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 ${paymentMethod ? 'btn-buynow' : 'btn-disabled'}`}
+                        >
+                            Pagar
+                        </button>
+                        )}
                 </form>
             </div>
                 <div className='relative flex flex-col items-center justify-center rounded-2xl bg-zinc text-neutral-100 p-8 shadow-lg'>
