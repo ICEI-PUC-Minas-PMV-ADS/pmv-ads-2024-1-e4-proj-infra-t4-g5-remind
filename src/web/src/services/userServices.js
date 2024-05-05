@@ -41,3 +41,25 @@ export const getUser = async (userId) => {
     throw error;
   }
 };
+
+export const getAllUsers = async () => {
+  try {
+    const userInfo = await axios.get(
+      `${import.meta.env.VITE_API_URL}/users/get`,
+      {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
+        },
+      },
+    );
+
+    return userInfo.data;
+  } catch (error) {
+    console.error(
+      'getAllUsers error:',
+      error?.response.status,
+      error?.response.data,
+    );
+    throw error;
+  }
+};
