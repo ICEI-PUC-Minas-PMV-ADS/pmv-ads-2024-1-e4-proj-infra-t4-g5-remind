@@ -5,6 +5,7 @@ import { SideBar } from '../components/SideBar';
 import useUser from '../context/UserContextHook';
 import { getUser } from '../services/userServices';
 import Divider from '../components/Divider';
+import { getAllUsers } from '../services/userServices';
 
 export default function Usuario() {
   const { user } = useUser();
@@ -39,41 +40,29 @@ export default function Usuario() {
         setIsLoading(false);
       }
     };
+    const fetUsers = async () => {
+      const res = await getAllUsers();
+      console.log(res);
+      setUsers(res);
+    };
+
+    fetUsers();
 
     fetchUserPermission();
   }, [user]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      if (userPermission === 1) {
-        try {
-          const res = await axios.get(
-            'https://remind-api.vercel.app/api/users',
-          );
-          setUsers(Array.isArray(res.data) ? res.data : []);
-        } catch (error) {
-          console.error('Erro ao buscar usuários:', error);
-          if (error.code === 'ERR_BAD_RESPONSE') {
-            setError(
-              'O servidor demorou muito para responder. Por favor, tente novamente mais tarde.',
-            );
-          } else {
-            setError('Erro ao buscar usuários');
-          }
-          setUsers([]);
-        }
-      }
-    };
-
-    fetchUsers();
-  }, [userPermission]);
-
   const createUser = async () => {
     try {
       const res = await axios.post(
-        'https://remind-api.vercel.app/api/users',
+        `${import.meta.env.VITE_API_URL}/users/criar`,
         newUser,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('USER_TOKEN')}`,
+          },
+        },
       );
+
       setUsers([...users, res.data]);
       setNewUser({
         nome: '',
@@ -83,7 +72,7 @@ export default function Usuario() {
         setor: '',
         permissao: 0,
       });
-      setIsModalOpen(false); // Close the modal after creating a user
+      setIsModalOpen(false);
     } catch (error) {
       console.error('Erro ao criar usuário:', error);
       setError('Erro ao criar usuário');
@@ -93,9 +82,15 @@ export default function Usuario() {
   const updateUser = async () => {
     try {
       const res = await axios.put(
-        `https://remind-api.vercel.app/api/users/${editingUser._id}`,
+        `${import.meta.env.VITE_API_URL}/users/update/${id}`,
         editingUser,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('USER_TOKEN')}`,
+          },
+        },
       );
+
       setUsers(
         users.map((user) => (user._id === editingUser._id ? res.data : user)),
       );
@@ -108,7 +103,11 @@ export default function Usuario() {
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://remind-api.vercel.app/api/users/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/users/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('USER_TOKEN')}`,
+        },
+      });
       setUsers(users.filter((user) => user._id !== id));
     } catch (error) {
       console.error('Erro ao excluir usuário:', error);
@@ -214,7 +213,7 @@ export default function Usuario() {
                     placeholder="Email"
                     value={newUser.email}
                     onChange={(e) =>
-                      setNewUser({ ...newUser, email: e.targety.value })
+                      setNewUser({ ...newUser, email: e.target.value })
                     }
                     className="mb-2 w-full p-2 border rounded"
                   />
