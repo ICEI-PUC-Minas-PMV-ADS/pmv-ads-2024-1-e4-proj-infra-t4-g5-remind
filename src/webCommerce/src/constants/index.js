@@ -136,7 +136,7 @@ export const pricingPlans = [
     description: 'Para empresas de 200 a 1000 funcionários.',
     features: [
       '1 Administrador',
-      'Até 200 usuários',
+      'Até 500 usuários',
       'Sem limite de equipes simultâneas',
       'Suporte gratuito 24hs'
     ],

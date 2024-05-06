@@ -18,16 +18,24 @@ const Register = ({ onButtonClick }) => {
   };
 
   return (
-    <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
-      <div className='mx-auto grid max-w-7xl grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8'>
-        <div className='relative flex flex-col items-center justify-center rounded-2xl bg-zinc text-neutral-100 p-8 shadow-lg'>
 
+    <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
+      <div className='mx-auto grid max-w-full grid-cols-3 gap-8 py-2'>
+        <div className='relative flex flex-col rounded-2xl bg-black'>
+
+        </div> 
+      <form className='-mx-4 relative flex flex-col items-center justify-center rounded-2xl text-neutral-100 border border-purple-500 bg-zinc  p-8 shadow-lg'>
+      <div className='text-neutral-100 text-2xl pb-4 flex flex-col items-center justify-center'>
+        <h2>Registre o Administrador</h2>
+        <div>
+        <p className='mt-4 mx-5 text-sm leading-5 text-neutral-200'> 
+            <span className='font-semibold'>Dados do Administrador do Remind.</span> <br/>
+            Estes serão os dados solicitados para o acesso ao painel de controles da aplicação.
+          </p>
         </div>
-      <form className='relative flex flex-col items-center justify-center rounded-2xl text-neutral-100 border border-purple-500 bg-zinc  p-8 shadow-lg'>
-      <div className='text-neutral-100 text-2xl pb-4'>
-        <h2>Registre-se</h2>
       </div>
-        <div className='text-black pb-4'>
+      <div className='text-black pb-4'>
+        <div className='text-black pb-4 '>
           <label htmlFor="userName" className='text-neutral-100 text-sm'>Nome</label>
           <input className='w-full' type="text" id="Name" name="Name" required onChange={(e) => setUserName(e.target.value)} />
         </div>
@@ -44,6 +52,7 @@ const Register = ({ onButtonClick }) => {
           </button>
           </div>
         </div>
+        </div>
         <div className=" flex-1 flex max-w-7xl -ml-2">
           <input type="checkbox" id="terms" name="terms" className='mx-2' required onChange={(e) => setTermsAccepted(e.target.checked)} />
           <label htmlFor="terms" className="font-semibold text-xs underline text-purple-400">
@@ -52,12 +61,12 @@ const Register = ({ onButtonClick }) => {
         </div>
         <button href='#'
           onClick={handleButtonClick}
-          className='mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 btn-buynow'
+          className='mt-8 block rounded-lg px-6 py-4 text-center text-sm font-semibold leading-4 btn-buynow'
         >
           Continuar e Pagar
         </button>
       </form>
-      <div className='relative flex flex-col items-center justify-center rounded-2xl bg-zinc text-neutral-100 p-8 shadow-lg'>
+      <div className='relative flex flex-col rounded-2xl bg-black'>
 
         </div>
       </div>

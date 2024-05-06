@@ -10,6 +10,7 @@ const BuyNow = () => {
 
   useGSAP(() => {
     animateWithGsap('.g_fadeIn', {
+      delay: 0.3,
       opacity: 1,
       y: 0,
       duration: 1,
