@@ -7,6 +7,7 @@ import useUser from '../../context/UserContextHook';
 import toast from 'react-hot-toast';
 import ReceivedIcon from '../../assets/icons/Receivedicon';
 import SentIcon from '../../assets/icons/SentIcon';
+import { useCallback, useState } from 'react';
 
 export function SideBar() {
   const storagedOpen = JSON.parse(localStorage.getItem('sideBarOpen')) || false;

@@ -8,21 +8,36 @@ import TopicItem from '../components/TopicItem';
 import useUser from '../context/UserContextHook';
 import { getUserNotesAssigned } from '../services/noteServices';
 import Header from '../components/Header';
+import Card from '../components/Card';
+import ModalNote from '../components/ModalNote';
+import CreateNote from '../components/CreateNote';
+import { useLocation } from 'react-router-dom';
 
 export default function Home() {
+  const pathName = useLocation().pathname.slice(1);
   const { user } = useUser();
   const [notes, setNotes] = useState([]);
+  const [viewType, setViewType] = useState('card');
+  const [modalTaskOpen, setModalTaskOpen] = useState(false);
+  const [modalCreateOpen, setModalCreateOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState(null);
 
   // Função para buscar as notas do usuário.
   useEffect(() => {
     const getNotes = async () => {
-      const res = await getUserNotesAssigned();
+      let res = await getUserNotesAssigned();
+
+      if (pathName === 'recebidas') {
+        res = res.filter((note) => note.destinatario === user?._id);
+      } else {
+        res = res.filter((note) => note.criador === user?._id);
+      }
 
       setNotes(res);
     };
 
     getNotes();
-  }, []);
+  }, [modalCreateOpen, modalTaskOpen, pathName, user?._id]);
 
   // Se o usuário não estiver carregado, exibe um loading.
   if (!user) {
@@ -31,14 +46,31 @@ export default function Home() {
 
   return (
     <div className="flex h-screen">
+      <ModalNote
+        open={modalTaskOpen}
+        setOpen={setModalTaskOpen}
+        note={selectedNote}
+      />
+      <CreateNote open={modalCreateOpen} setOpen={setModalCreateOpen} />
+
       <SideBar />
       <div className="flex flex-col w-screen">
-        <Header />
+        <Header pageTitle={`Tarefas ${pathName}`} />
 
         <div className="flex flex-col">
           <div className="flex gap-6 p-4">
-            <TopicItem Icon={ListaIcon} text="Lista" />
-            <TopicItem Icon={QuadroIcon} text="Quadro" />
+            <TopicItem
+              Icon={ListaIcon}
+              text="Lista"
+              onClick={() => setViewType('lista')}
+              active={viewType === 'lista'}
+            />
+            <TopicItem
+              Icon={QuadroIcon}
+              text="Quadro"
+              onClick={() => setViewType('card')}
+              active={viewType === 'card'}
+            />
           </div>
           <Divider />
         </div>
@@ -47,7 +79,7 @@ export default function Home() {
           {/* //!TODO: Implementar filtros */}
           {/* <div className="flex w-full gap-4">
             <p className="p-1 text-sm font-medium border rounded-md border-textSecondary bg-textSecondary bg-opacity-15 text-textSecondary">
-              Filtros
+            Filtros
             </p>
           </div> */}
           <div className="flex items-center justify-end w-full gap-6">
@@ -60,6 +92,19 @@ export default function Home() {
               Criar tarefa
             </button>
           </div>
+        </div>
+
+        <div
+          className={`grid grid-flow-row gap-6 p-2 overflow-y-auto sm:p-6 ${viewType == 'card' ? 'sm:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]' : 'sm:grid-cols-[repeat(auto-fill,1fr)]'}`}
+        >
+          {notes.map((note) => (
+            <Card
+              note={note}
+              setModalOpen={setModalTaskOpen}
+              setSelectedNote={setSelectedNote}
+              key={note._id}
+            />
+          ))}
         </div>
       </div>
     </div>

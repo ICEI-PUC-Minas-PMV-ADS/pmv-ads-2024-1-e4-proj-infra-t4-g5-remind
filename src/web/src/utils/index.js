@@ -13,7 +13,7 @@ export function messageDateDiffInMinutes(date) {
   let remainingMessage = '';
 
   if (remainingTime < 0) {
-    return 'Tarefa atrasada';
+    return 'Tarefa atrasada !';
   }
 
   if (remainingTime > 1440) {
