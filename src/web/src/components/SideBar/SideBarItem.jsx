@@ -5,7 +5,7 @@ export default function SideBarItem({ Icon, text, open, href, ...rest }) {
   const { pathname } = useLocation();
 
   return (
-    <li {...rest} className={`${rest.className}`}>
+    <li {...rest} className={`w-full ${open && 'hover:ml-1'}`}>
       <Link to={href}>
         <TopicItem
           Icon={Icon}
