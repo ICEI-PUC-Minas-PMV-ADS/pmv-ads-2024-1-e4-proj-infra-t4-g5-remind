@@ -83,7 +83,7 @@ export default function Usuario() {
   const updateUser = async (userId) => {
     try {
       const res = await axios.put(
-        `${import.meta.env.VITE_API_URL}/users/update/${id}`,
+        `${import.meta.env.VITE_API_URL}/users/update/${userId}`,
         editingUser,
         {
           headers: {
