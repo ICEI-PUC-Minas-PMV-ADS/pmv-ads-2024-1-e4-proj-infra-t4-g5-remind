@@ -12,9 +12,13 @@ export default {
     extend: {
       colors: {
         primary: '#4b0195',
+        bgPrimary: '#F2F4FF',
         textSecondary: '#9ca3af',
+        textLink: '#546FFF',
         bgSecondary: '#F9F8FE',
         subtleBlack: '#2B2B33',
+        lightGray: '#cccccc',
+        btnBlue: '#317BE9',
       },
       animation: {
         jump: 'jump 500ms ease-in-out infinite',
