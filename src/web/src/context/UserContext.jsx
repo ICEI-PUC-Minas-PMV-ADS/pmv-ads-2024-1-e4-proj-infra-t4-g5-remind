@@ -1,18 +1,21 @@
 import { createContext, useState, useEffect, useCallback } from 'react';
 import { getUser } from '../services/userServices';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext();
 
 export default function UserProvider({ children }) {
   const [signed, setSigned] = useState(undefined);
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   const logout = useCallback(() => {
     localStorage.removeItem('USER_TOKEN');
     localStorage.removeItem('USER_ID');
     setSigned(false);
     setUser(null);
-  }, []);
+    navigate('/login');
+  }, [navigate]);
 
   useEffect(() => {
     const loadSigned = async () => {
