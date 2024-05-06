@@ -43,17 +43,22 @@ export default function Home() {
           <Divider />
         </div>
 
-        <div className="flex flex-wrap h-screen p-6 overflow-y-auto">
-          <div className="h-96">
-            <h1>bom dia</h1>
-            {notes.map((note) => (
-              <div key={note.id} className="p-4 bg-white rounded-lg w-96">
-                <h1 className="font-semibold text-subtleBlack">
-                  {note.titulo}
-                </h1>
-                <p className="text-sm text-subtleBlack">{note.descricao}</p>
-              </div>
-            ))}
+        <div className="flex items-center px-6 pt-4">
+          {/* //!TODO: Implementar filtros */}
+          {/* <div className="flex w-full gap-4">
+            <p className="p-1 text-sm font-medium border rounded-md border-textSecondary bg-textSecondary bg-opacity-15 text-textSecondary">
+              Filtros
+            </p>
+          </div> */}
+          <div className="flex items-center justify-end w-full gap-6">
+            <div>Pesquisar</div>
+
+            <button
+              className="h-12 font-semibold bg-white border shadow-sm w-36 text-btnBlue border-btnBlue hover:scale-105 hover:rounded-md lg:w-50"
+              onClick={() => setModalCreateOpen((prev) => !prev)}
+            >
+              Criar tarefa
+            </button>
           </div>
         </div>
       </div>
