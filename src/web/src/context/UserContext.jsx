@@ -1,8 +1,10 @@
 import { createContext, useState, useEffect, useCallback } from 'react';
 import { getUser } from '../services/userServices';
 
+// o UserContext é um contexto que armazena informações do usuário logado
 export const UserContext = createContext();
 
+// o UserProvider é um componente que provê o contexto do usuário
 export default function UserProvider({ children }) {
   const [signed, setSigned] = useState(undefined);
   const [user, setUser] = useState(null);
