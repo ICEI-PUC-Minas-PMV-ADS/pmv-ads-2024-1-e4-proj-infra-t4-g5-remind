@@ -45,11 +45,12 @@ body {
   }
 
   .btn-buynow-popular {
-    @apply px-5 py-4 rounded-3xl text-neutral-200 bg-purple-700 shadow-md hover:bg-purple-500
+    @apply px-5 py-4 rounded-3xl text-neutral-200 font-semibold bg-purple-700 shadow-md hover:bg-purple-500
   }
   
   .btn-buynow {
-    @apply px-5 py-4 rounded-3xl text-neutral-200 bg-black hover:bg-purple-500 shadow-md
+    @apply px-5 py-4 rounded-3xl text-neutral-200 font-semibold bg-black hover:bg-purple-500 shadow-md
+    
   }
 
   .color-container {
@@ -118,6 +119,38 @@ body {
 
   .buynow-bigtext {
     @apply text-white text-3xl md:text-7xl font-normal md:font-semibold
+  }
+
+  .buynow-cards-container {
+    @apply relative flex flex-col items-center justify-center bg-black text-neutral-100 p-8 shadow-lg
+  }
+
+  .buynow-card-grid-3 {
+    @apply mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8
+  }
+
+  .buynow-card-border {
+    @apply relative flex flex-col rounded-2xl  border border-purple-500 bg-zinc  text-neutral-100 p-8 shadow-lg
+  }
+
+  .buynow-card-inside-black {
+    @apply -mx-6 rounded-lg bg-black p-6
+  }
+
+  .buynow-card-title {
+    @apply text-2xl font-semibold text-neutral-100 leading-6
+  }
+
+  .buynow-card-ul {
+    @apply space-y-4 flex-1
+  }
+
+  .buynow-card-text-sm {
+    @apply text-sm leading-6 text-neutral-200
+  }
+
+  .buynow-input-text {
+    @apply text-black pb-4
   }
 
   .video-carousel_container {

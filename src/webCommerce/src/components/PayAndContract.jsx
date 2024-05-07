@@ -1,3 +1,5 @@
+//PayAndContract.jsx
+
 import { useState } from 'react';
 import Loader from './Loader';
 import PropTypes from 'prop-types';
