@@ -25,9 +25,10 @@ const Register = ({ onButtonClick, selectedPlan }) => {
 
   return (
 
-    <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
+    <div className='relative flex flex-col items-center justify-center bg-black text-neutral-100 p-8 shadow-lg'>
       <div className='mx-auto grid max-w-full grid-cols-3 gap-8 py-2'>
         <div className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg'> 
+          <h3 className='text-2xl font-semibold text-neutral-100 leading-6 pb-10'>Produto Selecionado:</h3>
           <h3 className='text-2xl font-semibold text-neutral-100 leading-5'>{selectedPlan.title}</h3>
           {selectedPlan.mostPopular && (
             <p className='absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
@@ -58,12 +59,12 @@ const Register = ({ onButtonClick, selectedPlan }) => {
 
       
       <form className='-mx-4 relative flex flex-col items-center justify-center rounded-2xl text-neutral-100 border border-purple-500 bg-zinc  p-8 shadow-lg'>
-      <div className='text-neutral-100 text-2xl pb-4 flex flex-col items-center justify-center'>
-        <h2>Registre o Administrador</h2>
+      <div className='text-neutral-100 text-2xl font-semibold pb-6 flex flex-col items-center justify-center'>
+        <h2 className='text-2xl font-semibold text-neutral-100 leading-6 pb-6'>Registre o Administrador</h2>
         <div>
         <p className='mt-4 mx-5 text-sm leading-5 text-neutral-200'> 
-            <span className='font-semibold'>Dados do Administrador do Remind.</span> <br/>
-            Estes serão os dados solicitados para o acesso ao painel de controles da aplicação.
+            <span className='font-semibold'>Dados de Registro do Administrador do Remind.</span> <br/>
+            Serão solicitados para o acesso ao painel de controles da aplicação.
           </p>
         </div>
       </div>
@@ -86,8 +87,8 @@ const Register = ({ onButtonClick, selectedPlan }) => {
           </div>
         </div>
         </div>
-        <div className=" flex-1 flex max-w-7xl -ml-2">
-          <input type="checkbox" id="terms" name="terms" className='mx-2' required onChange={(e) => setTermsAccepted(e.target.checked)} />
+        <div className=" flex-1 flex max-w-7xl -ml-2 -mt-5">
+          <input type="checkbox" id="terms" name="terms" className='mx-2 -mt-3' required onChange={(e) => setTermsAccepted(e.target.checked)} />
           <label htmlFor="terms" className="font-semibold text-xs underline text-purple-400">
                     Li e aceito e concordo com os Termos e Condições 
             </label>
@@ -99,8 +100,17 @@ const Register = ({ onButtonClick, selectedPlan }) => {
           Continuar e Pagar
         </button>
       </form>
-      <div className='relative flex flex-col rounded-2xl bg-black'>
-
+      <div className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg'> 
+          <h3 className='text-2xl font-semibold text-neutral-100 leading-6 pb-6'>Mais Informações:</h3>
+          <div className='-mx-6 rounded-lg bg-black p-6'>
+            <ul className='space-y-4 flex-1'>
+              {selectedPlan.moreFeatures.map((feature, index) => (
+                <li key={index} className='text-sm leading-6 text-neutral-200'>
+                  * {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>

@@ -105,7 +105,7 @@ body {
   }
 
   .buynow-subtitle {
-    @apply text-gray font-semibold text-xl md:text-2xl py-10 text-center
+    @apply text-gray font-semibold text-xl md:text-2xl pt-6 pb-2 text-center
   }
 
   .buynow-text-container {

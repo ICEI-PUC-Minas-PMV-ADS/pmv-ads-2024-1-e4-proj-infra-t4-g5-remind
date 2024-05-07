@@ -108,8 +108,16 @@ export const pricingPlans = [
     features: [
       '1 Administrador',
       'Até 50 usuários',
-      'Até 100 equipes simultâneas',
+      'Até 200 equipes simultâneas',
       'Suporte gratuito'
+    ],
+    moreFeatures: [
+      'Administrador: controle centralizado no cadastro, setorização e administração de todos os usuários exclusivo para o administrador',
+      'App para Mac OS e Android para até 50 usuários simultâneos',
+      'Versão Web com Área de Trabalho personalizável para cada usuário',
+      'Segurança da informação e proteção de dados',
+      'Até 200 equipes simultâneas',
+      'Suporte gratuito 24hs'
     ],
     cta: 'Comprar',
     mostPopular: false,
@@ -127,6 +135,14 @@ export const pricingPlans = [
       'Até 500 equipes simultâneas',
       'Suporte gratuito 24hs'
     ],
+    moreFeatures: [
+      'Administrador: controle centralizado no cadastro, setorização e administração de todos os usuários exclusivo para o administrador',
+      'App para Mac OS e Android para até 200 usuários simultâneos',
+      'Versão Web com Área de Trabalho personalizável para cada usuário',
+      'Segurança da informação e proteção de dados',
+      'Até 500 equipes simultâneas',
+      'Suporte gratuito 24hs'
+    ],
     cta: 'Comprar',
     mostPopular: true,
   },
@@ -139,7 +155,15 @@ export const pricingPlans = [
     description: 'Para empresas de 200 a 1000 funcionários.',
     features: [
       '1 Administrador',
-      'Até 500 usuários',
+      'Até 1000 usuários',
+      'Sem limite de equipes simultâneas',
+      'Suporte gratuito 24hs'
+    ],
+    moreFeatures: [
+      'Administrador: controle centralizado no cadastro, setorização e administração de todos os usuários exclusivo para o administrador',
+      'App para Mac OS e Android para até 1000 usuários simultâneos',
+      'Versão Web com Área de Trabalho personalizável para cada usuário',
+      'Segurança da informação e proteção de dados',
       'Sem limite de equipes simultâneas',
       'Suporte gratuito 24hs'
     ],
