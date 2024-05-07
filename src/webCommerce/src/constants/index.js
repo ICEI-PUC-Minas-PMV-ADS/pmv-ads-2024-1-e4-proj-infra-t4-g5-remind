@@ -99,6 +99,7 @@ export const ProductDetailsSlides = [
 
 export const pricingPlans = [
   {
+    id: "01",
     title: 'Pequena Empresa',
     price: 19.90,
     currency: 'BRL',
@@ -114,6 +115,7 @@ export const pricingPlans = [
     mostPopular: false,
   },
   {
+    id: "02",
     title: 'Empresarial',
     price: 39.90,
     currency: 'BRL',
@@ -129,6 +131,7 @@ export const pricingPlans = [
     mostPopular: true,
   },
   {
+    id: "03",
     title: 'Empresarial Pro',
     price: 79.90,
     currency: 'BRL',

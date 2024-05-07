@@ -1,3 +1,5 @@
+// PricingPlans.jsx
+
 import { pricingPlans } from '../constants';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
@@ -13,11 +15,16 @@ const PricingPlans = ({onButtonClick}) => {
     });
   }, []);
 
+  const handleButtonClick = (plan) => {
+    console.log("Plano selecionado em PricingPlans:", plan);
+    onButtonClick(plan); // Passando o plano selecionado em vez do evento
+  };
+
   return (
     <div className='mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8'>
       {pricingPlans.map((plan) => (
         <div 
-          key={plan.title}
+          key={plan.id}
           className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg animate'
         > 
           <h3 className='text-2xl font-semibold text-neutral-100 leading-5 animate'>{plan.title}</h3>
@@ -47,7 +54,7 @@ const PricingPlans = ({onButtonClick}) => {
           </ul>
 
           <button href='#'
-          onClick={onButtonClick}
+          onClick={() => handleButtonClick(plan)} // Passando o plano selecionado quando o botão é clicado
           className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 
           ${
             plan.mostPopular

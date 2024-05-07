@@ -1,7 +1,13 @@
+
+
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Register = ({ onButtonClick }) => {
+const Register = ({ onButtonClick, selectedPlan }) => {
+
+  console.log("Plano recebido em Register:", selectedPlan);
+
+
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -21,9 +27,36 @@ const Register = ({ onButtonClick }) => {
 
     <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
       <div className='mx-auto grid max-w-full grid-cols-3 gap-8 py-2'>
-        <div className='relative flex flex-col rounded-2xl bg-black'>
+        <div className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg'> 
+          <h3 className='text-2xl font-semibold text-neutral-100 leading-5'>{selectedPlan.title}</h3>
+          {selectedPlan.mostPopular && (
+            <p className='absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
+            px-3 py-0.5 text-sm font-semibold tracking-wide text-neutral-200 shadow-md'>
+              Mais Popular
+            </p>
+          )}
+          <p className='mt-4 text-sm leading-6 text-neutral-200'> 
+            {selectedPlan.description}
+          </p>
+          <div className='-mx-6 mt-4 rounded-lg bg-black p-6'>
+            <p className='flex items-center text-sm font-semibold text-neutral-200'>
+              <span>{selectedPlan.currency}</span>
+              <span className='ml-3 text-4xl text-neutral-200'>${selectedPlan.price}</span>
+              <span>{selectedPlan.frequency}</span>
+            </p>
+          </div>
 
-        </div> 
+          <ul className='mt-6 space-y-4 flex-1'>
+            {selectedPlan.features.map((feature, index) => (
+              <li key={index} className='text-sm leading-6 text-neutral-200'>
+                * {feature}
+              </li>
+            ))}
+          </ul>
+
+        </div>
+
+      
       <form className='-mx-4 relative flex flex-col items-center justify-center rounded-2xl text-neutral-100 border border-purple-500 bg-zinc  p-8 shadow-lg'>
       <div className='text-neutral-100 text-2xl pb-4 flex flex-col items-center justify-center'>
         <h2>Registre o Administrador</h2>
@@ -76,6 +109,7 @@ const Register = ({ onButtonClick }) => {
 
 Register.propTypes = {
     onButtonClick: PropTypes.func.isRequired,
+    selectedPlan: PropTypes.object.isRequired,
   };
 
 export default Register;

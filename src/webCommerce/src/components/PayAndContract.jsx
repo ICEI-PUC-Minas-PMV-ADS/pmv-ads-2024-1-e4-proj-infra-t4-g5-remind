@@ -20,7 +20,8 @@ const PayAndContract = () => {
     <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
         <div className='mx-auto grid max-w-7xl grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8'>
             <div className='relative flex flex-col items-center justify-center rounded-2xl bg-zinc text-neutral-100 p-8 shadow-lg'>
-
+                {/* Carregue aqui os dados do plano que o cliente escolheu no primeiro passo do processo de compra, com a exceção do botão*/}
+                {/* Deve ser apresentado aqui um card identico ao apresentado no passo inicial quando o cliente escolheu o plano, excluindo o botão*/}
             </div>
         
             <div className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg'>

@@ -7,6 +7,7 @@ import PayAndContract from '../components/PayAndContract';
 
 const BuyNow = () => {
   const [step, setStep] = useState('pricing');
+  const [selectedPlan, setSelectedPlan] = useState(null);
 
   useGSAP(() => {
     animateWithGsap('.g_fadeIn', {
@@ -18,7 +19,8 @@ const BuyNow = () => {
     })
   }, []);
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (plan) => {
+    setSelectedPlan(plan);
     if (step === 'pricing') {
       setStep('register');
     } else if (step === 'register') {
@@ -30,9 +32,9 @@ const BuyNow = () => {
   if (step === 'pricing') {
     Component = <PricingPlans onButtonClick={handleButtonClick} />;
   } else if (step === 'register') {
-    Component = <Register onButtonClick={handleButtonClick} />;
+    Component = <Register onButtonClick={handleButtonClick} selectedPlan={selectedPlan} />;
   } else if (step === 'pay') {
-    Component = <PayAndContract onButtonClick={handleButtonClick} />;
+    Component = <PayAndContract onButtonClick={handleButtonClick} selectedPlan={selectedPlan} />;
   }
 
   return (
