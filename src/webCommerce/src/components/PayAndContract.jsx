@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Loader from './Loader';
 import PropTypes from 'prop-types';
 
-const PayAndContract = () => {
+const PayAndContract = ({selectedPlan}) => {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -19,18 +19,48 @@ const PayAndContract = () => {
   
 
   return (
-    <div className='relative flex flex-col items-center justify-center bg-zinc text-neutral-100 p-8 shadow-lg'>
-        <div className='mx-auto grid max-w-7xl grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8'>
-            <div className='relative flex flex-col items-center justify-center rounded-2xl bg-zinc text-neutral-100 p-8 shadow-lg'>
-                {/* Carregue aqui os dados do plano que o cliente escolheu no primeiro passo do processo de compra, com a exceção do botão*/}
-                {/* Deve ser apresentado aqui um card identico ao apresentado no passo inicial quando o cliente escolheu o plano, excluindo o botão*/}
-            </div>
+    <div className='buynow-cards-container'>
+      <div className='buynow-card-grid-3'>
+        <div className='buynow-card-border'> 
+          <h3 className='buynow-card-title pb-10'>Produto Selecionado:</h3>
+          <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
+          {selectedPlan.mostPopular && (
+            <p className='buynow-card-border-popular'>
+              Mais Popular
+            </p>
+          )}
+          <p className='mt-4 buynow-card-text-sm'> 
+            {selectedPlan.description}
+          </p>
+          <div className='mt-4 buynow-card-inside-black'>
+            <p className='buynow-card-sale'>
+              <span>{selectedPlan.currency}</span>
+              <span className='ml-3 text-4xl text-neutral-200'>${selectedPlan.price}</span>
+              <span>{selectedPlan.frequency}</span>
+            </p>
+          </div>
+
+          <ul className='buynow-card-ul mt-6'>
+            {selectedPlan.features.map((feature, index) => (
+              <li key={index} className='buynow-card-text-sm'>
+                * {feature}
+              </li>
+            ))}
+          </ul>
+
+        </div>
         
-            <div className='relative flex flex-col rounded-2xl border border-purple-500 bg-zinc text-neutral-100 p-8 shadow-lg'>
-                <form className='relative flex flex-col rounded-2xl bg-zinc text-neutral-100 p-8'>
-                    <div className='text-neutral-100 text-2xl pb-4'>
-                        <h2>Pagamento</h2>
-                    </div>
+            <div className='-mx-4 buynow-card-border'>
+                <form className='relative flex flex-col rounded-2xl bg-zinc text-neutral-100'>
+                <div className='pb-6 flex flex-col items-center justify-center'>
+                    <h2 className='buynow-card-title pb-6'>Pagamento</h2>
+                        <div>
+                            <p className='mt-4 buynow-card-text-sm'> 
+                                <span className='font-semibold'>Selecione o metodo para pagamento. </span>
+                                Siga as instruções ao lado para realizar o pagamento.
+                            </p>
+                        </div>
+                </div>
                     <div className='mt-2 mb-12 space-y-4 flex-1' >
                     <label>
                         <input className='mx-2' type="radio" value="Cartão de Crédito" checked={paymentMethod === "Cartão de Crédito"} onChange={(e) => setPaymentMethod(e.target.value)} />
@@ -60,7 +90,7 @@ const PayAndContract = () => {
                         ) : (
                         <button href='#'
                             onClick={handleButtonClick}
-                            className={`mt-8 block rounded-lg  px-6 py-4 text-center text-sm font-semibold leading-4 ${paymentMethod ? 'btn-buynow' : 'btn-disabled'}`}
+                            className={`mt-24 ${paymentMethod ? 'btn-buynow-popular' : 'btn-disabled'}`}
                         >
                             Pagar
                         </button>
@@ -77,6 +107,8 @@ const PayAndContract = () => {
 
 PayAndContract.propTypes = {
     onButtonClick: PropTypes.func.isRequired,
+    selectedPlan: PropTypes.object.isRequired,
+
   };
 
 export default PayAndContract;

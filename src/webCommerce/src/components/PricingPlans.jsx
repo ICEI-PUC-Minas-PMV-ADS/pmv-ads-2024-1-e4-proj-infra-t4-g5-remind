@@ -29,8 +29,7 @@ const PricingPlans = ({onButtonClick}) => {
         > 
           <h3 className='buynow-card-title animate'>{plan.title}</h3>
           {plan.mostPopular && (
-            <p className='absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
-            px-3 py-0.5 text-sm font-semibold tracking-wide text-neutral-200 shadow-md'>
+            <p className='buynow-card-border-popular'>
               Mais Popular
             </p>
           )}
@@ -38,7 +37,7 @@ const PricingPlans = ({onButtonClick}) => {
             {plan.description}
           </p>
           <div className='mt-4 buynow-card-inside-black animate'>
-            <p className='flex items-center text-sm font-semibold text-neutral-200 animate'>
+            <p className='buynow-card-sale animate'>
               <span>{plan.currency}</span>
               <span className='ml-3 text-4xl text-neutral-200 animate'>${plan.price}</span>
               <span>{plan.frequency}</span>

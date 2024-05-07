@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 
 const Register = ({ onButtonClick, selectedPlan }) => {
 
-  //console.log("Plano recebido em Register:", selectedPlan);
-
-
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,7 +14,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
   const handleButtonClick = (event) => {
     event.preventDefault();
     if (userName && email && password && termsAccepted) {
-      onButtonClick();
+      onButtonClick(selectedPlan);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
@@ -31,8 +28,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
           <h3 className='buynow-card-title pb-10'>Produto Selecionado:</h3>
           <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
           {selectedPlan.mostPopular && (
-            <p className='absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
-            px-3 py-0.5 text-sm font-semibold tracking-wide text-neutral-200 shadow-md'>
+            <p className='buynow-card-border-popular'>
               Mais Popular
             </p>
           )}
@@ -40,7 +36,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
             {selectedPlan.description}
           </p>
           <div className='mt-4 buynow-card-inside-black'>
-            <p className='flex items-center text-sm font-semibold text-neutral-200'>
+            <p className='buynow-card-sale'>
               <span>{selectedPlan.currency}</span>
               <span className='ml-3 text-4xl text-neutral-200'>${selectedPlan.price}</span>
               <span>{selectedPlan.frequency}</span>
@@ -57,7 +53,6 @@ const Register = ({ onButtonClick, selectedPlan }) => {
 
         </div>
 
-                              
       <form className='-mx-4 buynow-card-border'>
       <div className='pb-6 flex flex-col items-center justify-center'>
         <h2 className='buynow-card-title pb-6'>Registre o Administrador</h2>
@@ -87,9 +82,9 @@ const Register = ({ onButtonClick, selectedPlan }) => {
           </div>
         </div>
         </div>
-        <div className=" flex-1 flex max-w-7xl -ml-2 -mt-5">
+        <div className="checkbox-container">
           <input type="checkbox" id="terms" name="terms" className='mx-2 -mt-3' required onChange={(e) => setTermsAccepted(e.target.checked)} />
-          <label htmlFor="terms" className="font-semibold text-xs underline text-purple-400">
+          <label htmlFor="terms" className="checkbox-text-link">
                     Li e aceito e concordo com os Termos e Condições 
             </label>
         </div>

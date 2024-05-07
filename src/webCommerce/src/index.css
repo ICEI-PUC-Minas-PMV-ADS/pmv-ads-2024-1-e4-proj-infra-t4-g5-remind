@@ -133,8 +133,16 @@ body {
     @apply relative flex flex-col rounded-2xl  border border-purple-500 bg-zinc  text-neutral-100 p-8 shadow-lg
   }
 
+  .buynow-card-border-popular {
+    @apply absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
+    px-3 py-0.5 text-sm font-semibold tracking-wide text-neutral-200 shadow-md
+  }
   .buynow-card-inside-black {
     @apply -mx-6 rounded-lg bg-black p-6
+  }
+
+  .buynow-card-sale {
+    @apply flex items-center text-sm font-semibold text-neutral-200
   }
 
   .buynow-card-title {
@@ -151,6 +159,14 @@ body {
 
   .buynow-input-text {
     @apply text-black pb-4
+  }
+
+  .checkbox-container {
+    @apply flex-1 flex max-w-7xl -ml-2 -mt-5
+  }
+
+  .checkbox-text-link {
+    @apply font-semibold text-xs underline text-purple-400
   }
 
   .video-carousel_container {
