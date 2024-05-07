@@ -26,7 +26,7 @@ const PayAndContract = ({selectedPlan}) => {
     Component = <PayPall onButtonClick={handleButtonClick}/>
   } else if(paymentMethod === "Pague com Amazon") {
     Component = <Amazon onButtonClick={handleButtonClick} isLoading={isLoading}/>
-  } else if(paymentMethod === "Depósito Bancário") {
+  } else if(paymentMethod === "Débito Automático") {
     Component = <BankTransfer onButtonClick={handleButtonClick}/>
   }
   
@@ -91,8 +91,8 @@ const PayAndContract = ({selectedPlan}) => {
                         <br/>
                     </label>
                     <label>
-                        <input className='mx-2' type="radio" value="Depósito Bancário" checked={paymentMethod === "Depósito Bancário"} onChange={(e) => setPaymentMethod(e.target.value)} />
-                        Depósito Bancário
+                        <input className='mx-2' type="radio" value="Débito Automático" checked={paymentMethod === "Débito Automático"} onChange={(e) => setPaymentMethod(e.target.value)} />
+                        Débito Automático
                         <br/>
                     </label>
                     </div>
