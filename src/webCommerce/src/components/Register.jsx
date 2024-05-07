@@ -25,7 +25,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
     <div className='buynow-cards-container'>
       <div className='buynow-card-grid-3'>
         <div className='buynow-card-border'> 
-          <h3 className='buynow-card-title pb-10'>Produto Selecionado:</h3>
+          <h3 className='buynow-card-title pb-10'>Produto Selecionado</h3>
           <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
           {selectedPlan.mostPopular && (
             <p className='buynow-card-border-popular'>
@@ -96,7 +96,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
         </button>
       </form>
       <div className='buynow-card-border'> 
-          <h3 className='buynow-card-title pb-6'>Mais Informações:</h3>
+          <h3 className='buynow-card-title pb-6'>Mais Informações</h3>
           <div className='buynow-card-inside-black'>
             <ul className='buynow-card-ul'>
               {selectedPlan.moreFeatures.map((feature, index) => (

@@ -1,7 +1,5 @@
 //PayAndContract.jsx
-
 import { useState } from 'react';
-import Loader from './Loader';
 import PropTypes from 'prop-types';
 import CreditCard from '../components/PaymentMethods/CreditCard';
 import Amazon from '../components/PaymentMethods/Amazon';
@@ -27,7 +25,7 @@ const PayAndContract = ({selectedPlan}) => {
   } else if(paymentMethod === "PayPall") {
     Component = <PayPall onButtonClick={handleButtonClick}/>
   } else if(paymentMethod === "Pague com Amazon") {
-    Component = <Amazon onButtonClick={handleButtonClick}/>
+    Component = <Amazon onButtonClick={handleButtonClick} isLoading={isLoading}/>
   } else if(paymentMethod === "Depósito Bancário") {
     Component = <BankTransfer onButtonClick={handleButtonClick}/>
   }
@@ -36,7 +34,7 @@ const PayAndContract = ({selectedPlan}) => {
     <div className='buynow-cards-container'>
       <div className='buynow-card-grid-3'>
         <div className='buynow-card-border'> 
-          <h3 className='buynow-card-title pb-10'>Produto Selecionado:</h3>
+          <h3 className='buynow-card-title pb-10'>Produto Selecionado</h3>
           <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
           {selectedPlan.mostPopular && (
             <p className='buynow-card-border-popular'>
@@ -99,28 +97,28 @@ const PayAndContract = ({selectedPlan}) => {
                     </label>
                     </div>
 
-                    <div >
-                    {isLoading ? (
-                        <Loader />
-                        ) : (
-                        <button href='#'
-                            onClick={handleButtonClick}
-                            className={`absolute bottom-0 -translate-y-1/3 w-5/6 ${paymentMethod ? 'btn-buynow-popular ' : 'btn-disabled'}`}
-                        >
-                            Pagar
-                        </button>
-                        )}
-                    </div>
                 </form>
                 
             </div>
             <div className='buynow-card-border'> 
                 <h3 className='buynow-card-title pb-6'>{paymentMethod}</h3>
-                <div className="relative h-full flex-center">
+                <div className="relative flex-center">
                     
                     {Component}
                     
                 </div>
+                <div >
+                    {/* {isLoading ? (
+                        <Loader />
+                        ) : (
+                        <button href='#'
+                            onClick={handleButtonClick}
+                            className={`absolute bottom-0 -translate-y-1/3 w-5/6 ${paymentMethod ? 'btn-buynow-popular ' : 'btn-disabled text-zinc'}`}
+                        >
+                            Pagar
+                        </button>
+                        )} */}
+                    </div>
                 </div>
         </div>
     </div>
