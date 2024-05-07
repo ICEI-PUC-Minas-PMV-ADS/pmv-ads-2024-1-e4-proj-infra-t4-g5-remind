@@ -8,6 +8,7 @@ function BankTransfer({ onButtonClick, isLoading }) {
   const [bank, setBank] = useState('');
   const [agency, setAgency] = useState('');
   const [account, setAccount] = useState('');
+  // eslint-disable-next-line no-unused-vars
   const [accountType, setAccountType] = useState('corrente');
   const [cpf, setCpf] = useState('');
   const [name, setName] = useState('');
@@ -33,16 +34,16 @@ function BankTransfer({ onButtonClick, isLoading }) {
           </div>
         </div>
         <div className='flex flex-col'>
-          <div className='buynow-input-text'>
+          <div className=''>
             <label htmlFor="bank" className='buynow-card-text-sm'>Banco</label>
-            <select id="bank" name="bank" required onChange={(e) => setBank(e.target.value)} className='w-full'>
+            <select id="bank" name="bank" required onChange={(e) => setBank(e.target.value)} className='text-gray-500 text-sm p-1.5 font-thin w-full'>
               <option value="">Selecione um banco</option>
               {Banks.map((bank, index) => (
                 <option key={index} value={bank}>{bank}</option>
               ))}
             </select>
           </div>
-          <div className='flex'>
+          <div className='flex mt-1.5'>
             <div className='buynow-input-text w-4/5 mr-2'>
               <label htmlFor="account" className='buynow-card-text-sm'>Conta Corrente</label>
               <input type="text" id="account" name="account" required onChange={(e) => setAccount(e.target.value)} className='w-full'/>
