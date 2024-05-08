@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Register = ({ onButtonClick, selectedPlan }) => {
+const Register = ({ onButtonClick, selectedPlan}) => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [userName, setUserName] = useState('');
@@ -14,6 +14,7 @@ const Register = ({ onButtonClick, selectedPlan }) => {
   const handleButtonClick = (event) => {
     event.preventDefault();
     if (userName && email && password && termsAccepted) {
+      console.log("Plano selecionado em Register:", selectedPlan);
       onButtonClick(selectedPlan);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');

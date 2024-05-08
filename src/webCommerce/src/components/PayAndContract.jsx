@@ -1,3 +1,4 @@
+
 //PayAndContract.jsx
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -6,7 +7,7 @@ import Amazon from '../components/PaymentMethods/Amazon';
 import BankTransfer from '../components/PaymentMethods/BankTransfer';
 import PayPall from '../components/PaymentMethods/PayPall';
 
-const PayAndContract = ({selectedPlan}) => {
+const PayAndContract = ({selectedPlan, userName, email, termsAccepted}) => {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,13 +22,13 @@ const PayAndContract = ({selectedPlan}) => {
 
   let Component;
   if(paymentMethod === "Cartão de Crédito") {
-    Component = <CreditCard onButtonClick={handleButtonClick}/>
+    Component = <CreditCard onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
   } else if(paymentMethod === "PayPall") {
-    Component = <PayPall onButtonClick={handleButtonClick}/>
+    Component = <PayPall onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
   } else if(paymentMethod === "Pague com Amazon") {
-    Component = <Amazon onButtonClick={handleButtonClick} isLoading={isLoading}/>
+    Component = <Amazon onButtonClick={handleButtonClick} isLoading={isLoading} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
   } else if(paymentMethod === "Débito Automático") {
-    Component = <BankTransfer onButtonClick={handleButtonClick}/>
+    Component = <BankTransfer onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
   }
   
   return (
@@ -108,16 +109,6 @@ const PayAndContract = ({selectedPlan}) => {
                     
                 </div>
                 <div >
-                    {/* {isLoading ? (
-                        <Loader />
-                        ) : (
-                        <button href='#'
-                            onClick={handleButtonClick}
-                            className={`absolute bottom-0 -translate-y-1/3 w-5/6 ${paymentMethod ? 'btn-buynow-popular ' : 'btn-disabled text-zinc'}`}
-                        >
-                            Pagar
-                        </button>
-                        )} */}
                     </div>
                 </div>
         </div>
@@ -128,7 +119,9 @@ const PayAndContract = ({selectedPlan}) => {
 PayAndContract.propTypes = {
     onButtonClick: PropTypes.func.isRequired,
     selectedPlan: PropTypes.object.isRequired,
-
+    userName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    termsAccepted: PropTypes.bool.isRequired,
   };
 
 export default PayAndContract;

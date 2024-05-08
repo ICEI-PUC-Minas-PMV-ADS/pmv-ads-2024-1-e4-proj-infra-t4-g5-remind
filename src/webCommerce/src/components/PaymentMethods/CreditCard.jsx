@@ -1,3 +1,4 @@
+
 // CreditCard.jsx
 
 import { useState } from 'react';
@@ -10,7 +11,7 @@ import CPFInput from '../PaymentMethods/CreditCard/CPFInput';
 import NameInput from '../PaymentMethods/CreditCard/NameInput';
 import GoodUntil from './CreditCard/GoodUntil';
 
-function CreditCard({ onButtonClick, isLoading }) {
+function CreditCard({ onButtonClick, isLoading, selectedPlan, userName, email, termsAccepted }) {
   const [creditCard, setCreditCard] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [goodUntil, setGoodUntil] = useState('');
@@ -26,7 +27,7 @@ function CreditCard({ onButtonClick, isLoading }) {
   const handleButtonClick = (event) => {
     event.preventDefault();
     if (creditCard && cardNumber && goodUntil && cvs && cpf && name) {
-      onButtonClick();
+      onButtonClick(selectedPlan, userName, email, termsAccepted, cpf, name);
     } else {
       alert('Por favor, preencha todos os campos.');
     }
@@ -64,6 +65,10 @@ function CreditCard({ onButtonClick, isLoading }) {
 CreditCard.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  selectedPlan: PropTypes.object.isRequired,
+  userName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  termsAccepted: PropTypes.bool.isRequired,
 };
 
 export default CreditCard;

@@ -16,7 +16,7 @@ const PricingPlans = ({onButtonClick}) => {
   }, []);
 
   const handleButtonClick = (plan) => {
-    //console.log("Plano selecionado em PricingPlans:", plan);
+    console.log("Plano selecionado em PricingPlans:", plan);
     onButtonClick(plan);
   };
 
