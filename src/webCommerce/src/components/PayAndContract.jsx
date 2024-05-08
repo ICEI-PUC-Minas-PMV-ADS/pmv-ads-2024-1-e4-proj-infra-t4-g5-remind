@@ -62,7 +62,7 @@ const PayAndContract = ({selectedPlan}) => {
 
         </div>
         
-            <div className='relative -mx-4 buynow-card-border'>
+            <div className='relative buynow-card-border'>
                 <form className='flex flex-col rounded-2xl bg-zinc text-neutral-100'>
                 <div className='pb-6 flex flex-col items-center justify-center'>
                     <h2 className='buynow-card-title pb-6'>Pagamento</h2>
@@ -100,7 +100,7 @@ const PayAndContract = ({selectedPlan}) => {
                 </form>
                 
             </div>
-            <div className='buynow-card-border'> 
+            <div className=' -mx-4 buynow-card-border'> 
                 <h3 className='buynow-card-title pb-6'>{paymentMethod}</h3>
                 <div className="relative flex-center">
                     
