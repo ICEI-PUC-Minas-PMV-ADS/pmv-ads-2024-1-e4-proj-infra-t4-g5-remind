@@ -1,5 +1,6 @@
 // utils/inputMasks.js
 
+//BankTransfer
 export const applyCPFFormat = (value) => {
   const onlyNumbers = value.replace(/[^\d]/g, '');
   const maskedCPF = onlyNumbers
@@ -30,3 +31,16 @@ export const applyNameFormat = (value) => {
 export const applyAccountDigitFormat = (value) => {
   return value.slice(0, 2);
 };
+
+
+//CreditCard
+export const applyCreditCardFormat = (value) => {
+  const onlyNumbers = value.replace(/[^\d]/g, '');
+  const formattedCardNumber = onlyNumbers.replace(/(\d{4})(?=\d)/g, '$1 ');
+  return formattedCardNumber;
+};
+
+export const applyCVSFormat = (value) => {
+  return value.slice(0, 3);
+};
+

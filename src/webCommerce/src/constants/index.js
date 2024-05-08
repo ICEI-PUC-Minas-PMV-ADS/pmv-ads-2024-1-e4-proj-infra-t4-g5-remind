@@ -180,6 +180,14 @@ export const footerLinks = [
 ];
 
 
+export const creditCards = [
+  "Amex",
+  "Cielo",
+  "MasterCard",
+  "Visa",
+];
+
+
 // Lista exaustiva de bancos para débito direto
 
 export const Banks = [
