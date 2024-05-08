@@ -5,12 +5,12 @@ import { applyCreditCardFormat } from '../../../utils/inputMasks';
 
 function CardNumberInput({ value, onChange }) {
   const handleChange = (event) => {
-    const formattedValue = applyCreditCardFormat(event.target.value);
-    onChange(formattedValue);
+    const { formattedCardNumber, cardBrand } = applyCreditCardFormat(event.target.value);
+    onChange(formattedCardNumber, cardBrand);
   };
 
   return (
-    <div className='buynow-input-text mr-2'>
+    <div className='buynow-input-text'>
       <label htmlFor="cardNumber" className='buynow-card-text-sm'>Número do Cartão</label>
       <input 
         type="text" 

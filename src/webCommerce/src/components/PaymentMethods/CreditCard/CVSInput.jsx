@@ -11,8 +11,8 @@ function CVSInput({ value, onChange }) {
   };
 
   return (
-    <div className='buynow-input-text w-4/12 mr-2'>
-      <label htmlFor="cvs" className='buynow-card-text-xs'>CVS</label>
+    <div className='buynow-input-text w-2/12 mr-2'>
+      <label htmlFor="cvs" className='buynow-card-text-sm'>CVS</label>
       <input 
         type="text" 
         id="cvs" 
@@ -21,7 +21,7 @@ function CVSInput({ value, onChange }) {
         value={value} 
         onChange={handleChange} 
         maxLength="3"
-        className='w-full'
+        className='w-full text-gray-500 font-thin text-center'
       />
     </div>
   );

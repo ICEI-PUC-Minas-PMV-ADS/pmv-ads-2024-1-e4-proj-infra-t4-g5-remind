@@ -1,4 +1,5 @@
 // utils/inputMasks.js
+import { creditCardBrands } from '../constants/index';
 
 //BankTransfer
 export const applyCPFFormat = (value) => {
@@ -34,10 +35,20 @@ export const applyAccountDigitFormat = (value) => {
 
 
 //CreditCard
+
 export const applyCreditCardFormat = (value) => {
   const onlyNumbers = value.replace(/[^\d]/g, '');
   const formattedCardNumber = onlyNumbers.replace(/(\d{4})(?=\d)/g, '$1 ');
-  return formattedCardNumber;
+
+  let cardBrand = '';
+  for (const brand in creditCardBrands) {
+    if (creditCardBrands[brand].startingDigits.some(digit => onlyNumbers.startsWith(digit))) {
+      cardBrand = brand;
+      break;
+    }
+  }
+
+  return { formattedCardNumber, cardBrand };
 };
 
 export const applyCVSFormat = (value) => {

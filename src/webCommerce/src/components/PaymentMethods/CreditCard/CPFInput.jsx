@@ -11,7 +11,7 @@ function CPFInput({ value, onChange }) {
   };
 
   return (
-    <div className='buynow-input-text'>
+    <div className='buynow-input-text w-/12'>
       <label htmlFor="cpf" className='buynow-card-text-sm'>CPF</label>
       <input 
         type="text" 
@@ -21,7 +21,7 @@ function CPFInput({ value, onChange }) {
         value={value}
         onChange={handleCPFInputChange} 
         maxLength="14"
-        className='w-full placeholder-gray-500 text-sm p-1 font-thin'
+        className='w-full text-gray-500 font-thin text-center'
       />
     </div>
   );

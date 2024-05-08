@@ -1,32 +1,24 @@
 // CreditCardField.jsx
 
 import PropTypes from 'prop-types';
-import { creditCards } from '../../../constants/index';
 
-function CreditCardField({ value, onChange }) {
+function CreditCardField({ value }) {
   return (
     <div>
-      <label htmlFor="creditCard" className='buynow-card-text-sm'>Cartão de Crédito</label>
-      <select 
+      <input 
+        type="text" 
         id="creditCard" 
         name="creditCard" 
-        required 
         value={value} 
-        onChange={onChange} 
-        className='text-gray-500 text-sm p-1.5 font-thin w-full'
-      >
-        <option value="">Selecione um cartão</option>
-        {creditCards.map((card, index) => (
-          <option key={index} value={card}>{card}</option>
-        ))}
-      </select>
+        readOnly 
+        className='text-slate-300 text-3xl border-transparent px-4 pb-8 bg-transparent font-semibold italic text-center w-full'
+      />
     </div>
   );
 }
 
 CreditCardField.propTypes = {
   value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
 
 export default CreditCardField;

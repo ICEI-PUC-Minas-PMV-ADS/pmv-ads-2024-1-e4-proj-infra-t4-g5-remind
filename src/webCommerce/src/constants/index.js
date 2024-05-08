@@ -181,12 +181,65 @@ export const footerLinks = [
 
 
 export const creditCards = [
-  "Amex",
-  "Cielo",
-  "MasterCard",
-  "Visa",
+    "Visa",
+    "Mastercard",
+    "American Express",
+    "Discover",
+    "Maestro",
+    "Eurocard",
+    "Carte Bleue",
+    "Bancontact",
+    "Interac",
+    "RuPay",
+    "Sberbank",
 ];
 
+export const creditCardBrands = {
+  "Visa": {
+    "startingDigits": ["4"],
+    "exampleNumber": "4xxxxxxxxxxxxxxx"
+  },
+  "Mastercard": {
+    "startingDigits": ["5"],
+    "exampleNumber": "5xxxxxxxxxxxxxxx"
+  },
+  "American Express": {
+    "startingDigits": ["34", "37"],
+    "exampleNumber": "34xxxxxxxxxxxxx ou 37xxxxxxxxxxxx"
+  },
+  "Discover": {
+    "startingDigits": ["6011", "622126-622925", "644-649", "65"],
+    "exampleNumber": "6011xxxxxxxxxxxx, 622126xxxxxxxxxxxx, 644xxxxxxxxxxxx ou 65xxxxxxxxxxxx"
+  },
+  "Maestro": {
+    "startingDigits": ["50", "56-69", "5"],
+    "exampleNumber": "50xxxxxxxxxxxxx, 56xxxxxxxxxxxxx ou 5xxxxxxxxxxxxxx"
+  },
+  "Eurocard": {
+    "startingDigits": ["4"],
+    "exampleNumber": "4xxxxxxxxxxxxxxx"
+  },
+  "Carte Bleue": {
+    "startingDigits": ["3"],
+    "exampleNumber": "3xxxxxxxxxxxxxxx"
+  },
+  "Bancontact": {
+    "startingDigits": ["6703", "6708", "6304", "6709", "58"],
+    "exampleNumber": "6703xxxxxxxxxxxx, 6708xxxxxxxxxxxx, 6304xxxxxxxxxxxx ou 6709xxxxxxxxxxxx"
+  },
+  "Interac": {
+    "startingDigits": ["6"],
+    "exampleNumber": "6xxxxxxxxxxxxxxx"
+  },
+  "RuPay": {
+    "startingDigits": ["60", "6521-6522", "6522"],
+    "exampleNumber": "60xxxxxxxxxxxxxx, 6521xxxxxxxxxxxx ou 6522xxxxxxxxxxxx"
+  },
+  "Sberbank": {
+    "startingDigits": ["4276", "4890", "6763"],
+    "exampleNumber": "4276xxxxxxxxxxxx, 4890xxxxxxxxxxxx ou 6763xxxxxxxxxxxx"
+  }
+};
 
 // Lista exaustiva de bancos para débito direto
 
