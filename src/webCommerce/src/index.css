@@ -157,6 +157,10 @@ body {
     @apply text-sm leading-6 text-neutral-200
   }
 
+  .buynow-card-text-xs {
+    @apply text-xs leading-6 text-neutral-200
+  }
+
   .buynow-input-text {
     @apply text-black pb-4
   }
