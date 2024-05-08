@@ -1,20 +1,12 @@
 // AccountInput.jsx
 
 import PropTypes from 'prop-types';
+import { applyAccountFormat } from '../../../utils/inputMasks';
 
 function AccountInput({ value, onChange }) {
   const handleChange = (event) => {
-    const { value } = event.target;
-    const formattedValue = applyAccountFormat(value);
+    const formattedValue = applyAccountFormat(event.target.value);
     onChange(formattedValue);
-  };
-
-  const applyAccountFormat = (value) => {
-    // Remove todos os caracteres não numéricos
-    const onlyNumbers = value.replace(/[^\d]/g, '');
-    // Adiciona ponto a cada 3 dígitos
-    const formattedValue = onlyNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    return formattedValue;
   };
 
   return (

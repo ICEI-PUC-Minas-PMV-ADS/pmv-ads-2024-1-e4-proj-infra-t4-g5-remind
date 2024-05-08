@@ -1,14 +1,13 @@
 // AccountDigitInput.jsx
 
 import PropTypes from 'prop-types';
+import { applyAccountDigitFormat } from '../../../utils/inputMasks';
 
 function AccountDigitInput({ value, onChange }) {
 
   const handleChange = (event) => {
-    const { value } = event.target;
-
-    const limitedValue = value.slice(0, 2);
-    onChange(limitedValue);
+    const formattedValue = applyAccountDigitFormat(event.target.value);
+    onChange(formattedValue);
   };
 
   return (

@@ -1,21 +1,13 @@
 // CPFInput.jsx
 
 import PropTypes from 'prop-types';
+import { applyCPFFormat } from '../../../utils/inputMasks';
 
 function CPFInput({ value, onChange }) {
 
   const handleCPFInputChange = (event) => {
-    
-    const { value: inputValue } = event.target;
-
-    const onlyNumbers = inputValue.replace(/[^\d]/g, '');
-
-    const maskedCPF = onlyNumbers
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d)/, '$1.$2')
-      .replace(/(\d{3})(\d{2})$/, '$1-$2');
-
-    onChange(maskedCPF);
+    const formattedValue = applyCPFFormat(event.target.value);
+    onChange(formattedValue);
   };
 
   return (

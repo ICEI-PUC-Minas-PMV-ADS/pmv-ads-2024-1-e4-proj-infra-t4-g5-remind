@@ -1,18 +1,12 @@
 // NameInput.jsx
 
 import PropTypes from 'prop-types';
+import { applyNameFormat } from '../../../utils/inputMasks';
 
 function NameInput({ value, onChange }) {
   const handleNameInputChange = (event) => {
-    let { value: inputValue } = event.target;
-    // Remove números e caracteres especiais
-    inputValue = inputValue.replace(/[^a-zA-Z\s]/g, '');
-    // Garante que a primeira letra de cada palavra seja maiúscula
-    inputValue = inputValue.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
-    // Garante que preposições como 'da', 'das', 'de', 'des', 'di', 'do', 'dos', 'du' fiquem em minúsculas
-    inputValue = inputValue.replace(/\b(da|das|de|des|di|do|dos|du)\b/gi, preposition => preposition.toLowerCase());
-    // Atualiza o estado do nome
-    onChange(inputValue);
+    const formattedValue = applyNameFormat(event.target.value);
+    onChange(formattedValue);
   };
 
   return (
