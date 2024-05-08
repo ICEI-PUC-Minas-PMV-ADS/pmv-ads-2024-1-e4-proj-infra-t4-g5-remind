@@ -8,11 +8,15 @@ export const applyCPFFormat = (value) => {
     return maskedCPF;
   };
   
-  export const applyAccountFormat = (value) => {
-    const onlyNumbers = value.replace(/[^\d]/g, '');
-    const formattedAccount = onlyNumbers.replace(/(\d{1,3})(?=(\d{3})+(?!\d))/g, '$1.');
-    return formattedAccount;
-  };
+  // inputMasks.js
+export const applyAccountFormat = (value) => {
+  // Remove todos os caracteres não numéricos
+  const onlyNumbers = value.replace(/[^\d]/g, '');
+  // Aplicar a máscara de milhares
+  const formattedAccount = onlyNumbers.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  return formattedAccount;
+};
+
   
   export const applyAgencyFormat = (value) => {
     const paddedValue = value.padStart(4, '0').slice(0, 4);

@@ -39,12 +39,12 @@ function BankTransfer({ onButtonClick, isLoading }) {
         </div>
         <BankField value={bank} onChange={(e) => setBank(e.target.value)} />
         <div className='flex mt-1.5'>
-          <AccountInput value={account} onChange={(e) => setAccount(e.target.value)} />
-          <AccountDigitInput value={accountDigit} onChange={(e) => setAccountDigit(e.target.value)} />
-          <AgencyInput value={agency} onChange={(e) => setAgency(e.target.value)} />
+          <AccountInput value={account} onChange={setAccount} />
+          <AccountDigitInput value={accountDigit} onChange={setAccountDigit} />
+          <AgencyInput value={agency} onChange={setAgency} />
         </div>
-        <CPFInput value={cpf} onChange={(e) => setCpf(e.target.value)} />
-        <NameInput value={name} onChange={(e) => setName(e.target.value)} />
+        <CPFInput value={cpf} onChange={setCpf} />
+        <NameInput value={name} onChange={setName} />
         <TermsCheckbox checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
       </form>
       <div className="flex justify-center mt-8">

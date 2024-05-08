@@ -3,6 +3,14 @@
 import PropTypes from 'prop-types';
 
 function AccountDigitInput({ value, onChange }) {
+
+  const handleChange = (event) => {
+    const { value } = event.target;
+
+    const limitedValue = value.slice(0, 2);
+    onChange(limitedValue);
+  };
+
   return (
     <div className='buynow-input-text w-2/12 mr-2'>
       <label htmlFor="accountDigit" className='buynow-card-text-xs'>Dígito</label>
@@ -12,7 +20,7 @@ function AccountDigitInput({ value, onChange }) {
         name="accountDigit" 
         required 
         value={value} 
-        onChange={onChange} 
+        onChange={handleChange} 
         maxLength="2"
         className='w-full'
       />
