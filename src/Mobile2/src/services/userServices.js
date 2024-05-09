@@ -23,10 +23,10 @@ export const login = async (values) => {
 export const getUser = async (userId) => {
   try {
     const userInfo = await axios.get(
-      `${import.meta.env.API_URL}/users/get/${userId}`,
+      `${import.meta.env.VITE_API_URL}/users/get/${userId}`,
       {
         headers: {
-          Authorization: `Bearer ${import.meta.env.ADMIN_TOKEN}`,
+          Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
         },
       },
     );

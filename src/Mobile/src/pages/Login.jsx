@@ -1,42 +1,88 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Button, } from 'react-native';
+import Input from '../components/Input';
+import Title from '../components/Title';
+import Logo from '../assets/images/logo.png';
 import { login } from '../services/userServices';
+import { useNavigation } from '@react-navigation/native';
 import useUser from '../context/UserContextHook';
 
-export default function Lrogin({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+export default function Login() {
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const { setSigned } = useUser();
+  const navigation = useNavigation();
 
-  async function handleSubmit() {
+  async function handleSubmit(email, password) {
+    const values = { email, password };
+    const errors = {};
+
+    setLoading(true);
+
+    if (!values.email && !values.password) {
+      errors.general = 'Preencha todos os campos.';
+    } else if (values.email.length < 3) {
+      errors.email = 'O email deve ter no mínimo 3 caracteres.';
+    } else if (
+      !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(values.email)
+    ) {
+      errors.email = 'O email deve ser válido.';
+    } else if (values.password.length < 4) {
+      errors.password = 'A senha deve ter no mínimo 4 caracteres.';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setError(errors);
+      setLoading(false);
+      return;
+    }
+
     try {
-      await login({ email, password });
+      await login(values);
+
+      setLoading(false);
       setSigned(true);
       navigation.navigate('Home');
+      return;
     } catch (err) {
-      setError('Usuário ou senha inválidos.');
+      if (err?.response.status == 404) {
+        errors.general = 'Usuário ou senha inválidos.';
+        setError(errors);
+        setLoading(false);
+        return;
+      } else if (err?.response.status == 400) {
+        errors.general = 'Usuário não encontrado.';
+        setError(errors);
+        setLoading(false);
+        return;
+      } else {
+        errors.general = 'Algo deu errado, tente novamente.';
+        setError(errors);
+        setLoading(false);
+        return;
+      }
     }
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      {error && <Text style={styles.error}>{error}</Text>}
-      <TextInput
+      <Title>Login</Title>
+      <Input
         style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
+        placeholder="Usuário"
+        onChangeText={(text) => setEmail(text)}
       />
-      <TextInput
+      <Input
         style={styles.input}
         placeholder="Senha"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
+        secureTextEntry={true}
+        onChangeText={(text) => setPassword(text)}
       />
-      <Button title="Entrar" onPress={handleSubmit} />
+      <Button
+        title="Continuar"
+        onPress={handleSubmit}
+        disabled={loading}
+      />
     </View>
   );
 }
@@ -45,22 +91,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    alignItems: 'center',
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
   },
   input: {
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
+    width: '80%',
     marginBottom: 10,
     padding: 10,
   },
-  error: {
-    color: 'red',
-    marginBottom: 10,
-  },
-});
+});r
