@@ -34,7 +34,10 @@ export default function Card({ note, setModalOpen, setSelectedNote }) {
           {note.userInfo.nome || 'Nome'}
         </h1>
       </div>
-      <h1 className="text-lg font-semibold sm:text-2xl text-subtleBlack">
+      <h1
+        className="text-lg font-semibold sm:text-2xl text-subtleBlack"
+        id="card-titulo"
+      >
         {note.titulo || 'Título'}
       </h1>
 
@@ -51,6 +54,7 @@ export default function Card({ note, setModalOpen, setSelectedNote }) {
         }) || 'dd.mm.yyyy'}
       </p>
       <button
+        id="card-ver-mais"
         className="text-sm w-fit text-textLink hover:underline underline-offset-2"
         onClick={() => {
           setSelectedNote(note);
