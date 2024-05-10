@@ -1,13 +1,13 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Importe suas telas
-import Login from '../pages/Login';
+import Login from '../pages/Login'
 
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
-export default function AppStack() {
+export default function Router() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} />
