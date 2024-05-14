@@ -73,6 +73,7 @@ export default function ModalNote({ open, setOpen, note }) {
 
             <div className="flex justify-center">
               <button
+                id="btnConcluirTarefa"
                 className="h-12 font-semibold bg-white border shadow-sm w-36 text-btnBlue border-btnBlue hover:scale-105 hover:rounded-md lg:w-50"
                 onClick={() => handleCompleteTask()}
               >

@@ -12,6 +12,7 @@ export default function SideBarItem({ Icon, text, open, href, ...rest }) {
           text={text}
           open={open}
           active={pathname == href}
+          className={!open ? '!pl-4' : ''}
         />
       </Link>
     </li>

@@ -86,6 +86,7 @@ export default function Home() {
             <div>Pesquisar</div>
 
             <button
+              id="home-criar-tarefa"
               className="h-12 font-semibold bg-white border shadow-sm w-36 text-btnBlue border-btnBlue hover:scale-105 hover:rounded-md lg:w-50"
               onClick={() => setModalCreateOpen((prev) => !prev)}
             >

@@ -218,6 +218,7 @@ export default function CreateNote({ open, setOpen }) {
             {error.general}
           </h1>
           <button
+            id="create-task-criar-tarefa"
             form="create-form"
             className="h-12 font-semibold bg-white border shadow-sm w-36 text-btnBlue border-btnBlue hover:scale-105 hover:rounded-md lg:w-50"
           >

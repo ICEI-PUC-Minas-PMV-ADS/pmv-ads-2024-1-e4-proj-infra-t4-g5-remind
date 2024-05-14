@@ -261,3 +261,42 @@ it('should delete the note with the specified ID', async () => {
 
 ## Resultado Total Tarefas:
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/13721147/cde97729-cee1-4146-b775-e0ad0ce4b669)
+
+
+
+
+# Casos de Teste de Integração
+
+## Caso de teste 01 - Login de usuario sucesso
+
+  it('Deve fazer login com sucesso', () => {
+    // Visite a página de login
+    cy.visit('localhost:5173/');
+
+    // Insira o e-mail e senha nos campos de login
+    cy.get('input[name="email"]').type('alvaro2@gmail.com');
+    cy.get('input[name="password"]').type('1234');
+    cy.get('#btn-login').click();
+  })
+
+![Captura de tela 2024-05-10 124404](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/69819769/43d8261b-0e70-480b-a3e8-8bfd0df4335d)
+
+## Caso de teste 02 - Login de usuario sem sucesso
+
+  it('Não deve fazer login com sucesso', () => {
+    // Visite a página de login
+    cy.visit('localhost:5173/');
+
+    // Insira o e-mail e senha nos campos de login
+    cy.get('input[name="email"]').type('alvaro2@gmail');
+    cy.get('input[name="password"]').type('1234');
+    cy.get('#btn-login').click();
+  })
+
+![Captura de tela 2024-05-10 124644](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind/assets/69819769/32e2f03f-298b-4d59-b558-62fd2127f9d0)
+
+
+
+
+
+

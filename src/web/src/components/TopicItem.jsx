@@ -8,8 +8,8 @@ export default function TopicItem({
 }) {
   return (
     <button
-      {...rest}
-      className={`flex items-center gap-2 cursor-pointer group relative`}
+      className={`flex items-center gap-2 cursor-pointer group relative ${rest.className}`}
+      id={`topic-item-${text.toLowerCase()}`}
       onClick={() => onClick && onClick()}
     >
       {active ? (
