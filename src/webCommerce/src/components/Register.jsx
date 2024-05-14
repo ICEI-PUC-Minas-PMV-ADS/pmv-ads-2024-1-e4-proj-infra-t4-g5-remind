@@ -1,25 +1,22 @@
+
+
 //Register.jsx
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { PurchaseContext } from '../context/PurchaseContext';
 import PropTypes from 'prop-types';
 
-const Register = ({ onButtonClick, selectedPlan}) => {
+const Register = ({ selectedPlan}) => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [termsAccepted, setTermsAccepted] = useState(false);
+
+  const { purchaseData, setPurchaseData } = useContext(PurchaseContext);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (userName && email && password && termsAccepted) {
+    if (purchaseData.userName && purchaseData.email && purchaseData.password && purchaseData.termsAccepted) {
       console.log("Plano selecionado em Register:", selectedPlan);
-      console.log('Nome do usuário:', userName);
-      console.log('Email:', email);
-      console.log('Password', password );
-      console.log('Termos aceitos', termsAccepted);
-      onButtonClick(selectedPlan, userName, email, password, termsAccepted);
+      console.log(purchaseData);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
@@ -71,24 +68,29 @@ const Register = ({ onButtonClick, selectedPlan}) => {
       <div>
         <div className='buynow-input-text'>
           <label htmlFor="userName" className='buynow-card-text-sm'>Nome</label>
-          <input className='w-full' type="text" id="Name" name="Name" required onChange={(e) => setUserName(e.target.value)} />
+          <input className='w-full' type="text" id="Name" name="Name" required 
+          onChange={(e) => setPurchaseData({ ...purchaseData, userName: e.target.value })} />
         </div>
         <div className='buynow-input-text'>
           <label htmlFor="email" className='buynow-card-text-sm'>E-mail</label>
-          <input className='w-full' type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)} />
+          <input className='w-full' type="email" id="email" name="email" required 
+          onChange={(e) => setPurchaseData({ ...purchaseData, email: e.target.value })} />
         </div>
         <div className='buynow-input-text'>
           <label htmlFor="password" className='buynow-card-text-sm'>Senha</label>
-          <input className='w-full' type={showPassword ? "text" : "password"} id="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
+          <input className='w-full' type={showPassword ? "text" : "password"} id="password" name="password" required 
+          onChange={(e) => setPurchaseData({ ...purchaseData, password: e.target.value })} />
           <div className="flex justify-end mt-2">
-          <button className='flex justify-end text-xs text-purple-400 pb-4' type="button" onClick={() => setShowPassword(!showPassword)}>
+          <button className='flex justify-end text-xs text-purple-400 pb-4' type="button" 
+          onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? 'Esconder' : 'Mostrar'}
           </button>
           </div>
         </div>
         </div>
         <div className="checkbox-container">
-          <input type="checkbox" id="terms" name="terms" className='mx-2 -mt-3' required onChange={(e) => setTermsAccepted(e.target.checked)} />
+          <input type="checkbox" id="terms" name="terms" className='mx-2 -mt-3' required 
+          onChange={(e) => setPurchaseData({ ...purchaseData, termsAccepted: e.target.checked })} />
           <label htmlFor="terms" className="checkbox-text-link">
                     Li e aceito e concordo com os Termos e Condições 
             </label>
@@ -118,7 +120,6 @@ const Register = ({ onButtonClick, selectedPlan}) => {
 };
 
 Register.propTypes = {
-    onButtonClick: PropTypes.func.isRequired,
     selectedPlan: PropTypes.object.isRequired,
   };
 

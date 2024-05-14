@@ -1,24 +1,27 @@
 
 //PayPall.jsx
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { PurchaseContext } from '../context/PurchaseContext'; //
 import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
 
-function PayPall({ onButtonClick, selectedPlan, userName, email}) {
+
+function PayPall({ onButtonClick, selectedPlan }) {
 
   const [showPassword, setShowPassword] = useState(false);
   const [payPallEmail, setPayPallEmail] = useState('');
   const [payPallPassword, setPayPallPassword] = useState('');
   const [payPallTermsAccepted, setPayPallTermsAccepted] = useState(false);
   const [payPallPaymentInfo , setPayPallPaymentInfo ] = useState(null);
+  const { purchaseData } = useContext(PurchaseContext);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
     if (payPallEmail && payPallPassword && payPallTermsAccepted) {
       setPayPallPaymentInfo ({
         selectedPlan,
-        userName,
-        email,
+        userName: purchaseData.userName,
+        email: purchaseData.email,
         paymentMethod: "PayPall",
         payPallEmail,
         payPallPassword,
@@ -89,11 +92,11 @@ function PayPall({ onButtonClick, selectedPlan, userName, email}) {
 PayPall.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
   selectedPlan: PropTypes.object.isRequired,
-  userName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  payPallEmail: PropTypes.string.isRequired,
+  /* userName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired, */
+  /* payPallEmail: PropTypes.string.isRequired,
   payPallPassword: PropTypes.string.isRequired,
-  payPallTermsAccepted: PropTypes.bool.isRequired
+  payPallTermsAccepted: PropTypes.bool.isRequired */
 };
 
 export default PayPall

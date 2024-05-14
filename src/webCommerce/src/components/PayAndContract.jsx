@@ -1,6 +1,7 @@
 
 //PayAndContract.jsx
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { PurchaseContext } from '../context/PurchaseContext';
 import PropTypes from 'prop-types';
 import CreditCard from '../components/PaymentMethods/CreditCard';
 import Amazon from '../components/PaymentMethods/Amazon';
@@ -8,17 +9,8 @@ import BankTransfer from '../components/PaymentMethods/BankTransfer';
 import PayPall from '../components/PaymentMethods/PayPall';
 
 
-const PayAndContract = ({
-      selectedPlan, 
-      userName, 
-      email, 
-      termsAccepted, 
-      paymentInfo, 
-      payPallEmail, 
-      payPallPassword, 
-      payPallTermsAccepted, 
-      payPallPaymentInfo
-    }) => {
+const PayAndContract = () => {
+  const { purchaseData } = useContext(PurchaseContext);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoading] = useState(false);
 
@@ -27,40 +19,40 @@ const PayAndContract = ({
     
     switch (paymentMethod) {
       case "Cartão de Crédito":
-        console.log('Plano selecionado:', selectedPlan);
-        console.log('Nome do usuário:', userName);
-        console.log('Email:', email);
-        console.log('Termos aceitos', termsAccepted);
+        console.log('Plano selecionado:', purchaseData.selectedPlan);
+        console.log('Nome do usuário:', purchaseData.userName);
+        console.log('Email:', purchaseData.email);
+        console.log('Termos aceitos', purchaseData.termsAccepted);
         break;
         
       case "PayPall":
-        console.log('Plano selecionado:', selectedPlan);
-        console.log('Nome do usuário:', userName);
-        console.log('Email:', email);
-        console.log('Termos aceitos', termsAccepted);
-        console.log('PayPall email:', payPallEmail );
-        console.log('PayPall password:', payPallPassword );
-        console.log('PayPall terms:', payPallTermsAccepted );
+        console.log('Plano selecionado:', purchaseData.selectedPlan);
+        console.log('Nome do usuário:', purchaseData.userName);
+        console.log('Email:', purchaseData.email);
+        console.log('Termos aceitos', purchaseData.termsAccepted);
+        console.log('PayPall email:', purchaseData.payPallEmail );
+        console.log('PayPall password:', purchaseData.payPallPassword );
+        console.log('PayPall terms:', purchaseData.payPallTermsAccepted );
         break;
         
       case "Pague com Amazon":
-        console.log('Plano selecionado:', selectedPlan);
-        console.log('Nome do usuário:', userName);
-        console.log('Email:', email);
-        console.log('Termos aceitos', termsAccepted);
+        console.log('Plano selecionado:', purchaseData.selectedPlan);
+        console.log('Nome do usuário:', purchaseData.userName);
+        console.log('Email:', purchaseData.email);
+        console.log('Termos aceitos', purchaseData.termsAccepted);
         break;
         
       case "Débito Automático":
-        console.log('Plano selecionado:', selectedPlan);
-        console.log('Nome do usuário:', userName);
-        console.log('Email:', email);
-        console.log('Termos aceitos', termsAccepted);
-        console.log('Banco:', paymentInfo.bank);
-        console.log('Conta:', paymentInfo.account);
-        console.log('Dígito da conta:', paymentInfo.accountDigit);
-        console.log('Agência:', paymentInfo.agency);
-        console.log('CPF:', paymentInfo.cpf);
-        console.log('Nome:', paymentInfo.name);
+        console.log('Plano selecionado:', purchaseData.selectedPlan);
+        console.log('Nome do usuário:', purchaseData.userName);
+        console.log('Email:', purchaseData.email);
+        console.log('Termos aceitos', purchaseData.termsAccepted);
+        console.log('Banco:', purchaseData.paymentInfo.bank);
+        console.log('Conta:', purchaseData.paymentInfo.account);
+        console.log('Dígito da conta:', purchaseData.paymentInfo.accountDigit);
+        console.log('Agência:', purchaseData.paymentInfo.agency);
+        console.log('CPF:', purchaseData.paymentInfo.cpf);
+        console.log('Nome:', purchaseData.paymentInfo.name);
         break;
         
       default:
@@ -73,38 +65,38 @@ const PayAndContract = ({
   if(paymentMethod === "Cartão de Crédito") {
     Component = <CreditCard 
                   onButtonClick={handleButtonClick} 
-                  selectedPlan={selectedPlan} 
-                  userName={userName} 
-                  email={email} 
-                  termsAccepted={termsAccepted} 
+                  selectedPlan={purchaseData.selectedPlan} 
+                  userName={purchaseData.userName} 
+                  email={purchaseData.email} 
+                  termsAccepted={purchaseData.termsAccepted} 
                   />
   } else if(paymentMethod === "PayPall") {
     Component = <PayPall 
                   onButtonClick={handleButtonClick} 
-                  selectedPlan={selectedPlan} 
-                  userName={userName} 
-                  email={email} 
-                  termsAccepted={termsAccepted} 
-                  {...payPallPaymentInfo}
+                  selectedPlan={purchaseData.selectedPlan} 
+                  userName={purchaseData.userName} 
+                  email={purchaseData.email} 
+                  termsAccepted={purchaseData.termsAccepted} 
+                  /* {...payPallPaymentInfo} */
                   />
   } else if(paymentMethod === "Pague com Amazon") {
     Component = <Amazon 
                   onButtonClick={handleButtonClick} 
                   isLoading={isLoading} 
-                  selectedPlan={selectedPlan} 
-                  userName={userName} 
-                  email={email} 
-                  termsAccepted={termsAccepted} 
+                  selectedPlan={purchaseData.selectedPlan} 
+                  userName={purchaseData.userName} 
+                  email={purchaseData.email} 
+                  termsAccepted={purchaseData.termsAccepted} 
                   />
   } else if(paymentMethod === "Débito Automático") {
     Component = <BankTransfer 
                   isLoading={isLoading}
                   onButtonClick={handleButtonClick} 
-                  selectedPlan={selectedPlan} 
-                  userName={userName} 
-                  email={email} 
-                  termsAccepted={termsAccepted} 
-                  {...paymentInfo}
+                  selectedPlan={purchaseData.selectedPlan} 
+                  userName={purchaseData.userName} 
+                  email={purchaseData.email} 
+                  termsAccepted={purchaseData.termsAccepted} 
+                  /* {...paymentInfo} */
                   />
   }
   
@@ -113,25 +105,25 @@ const PayAndContract = ({
       <div className='buynow-card-grid-3'>
         <div className='buynow-card-border'> 
           <h3 className='buynow-card-title pb-10'>Produto Selecionado</h3>
-          <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
-          {selectedPlan.mostPopular && (
+          <h3 className='buynow-card-title'>{purchaseData.selectedPlan.title}</h3>
+          {purchaseData.selectedPlan.mostPopular && (
             <p className='buynow-card-border-popular'>
               Mais Popular
             </p>
           )}
           <p className='mt-4 buynow-card-text-sm'> 
-            {selectedPlan.description}
+            {purchaseData.selectedPlan.description}
           </p>
           <div className='mt-4 buynow-card-inside-black'>
             <p className='buynow-card-sale'>
-              <span>{selectedPlan.currency}</span>
-              <span className='ml-3 text-4xl text-neutral-200'>${selectedPlan.price}</span>
-              <span>{selectedPlan.frequency}</span>
+              <span>{purchaseData.selectedPlan.currency}</span>
+              <span className='ml-3 text-4xl text-neutral-200'>${purchaseData.selectedPlan.price}</span>
+              <span>{purchaseData.selectedPlan.frequency}</span>
             </p>
           </div>
 
           <ul className='buynow-card-ul mt-6'>
-            {selectedPlan.features.map((feature, index) => (
+            {purchaseData.selectedPlan.features.map((feature, index) => (
               <li key={index} className='buynow-card-text-sm'>
                 * {feature}
               </li>
@@ -185,8 +177,8 @@ const PayAndContract = ({
 
                 </form>
                 <div  className='text-white text-xs'>
-                  <p className='text-white text-xs'>Nome do Usuário: {userName}</p>
-                  <p className='text-white text-xs'>Email do Usuário: {email}</p>
+                  <p className='text-white text-xs'>Nome do Usuário: {purchaseData.userName}</p>
+                  <p className='text-white text-xs'>Email do Usuário: {purchaseData.email}</p>
                 </div>
             </div>
             <div className=' -mx-4 buynow-card-border'> 
