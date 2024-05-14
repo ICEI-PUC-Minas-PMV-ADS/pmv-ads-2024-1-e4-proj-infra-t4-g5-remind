@@ -7,9 +7,12 @@ export default defineConfig({
   plugins: [react(), sentryVitePlugin({
     org: "reinisart",
     project: "javascript-react"
+  }), sentryVitePlugin({
+    org: "reinisart",
+    project: "javascript-react"
   })],
 
   build: {
-    sourcemap: true
+    sourcemap: false
   }
 })

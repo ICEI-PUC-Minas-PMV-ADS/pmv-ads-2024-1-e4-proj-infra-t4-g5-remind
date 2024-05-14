@@ -15,7 +15,11 @@ const Register = ({ onButtonClick, selectedPlan}) => {
     event.preventDefault();
     if (userName && email && password && termsAccepted) {
       console.log("Plano selecionado em Register:", selectedPlan);
-      onButtonClick(selectedPlan);
+      console.log('Nome do usuário:', userName);
+      console.log('Email:', email);
+      console.log('Password', password );
+      console.log('Termos aceitos', termsAccepted);
+      onButtonClick(selectedPlan, userName, email, password, termsAccepted);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }

@@ -4,10 +4,15 @@ import { animateWithGsap } from '../utils/animations';
 import PricingPlans from '../components/PricingPlans';
 import Register from '../components/Register';
 import PayAndContract from '../components/PayAndContract';
+import PaymentInvoice from '../components/PaymentInvoices/PaymentInvoice';
 
 const BuyNow = () => {
   const [step, setStep] = useState('pricing');
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [userName] = useState('');
+  const [email] = useState('');
+  const [password] = useState('');
+  const [termsAccepted] = useState(false);
 
   useGSAP(() => {
     animateWithGsap('.g_fadeIn', {
@@ -25,6 +30,8 @@ const BuyNow = () => {
       setStep('register');
     } else if (step === 'register') {
       setStep('pay');
+    } else if (step === 'invoice') {
+      setStep('invoice');
     }
   };
 
@@ -32,9 +39,30 @@ const BuyNow = () => {
   if (step === 'pricing') {
     Component = <PricingPlans onButtonClick={handleButtonClick} />;
   } else if (step === 'register') {
-    Component = <Register onButtonClick={handleButtonClick} selectedPlan={selectedPlan} />;
+    Component = <Register 
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName}
+                  email={email}
+                  password={password}
+                  termsAccepted={termsAccepted}
+                  />;
   } else if (step === 'pay') {
-    Component = <PayAndContract onButtonClick={handleButtonClick} selectedPlan={selectedPlan} />;
+    Component = <PayAndContract 
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName}
+                  email={email}
+                  termsAccepted={termsAccepted}/>;
+  } else if (step === 'invoice') {
+    Component = <PaymentInvoice
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName}
+                  email={email}
+                  password={password}
+                  termsAccepted={termsAccepted}
+                  />
   }
 
   return (

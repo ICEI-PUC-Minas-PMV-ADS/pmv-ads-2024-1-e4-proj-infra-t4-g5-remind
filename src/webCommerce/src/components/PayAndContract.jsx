@@ -7,28 +7,105 @@ import Amazon from '../components/PaymentMethods/Amazon';
 import BankTransfer from '../components/PaymentMethods/BankTransfer';
 import PayPall from '../components/PaymentMethods/PayPall';
 
-const PayAndContract = ({selectedPlan, userName, email, termsAccepted}) => {
+
+const PayAndContract = ({
+      selectedPlan, 
+      userName, 
+      email, 
+      termsAccepted, 
+      paymentInfo, 
+      payPallEmail, 
+      payPallPassword, 
+      payPallTermsAccepted, 
+      payPallPaymentInfo
+    }) => {
   const [paymentMethod, setPaymentMethod] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   const handleButtonClick = () => {
-    setIsLoading(true);
-  
-    setTimeout(() => {
-      setIsLoading(false);
-      window.location.href = 'http://localhost:5173/';
-    }, 1500);
+    console.log('Método de pagamento:', paymentMethod);
+    
+    switch (paymentMethod) {
+      case "Cartão de Crédito":
+        console.log('Plano selecionado:', selectedPlan);
+        console.log('Nome do usuário:', userName);
+        console.log('Email:', email);
+        console.log('Termos aceitos', termsAccepted);
+        break;
+        
+      case "PayPall":
+        console.log('Plano selecionado:', selectedPlan);
+        console.log('Nome do usuário:', userName);
+        console.log('Email:', email);
+        console.log('Termos aceitos', termsAccepted);
+        console.log('PayPall email:', payPallEmail );
+        console.log('PayPall password:', payPallPassword );
+        console.log('PayPall terms:', payPallTermsAccepted );
+        break;
+        
+      case "Pague com Amazon":
+        console.log('Plano selecionado:', selectedPlan);
+        console.log('Nome do usuário:', userName);
+        console.log('Email:', email);
+        console.log('Termos aceitos', termsAccepted);
+        break;
+        
+      case "Débito Automático":
+        console.log('Plano selecionado:', selectedPlan);
+        console.log('Nome do usuário:', userName);
+        console.log('Email:', email);
+        console.log('Termos aceitos', termsAccepted);
+        console.log('Banco:', paymentInfo.bank);
+        console.log('Conta:', paymentInfo.account);
+        console.log('Dígito da conta:', paymentInfo.accountDigit);
+        console.log('Agência:', paymentInfo.agency);
+        console.log('CPF:', paymentInfo.cpf);
+        console.log('Nome:', paymentInfo.name);
+        break;
+        
+      default:
+        console.log('Método de pagamento não reconhecido');
+    }
   };
+  
 
   let Component;
   if(paymentMethod === "Cartão de Crédito") {
-    Component = <CreditCard onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
+    Component = <CreditCard 
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName} 
+                  email={email} 
+                  termsAccepted={termsAccepted} 
+                  />
   } else if(paymentMethod === "PayPall") {
-    Component = <PayPall onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
+    Component = <PayPall 
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName} 
+                  email={email} 
+                  termsAccepted={termsAccepted} 
+                  {...payPallPaymentInfo}
+                  />
   } else if(paymentMethod === "Pague com Amazon") {
-    Component = <Amazon onButtonClick={handleButtonClick} isLoading={isLoading} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
+    Component = <Amazon 
+                  onButtonClick={handleButtonClick} 
+                  isLoading={isLoading} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName} 
+                  email={email} 
+                  termsAccepted={termsAccepted} 
+                  />
   } else if(paymentMethod === "Débito Automático") {
-    Component = <BankTransfer onButtonClick={handleButtonClick} selectedPlan={selectedPlan} userName={userName} email={email} termsAccepted={termsAccepted} />
+    Component = <BankTransfer 
+                  isLoading={isLoading}
+                  onButtonClick={handleButtonClick} 
+                  selectedPlan={selectedPlan} 
+                  userName={userName} 
+                  email={email} 
+                  termsAccepted={termsAccepted} 
+                  {...paymentInfo}
+                  />
   }
   
   return (
@@ -76,30 +153,41 @@ const PayAndContract = ({selectedPlan, userName, email, termsAccepted}) => {
                 </div>
                     <div className='mt-2 mb-12 space-y-4 flex-1' >
                     <label>
-                        <input className='mx-2' type="radio" value="Cartão de Crédito" checked={paymentMethod === "Cartão de Crédito"} onChange={(e) => setPaymentMethod(e.target.value)} />
+                        <input className='mx-2' type="radio" value="Cartão de Crédito" 
+                        checked={paymentMethod === "Cartão de Crédito"} 
+                        onChange={(e) => setPaymentMethod(e.target.value)} />
                         
                         Cartão de Crédito
                         <br/>
                     </label>
                     <label>
-                        <input className='mx-2' type="radio" value="PayPall" checked={paymentMethod === "PayPall"} onChange={(e) => setPaymentMethod(e.target.value)} />
+                        <input className='mx-2' type="radio" value="PayPall" 
+                        checked={paymentMethod === "PayPall"} 
+                        onChange={(e) => setPaymentMethod(e.target.value)} />
                         PayPall
                         <br/>
                     </label>
                     <label>
-                        <input className='mx-2' type="radio" value="Pague com Amazon" checked={paymentMethod === "Pague com Amazon"} onChange={(e) => setPaymentMethod(e.target.value)} />
+                        <input className='mx-2' type="radio" value="Pague com Amazon" 
+                        checked={paymentMethod === "Pague com Amazon"} 
+                        onChange={(e) => setPaymentMethod(e.target.value)} />
                         Pague com Amazon
                         <br/>
                     </label>
                     <label>
-                        <input className='mx-2' type="radio" value="Débito Automático" checked={paymentMethod === "Débito Automático"} onChange={(e) => setPaymentMethod(e.target.value)} />
+                        <input className='mx-2' type="radio" value="Débito Automático" 
+                        checked={paymentMethod === "Débito Automático"} 
+                        onChange={(e) => setPaymentMethod(e.target.value)} />
                         Débito Automático
                         <br/>
                     </label>
                     </div>
 
                 </form>
-                
+                <div  className='text-white text-xs'>
+                  <p className='text-white text-xs'>Nome do Usuário: {userName}</p>
+                  <p className='text-white text-xs'>Email do Usuário: {email}</p>
+                </div>
             </div>
             <div className=' -mx-4 buynow-card-border'> 
                 <h3 className='buynow-card-title pb-6'>{paymentMethod}</h3>
@@ -122,6 +210,11 @@ PayAndContract.propTypes = {
     userName: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     termsAccepted: PropTypes.bool.isRequired,
+    paymentInfo: PropTypes.object,
+    payPallEmail: PropTypes.string, 
+    payPallPassword: PropTypes.string , 
+    payPallTermsAccepted: PropTypes.bool,
+    payPallPaymentInfo: PropTypes.object,
   };
 
 export default PayAndContract;

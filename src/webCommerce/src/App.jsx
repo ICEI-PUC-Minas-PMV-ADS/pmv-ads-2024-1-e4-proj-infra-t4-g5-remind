@@ -1,3 +1,5 @@
+
+//App.jsx
 import Navbar from './pages/Navbar';
 import Hero from './pages/Hero';
 import UserStories from './pages/UserStories';
@@ -11,14 +13,14 @@ import * as Sentry from '@sentry/react';
 const App = () => {
 
   return (
-    <main className='bg-black'>
-      <Navbar/>
-      <Hero/>
-      <UserStories/>
-      <ProductDetails/>
-      <BuyNow/>
-      <Footer/>
-    </main>
+      <main className='bg-black'>
+        <Navbar/>
+        <Hero/>
+        <UserStories/>
+        <ProductDetails/>
+        <BuyNow/>
+        <Footer/>
+      </main>
   )
 }
 

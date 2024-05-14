@@ -1,23 +1,39 @@
-import { useState } from 'react';
-import Loader from '../Loader';
-import PropTypes from 'prop-types';
 
-function PayPall({ onButtonClick, isLoading }) {
+//PayPall.jsx
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
+
+function PayPall({ onButtonClick, selectedPlan, userName, email}) {
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [payPallEmail, setPayPallEmail] = useState('');
+  const [payPallPassword, setPayPallPassword] = useState('');
+  const [payPallTermsAccepted, setPayPallTermsAccepted] = useState(false);
+  const [payPallPaymentInfo , setPayPallPaymentInfo ] = useState(null);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (email && password && termsAccepted) {
-      onButtonClick();
+    if (payPallEmail && payPallPassword && payPallTermsAccepted) {
+      setPayPallPaymentInfo ({
+        selectedPlan,
+        userName,
+        email,
+        paymentMethod: "PayPall",
+        payPallEmail,
+        payPallPassword,
+        payPallTermsAccepted
+      });
+      onButtonClick(payPallPaymentInfo);
+
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
   };
+
+  if (payPallPaymentInfo) {
+    return <PaymentInvoice {...payPallPaymentInfo} />; 
+  } 
 
   return (
       <div>
@@ -32,20 +48,24 @@ function PayPall({ onButtonClick, isLoading }) {
         <div>
           <div className='buynow-input-text'>
             <label htmlFor="email" className='buynow-card-text-sm'>E-mail</label>
-            <input className='w-full' type="email" id="email" name="email" required onChange={(e) => setEmail(e.target.value)} />
+            <input className='w-full' type="email" id="email" name="email" required 
+            onChange={(e) => setPayPallEmail(e.target.value)} />
           </div>
           <div className='buynow-input-text'>
             <label htmlFor="password" className='buynow-card-text-sm'>Senha</label>
-            <input className='w-full' type={showPassword ? "text" : "password"} id="password" name="password" required onChange={(e) => setPassword(e.target.value)} />
+            <input className='w-full' type={showPassword ? "text" : "password"} id="password" name="password" required 
+            onChange={(e) => setPayPallPassword(e.target.value)} />
             <div className="flex justify-end mt-2">
-              <button className='flex justify-end text-xs text-purple-400 pb-4' type="button" onClick={() => setShowPassword(!showPassword)}>
+              <button className='flex justify-end text-xs text-purple-400 pb-4' type="button" 
+              onClick={() => setShowPassword(!showPassword)}>
                 {showPassword ? 'Esconder' : 'Mostrar'}
               </button>
             </div>
           </div>
         </div>
         <div className="checkbox-container">
-          <input type="checkbox" id="terms" name="terms" className='mx-2 ' required onChange={(e) => setTermsAccepted(e.target.checked)} />
+          <input type="checkbox" id="terms" name="terms" className='mx-2 ' required 
+          onChange={(e) => setPayPallTermsAccepted(e.target.checked)} />
           <label htmlFor="terms" className="buynow-card-text-sm">
             Pagar com a conta PayPall.
           </label>
@@ -54,16 +74,13 @@ function PayPall({ onButtonClick, isLoading }) {
       </form>
   
         <div className="flex justify-center mt-12">
-          {isLoading ? (
-            <Loader />
-          ) : (
             <button
               onClick={handleButtonClick}
-              className={`btn-buynow-popular w-11/12 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              className={`btn-buynow-popular w-11/12}`}
             >
               Pagar
             </button>
-          )}
+
         </div>
       </div>
     );
@@ -71,7 +88,12 @@ function PayPall({ onButtonClick, isLoading }) {
 
 PayPall.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  selectedPlan: PropTypes.object.isRequired,
+  userName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  payPallEmail: PropTypes.string.isRequired,
+  payPallPassword: PropTypes.string.isRequired,
+  payPallTermsAccepted: PropTypes.bool.isRequired
 };
 
 export default PayPall

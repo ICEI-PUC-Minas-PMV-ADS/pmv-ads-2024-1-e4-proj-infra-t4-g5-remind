@@ -12,7 +12,7 @@ import NameInput from '../PaymentMethods/BankTransfer/NameInput';
 import TermsCheckbox from '../PaymentMethods/BankTransfer/TermsCheckbox';
 import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
 
-function BankTransfer({ onButtonClick, isLoading, selectedPlan, paymentMethod, userName, email }) {
+function BankTransfer({ onButtonClick, isLoading, selectedPlan, userName, email }) {
   const [bank, setBank] = useState('');
   const [account, setAccount] = useState('');
   const [accountDigit, setAccountDigit] = useState('');
@@ -26,26 +26,26 @@ function BankTransfer({ onButtonClick, isLoading, selectedPlan, paymentMethod, u
     event.preventDefault();
     if (bank && account && accountDigit && agency && cpf && name && termsAccepted) {
       setPaymentInfo({
+        selectedPlan,
+        userName,
+        email,
+        paymentMethod: 'BankTransfer',
         bank,
         account,
         accountDigit,
         agency,
         cpf,
         name,
-        selectedPlan, 
-        userName, 
-        email, 
-        paymentMethod, 
       });
-      onButtonClick();
+      onButtonClick(paymentInfo);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
   };
-
-  if (paymentInfo) {
+  
+  /* if (paymentInfo) {
     return <PaymentInvoice {...paymentInfo} />; 
-  }
+  } */
 
 
   return (
@@ -90,7 +90,7 @@ BankTransfer.propTypes = {
   selectedPlan: PropTypes.object.isRequired,
   userName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  paymentMethod: PropTypes.string.isRequired,
+  /* paymentMethod: PropTypes.string.isRequired, */
   bank: PropTypes.string,
   account: PropTypes.string,
   accountDigit: PropTypes.string,
