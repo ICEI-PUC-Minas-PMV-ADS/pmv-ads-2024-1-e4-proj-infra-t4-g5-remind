@@ -1,18 +1,24 @@
-import { useState } from 'react';
+
+//BuyNow.jsx
+import { useContext, useState } from 'react';
+import { PurchaseContext } from '../context/PurchaseContext';
 import { useGSAP } from '@gsap/react';
 import { animateWithGsap } from '../utils/animations';
 import PricingPlans from '../components/PricingPlans';
 import Register from '../components/Register';
 import PayAndContract from '../components/PayAndContract';
 import PaymentInvoice from '../components/PaymentInvoices/PaymentInvoice';
+import BankTransfer from '../components/PaymentMethods/BankTransfer';
+import PayPall from '../components/PaymentMethods/PayPall';
+import Amazon from '../components/PaymentMethods/Amazon';
+import CreditCard from '../components/PaymentMethods/CreditCard';
 
 const BuyNow = () => {
+  const { purchaseData, setPurchaseData } = useContext(PurchaseContext);
   const [step, setStep] = useState('pricing');
   const [selectedPlan, setSelectedPlan] = useState(null);
-  const [userName] = useState('');
-  const [email] = useState('');
-  const [password] = useState('');
-  const [termsAccepted] = useState(false);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  
 
   useGSAP(() => {
     animateWithGsap('.g_fadeIn', {
@@ -24,16 +30,22 @@ const BuyNow = () => {
     })
   }, []);
 
-  const handleButtonClick = (plan) => {
-    setSelectedPlan(plan);
-    if (step === 'pricing') {
-      setStep('register');
-    } else if (step === 'register') {
-      setStep('pay');
-    } else if (step === 'invoice') {
-      setStep('invoice');
-    }
-  };
+const handleButtonClick = (data, method) => {
+  setPurchaseData(prevData => ({ ...prevData, ...data }));
+  if (method) {
+    setPaymentMethod(method); 
+  }
+  if (step === 'pricing') {
+    setSelectedPlan(data);
+    setStep('register');
+  } else if (step === 'register') {
+    setStep('pay');
+  } else if (step === 'pay') {
+    setStep('invoice');
+    
+  }
+};
+
 
   let Component;
   if (step === 'pricing') {
@@ -42,26 +54,35 @@ const BuyNow = () => {
     Component = <Register 
                   onButtonClick={handleButtonClick} 
                   selectedPlan={selectedPlan} 
-                  userName={userName}
-                  email={email}
-                  password={password}
-                  termsAccepted={termsAccepted}
+                  userName={purchaseData.userName}
+                  email={purchaseData.email}
+                  password={purchaseData.password}
+                  termsAccepted={purchaseData.termsAccepted}
                   />;
   } else if (step === 'pay') {
-    Component = <PayAndContract 
-                  onButtonClick={handleButtonClick} 
-                  selectedPlan={selectedPlan} 
-                  userName={userName}
-                  email={email}
-                  termsAccepted={termsAccepted}/>;
+    Component = (
+      <>
+        <PayAndContract 
+          onButtonClick={handleButtonClick} 
+          selectedPlan={selectedPlan} 
+          userName={purchaseData.userName}
+          email={purchaseData.email}
+          termsAccepted={purchaseData.termsAccepted}
+        />
+        {paymentMethod === 'Débito Automático' && <BankTransfer />}
+        {paymentMethod === 'PayPall' && <PayPall />}
+        {paymentMethod === 'Pague com Amazon' && <Amazon />}
+        {paymentMethod === 'Cartão de Crédito' && <CreditCard />}
+      </>
+    );
   } else if (step === 'invoice') {
     Component = <PaymentInvoice
                   onButtonClick={handleButtonClick} 
                   selectedPlan={selectedPlan} 
-                  userName={userName}
-                  email={email}
-                  password={password}
-                  termsAccepted={termsAccepted}
+                  userName={purchaseData.userName}
+                  email={purchaseData.email}
+                  password={purchaseData.password}
+                  termsAccepted={purchaseData.termsAccepted}
                   />
   }
 

@@ -2,92 +2,67 @@
 
 //PaymentInvoice.jsx
 import PropTypes from 'prop-types';
+import { useEffect, useState, useContext } from 'react';
+import { PurchaseContext } from '../../context/PurchaseContext';
 
-function PaymentInvoice({ 
-      selectedPlan, 
-      userName, 
-      email, 
-      paymentMethod, 
-      bank, 
-      account, 
-      accountDigit, 
-      agency, 
-      cpf, 
-      name, 
-      payPallEmail, 
-      payPallPassword, 
-      payPallTermsAccepted 
-    })
-     {
-  console.log('Invoice: Plano selecionado:', selectedPlan);
-  console.log('Nome do usuário:', userName);
-  console.log('Email:', email);
-  console.log('Método de pagamento:', paymentMethod);
-  
-  // Imprime as informações específicas para cada método de pagamento
-  switch (paymentMethod) {
-    case "Débito Automático":
-      console.log('Banco:', bank);
-      console.log('Conta:', account);
-      console.log('Dígito da conta:', accountDigit);
-      console.log('Agência:', agency);
-      console.log('CPF:', cpf);
-      console.log('Nome:', name);
-      break;
-      
-    case "PayPall":
-      console.log('PayPall email:', payPallEmail );
-      console.log('PayPall password:', payPallPassword );
-      console.log('PayPall terms:', payPallTermsAccepted );
-      break;
-      
-    default:
-      // Não é necessário imprimir informações adicionais para outros métodos de pagamento
+function PaymentInvoice() {
+  const { purchaseData } = useContext(PurchaseContext);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkData = () => {
+      console.log('Verificando dados...');
+      if (purchaseData && purchaseData.paymentMethod && purchaseData.userName && purchaseData.email) {
+        setLoading(false);
+        console.log('Todas as informações recebidas.');
+      } else {
+        setLoading(true);
+        console.log('Informações incompletas. Aguardando mais dados...');
+      }
+    };
+
+    const checkInterval = setInterval(checkData, 1000);
+
+    return () => clearInterval(checkInterval);
+  }, [purchaseData]);
+
+  if (loading) {
+    console.log('Renderizando Loading...');
+    return <div className='mt-4 buynow-card-text-sm'>Loading...</div>;
   }
 
+  console.log('Renderizando componente corretamente...');
   return (
-    <div className='text-xs text-white'>
-      <h1>Invoice: Resumo do Pedido</h1>
-      <p className='text-white'>Plano selecionado: {selectedPlan}</p>
-      <p>Nome do usuário: {userName}</p>
-      <p>Email: {email}</p>
-      <p>Método de pagamento: {paymentMethod}</p>
-      {paymentMethod === 'Débito Automático' && (
-        <>
-          <p>Banco: {bank}</p>
-          <p>Conta: {account}</p>
-          <p>Dígito da conta: {accountDigit}</p>
-          <p>Agência: {agency}</p>
-          <p>CPF: {cpf}</p>
-          <p>Nome: {name}</p>
-        </>
-      )},
-      {paymentMethod === 'PayPall' && (
-        <>
-          <p>email paypall: {payPallEmail}</p>
-          <p>senha paypall: {payPallPassword}</p>
-          <p>Termos: {payPallTermsAccepted}</p>
-        </>
-      )}
-
+    <div>
+      <p>Plano selecionado: {purchaseData.selectedPlan.id}</p>
+      <p>Nome do usuário: {purchaseData.userName}</p>
+      <p>Email: {purchaseData.email}</p>
+      {/* Adicione mais campos conforme necessário */}
     </div>
   );
 }
 
+
 PaymentInvoice.propTypes = {
-  selectedPlan: PropTypes.string.isRequired,
+  selectedPlan: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    currency: PropTypes.string.isRequired,
+    frequency: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    moreFeatures: PropTypes.arrayOf(PropTypes.string).isRequired,
+    cta: PropTypes.string.isRequired,
+    mostPopular: PropTypes.bool.isRequired,
+  }).isRequired,
   userName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   paymentMethod: PropTypes.string.isRequired,
-  bank: PropTypes.string,
-  account: PropTypes.string,
-  accountDigit: PropTypes.string,
-  agency: PropTypes.string,
-  cpf: PropTypes.string,
-  name: PropTypes.string,
   payPallEmail: PropTypes.string,
-  payPallPassword: PropTypes.string, 
-  payPallTermsAccepted: PropTypes.bool, 
+  payPallPassword: PropTypes.string,
+  payPallTermsAccepted: PropTypes.bool,
 };
+
 
 export default PaymentInvoice;

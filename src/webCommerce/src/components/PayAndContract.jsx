@@ -9,60 +9,51 @@ import BankTransfer from '../components/PaymentMethods/BankTransfer';
 import PayPall from '../components/PaymentMethods/PayPall';
 
 
-const PayAndContract = () => {
+const PayAndContract = ({ onButtonClick, selectedPlan }) => {
   const { purchaseData } = useContext(PurchaseContext);
   const [paymentMethod, setPaymentMethod] = useState('');
   const [isLoading] = useState(false);
 
   const handleButtonClick = () => {
-    console.log('Método de pagamento:', paymentMethod);
-    
+
+        console.log('PAC Método de pagamento:', paymentMethod);
+        console.log('PAC Plano selecionado:', purchaseData.selectedPlan.id, purchaseData.selectedPlan.moreFeatures);
+        console.log('PAC Nome do usuário:', purchaseData.userName);
+        console.log('PAC Email:', purchaseData.email);
+        console.log('PAC Termos aceitos', purchaseData.termsAccepted);
+
     switch (paymentMethod) {
       case "Cartão de Crédito":
-        console.log('Plano selecionado:', purchaseData.selectedPlan);
+        console.log('Switch Case:', paymentMethod);
         console.log('Nome do usuário:', purchaseData.userName);
-        console.log('Email:', purchaseData.email);
-        console.log('Termos aceitos', purchaseData.termsAccepted);
         break;
         
       case "PayPall":
-        console.log('Plano selecionado:', purchaseData.selectedPlan);
-        console.log('Nome do usuário:', purchaseData.userName);
-        console.log('Email:', purchaseData.email);
-        console.log('Termos aceitos', purchaseData.termsAccepted);
-        console.log('PayPall email:', purchaseData.payPallEmail );
-        console.log('PayPall password:', purchaseData.payPallPassword );
-        console.log('PayPall terms:', purchaseData.payPallTermsAccepted );
+        console.log('Switch Case:', paymentMethod ,'PayPall email:', purchaseData.payPallEmail , 'PayPall password:', purchaseData.payPallPassword, 'PayPall terms:', purchaseData.payPallTermsAccepted);
         break;
         
       case "Pague com Amazon":
-        console.log('Plano selecionado:', purchaseData.selectedPlan);
-        console.log('Nome do usuário:', purchaseData.userName);
-        console.log('Email:', purchaseData.email);
-        console.log('Termos aceitos', purchaseData.termsAccepted);
+        console.log('Switch Case:', paymentMethod ,'Amazon email:', purchaseData.amazonlEmail , 'Amazon password:', purchaseData.amazonPassword, 'Amazon terms:', purchaseData.amazonTermsAccepted);
         break;
         
       case "Débito Automático":
-        console.log('Plano selecionado:', purchaseData.selectedPlan);
-        console.log('Nome do usuário:', purchaseData.userName);
-        console.log('Email:', purchaseData.email);
-        console.log('Termos aceitos', purchaseData.termsAccepted);
-        console.log('Banco:', purchaseData.paymentInfo.bank);
-        console.log('Conta:', purchaseData.paymentInfo.account);
-        console.log('Dígito da conta:', purchaseData.paymentInfo.accountDigit);
-        console.log('Agência:', purchaseData.paymentInfo.agency);
-        console.log('CPF:', purchaseData.paymentInfo.cpf);
-        console.log('Nome:', purchaseData.paymentInfo.name);
+        console.log( 'Switch Case:', paymentMethod ,
+        'Banco:', purchaseData.paymentInfo.bank, 'Conta:', purchaseData.paymentInfo.account, 'Dígito da conta:', purchaseData.paymentInfo.accountDigit, 
+        'Agência:', purchaseData.paymentInfo.agency, 'CPF:', purchaseData.paymentInfo.cpf, 'Nome:', purchaseData.paymentInfo.name
+        );
         break;
         
       default:
-        console.log('Método de pagamento não reconhecido');
+        console.log('Switch Case:', paymentMethod , 'Método de pagamento não reconhecido');
     }
+    onButtonClick(selectedPlan, purchaseData);
+    console.log('onButtonClick(purchaseData);')
   };
   
 
   let Component;
   if(paymentMethod === "Cartão de Crédito") {
+    console.log('Cartão de Crédito method selected')
     Component = <CreditCard 
                   onButtonClick={handleButtonClick} 
                   selectedPlan={purchaseData.selectedPlan} 
@@ -71,6 +62,7 @@ const PayAndContract = () => {
                   termsAccepted={purchaseData.termsAccepted} 
                   />
   } else if(paymentMethod === "PayPall") {
+    console.log('PayPall method selected')
     Component = <PayPall 
                   onButtonClick={handleButtonClick} 
                   selectedPlan={purchaseData.selectedPlan} 
@@ -80,6 +72,7 @@ const PayAndContract = () => {
                   /* {...payPallPaymentInfo} */
                   />
   } else if(paymentMethod === "Pague com Amazon") {
+    console.log('Pague com Amazon method selected')
     Component = <Amazon 
                   onButtonClick={handleButtonClick} 
                   isLoading={isLoading} 
@@ -89,6 +82,7 @@ const PayAndContract = () => {
                   termsAccepted={purchaseData.termsAccepted} 
                   />
   } else if(paymentMethod === "Débito Automático") {
+    console.log('Débito Automático method selected')
     Component = <BankTransfer 
                   isLoading={isLoading}
                   onButtonClick={handleButtonClick} 

@@ -9,6 +9,8 @@ function GoodUntil({ value, onChange }) {
     onChange(date);
   };
 
+  console.log(value instanceof Date);
+
   return (
     <div className='buynow-input-text w-4/12 mr-2'>
       <label htmlFor="goodUntil" className='buynow-card-text-sm'>Validade</label>

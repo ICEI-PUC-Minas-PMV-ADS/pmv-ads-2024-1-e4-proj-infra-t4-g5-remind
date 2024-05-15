@@ -2,8 +2,8 @@
 //PayPall.jsx
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { PurchaseContext } from '../context/PurchaseContext'; //
-import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
+import { PurchaseContext } from '../../context/PurchaseContext';
+/* import PaymentInvoice from '../PaymentInvoices/PaymentInvoice'; */
 
 
 function PayPall({ onButtonClick, selectedPlan }) {
@@ -12,31 +12,33 @@ function PayPall({ onButtonClick, selectedPlan }) {
   const [payPallEmail, setPayPallEmail] = useState('');
   const [payPallPassword, setPayPallPassword] = useState('');
   const [payPallTermsAccepted, setPayPallTermsAccepted] = useState(false);
-  const [payPallPaymentInfo , setPayPallPaymentInfo ] = useState(null);
-  const { purchaseData } = useContext(PurchaseContext);
+ /*  const [payPallPaymentInfo , setPayPallPaymentInfo ] = useState(null); */
+  const { purchaseData, setPurchaseData } = useContext(PurchaseContext);
+
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (payPallEmail && payPallPassword && payPallTermsAccepted) {
-      setPayPallPaymentInfo ({
-        selectedPlan,
-        userName: purchaseData.userName,
-        email: purchaseData.email,
-        paymentMethod: "PayPall",
-        payPallEmail,
-        payPallPassword,
-        payPallTermsAccepted
-      });
-      onButtonClick(payPallPaymentInfo);
 
+    // Cria uma cópia de purchaseData
+    let tempPurchaseData = { ...purchaseData };
+
+    // Adiciona as informações de pagamento à cópia
+    tempPurchaseData = {
+      ...tempPurchaseData,
+      paymentMethod: "PayPall",
+      payPallEmail: payPallEmail,
+      payPallPassword: payPallPassword ,
+      payPallTermsAccepted: payPallTermsAccepted
+    };
+
+    if (tempPurchaseData.userName && tempPurchaseData.email && tempPurchaseData.password && tempPurchaseData.termsAccepted && tempPurchaseData.payPallEmail && tempPurchaseData.payPallPassword && tempPurchaseData.payPallTermsAccepted) {
+      console.log('Temp Purchased Data:' ,tempPurchaseData);
+      setPurchaseData(tempPurchaseData);
+      onButtonClick(tempPurchaseData, selectedPlan);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
   };
-
-  if (payPallPaymentInfo) {
-    return <PaymentInvoice {...payPallPaymentInfo} />; 
-  } 
 
   return (
       <div>
@@ -92,11 +94,9 @@ function PayPall({ onButtonClick, selectedPlan }) {
 PayPall.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
   selectedPlan: PropTypes.object.isRequired,
-  /* userName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired, */
-  /* payPallEmail: PropTypes.string.isRequired,
-  payPallPassword: PropTypes.string.isRequired,
-  payPallTermsAccepted: PropTypes.bool.isRequired */
+  payPallEmail: PropTypes.string,
+  payPallPassword: PropTypes.string,
+  payPallTermsAccepted: PropTypes.bool
 };
 
 export default PayPall

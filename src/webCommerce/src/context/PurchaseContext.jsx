@@ -1,15 +1,22 @@
+
+//PurchaseContext.jsx
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { pricingPlans } from '../constants';
 
 export const PurchaseContext = createContext();
 
 export const PurchaseProvider = ({ children }) => {
   const [purchaseData, setPurchaseData] = useState({
-    selectedPlan: null,
+    selectedPlan: pricingPlans[0],
     userName: '',
     email: '',
     password: '',
     termsAccepted: false,
+    paymentMethod: '',
+    payPallEmail: '',
+    payPallPassword: '',
+    payPallTermsAccepted: false,
   });
 
   return (
@@ -20,5 +27,5 @@ export const PurchaseProvider = ({ children }) => {
 };
 
 PurchaseProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};

@@ -6,7 +6,7 @@ import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
 import PropTypes from 'prop-types';
 
-const Register = ({ selectedPlan}) => {
+const Register = ({ selectedPlan, onButtonClick }) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -14,14 +14,29 @@ const Register = ({ selectedPlan}) => {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (purchaseData.userName && purchaseData.email && purchaseData.password && purchaseData.termsAccepted) {
+  
+    // Cria uma cópia de purchaseData
+    let tempPurchaseData = { ...purchaseData };
+  
+    // Adiciona selectedPlan à cópia se ainda não estiver presente
+    if (!tempPurchaseData.selectedPlan) {
+      tempPurchaseData = {
+        ...tempPurchaseData,
+        selectedPlan: selectedPlan
+      };
+    }
+  
+    // Agora, tempPurchaseData inclui selectedPlan
+    if (tempPurchaseData.userName && tempPurchaseData.email && tempPurchaseData.password && tempPurchaseData.termsAccepted && tempPurchaseData.selectedPlan) {
       console.log("Plano selecionado em Register:", selectedPlan);
-      console.log(purchaseData);
+      console.log(tempPurchaseData);
+      setPurchaseData(tempPurchaseData); // Atualiza o estado com tempPurchaseData
+      onButtonClick(tempPurchaseData);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
   };
-
+  
   return (
 
     <div className='buynow-cards-container'>
@@ -120,6 +135,7 @@ const Register = ({ selectedPlan}) => {
 };
 
 Register.propTypes = {
+    onButtonClick: PropTypes.func.isRequired,
     selectedPlan: PropTypes.object.isRequired,
   };
 

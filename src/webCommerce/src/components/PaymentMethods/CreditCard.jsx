@@ -14,7 +14,7 @@ import GoodUntil from './CreditCard/GoodUntil';
 function CreditCard({ onButtonClick, isLoading, selectedPlan, userName, email, termsAccepted }) {
   const [creditCard, setCreditCard] = useState('');
   const [cardNumber, setCardNumber] = useState('');
-  const [goodUntil, setGoodUntil] = useState('');
+  const [goodUntil, setGoodUntil] = useState(new Date());
   const [cvs, setCVS] = useState('');
   const [cpf, setCpf] = useState('');
   const [name, setName] = useState('');
@@ -64,7 +64,7 @@ function CreditCard({ onButtonClick, isLoading, selectedPlan, userName, email, t
 
 CreditCard.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
   selectedPlan: PropTypes.object.isRequired,
   userName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,

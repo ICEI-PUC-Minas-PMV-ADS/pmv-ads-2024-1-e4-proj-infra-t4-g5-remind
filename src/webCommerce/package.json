@@ -14,6 +14,7 @@
     "@gsap/react": "^2.1.0",
     "@react-three/drei": "^9.105.6",
     "@sentry/react": "^7.114.0",
+    "@sentry/tracing": "^7.114.0",
     "@sentry/vite-plugin": "^2.16.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",

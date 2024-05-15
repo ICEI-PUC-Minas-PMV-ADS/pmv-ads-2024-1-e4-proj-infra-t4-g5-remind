@@ -1,6 +1,6 @@
 
 //BankTransfer.jsx
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Loader from '../Loader';
 import PropTypes from 'prop-types';
 import BankField from '../PaymentMethods/BankTransfer/BankField'
@@ -11,8 +11,9 @@ import CPFInput from '../PaymentMethods/BankTransfer/CPFInput';
 import NameInput from '../PaymentMethods/BankTransfer/NameInput';
 import TermsCheckbox from '../PaymentMethods/BankTransfer/TermsCheckbox';
 import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
+import { PurchaseContext } from '../../context/PurchaseContext';
 
-function BankTransfer({ onButtonClick, isLoading, selectedPlan, userName, email }) {
+function BankTransfer({ onButtonClick, isLoading, selectedPlan }) {
   const [bank, setBank] = useState('');
   const [account, setAccount] = useState('');
   const [accountDigit, setAccountDigit] = useState('');
@@ -22,13 +23,15 @@ function BankTransfer({ onButtonClick, isLoading, selectedPlan, userName, email 
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(null);
 
+  const { purchaseData } = useContext(PurchaseContext);
+
   const handleButtonClick = (event) => {
     event.preventDefault();
     if (bank && account && accountDigit && agency && cpf && name && termsAccepted) {
       setPaymentInfo({
         selectedPlan,
-        userName,
-        email,
+        userName: purchaseData.userName,
+        email: purchaseData.email,
         paymentMethod: 'BankTransfer',
         bank,
         account,
@@ -43,9 +46,9 @@ function BankTransfer({ onButtonClick, isLoading, selectedPlan, userName, email 
     }
   };
   
-  /* if (paymentInfo) {
+  if (paymentInfo) {
     return <PaymentInvoice {...paymentInfo} />; 
-  } */
+  }
 
 
   return (

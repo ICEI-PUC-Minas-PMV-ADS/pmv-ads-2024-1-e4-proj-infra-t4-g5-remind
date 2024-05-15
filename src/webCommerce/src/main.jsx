@@ -8,10 +8,12 @@ import './index.css'
 
 //Settings from Sentry
 import * as Sentry from "@sentry/react";
+import { Integrations } from '@sentry/tracing';
 
 Sentry.init({
   dsn: "https://c1ebfef4d102257c30521c0ab48e5f17@o4507142041436160.ingest.de.sentry.io/4507253547532368",
   integrations: [
+    new Integrations.BrowserTracing(),
     Sentry.browserTracingIntegration(),
     Sentry.replayIntegration(),
   ],
