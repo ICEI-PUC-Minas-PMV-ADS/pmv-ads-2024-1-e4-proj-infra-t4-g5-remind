@@ -1,17 +1,14 @@
 import axios from 'axios';
 import { VITE_ADMIN_TOKEN, VITE_API_URL } from '@env';
-import SecureStore from 'expo-secure-store';
-import {useUser} from '../context/UserContext'; 
 
 export const login = async (email, password) => {
   try {
-    const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}/users/login`,
-      {
-        email,
-        password,
-      },
-    );
+    const res = await axios.post(`${VITE_API_URL}/users/login`, {
+      email,
+      password,
+    });
+
+    console.log(res.data);
 
     return res.data;
   } catch (error) {
@@ -26,14 +23,11 @@ export const login = async (email, password) => {
 
 export const getUser = async (userId) => {
   try {
-    const userInfo = await axios.get(
-      `${import.meta.env.VITE_API_URL}/users/get/${userId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
-        },
+    const userInfo = await axios.get(`${VITE_API_URL}/users/get/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${VITE_ADMIN_TOKEN}`,
       },
-    );
+    });
 
     return userInfo.data;
   } catch (error) {
@@ -48,14 +42,11 @@ export const getUser = async (userId) => {
 
 export const getAllUsers = async () => {
   try {
-    const userInfo = await axios.get(
-      `${import.meta.env.VITE_API_URL}/users/get`,
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_ADMIN_TOKEN}`,
-        },
+    const userInfo = await axios.get(`${VITE_API_URL}/users/get`, {
+      headers: {
+        Authorization: `Bearer ${VITE_ADMIN_TOKEN}`,
       },
-    );
+    });
 
     return userInfo.data;
   } catch (error) {

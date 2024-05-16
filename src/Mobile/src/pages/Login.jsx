@@ -10,6 +10,7 @@ const Login = () => {
   const [senha, setSenha] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({});
+
   const handleSubmit = async () => {
     const values = { email: usuario, password: senha };
     const errors = {};
@@ -18,7 +19,9 @@ const Login = () => {
       errors.general = 'Preencha todos os campos.';
     } else if (values.email.length < 3) {
       errors.email = 'O email deve ter no mínimo 3 caracteres.';
-    } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(values.email)) {
+    } else if (
+      !/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(values.email)
+    ) {
       errors.email = 'O email deve ser válido.';
     } else if (values.password.length < 4) {
       errors.password = 'A senha deve ter no mínimo 4 caracteres.';
@@ -32,7 +35,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const data = await login(values);
+      await login(values);
       setLoading(false);
       setSigned(true);
       console.log('Login efetuado com sucesso!');
@@ -63,12 +66,14 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
+      {error.email && <Text>{error.email}</Text>}
       <Input
         placeholder="Usuário"
         value={usuario}
         onChangeText={setUsuario}
         style={styles.input}
       />
+      {error.password && <Text>{error.password}</Text>}
       <Input
         placeholder="Senha"
         value={senha}
@@ -76,6 +81,7 @@ const Login = () => {
         secureTextEntry
         style={styles.input}
       />
+      {error.general && <Text>{error.general}</Text>}
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>

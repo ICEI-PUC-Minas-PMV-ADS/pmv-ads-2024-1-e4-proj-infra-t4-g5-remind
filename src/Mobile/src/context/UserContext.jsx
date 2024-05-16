@@ -17,6 +17,8 @@ export function UserProvider({ children }) {
   const [signed, setSigned] = useState(undefined); 
   const [user, setUser] = useState(null);
   const navigation = useNavigation();
+
+  
   
 
   const logout = useCallback(async () => {
@@ -33,6 +35,7 @@ export function UserProvider({ children }) {
   }, [navigation]);
 
   useEffect(() => {
+    
     const loadSigned = async () => {
       const secureSigned = await SecureStore.getItemAsync('USER_TOKEN');
       setSigned(!!secureSigned);
@@ -48,7 +51,7 @@ export function UserProvider({ children }) {
   }, []);
 
   return (
-    <UserProvider
+    <UserContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         signed,
@@ -59,6 +62,6 @@ export function UserProvider({ children }) {
       }}
     >
       {children}
-    </UserProvider>
+    </UserContext.Provider>
   );
 }
