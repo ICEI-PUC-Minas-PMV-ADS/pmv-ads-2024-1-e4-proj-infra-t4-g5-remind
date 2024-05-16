@@ -65,10 +65,7 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
     console.log('PayPall method selected')
     Component = <PayPall 
                   onButtonClick={handleButtonClick} 
-                  selectedPlan={purchaseData.selectedPlan} 
-                  userName={purchaseData.userName} 
-                  email={purchaseData.email} 
-                  termsAccepted={purchaseData.termsAccepted} 
+                  selectedPlan={purchaseData.selectedPlan}  
                   /* {...payPallPaymentInfo} */
                   />
   } else if(paymentMethod === "Pague com Amazon") {

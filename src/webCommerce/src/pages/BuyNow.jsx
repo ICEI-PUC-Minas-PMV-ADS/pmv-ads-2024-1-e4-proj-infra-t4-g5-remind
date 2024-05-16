@@ -2,6 +2,7 @@
 //BuyNow.jsx
 import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
+/* import { PayPallPaymentContext } from '../context/PayPallPaymentContext'; */
 import { useGSAP } from '@gsap/react';
 import { animateWithGsap } from '../utils/animations';
 import PricingPlans from '../components/PricingPlans';
@@ -15,6 +16,8 @@ import CreditCard from '../components/PaymentMethods/CreditCard';
 
 const BuyNow = () => {
   const { purchaseData, setPurchaseData } = useContext(PurchaseContext);
+  /* const { payPallPaymentInfo, setPayPallPaymentInfo } = useContext(PayPallPaymentContext); */
+  
   const [step, setStep] = useState('pricing');
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState(null);

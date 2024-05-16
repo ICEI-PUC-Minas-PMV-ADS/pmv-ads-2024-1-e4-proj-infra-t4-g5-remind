@@ -4,10 +4,13 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import { PurchaseContext } from '../../context/PurchaseContext';
+import { PayPallPaymentContext } from '../context/PayPallPaymentContext';
 
 function PaymentInvoice() {
   const { purchaseData } = useContext(PurchaseContext);
+  const { payPallPaymentInfo } = useContext(PayPallPaymentContext);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const checkData = () => {

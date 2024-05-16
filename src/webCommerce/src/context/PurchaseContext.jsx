@@ -13,10 +13,6 @@ export const PurchaseProvider = ({ children }) => {
     email: '',
     password: '',
     termsAccepted: false,
-    paymentMethod: '',
-    payPallEmail: '',
-    payPallPassword: '',
-    payPallTermsAccepted: false,
   });
 
   return (
