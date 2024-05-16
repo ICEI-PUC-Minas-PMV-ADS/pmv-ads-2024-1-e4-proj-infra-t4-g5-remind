@@ -1,23 +1,26 @@
 import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { VITE_ADMIN_TOKEN, VITE_API_URL } from '@env';
+import SecureStore from 'expo-secure-store';
+import {useUser} from '../context/UserContext'; 
 
-export const login = async (values) => {
+export const login = async (email, password) => {
   try {
     const res = await axios.post(
       `${import.meta.env.VITE_API_URL}/users/login`,
       {
-        email: values.email,
-        senha: values.password,
+        email,
+        password,
       },
     );
 
-    AsyncStorage.setItem('USER_TOKEN', res.data.token.toString());
-    AsyncStorage.setItem('USER_ID', res.data._id.toString());
-
     return res.data;
   } catch (error) {
-    console.error('login error:', error?.response.status, error?.response.data);
-    throw error;
+    console.error('Erro durante o login:', error);
+    if (error.response) {
+      throw new Error(error.response.data.message || 'Erro de autenticação');
+    } else {
+      throw new Error('Erro ao conectar com o servidor.');
+    }
   }
 };
 
@@ -41,7 +44,7 @@ export const getUser = async (userId) => {
     );
     throw error;
   }
-};
+}
 
 export const getAllUsers = async () => {
   try {
