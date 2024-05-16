@@ -4,13 +4,12 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import { PurchaseContext } from '../../context/PurchaseContext';
-import { PayPallPaymentContext } from '../context/PayPallPaymentContext';
+import { PayPallPaymentContext } from '../../context/PayPallPaymentContext';
 
 function PaymentInvoice() {
   const { purchaseData } = useContext(PurchaseContext);
   const { payPallPaymentInfo } = useContext(PayPallPaymentContext);
   const [loading, setLoading] = useState(true);
-
 
   useEffect(() => {
     const checkData = () => {
@@ -18,6 +17,9 @@ function PaymentInvoice() {
       if (purchaseData && purchaseData.paymentMethod && purchaseData.userName && purchaseData.email) {
         setLoading(false);
         console.log('Todas as informações recebidas.');
+        console.log('Invoice Data: Plano', purchaseData.selectedPlan);
+        console.log('Invoice Data: Compra', purchaseData);
+        console.log('Invoice Data: Pagamento', payPallPaymentInfo);
       } else {
         setLoading(true);
         console.log('Informações incompletas. Aguardando mais dados...');
@@ -37,10 +39,14 @@ function PaymentInvoice() {
   console.log('Renderizando componente corretamente...');
   return (
     <div>
-      <p>Plano selecionado: {purchaseData.selectedPlan.id}</p>
+      <p>Plano selecionado: {purchaseData.selectedPlan}</p>
       <p>Nome do usuário: {purchaseData.userName}</p>
       <p>Email: {purchaseData.email}</p>
-      {/* Adicione mais campos conforme necessário */}
+      <p>Metodo de Pagamento: {purchaseData.paymentMethod}</p>
+      <p>PayPall Email: {payPallPaymentInfo.payPallEmail}</p>
+      <p>PayPall Password: {payPallPaymentInfo.payPallPassword}</p>
+      <p>PayPall Termos Aceitos: {payPallPaymentInfo.payPallTermsAccepted}</p>
+      payPallPaymentInfo.payPallTermsAccepted
     </div>
   );
 }
