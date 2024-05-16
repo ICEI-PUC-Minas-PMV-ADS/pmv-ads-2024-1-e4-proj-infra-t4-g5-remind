@@ -2,11 +2,11 @@
 //PayPall.jsx
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { PayPallPaymentContext } from '../../context/PayPallPaymentContext';
+import { PaymentContext } from '../../context/PaymentContext';
 
 function PayPall({ onButtonClick, selectedPlan }) {
   const [showPassword, setShowPassword] = useState(false);
-  const { payPallPaymentInfo, setPayPallPaymentInfo } = useContext(PayPallPaymentContext);
+  const { payPallPaymentInfo, setPayPallPaymentInfo } = useContext(PaymentContext);
 
   const handleButtonClick = (event) => {
     event.preventDefault();

@@ -1,11 +1,8 @@
-//PayAndContract.jsx
+// PayAndContract.jsx
 import { useContext, useState } from 'react';
-import { PurchaseContext } from '../context/PurchaseContext';
-import { PayPallPaymentContext } from '../context/PayPallPaymentContext';
-import { AmazonPaymentContext } from '../context/AmazonPaymentContext';
-import { BankTransferPaymentContext } from '../context/BankTransferPaymentContext';
-import { CreditCardPaymentContext } from '../context/CreditCardPaymentContext';
 import PropTypes from 'prop-types';
+import { PaymentContext } from '../context/PaymentContext';
+import { PurchaseContext } from '../context/PurchaseContext';
 import CreditCard from '../components/PaymentMethods/CreditCard';
 import Amazon from '../components/PaymentMethods/Amazon';
 import BankTransfer from '../components/PaymentMethods/BankTransfer';
@@ -13,18 +10,12 @@ import PayPall from '../components/PaymentMethods/PayPall';
 
 const PayAndContract = ({ onButtonClick, selectedPlan }) => {
   const { purchaseData } = useContext(PurchaseContext);
-  const { payPallPaymentInfo } = useContext(PayPallPaymentContext);
-  const { amazonPaymentInfo } = useContext(AmazonPaymentContext);
-  const { bankTransferPaymentInfo } = useContext(BankTransferPaymentContext);
-  const { creditCardPaymentInfo } = useContext(CreditCardPaymentContext);
+  const { creditCardPaymentInfo, payPallPaymentInfo, amazonPaymentInfo, bankTransferPaymentInfo } = useContext(PaymentContext);
   const [paymentMethod, setPaymentMethod] = useState('');
 
   const handleButtonClick = () => {
     console.log('Método de pagamento:', paymentMethod);
-    console.log('Plano selecionado:', purchaseData.selectedPlan.id, purchaseData.selectedPlan.moreFeatures);
-    console.log('Nome do usuário:', purchaseData.userName);
-    console.log('Email:', purchaseData.email);
-    console.log('Termos aceitos:', purchaseData.termsAccepted);
+    console.log('Plano selecionado:', selectedPlan.id, selectedPlan.moreFeatures);
 
     let paymentInfo = {};
 
@@ -54,7 +45,6 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
     }
 
     onButtonClick({ ...selectedPlan, paymentMethod, paymentInfo });
-    console.log('onButtonClick(purchaseData);')
   };
 
   let Component;
@@ -68,31 +58,30 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
     Component = <BankTransfer onButtonClick={handleButtonClick} selectedPlan={selectedPlan} />;
   }
 
-  
   return (
     <div className='buynow-cards-container'>
       <div className='buynow-card-grid-3'>
         <div className='buynow-card-border'> 
           <h3 className='buynow-card-title pb-10'>Produto Selecionado</h3>
-          <h3 className='buynow-card-title'>{purchaseData.selectedPlan.title}</h3>
-          {purchaseData.selectedPlan.mostPopular && (
+          <h3 className='buynow-card-title'>{selectedPlan.title}</h3>
+          {selectedPlan.mostPopular && (
             <p className='buynow-card-border-popular'>
               Mais Popular
             </p>
           )}
           <p className='mt-4 buynow-card-text-sm'> 
-            {purchaseData.selectedPlan.description}
+            {selectedPlan.description}
           </p>
           <div className='mt-4 buynow-card-inside-black'>
             <p className='buynow-card-sale'>
-              <span>{purchaseData.selectedPlan.currency}</span>
-              <span className='ml-3 text-4xl text-neutral-200'>${purchaseData.selectedPlan.price}</span>
-              <span>{purchaseData.selectedPlan.frequency}</span>
+              <span>{selectedPlan.currency}</span>
+              <span className='ml-3 text-4xl text-neutral-200'>${selectedPlan.price}</span>
+              <span>{selectedPlan.frequency}</span>
             </p>
           </div>
 
           <ul className='buynow-card-ul mt-6'>
-            {purchaseData.selectedPlan.features.map((feature, index) => (
+            {selectedPlan.features.map((feature, index) => (
               <li key={index} className='buynow-card-text-sm'>
                 * {feature}
               </li>
@@ -101,51 +90,49 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
 
         </div>
         
-            <div className='relative buynow-card-border'>
-                <form className='flex flex-col rounded-2xl bg-zinc text-neutral-100'>
-                <div className='pb-6 flex flex-col items-center justify-center'>
-                    <h2 className='buynow-card-title pb-6'>Pagamento</h2>
-                        <div>
-                            <p className='mt-4 buynow-card-text-sm'> 
-                                <span className='font-semibold'>Selecione o metodo para pagamento. </span>
-                                Siga as instruções ao lado para realizar o pagamento.
-                            </p>
-                        </div>
-                </div>
-                    <div className='mt-2 mb-12 space-y-4 flex-1' >
-                    <label>
-                        <input className='mx-2' type="radio" value="Cartão de Crédito" 
-                        checked={paymentMethod === "Cartão de Crédito"} 
-                        onChange={(e) => setPaymentMethod(e.target.value)} />
-                        
-                        Cartão de Crédito
-                        <br/>
-                    </label>
-                    <label>
-                        <input className='mx-2' type="radio" value="PayPall" 
-                        checked={paymentMethod === "PayPall"} 
-                        onChange={(e) => setPaymentMethod(e.target.value)} />
-                        PayPall
-                        <br/>
-                    </label>
-                    <label>
-                        <input className='mx-2' type="radio" value="Pague com Amazon" 
-                        checked={paymentMethod === "Pague com Amazon"} 
-                        onChange={(e) => setPaymentMethod(e.target.value)} />
-                        Pague com Amazon
-                        <br/>
-                    </label>
-                    <label>
-                        <input className='mx-2' type="radio" value="Débito Automático" 
-                        checked={paymentMethod === "Débito Automático"} 
-                        onChange={(e) => setPaymentMethod(e.target.value)} />
-                        Débito Automático
-                        <br/>
-                    </label>
-                    </div>
-
-                </form>
-                <div  className='text-white text-xs'>
+        <div className='relative buynow-card-border'>
+          <form className='flex flex-col rounded-2xl bg-zinc text-neutral-100'>
+            <div className='pb-6 flex flex-col items-center justify-center'>
+              <h2 className='buynow-card-title pb-6'>Pagamento</h2>
+              <div>
+                <p className='mt-4 buynow-card-text-sm'> 
+                  <span className='font-semibold'>Selecione o método de pagamento. </span>
+                  Siga as instruções ao lado para realizar o pagamento.
+                </p>
+              </div>
+            </div>
+            <div className='mt-2 mb-12 space-y-4 flex-1' >
+              <label>
+                <input className='mx-2' type="radio" value="Cartão de Crédito" 
+                  checked={paymentMethod === "Cartão de Crédito"} 
+                  onChange={(e) => setPaymentMethod(e.target.value)} />
+                Cartão de Crédito
+                <br/>
+              </label>
+              <label>
+                <input className='mx-2' type="radio" value="PayPall" 
+                  checked={paymentMethod === "PayPall"} 
+                  onChange={(e) => setPaymentMethod(e.target.value)} />
+                PayPall
+                <br/>
+              </label>
+              <label>
+                <input className='mx-2' type="radio" value="Pague com Amazon" 
+                  checked={paymentMethod === "Pague com Amazon"} 
+                  onChange={(e) => setPaymentMethod(e.target.value)} />
+                Pague com Amazon
+                <br/>
+              </label>
+              <label>
+                <input className='mx-2' type="radio" value="Débito Automático" 
+                  checked={paymentMethod === "Débito Automático"} 
+                  onChange={(e) => setPaymentMethod(e.target.value)} />
+                Débito Automático
+                <br/>
+              </label>
+            </div>
+          </form>
+          <div  className='text-white text-xs'>
                   <p className='text-white text-xs'>Nome do Usuário: {purchaseData.userName}</p>
                   <p className='text-white text-xs'>Email do Usuário: {purchaseData.email}</p>
                 </div>
@@ -166,16 +153,8 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
 };
 
 PayAndContract.propTypes = {
-    onButtonClick: PropTypes.func.isRequired,
-    selectedPlan: PropTypes.object.isRequired,
-    userName: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    termsAccepted: PropTypes.bool.isRequired,
-    paymentInfo: PropTypes.object,
-    payPallEmail: PropTypes.string, 
-    payPallPassword: PropTypes.string , 
-    payPallTermsAccepted: PropTypes.bool,
-    payPallPaymentInfo: PropTypes.object,
-  };
+  onButtonClick: PropTypes.func.isRequired,
+  selectedPlan: PropTypes.object.isRequired,
+};
 
 export default PayAndContract;

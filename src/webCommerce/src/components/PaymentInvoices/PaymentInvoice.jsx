@@ -4,11 +4,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import { PurchaseContext } from '../../context/PurchaseContext';
-import { PayPallPaymentContext } from '../../context/PayPallPaymentContext';
+import { PaymentContext } from '../../context/PaymentContext';
 
 function PaymentInvoice() {
   const { purchaseData } = useContext(PurchaseContext);
-  const { payPallPaymentInfo } = useContext(PayPallPaymentContext);
+  const { payPallPaymentInfo } = useContext(PaymentContext);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -37,18 +37,23 @@ function PaymentInvoice() {
   }
 
   console.log('Renderizando componente corretamente...');
+
   return (
     <div>
-      <p>Plano selecionado: {purchaseData.selectedPlan}</p>
+      <p>Plano selecionado: {purchaseData.selectedPlan.title}</p>
       <p>Nome do usuário: {purchaseData.userName}</p>
       <p>Email: {purchaseData.email}</p>
       <p>Metodo de Pagamento: {purchaseData.paymentMethod}</p>
-      <p>PayPall Email: {payPallPaymentInfo.payPallEmail}</p>
-      <p>PayPall Password: {payPallPaymentInfo.payPallPassword}</p>
-      <p>PayPall Termos Aceitos: {payPallPaymentInfo.payPallTermsAccepted}</p>
-      payPallPaymentInfo.payPallTermsAccepted
+      {payPallPaymentInfo && (
+        <>
+          <p>PayPall Email: {payPallPaymentInfo.payPallEmail}</p>
+          <p>PayPall Password: {payPallPaymentInfo.payPallPassword}</p>
+          <p>PayPall Termos Aceitos: {payPallPaymentInfo.payPallTermsAccepted}</p>
+        </>
+      )}
     </div>
   );
+  
 }
 
 
@@ -67,7 +72,7 @@ PaymentInvoice.propTypes = {
   }).isRequired,
   userName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
-  paymentMethod: PropTypes.string.isRequired,
+  paymentMethod: PropTypes.string,
   payPallEmail: PropTypes.string,
   payPallPassword: PropTypes.string,
   payPallTermsAccepted: PropTypes.bool,

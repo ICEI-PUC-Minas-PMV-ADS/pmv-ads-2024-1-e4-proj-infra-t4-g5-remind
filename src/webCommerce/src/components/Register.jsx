@@ -1,7 +1,5 @@
 
-
 //Register.jsx
-
 import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
 import PropTypes from 'prop-types';
