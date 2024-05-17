@@ -1,14 +1,12 @@
 import { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { PaymentContext } from '../context/PaymentContext';
-import { PurchaseContext } from '../context/PurchaseContext';
 import CreditCard from '../components/PaymentMethods/CreditCard';
 import Amazon from '../components/PaymentMethods/Amazon';
 import BankTransfer from '../components/PaymentMethods/BankTransfer';
 import PayPall from '../components/PaymentMethods/PayPall';
 
 const PayAndContract = ({ onButtonClick, selectedPlan }) => {
-  const { purchaseData } = useContext(PurchaseContext);
   const { creditCardPaymentInfo, payPallPaymentInfo, amazonPaymentInfo, bankTransferPaymentInfo } = useContext(PaymentContext);
   const [paymentMethod, setPaymentMethod] = useState('');
 
@@ -132,10 +130,7 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
               </label>
             </div>
           </form>
-          <div  className='text-white text-xs'>
-                  <p className='text-white text-xs'>Nome do Usuário: {purchaseData.userName}</p>
-                  <p className='text-white text-xs'>Email do Usuário: {purchaseData.email}</p>
-                </div>
+          
             </div>
             <div className=' -mx-4 buynow-card-border'> 
                 <h3 className='buynow-card-title pb-6'>{paymentMethod}</h3>
