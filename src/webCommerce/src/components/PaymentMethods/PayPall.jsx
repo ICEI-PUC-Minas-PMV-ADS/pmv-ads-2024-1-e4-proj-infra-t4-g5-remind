@@ -9,7 +9,11 @@ function PayPall({ onButtonClick, selectedPlan }) {
   const handleButtonClick = (event) => {
     event.preventDefault();
 
-    if (payPallPaymentInfo.payPallEmail && payPallPaymentInfo.payPallPassword && payPallPaymentInfo.payPallTermsAccepted) {
+    if (
+      payPallPaymentInfo.payPallEmail && 
+      payPallPaymentInfo.payPallPassword && 
+      payPallPaymentInfo.payPallTermsAccepted
+    ) {
       onButtonClick(payPallPaymentInfo, selectedPlan);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
@@ -64,11 +68,6 @@ function PayPall({ onButtonClick, selectedPlan }) {
     </div>
   );
 }
-
-PayPall.propTypes = {
-  onButtonClick: PropTypes.func.isRequired,
-  selectedPlan: PropTypes.object.isRequired,
-};
 
 
 PayPall.propTypes = {

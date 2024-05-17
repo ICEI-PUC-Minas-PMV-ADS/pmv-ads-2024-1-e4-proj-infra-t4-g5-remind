@@ -1,87 +1,61 @@
-
-//BankTransfer.jsx
-import { useContext, useState } from 'react';
-import Loader from '../Loader';
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
-import BankField from '../PaymentMethods/BankTransfer/BankField'
-import AccountInput from '../PaymentMethods/BankTransfer/AccountInput';
-import AccountDigitInput from '../PaymentMethods/BankTransfer/AccountDigitInput';
-import AgencyInput from '../PaymentMethods/BankTransfer/AgencyInput';
-import CPFInput from '../PaymentMethods/BankTransfer/CPFInput';
-import NameInput from '../PaymentMethods/BankTransfer/NameInput';
-import TermsCheckbox from '../PaymentMethods/BankTransfer/TermsCheckbox';
-import PaymentInvoice from '../PaymentInvoices/PaymentInvoice';
-import { PurchaseContext } from '../../context/PurchaseContext';
+import { PaymentContext } from '../../context/PaymentContext';
+import BankField from './BankTransfer/BankField';
+import AccountInput from './BankTransfer/AccountInput';
+import AccountDigitInput from './BankTransfer/AccountDigitInput';
+import AgencyInput from './BankTransfer/AgencyInput';
+import CPFInput from './BankTransfer/CPFInput';
+import NameInput from './BankTransfer/NameInput';
+import TermsCheckbox from './BankTransfer/TermsCheckbox';
 
-function BankTransfer({ onButtonClick, isLoading, selectedPlan }) {
-  const [bank, setBank] = useState('');
-  const [account, setAccount] = useState('');
-  const [accountDigit, setAccountDigit] = useState('');
-  const [agency, setAgency] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [name, setName] = useState('');
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [paymentInfo, setPaymentInfo] = useState(null);
-
-  const { purchaseData } = useContext(PurchaseContext);
+function BankTransfer({ onButtonClick, selectedPlan }) {
+  const { bankTransferPaymentInfo, setBankTransferPaymentInfo } = useContext(PaymentContext);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (bank && account && accountDigit && agency && cpf && name && termsAccepted) {
-      setPaymentInfo({
-        selectedPlan,
-        userName: purchaseData.userName,
-        email: purchaseData.email,
-        paymentMethod: 'BankTransfer',
-        bank,
-        account,
-        accountDigit,
-        agency,
-        cpf,
-        name,
-      });
-      onButtonClick(paymentInfo);
-    } else {
+    if (
+      bankTransferPaymentInfo.bankName &&
+      bankTransferPaymentInfo.bankAccountNumber &&
+      bankTransferPaymentInfo.bankRoutingNumber &&
+      bankTransferPaymentInfo.bankAccountAgencyNumber &&
+      bankTransferPaymentInfo.clientName &&
+      bankTransferPaymentInfo.clienteCpf &&
+      bankTransferPaymentInfo.bankTransferTermsAccepted
+    ) {
+      onButtonClick(bankTransferPaymentInfo, selectedPlan);
+      } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
     }
   };
-  
-  if (paymentInfo) {
-    return <PaymentInvoice {...paymentInfo} />; 
-  }
-
 
   return (
     <div>
       <form className='relative -mx-4 flex flex-col py-4 px-2'>
-        <div className='pb-4 flex flex-col items-center justify-center'>
-          <div>
-            <p className='buynow-card-text-sm'>
-              Autorização para Débito Automático.
-            </p>
-          </div>
-        </div>
-        <BankField value={bank} onChange={(e) => setBank(e.target.value)} />
+        <BankField 
+          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankName: e.target.checked }))} />
         <div className='flex mt-1.5'>
-          <AccountInput value={account} onChange={setAccount} />
-          <AccountDigitInput value={accountDigit} onChange={setAccountDigit} />
-          <AgencyInput value={agency} onChange={setAgency} />
+          <AccountInput 
+            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankAccountNumber: e.target.checked }))} />
+          <AccountDigitInput 
+            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankRoutingNumber: e.target.checked }))} />
+          <AgencyInput 
+            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankAccountAgencyNumber: e.target.checked }))} />
         </div>
-        <CPFInput value={cpf} onChange={setCpf} />
-        <NameInput value={name} onChange={setName} />
-        <TermsCheckbox checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
+        <CPFInput 
+          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, clienteCpf: e.target.checked }))} />
+        <NameInput 
+          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, clientName: e.target.checked }))} />
+        <TermsCheckbox 
+          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankTransferTermsAccepted: e.target.checked }))} />
       </form>
       <div className="flex justify-center mt-8">
-        {isLoading ? (
-          <Loader />
-        ) : (
           <button
             onClick={handleButtonClick}
-            className={`btn-buynow-popular w-11/12 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+            className={`btn-buynow-popular w-11/12`}
           >
             Autorizar
           </button>
-        )}
       </div>
     </div>
   );
@@ -89,17 +63,7 @@ function BankTransfer({ onButtonClick, isLoading, selectedPlan }) {
 
 BankTransfer.propTypes = {
   onButtonClick: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
   selectedPlan: PropTypes.object.isRequired,
-  userName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  /* paymentMethod: PropTypes.string.isRequired, */
-  bank: PropTypes.string,
-  account: PropTypes.string,
-  accountDigit: PropTypes.string,
-  agency: PropTypes.string,
-  cpf: PropTypes.string,
-  name: PropTypes.string,
 };
 
 export default BankTransfer;
