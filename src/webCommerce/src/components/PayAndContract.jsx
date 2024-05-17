@@ -103,6 +103,7 @@ const PayAndContract = ({ onButtonClick, selectedPlan }) => {
             </div>
             <div className='mt-2 mb-12 space-y-4 flex-1' >
               <label>
+                
                 <input className='mx-2' type="radio" value="Cartão de Crédito" 
                   checked={paymentMethod === "Cartão de Crédito"} 
                   onChange={(e) => setPaymentMethod(e.target.value)} />

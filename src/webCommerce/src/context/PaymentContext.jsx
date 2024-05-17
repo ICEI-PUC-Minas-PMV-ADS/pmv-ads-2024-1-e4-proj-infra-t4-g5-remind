@@ -6,10 +6,14 @@ import { createContext, useState } from 'react';
 export const PaymentContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
+
   const [creditCardPaymentInfo, setCreditCardPaymentInfo] = useState({
+    creditCardBrand: '',
     creditCardNumber: '',
     creditCardExpiry: '',
-    creditCardCVC: '',
+    creditCardCVS: '',
+    clientName: '',
+    clienteCpf: '',
     creditCardTermsAccepted: false,
   });
 
