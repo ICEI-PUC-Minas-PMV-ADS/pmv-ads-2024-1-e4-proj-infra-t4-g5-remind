@@ -1,5 +1,3 @@
-// AccountInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyAccountFormat } from '../../../utils/inputMasks';
 

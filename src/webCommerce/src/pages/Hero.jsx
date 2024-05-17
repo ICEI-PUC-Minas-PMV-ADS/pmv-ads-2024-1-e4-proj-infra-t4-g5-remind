@@ -20,16 +20,13 @@ const Hero = () => {
       '#purple-message-seventh',
     ]; 
   
-    // Animação para o Título da página e botão de comprar
     gsap.to('#hero', { opacity: 1, y: -50, delay: 4.1 });
     gsap.to('#cta', { opacity: 1, y: -50, delay: 4.3 });
-  
-    // Aplicar opacidade 0 para todos os elementos de mensagem de fundo
+ 
     ids.forEach(id => {
       gsap.set(id, { opacity: 0 });
     });
   
-    // Adicionar atraso antes da sequência de animações das mensagens de fundo
     timeline.to({}, { delay: 1 });
   
     ids.forEach((id, index) => {
@@ -50,8 +47,7 @@ const Hero = () => {
         ease: 'power2.out',
       });
     });
-  
-    // Atraso antes de começar a próxima parte da animação
+
     timeline.to({}, { delay: 0.4 });
   
     function moveLeft(id) {
@@ -96,14 +92,13 @@ const Hero = () => {
                   return moveRight(id);
                 }
               })
-              .to({}, { delay: 0.1 }) // Atraso antes de continuar
+              .to({}, { delay: 0.1 }) 
               .call(moveMessagesUp)
-              .to({}, { delay: 0.1 }); // Atraso segundo antes de continuar
-    
-      // Reinicia a animação após a última mensagem
+              .to({}, { delay: 0.1 }); 
+
       if (!nextId) {
         timeline.call(resetMessages)
-                .to({}, { delay: 0.3 }) // Atraso antes de reiniciar
+                .to({}, { delay: 0.3 }) 
                 .call(() => {
                   timeline.restart();
                 });

@@ -26,7 +26,6 @@ function CreditCard({ onButtonClick, selectedPlan }) {
 
   const handleInputChange = (fieldName, value) => {
     if (fieldName === 'creditCardExpiry') {
-      // Verifica se o valor é uma string e a converte para Date
       if (typeof value === 'string') {
         value = new Date(value);
       }

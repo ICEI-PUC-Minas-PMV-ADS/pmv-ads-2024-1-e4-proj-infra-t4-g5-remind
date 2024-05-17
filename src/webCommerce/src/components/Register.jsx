@@ -1,5 +1,3 @@
-
-//Register.jsx
 import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
 import PropTypes from 'prop-types';
@@ -13,10 +11,8 @@ const Register = ({ selectedPlan, onButtonClick }) => {
   const handleButtonClick = (event) => {
     event.preventDefault();
   
-    // Cria uma cópia de purchaseData
     let tempPurchaseData = { ...purchaseData };
   
-    // Adiciona selectedPlan à cópia se ainda não estiver presente
     if (!tempPurchaseData.selectedPlan) {
       tempPurchaseData = {
         ...tempPurchaseData,
@@ -24,11 +20,10 @@ const Register = ({ selectedPlan, onButtonClick }) => {
       };
     }
   
-    // Agora, tempPurchaseData inclui selectedPlan
     if (tempPurchaseData.userName && tempPurchaseData.email && tempPurchaseData.password && tempPurchaseData.termsAccepted && tempPurchaseData.selectedPlan) {
       console.log("Plano selecionado em Register:", selectedPlan);
       console.log(tempPurchaseData);
-      setPurchaseData(tempPurchaseData); // Atualiza o estado com tempPurchaseData
+      setPurchaseData(tempPurchaseData);
       onButtonClick(tempPurchaseData);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');

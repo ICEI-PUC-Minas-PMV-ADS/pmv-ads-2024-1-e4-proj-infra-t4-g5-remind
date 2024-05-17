@@ -1,5 +1,3 @@
-
-//App.jsx
 import Navbar from './pages/Navbar';
 import Hero from './pages/Hero';
 import UserStories from './pages/UserStories';

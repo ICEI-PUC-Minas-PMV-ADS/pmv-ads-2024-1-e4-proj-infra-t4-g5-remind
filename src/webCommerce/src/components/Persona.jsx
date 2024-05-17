@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-//Preciso melhorar o css para ativa este componente
 const Persona = ({ name, role, description }) => {
     return (
       <div className="flex-1 flex-center">

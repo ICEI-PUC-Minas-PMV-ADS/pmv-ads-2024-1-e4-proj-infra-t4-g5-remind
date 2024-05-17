@@ -1,5 +1,3 @@
-// AccountDigitInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyAccountDigitFormat } from '../../../utils/inputMasks';
 

@@ -1,4 +1,3 @@
-// utils/inputMasks.js
 import { creditCardBrands } from '../constants/index';
 
 //BankTransfer

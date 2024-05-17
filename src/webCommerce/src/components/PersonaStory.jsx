@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-//Preciso melhorar o css para ativa este componente
 const PersonaStory = ({ imageUrl, quote, position }) => {
     return (
       <div className="flex flex-col w-full relative">

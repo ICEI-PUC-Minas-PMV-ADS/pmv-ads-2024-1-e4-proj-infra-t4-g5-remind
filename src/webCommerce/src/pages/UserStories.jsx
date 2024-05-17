@@ -114,10 +114,10 @@ const UserStories = () => {
           </div >
 
           <div className="mb-12 w-full h-[15vh]">
-            {/* Espaçamento entre os blocos */}
+            
           </div>
 
-          {/* Segundo bloco */}
+          {/* Second Block */}
           <div className="flex-center flex-col sm:px-10">
 
             <div className="flex flex-col w-full relative">

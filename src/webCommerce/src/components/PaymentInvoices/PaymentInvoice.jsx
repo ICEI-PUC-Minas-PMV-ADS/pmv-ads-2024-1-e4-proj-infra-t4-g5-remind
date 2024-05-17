@@ -1,4 +1,3 @@
-// PaymentInvoice.jsx
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import { PurchaseContext } from '../../context/PurchaseContext';
@@ -78,8 +77,8 @@ function PaymentInvoice() {
               <p>Número da Agência: {paymentInfo.bankAccountAgencyNumber}</p>
               <p>Nome do Cliente: {paymentInfo.clientName}</p>
               <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
-              <p>Termos Aceitos: {paymentInfo.bankTransferTermsAccepted}</p>
-            </>
+              <p>Termos Aceitos: {typeof paymentInfo.bankTransferTermsAccepted === 'string' ? paymentInfo.bankTransferTermsAccepted : paymentInfo.bankTransferTermsAccepted.toString()}</p>
+      </>
           )}
           {purchaseData.paymentMethod === 'PayPall' && (
             <>

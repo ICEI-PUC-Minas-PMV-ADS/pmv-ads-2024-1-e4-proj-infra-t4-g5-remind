@@ -1,4 +1,3 @@
-// BankField.jsx
 import { Banks } from '../../../constants';
 import PropTypes from 'prop-types';
 
@@ -24,7 +23,7 @@ function BankField({ value, onChange }) {
 }
 
 BankField.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

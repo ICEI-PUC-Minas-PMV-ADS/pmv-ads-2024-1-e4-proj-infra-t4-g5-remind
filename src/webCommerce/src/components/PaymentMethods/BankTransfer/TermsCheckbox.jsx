@@ -1,5 +1,3 @@
-// TermsCheckbox.jsx
-
 import PropTypes from 'prop-types';
 
 function TermsCheckbox({ checked, onChange }) {
@@ -22,7 +20,7 @@ function TermsCheckbox({ checked, onChange }) {
 }
 
 TermsCheckbox.propTypes = {
-  checked: PropTypes.bool.isRequired,
+  checked: PropTypes.bool,
   onChange: PropTypes.func.isRequired,
 };
 

@@ -1,5 +1,3 @@
-// NameInput.jsx
-
 import PropTypes from 'prop-types';
 
 function NameInput({ value, onChange }) {

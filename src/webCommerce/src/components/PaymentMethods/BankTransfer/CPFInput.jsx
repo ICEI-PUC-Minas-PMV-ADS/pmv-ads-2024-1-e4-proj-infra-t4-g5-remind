@@ -1,5 +1,3 @@
-// CPFInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyCPFFormat } from '../../../utils/inputMasks';
 
@@ -20,7 +18,7 @@ function CPFInput({ value, onChange }) {
         placeholder='CPF' 
         value={value}
         onChange={handleCPFInputChange} 
-        maxLength="14" // Limita o tamanho máximo do input
+        maxLength="14" 
         className='w-full placeholder-gray-500 text-sm p-1 font-thin'
       />
     </div>

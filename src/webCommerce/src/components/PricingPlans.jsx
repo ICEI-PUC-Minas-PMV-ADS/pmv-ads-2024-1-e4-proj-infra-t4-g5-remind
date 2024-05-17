@@ -1,5 +1,3 @@
-
-// PricingPlans.jsx
 import { pricingPlans } from '../constants';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';

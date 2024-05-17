@@ -1,5 +1,3 @@
-// CreditCardField.jsx
-
 import PropTypes from 'prop-types';
 
 function CreditCardField({ value }) {

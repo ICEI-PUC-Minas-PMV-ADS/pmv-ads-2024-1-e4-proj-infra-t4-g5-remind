@@ -1,5 +1,3 @@
-// CPFInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyCPFFormat } from '../../../utils/inputMasks';
 

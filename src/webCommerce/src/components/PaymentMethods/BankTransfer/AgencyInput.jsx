@@ -1,5 +1,3 @@
-// AgencyInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyAgencyFormat } from '../../../utils/inputMasks';
 

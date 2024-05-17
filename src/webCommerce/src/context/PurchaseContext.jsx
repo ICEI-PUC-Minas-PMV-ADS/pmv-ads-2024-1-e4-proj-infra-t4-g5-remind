@@ -1,5 +1,3 @@
-
-//PurchaseContext.jsx
 import { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { pricingPlans } from '../constants';

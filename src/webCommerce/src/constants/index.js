@@ -241,8 +241,6 @@ export const creditCardBrands = {
   }
 };
 
-// Lista exaustiva de bancos para débito direto
-
 export const Banks = [
   "001 - Banco do Brasil",
   "003 - Banco da Amazônia",

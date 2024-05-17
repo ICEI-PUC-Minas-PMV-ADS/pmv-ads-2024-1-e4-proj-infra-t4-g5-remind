@@ -1,5 +1,3 @@
-// NameInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyNameFormat } from '../../../utils/inputMasks';
 
@@ -26,7 +24,7 @@ function NameInput({ value, onChange }) {
 }
 
 NameInput.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

@@ -1,5 +1,3 @@
-
-//BuyNow.jsx
 import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
 import { useGSAP } from '@gsap/react';
@@ -44,7 +42,6 @@ const handleButtonClick = (data, method) => {
     
   }
 };
-
 
   let Component;
   if (step === 'pricing') {

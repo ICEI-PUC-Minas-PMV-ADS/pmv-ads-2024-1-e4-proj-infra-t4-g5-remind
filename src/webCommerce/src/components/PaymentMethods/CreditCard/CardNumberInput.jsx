@@ -1,5 +1,3 @@
-// CardNumberInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyCreditCardFormat } from '../../../utils/inputMasks';
 

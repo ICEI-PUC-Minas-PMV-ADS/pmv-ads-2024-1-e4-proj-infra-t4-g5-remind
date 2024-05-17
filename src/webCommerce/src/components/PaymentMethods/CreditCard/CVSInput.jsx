@@ -1,5 +1,3 @@
-// CVSInput.jsx
-
 import PropTypes from 'prop-types';
 import { applyCVSFormat } from '../../../utils/inputMasks';
 

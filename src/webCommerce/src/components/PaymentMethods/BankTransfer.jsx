@@ -10,7 +10,13 @@ import NameInput from './BankTransfer/NameInput';
 import TermsCheckbox from './BankTransfer/TermsCheckbox';
 
 function BankTransfer({ onButtonClick, selectedPlan }) {
+
   const { bankTransferPaymentInfo, setBankTransferPaymentInfo } = useContext(PaymentContext);
+
+  const handleInputChange = (fieldName, value) => {
+
+    setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, [fieldName]: value }));
+  };
 
   const handleButtonClick = (event) => {
     event.preventDefault();
@@ -33,21 +39,30 @@ function BankTransfer({ onButtonClick, selectedPlan }) {
     <div>
       <form className='relative -mx-4 flex flex-col py-4 px-2'>
         <BankField 
-          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankName: e.target.checked }))} />
+            value={bankTransferPaymentInfo.bankName} onChange={(e) => handleInputChange('bankName', e.target.value)} />
         <div className='flex mt-1.5'>
           <AccountInput 
-            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankAccountNumber: e.target.checked }))} />
+            value={bankTransferPaymentInfo.bankAccountNumber} 
+            onChange={(value) => handleInputChange('bankAccountNumber', value)}
+             />
           <AccountDigitInput 
-            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankRoutingNumber: e.target.checked }))} />
+            value={bankTransferPaymentInfo.bankRoutingNumber} 
+            onChange={(value) => handleInputChange('bankRoutingNumber', value)} 
+            />
           <AgencyInput 
-            onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankAccountAgencyNumber: e.target.checked }))} />
+            value={bankTransferPaymentInfo.bankAccountAgencyNumber} 
+            onChange={(value) => handleInputChange('bankAccountAgencyNumber', value)} 
+            />
         </div>
         <CPFInput 
-          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, clienteCpf: e.target.checked }))} />
+          value={bankTransferPaymentInfo.clienteCpf} 
+          onChange={(value) => handleInputChange('clienteCpf', value)} />
         <NameInput 
-          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, clientName: e.target.checked }))} />
+          value={bankTransferPaymentInfo.clienteName} onChange={(value) => handleInputChange('clientName', value)} />
         <TermsCheckbox 
-          onChange={(e) => setBankTransferPaymentInfo(prevInfo => ({ ...prevInfo, bankTransferTermsAccepted: e.target.checked }))} />
+          value={bankTransferPaymentInfo.bankTransferTermsAccepted} 
+          onChange={(value) => handleInputChange('bankTransferTermsAccepted', value)} 
+           />
       </form>
       <div className="flex justify-center mt-8">
           <button
