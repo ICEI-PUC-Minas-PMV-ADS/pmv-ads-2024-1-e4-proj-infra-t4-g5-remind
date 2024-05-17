@@ -14,7 +14,7 @@ export const PaymentProvider = ({ children }) => {
     creditCardCVS: '',
     clientName: '',
     clienteCpf: '',
-    creditCardTermsAccepted: false,
+    creditCardTermsAccepted: true,
   });
 
   const [payPallPaymentInfo, setPayPallPaymentInfo] = useState({

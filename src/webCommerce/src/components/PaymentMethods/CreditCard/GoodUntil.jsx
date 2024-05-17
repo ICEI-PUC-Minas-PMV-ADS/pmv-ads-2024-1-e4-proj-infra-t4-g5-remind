@@ -9,7 +9,7 @@ function GoodUntil({ value, onChange }) {
     onChange(date);
   };
 
-  console.log(value instanceof Date);
+  /* console.log(value instanceof Date); */
 
   return (
     <div className='buynow-input-text w-4/12 mr-2'>
@@ -28,8 +28,11 @@ function GoodUntil({ value, onChange }) {
 }
 
 GoodUntil.propTypes = {
-  value: PropTypes.instanceOf(Date).isRequired,
-  onChange: PropTypes.func.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.instanceOf(Date),
+    PropTypes.string // Permitir tanto instância de Date quanto string
+  ]),
+  onChange: PropTypes.func.isRequired
 };
 
 export default GoodUntil;

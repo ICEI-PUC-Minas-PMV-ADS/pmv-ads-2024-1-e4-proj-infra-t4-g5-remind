@@ -18,7 +18,7 @@ function CreditCardField({ value }) {
 }
 
 CreditCardField.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default CreditCardField;

@@ -99,7 +99,7 @@ function PaymentInvoice() {
             <>
               <p>Marca do Cartão: {paymentInfo.creditCardBrand}</p>
               <p>Número do Cartão: {paymentInfo.creditCardNumber}</p>
-              <p>Vencimento do Cartão: {paymentInfo.creditCardExpiry}</p>
+              <p>Vencimento do Cartão: {paymentInfo.creditCardExpiry.toLocaleDateString()}</p>
               <p>CVS do Cartão: {paymentInfo.creditCardCVS}</p>
               <p>Nome do Cliente: {paymentInfo.clientName}</p>
               <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>

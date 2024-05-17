@@ -28,7 +28,7 @@ function CVSInput({ value, onChange }) {
 }
 
 CVSInput.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 

@@ -28,7 +28,7 @@ function CPFInput({ value, onChange }) {
 }
 
 CPFInput.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
