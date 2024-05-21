@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { VITE_ADMIN_TOKEN, VITE_API_URL } from '@env';
 
-export const login = async (email, password) => {
+export const login = async (values) => {
   try {
     const res = await axios.post(`${VITE_API_URL}/users/login`, {
-      email,
-      password,
+      email: values.email,
+      senha: values.password,
     });
 
     console.log(res.data);
