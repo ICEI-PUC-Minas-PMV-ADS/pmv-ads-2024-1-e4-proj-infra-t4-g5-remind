@@ -11,7 +11,7 @@ const PaymentSchema = new mongoose.Schema({
   paymentMethod: {
     type: String,
     required: true,
-    enum: ['credit_card', 'paypal', 'amazon', 'bank_transfer'],
+    enum: ['Cartão de Crédito', 'PayPall', 'Pague com Amazon', 'Débito Automático'],
   },
   // Credit Card fields
   creditCardBrand: { type: String, required: function() { return this.paymentMethod === 'credit_card'; } },

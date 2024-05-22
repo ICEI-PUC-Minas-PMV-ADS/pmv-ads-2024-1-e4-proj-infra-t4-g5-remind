@@ -9,6 +9,7 @@ function PayPall({ onButtonClick, selectedPlan }) {
   const handleButtonClick = (event) => {
     event.preventDefault();
 
+    
     if (
       payPallPaymentInfo.payPallEmail && 
       payPallPaymentInfo.payPallPassword && 

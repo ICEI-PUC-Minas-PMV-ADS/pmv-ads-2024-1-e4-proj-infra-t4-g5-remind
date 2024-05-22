@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
+import mongoose from 'mongoose';
 import { PurchaseContext } from '../../context/PurchaseContext';
 import { PaymentContext } from '../../context/PaymentContext';
 
@@ -42,8 +43,10 @@ function PaymentInvoice() {
 
         clearInterval(checkInterval);
 
-        // Crie a purchase aqui
         createPurchase();
+        
+        createPayment();
+
       } else {
         setLoading(true);
         console.log('Informações incompletas. Aguardando mais dados...');
@@ -51,7 +54,6 @@ function PaymentInvoice() {
     };
 
     const createPurchase = async () => {
-      /* const paymentInfo = getPaymentInfo(); */
 
       const purchase = {
         //Plan Data
@@ -70,8 +72,6 @@ function PaymentInvoice() {
         password: purchaseData.password,
         //Terms
         termsAccepted: purchaseData.termsAccepted,
-        /* paymentMethod: purchaseData.paymentMethod, */
-        /* paymentInfo, */
       };
 
       try {
@@ -83,6 +83,27 @@ function PaymentInvoice() {
         console.log('Purchase criada com sucesso:', response.data);
       } catch (error) {
         console.error('Erro ao criar purchase:', error);
+      }
+    };
+
+    const createPayment = async () => {
+      const paymentInfo = getPaymentInfo();
+
+      const payment = {
+        payment_id: new mongoose.Types.ObjectId().toString(),
+        paymentMethod: purchaseData.paymentMethod,
+        ...paymentInfo,
+      };
+
+      try {
+        const response = await axios.post('http://localhost:5000/payment', payment, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        console.log('Payment criado com sucesso:', response.data);
+      } catch (error) {
+        console.error('Erro ao criar payment:', error);
       }
     };
 

@@ -8,7 +8,11 @@ function Amazon({ onButtonClick, selectedPlan }) {
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    if (amazonPaymentInfo.amazonEmail && amazonPaymentInfo.amazonPassword && amazonPaymentInfo.amazonTermsAccepted) {
+    if (
+      amazonPaymentInfo.amazonEmail && 
+      amazonPaymentInfo.amazonPassword && 
+      amazonPaymentInfo.amazonTermsAccepted
+    ) {
       onButtonClick(amazonPaymentInfo, selectedPlan);
     } else {
       alert('Por favor, preencha todos os campos e aceite os termos e condições.');
@@ -45,7 +49,7 @@ function Amazon({ onButtonClick, selectedPlan }) {
         </div>
         <div className="checkbox-container">
           <input type="checkbox" id="terms" name="terms" className='mx-2 ' required 
-          onChange={(e) => setAmazonPaymentInfo(prevInfo => ({ ...prevInfo, amazonTermsAccepted: e.target.value }))} />
+          onChange={(e) => setAmazonPaymentInfo(prevInfo => ({ ...prevInfo, amazonTermsAccepted: e.target.checked }))} />
           <label htmlFor="terms" className="buynow-card-text-sm">
             Pagar com a conta Amazon.
           </label>
