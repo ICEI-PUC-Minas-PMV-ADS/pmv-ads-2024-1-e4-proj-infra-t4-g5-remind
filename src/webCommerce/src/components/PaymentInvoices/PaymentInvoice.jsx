@@ -44,9 +44,6 @@ function PaymentInvoice() {
         clearInterval(checkInterval);
 
         createPurchase();
-        
-        createPayment();
-
       } else {
         setLoading(true);
         console.log('Informações incompletas. Aguardando mais dados...');
@@ -54,9 +51,8 @@ function PaymentInvoice() {
     };
 
     const createPurchase = async () => {
-
       const purchase = {
-        //Plan Data
+        // Plan Data
         plan_id: purchaseData.selectedPlan.id,
         plan: purchaseData.selectedPlan.title,
         price: purchaseData.selectedPlan.price,
@@ -70,23 +66,24 @@ function PaymentInvoice() {
         userName: purchaseData.userName,
         email: purchaseData.email,
         password: purchaseData.password,
-        //Terms
+        // Terms
         termsAccepted: purchaseData.termsAccepted,
       };
 
       try {
-        const response = await axios.post('http://localhost:5000/purchase', purchase, {
+        const purchaseResponse = await axios.post('http://localhost:5000/purchase', purchase, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
-        console.log('Purchase criada com sucesso:', response.data);
+        console.log('Purchase criada com sucesso:', purchaseResponse.data);
+        createPayment(purchaseResponse.data._id); // Passando o ID da purchase para createPayment
       } catch (error) {
         console.error('Erro ao criar purchase:', error);
       }
     };
 
-    const createPayment = async () => {
+    const createPayment = async (purchaseId) => {
       const paymentInfo = getPaymentInfo();
 
       const payment = {
@@ -96,14 +93,33 @@ function PaymentInvoice() {
       };
 
       try {
-        const response = await axios.post('http://localhost:5000/payment', payment, {
+        const paymentResponse = await axios.post('http://localhost:5000/payment', payment, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
-        console.log('Payment criado com sucesso:', response.data);
+        console.log('Payment criado com sucesso:', paymentResponse.data);
+        createStatus(purchaseId, paymentResponse.data._id); // Passando os IDs de purchase e payment para createStatus
       } catch (error) {
         console.error('Erro ao criar payment:', error);
+      }
+    };
+
+    const createStatus = async (purchaseId, paymentId) => {
+      const statusData = {
+        purchase_id: purchaseId,
+        payment_id: paymentId,
+      };
+
+      try {
+        const statusResponse = await axios.post('http://localhost:5000/subscription-status', statusData, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        console.log('SubscriptionStatus criado com sucesso:', statusResponse.data);
+      } catch (error) {
+        console.error('Erro ao criar subscription status:', error);
       }
     };
 
@@ -121,58 +137,73 @@ function PaymentInvoice() {
 
   const paymentInfo = getPaymentInfo();
 
-  return (
-    <div className='screen-max-width'>
-      <div className='buynow-cards-container'>
-        <div className='buynow-card-border'>
-          <h3 className='text-5xl pb-8 font-semibold text-neutral-100 leading-6'>Resumo do Plano:</h3>
-          <p>Plano selecionado: {purchaseData.selectedPlan.title}</p>
-          <p>Nome do usuário: {purchaseData.userName}</p>
-          <p>Email: {purchaseData.email}</p>
-          <p>Metodo de Pagamento: {purchaseData.paymentMethod}</p>
-          {paymentInfo && (
-            <>
-              {purchaseData.paymentMethod === 'Débito Automático' && (
-                <>
-                  <p>Nome do Banco: {paymentInfo.bankName}</p>
-                  <p>Número da Conta: {paymentInfo.bankAccountNumber}</p>
-                  <p>Número do Banco: {paymentInfo.bankRoutingNumber}</p>
-                  <p>Número da Agência: {paymentInfo.bankAccountAgencyNumber}</p>
-                  <p>Nome do Cliente: {paymentInfo.clientName}</p>
-                  <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
-                  <p>Termos Aceitos: {typeof paymentInfo.bankTransferTermsAccepted === 'string' ? paymentInfo.bankTransferTermsAccepted : paymentInfo.bankTransferTermsAccepted.toString()}</p>
-                </>
-              )}
-              {purchaseData.paymentMethod === 'PayPall' && (
-                <>
-                  <p>PayPall Email: {paymentInfo.payPallEmail}</p>
-                  <p>PayPall Password: {paymentInfo.payPallPassword}</p>
-                  <p>PayPall Termos Aceitos: {paymentInfo.payPallTermsAccepted}</p>
-                </>
-              )}
-              {purchaseData.paymentMethod === 'Pague com Amazon' && (
-                <>
-                  <p>Amazon Email: {paymentInfo.amazonEmail}</p>
-                  <p>Amazon Password: {paymentInfo.amazonPassword}</p>
-                  <p>Amazon Termos Aceitos: {paymentInfo.amazonTermsAccepted}</p>
-                </>
-              )}
-              {purchaseData.paymentMethod === 'Cartão de Crédito' && (
-                <>
-                  <p>Marca do Cartão: {paymentInfo.creditCardBrand}</p>
-                  <p>Número do Cartão: {paymentInfo.creditCardNumber}</p>
-                  <p>Vencimento do Cartão: {paymentInfo.creditCardExpiry.toLocaleDateString()}</p>
-                  <p>CVS do Cartão: {paymentInfo.creditCardCVS}</p>
-                  <p>Nome do Cliente: {paymentInfo.clientName}</p>
-                  <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
-                  <p>Termos Aceitos: {paymentInfo.creditCardTermsAccepted}</p>
-                </>
-              )}
-            </>
-          )}
-        </div>
+  return (<div className='screen-max-width'>
+  <div className='invoice-container'>
+    <div className='invoice-header'>
+      <h1 className='invoice-title'>Resumo do Plano</h1>
+      <p className='invoice-subtitle'>Informações da Compra</p>
+    </div>
+    <div className='invoice-body'>
+      <div className='invoice-section'>
+        <h2 className='invoice-section-title'>Dados do Plano</h2>
+        <p><span className='invoice-label'>Plano selecionado:</span> {purchaseData.selectedPlan.title}</p>
+        <p><span className='invoice-label'>Preço:</span> {purchaseData.selectedPlan.price} {purchaseData.selectedPlan.currency}</p>
+        <p><span className='invoice-label'>Frequência:</span> {purchaseData.selectedPlan.frequency}</p>
+      </div>
+      <div className='invoice-section'>
+        <h2 className='invoice-section-title'>Dados do Usuário</h2>
+        <p><span className='invoice-label'>Dados do Administrador da conta. </span></p> <br/>
+        <p><span className='invoice-label'>Nome do usuário:</span> {purchaseData.userName}</p>
+        <p><span className='invoice-label'>Email:</span> {purchaseData.email}</p>
+      </div>
+      <div className='invoice-section'>
+        <h2 className='invoice-section-title'>Dados do Pagamento</h2>
+        <p><span className='invoice-label'>Método de Pagamento:</span> {purchaseData.paymentMethod}</p>
+        {paymentInfo && (
+          <>
+            {purchaseData.paymentMethod === 'Débito Automático' && (
+              <>
+                <p><span className='invoice-label'>Nome do Banco:</span> {paymentInfo.bankName}</p>
+                <p><span className='invoice-label'>Número da Conta:</span> {paymentInfo.bankAccountNumber}</p>
+                <p><span className='invoice-label'>Número do Banco:</span> {paymentInfo.bankRoutingNumber}</p>
+                <p><span className='invoice-label'>Número da Agência:</span> {paymentInfo.bankAccountAgencyNumber}</p>
+                <p><span className='invoice-label'>Nome do Cliente:</span> {paymentInfo.clientName}</p>
+                <p><span className='invoice-label'>CPF do Cliente:</span> {paymentInfo.clienteCpf}</p>
+                <p><span className='invoice-label'>Termos Aceitos:</span> {paymentInfo.bankTransferTermsAccepted.toString()}</p>
+              </>
+            )}
+            {purchaseData.paymentMethod === 'PayPall' && (
+              <>
+                <p><span className='invoice-label'>PayPall Email:</span> {paymentInfo.payPallEmail}</p>
+                <p><span className='invoice-label'>PayPall Password:</span> {paymentInfo.payPallPassword}</p>
+                <p><span className='invoice-label'>PayPall Termos Aceitos:</span> {paymentInfo.payPallTermsAccepted}</p>
+              </>
+            )}
+            {purchaseData.paymentMethod === 'Pague com Amazon' && (
+              <>
+                <p><span className='invoice-label'>Amazon Email:</span> {paymentInfo.amazonEmail}</p>
+                <p><span className='invoice-label'>Amazon Password:</span> {paymentInfo.amazonPassword}</p>
+                <p><span className='invoice-label'>Amazon Termos Aceitos:</span> {paymentInfo.amazonTermsAccepted}</p>
+              </>
+            )}
+            {purchaseData.paymentMethod === 'Cartão de Crédito' && (
+              <>
+                <p><span className='invoice-label'>Marca do Cartão:</span> {paymentInfo.creditCardBrand}</p>
+                <p><span className='invoice-label'>Número do Cartão:</span> {paymentInfo.creditCardNumber}</p>
+                <p><span className='invoice-label'>Vencimento do Cartão:</span> {new Date(paymentInfo.creditCardExpiry).toLocaleDateString()}</p>
+                <p><span className='invoice-label'>CVS do Cartão:</span> {paymentInfo.creditCardCVS}</p>
+                <p><span className='invoice-label'>Nome do Cliente:</span> {paymentInfo.clientName}</p>
+                <p><span className='invoice-label'>CPF do Cliente:</span> {paymentInfo.clienteCpf}</p>
+                <p><span className='invoice-label'>Termos Aceitos:</span> {paymentInfo.creditCardTermsAccepted.toString()}</p>
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
+  </div>
+</div>
+
   );
 }
 
@@ -207,6 +238,8 @@ PaymentInvoice.propTypes = {
   creditCardNumber: PropTypes.string,
   creditCardExpiry: PropTypes.string,
   creditCardCVS: PropTypes.string,
+  clientName: PropTypes.string,
+  clienteCpf: PropTypes.string,
   creditCardTermsAccepted: PropTypes.bool,
 };
 
