@@ -161,7 +161,7 @@ function PaymentInvoice() {
         <p><span className='invoice-label'>Email:</span> {purchaseData.email}</p>
         <p><span className='invoice-label'>Senha:</span> {purchaseData.password}</p>
 
-        <div className="mt-8">
+        <div className="my-8">
                 <div>
                   <p className="font-semibold text-gray text-xs">
                     Acesse o site {' '}

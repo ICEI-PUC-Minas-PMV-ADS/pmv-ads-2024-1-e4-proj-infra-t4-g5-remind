@@ -25,6 +25,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "gsap": "^3.12.5",
+    "helmet": "^7.1.0",
     "mongodb": "^6.6.2",
     "mongoose": "^8.4.0",
     "prop-types": "^15.8.1",
