@@ -137,27 +137,51 @@ function PaymentInvoice() {
 
   const paymentInfo = getPaymentInfo();
 
-  return (<div className='screen-max-width'>
-  <div className='invoice-container'>
+  return (
+  <div className='screen-max-width '>
+  <div className='invoice-container mb-6'>
     <div className='invoice-header'>
       <h1 className='invoice-title'>Resumo do Plano</h1>
       <p className='invoice-subtitle'>Informações da Compra</p>
     </div>
-    <div className='invoice-body'>
-      <div className='invoice-section'>
+    <div className='invoice-body min-h-80'>
+      <div className='invoice-section '>
         <h2 className='invoice-section-title'>Dados do Plano</h2>
-        <p><span className='invoice-label'>Plano selecionado:</span> {purchaseData.selectedPlan.title}</p>
-        <p><span className='invoice-label'>Preço:</span> {purchaseData.selectedPlan.price} {purchaseData.selectedPlan.currency}</p>
+        <div className='leading-7'>
+        <p><span className='invoice-label'>Plano selecionado:</span><br/> {purchaseData.selectedPlan.title}</p>
+        <p><span className='invoice-label'>Valor:</span> {purchaseData.selectedPlan.price} {purchaseData.selectedPlan.currency}</p>
         <p><span className='invoice-label'>Frequência:</span> {purchaseData.selectedPlan.frequency}</p>
+        </div>
       </div>
       <div className='invoice-section'>
         <h2 className='invoice-section-title'>Dados do Usuário</h2>
         <p><span className='invoice-label'>Dados do Administrador da conta. </span></p> <br/>
+        <div className='leading-7'>
         <p><span className='invoice-label'>Nome do usuário:</span> {purchaseData.userName}</p>
         <p><span className='invoice-label'>Email:</span> {purchaseData.email}</p>
+        <p><span className='invoice-label'>Senha:</span> {purchaseData.password}</p>
+
+        <div className="mt-8">
+                <div>
+                  <p className="font-semibold text-gray text-xs">
+                    Acesse o site {' '}
+                    <span className="underline text-purple-400 text-sm">
+                     remind.com.br  {' '}
+                    </span>
+                     com estes dados de login para criar os times e administrar as equipes.
+                  </p>
+                  <p className="font-semibold text-gray text-xs">
+                    Ou ligue grátis 24hs 0800-555-2024 para suporte da nossa equipe.
+                  </p>
+                </div>
+              </div>
+
+
+        </div>
       </div>
       <div className='invoice-section'>
         <h2 className='invoice-section-title'>Dados do Pagamento</h2>
+        <div className='leading-7'>
         <p><span className='invoice-label'>Método de Pagamento:</span> {purchaseData.paymentMethod}</p>
         {paymentInfo && (
           <>
@@ -169,36 +193,33 @@ function PaymentInvoice() {
                 <p><span className='invoice-label'>Número da Agência:</span> {paymentInfo.bankAccountAgencyNumber}</p>
                 <p><span className='invoice-label'>Nome do Cliente:</span> {paymentInfo.clientName}</p>
                 <p><span className='invoice-label'>CPF do Cliente:</span> {paymentInfo.clienteCpf}</p>
-                <p><span className='invoice-label'>Termos Aceitos:</span> {paymentInfo.bankTransferTermsAccepted.toString()}</p>
+                <p><span className='invoice-label'>Renovação automática:</span> <span className='text-green-600'> Ativa</span></p>
               </>
             )}
             {purchaseData.paymentMethod === 'PayPall' && (
               <>
                 <p><span className='invoice-label'>PayPall Email:</span> {paymentInfo.payPallEmail}</p>
-                <p><span className='invoice-label'>PayPall Password:</span> {paymentInfo.payPallPassword}</p>
-                <p><span className='invoice-label'>PayPall Termos Aceitos:</span> {paymentInfo.payPallTermsAccepted}</p>
+                <p><span className='invoice-label'>Renovação automática:</span> <span className='text-green-600'> Ativa</span></p>
               </>
             )}
             {purchaseData.paymentMethod === 'Pague com Amazon' && (
               <>
                 <p><span className='invoice-label'>Amazon Email:</span> {paymentInfo.amazonEmail}</p>
-                <p><span className='invoice-label'>Amazon Password:</span> {paymentInfo.amazonPassword}</p>
-                <p><span className='invoice-label'>Amazon Termos Aceitos:</span> {paymentInfo.amazonTermsAccepted}</p>
+                <p><span className='invoice-label'>Renovação automática:</span> <span className='text-green-600'> Ativa</span></p>
               </>
             )}
             {purchaseData.paymentMethod === 'Cartão de Crédito' && (
               <>
                 <p><span className='invoice-label'>Marca do Cartão:</span> {paymentInfo.creditCardBrand}</p>
                 <p><span className='invoice-label'>Número do Cartão:</span> {paymentInfo.creditCardNumber}</p>
-                <p><span className='invoice-label'>Vencimento do Cartão:</span> {new Date(paymentInfo.creditCardExpiry).toLocaleDateString()}</p>
-                <p><span className='invoice-label'>CVS do Cartão:</span> {paymentInfo.creditCardCVS}</p>
                 <p><span className='invoice-label'>Nome do Cliente:</span> {paymentInfo.clientName}</p>
                 <p><span className='invoice-label'>CPF do Cliente:</span> {paymentInfo.clienteCpf}</p>
-                <p><span className='invoice-label'>Termos Aceitos:</span> {paymentInfo.creditCardTermsAccepted.toString()}</p>
+                <p><span className='invoice-label'>Renovação automática:</span> <span className='text-green-600'> Ativa</span></p>
               </>
             )}
           </>
         )}
+        </div>
       </div>
     </div>
   </div>

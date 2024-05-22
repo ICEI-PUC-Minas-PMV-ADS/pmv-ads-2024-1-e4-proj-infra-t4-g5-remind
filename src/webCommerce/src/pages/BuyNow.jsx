@@ -112,7 +112,7 @@ const handleButtonClick = (data, method) => {
                     e peça um orçamento personalizado.
                   </p>
                   <p className="font-semibold text-gray text-xs">
-                    Ou ligue grátis 0800-341-1966
+                    Ou ligue grátis 0800-555-2024
                   </p>
                 </div>
               </div>

@@ -196,7 +196,7 @@ body {
 }
 
 .invoice-header {
-  @apply mb-8;
+  @apply mb-8 px-2;
 }
 
 .invoice-title {
@@ -216,9 +216,9 @@ body {
 }
 
 .invoice-section-title {
-  @apply text-2xl font-semibold mb-4;
+  @apply text-2xl font-semibold mb-4 text-gray-400;
 }
 
 .invoice-label {
-  @apply font-bold;
+  @apply font-bold ;
 }
