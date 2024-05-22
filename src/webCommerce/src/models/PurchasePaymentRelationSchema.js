@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+/* import mongoose from 'mongoose';
 
 const PurchasePaymentRelationSchema = new mongoose.Schema({
   user_id: {
@@ -19,3 +19,4 @@ const PurchasePaymentRelationSchema = new mongoose.Schema({
 
 const PurchasePaymentRelation = mongoose.model('PurchasePaymentRelation', PurchasePaymentRelationSchema);
 export default PurchasePaymentRelation;
+ */

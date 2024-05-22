@@ -1,18 +1,22 @@
+
+
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import express from 'express';
 import bodyParser from 'body-parser';
 import connectDB from './db-connection.js';
 import Purchase from './src/models/PurchaseSchema.js';
 import Payment from './src/models/PaymentSchema.js';
-import PurchasePaymentRelation from './src/models/PurchasePaymentRelationSchema.js';
 
 const __dirname = path.resolve();
 dotenv.config({ path: path.join(__dirname, './.env') });
 
+// Conectar ao banco de dados
 connectDB();
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 // Rota para criação de Purchase
@@ -37,16 +41,6 @@ app.post('/payment', async (req, res) => {
   }
 });
 
-// Rota para criação da relação entre Purchase e Payment
-app.post('/purchase-payment-relation', async (req, res) => {
-  try {
-    const relation = new PurchasePaymentRelation(req.body);
-    await relation.save();
-    res.status(201).send(relation);
-  } catch (error) {
-    res.status(400).send(error);
-  }
-});
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+

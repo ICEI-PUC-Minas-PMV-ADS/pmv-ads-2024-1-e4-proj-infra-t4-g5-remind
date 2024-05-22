@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
 import { PurchaseContext } from '../../context/PurchaseContext';
 import { PaymentContext } from '../../context/PaymentContext';
 
@@ -13,6 +14,21 @@ function PaymentInvoice() {
   } = useContext(PaymentContext);
   const [loading, setLoading] = useState(true);
 
+  const getPaymentInfo = () => {
+    switch (purchaseData.paymentMethod) {
+      case 'Débito Automático':
+        return bankTransferPaymentInfo;
+      case 'PayPall':
+        return payPallPaymentInfo;
+      case 'Pague com Amazon':
+        return amazonPaymentInfo;
+      case 'Cartão de Crédito':
+        return creditCardPaymentInfo;
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     const checkData = () => {
       console.log('Verificando dados...');
@@ -25,9 +41,48 @@ function PaymentInvoice() {
         console.log('Invoice Data: Pagamento', payPallPaymentInfo);
 
         clearInterval(checkInterval);
+
+        // Crie a purchase aqui
+        createPurchase();
       } else {
         setLoading(true);
         console.log('Informações incompletas. Aguardando mais dados...');
+      }
+    };
+
+    const createPurchase = async () => {
+      /* const paymentInfo = getPaymentInfo(); */
+
+      const purchase = {
+        //Plan Data
+        plan_id: purchaseData.selectedPlan.id,
+        plan: purchaseData.selectedPlan.title,
+        price: purchaseData.selectedPlan.price,
+        currency: purchaseData.selectedPlan.currency,
+        frequency: purchaseData.selectedPlan.frequency,
+        mostPopular: purchaseData.selectedPlan.mostPopular,
+        description: purchaseData.selectedPlan.description,
+        features: purchaseData.selectedPlan.features,
+        moreFeatures: purchaseData.selectedPlan.moreFeatures,
+        // Adm User Login Data
+        userName: purchaseData.userName,
+        email: purchaseData.email,
+        password: purchaseData.password,
+        //Terms
+        termsAccepted: purchaseData.termsAccepted,
+        /* paymentMethod: purchaseData.paymentMethod, */
+        /* paymentInfo, */
+      };
+
+      try {
+        const response = await axios.post('http://localhost:5000/purchase', purchase, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        console.log('Purchase criada com sucesso:', response.data);
+      } catch (error) {
+        console.error('Erro ao criar purchase:', error);
       }
     };
 
@@ -43,76 +98,59 @@ function PaymentInvoice() {
 
   console.log('Renderizando componente corretamente...');
 
-  let paymentInfo = null;
-  switch (purchaseData.paymentMethod) {
-    case 'Débito Automático':
-      paymentInfo = bankTransferPaymentInfo;
-      break;
-    case 'PayPall':
-      paymentInfo = payPallPaymentInfo;
-      break;
-    case 'Pague com Amazon':
-      paymentInfo = amazonPaymentInfo;
-      break;
-    case 'Cartão de Crédito':
-      paymentInfo = creditCardPaymentInfo;
-      break;
-    default:
-      break;
-  }
+  const paymentInfo = getPaymentInfo();
 
   return (
     <div className='screen-max-width'>
       <div className='buynow-cards-container'>
         <div className='buynow-card-border'>
-            <h3 className='text-5xl pb-8 font-semibold text-neutral-100 leading-6'>Resumo do Plano:</h3>
-              <p>Plano selecionado: {purchaseData.selectedPlan.title}</p>
-              <p>Nome do usuário: {purchaseData.userName}</p>
-              <p>Email: {purchaseData.email}</p>
-              <p>Metodo de Pagamento: {purchaseData.paymentMethod}</p>
-              {paymentInfo && (
+          <h3 className='text-5xl pb-8 font-semibold text-neutral-100 leading-6'>Resumo do Plano:</h3>
+          <p>Plano selecionado: {purchaseData.selectedPlan.title}</p>
+          <p>Nome do usuário: {purchaseData.userName}</p>
+          <p>Email: {purchaseData.email}</p>
+          <p>Metodo de Pagamento: {purchaseData.paymentMethod}</p>
+          {paymentInfo && (
+            <>
+              {purchaseData.paymentMethod === 'Débito Automático' && (
                 <>
-                  {purchaseData.paymentMethod === 'Débito Automático' && (
-                    <>
-                      <p>Nome do Banco: {paymentInfo.bankName}</p>
-                      <p>Número da Conta: {paymentInfo.bankAccountNumber}</p>
-                      <p>Número do Banco: {paymentInfo.bankRoutingNumber}</p>
-                      <p>Número da Agência: {paymentInfo.bankAccountAgencyNumber}</p>
-                      <p>Nome do Cliente: {paymentInfo.clientName}</p>
-                      <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
-                      <p>Termos Aceitos: {typeof paymentInfo.bankTransferTermsAccepted === 'string' ? paymentInfo.bankTransferTermsAccepted : paymentInfo.bankTransferTermsAccepted.toString()}</p>
-              </>
-                  )}
-                  {purchaseData.paymentMethod === 'PayPall' && (
-                    <>
-                      <p>PayPall Email: {paymentInfo.payPallEmail}</p>
-                      <p>PayPall Password: {paymentInfo.payPallPassword}</p>
-                      <p>PayPall Termos Aceitos: {paymentInfo.payPallTermsAccepted}</p>
-                    </>
-                  )}
-                  {purchaseData.paymentMethod === 'Pague com Amazon' && (
-                    <>
-                      <p>Amazon Email: {paymentInfo.amazonEmail}</p>
-                      <p>Amazon Password: {paymentInfo.amazonPassword}</p>
-                      <p>Amazon Termos Aceitos: {paymentInfo.amazonTermsAccepted}</p>
-                    </>
-                  )}
-                  {purchaseData.paymentMethod === 'Cartão de Crédito' && (
-                    <>
-                      <p>Marca do Cartão: {paymentInfo.creditCardBrand}</p>
-                      <p>Número do Cartão: {paymentInfo.creditCardNumber}</p>
-                      <p>Vencimento do Cartão: {paymentInfo.creditCardExpiry.toLocaleDateString()}</p>
-                      <p>CVS do Cartão: {paymentInfo.creditCardCVS}</p>
-                      <p>Nome do Cliente: {paymentInfo.clientName}</p>
-                      <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
-                      <p>Termos Aceitos: {paymentInfo.creditCardTermsAccepted}</p>
-                    </>
-                  )}
+                  <p>Nome do Banco: {paymentInfo.bankName}</p>
+                  <p>Número da Conta: {paymentInfo.bankAccountNumber}</p>
+                  <p>Número do Banco: {paymentInfo.bankRoutingNumber}</p>
+                  <p>Número da Agência: {paymentInfo.bankAccountAgencyNumber}</p>
+                  <p>Nome do Cliente: {paymentInfo.clientName}</p>
+                  <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
+                  <p>Termos Aceitos: {typeof paymentInfo.bankTransferTermsAccepted === 'string' ? paymentInfo.bankTransferTermsAccepted : paymentInfo.bankTransferTermsAccepted.toString()}</p>
+                </>
+              )}
+              {purchaseData.paymentMethod === 'PayPall' && (
+                <>
+                  <p>PayPall Email: {paymentInfo.payPallEmail}</p>
+                  <p>PayPall Password: {paymentInfo.payPallPassword}</p>
+                  <p>PayPall Termos Aceitos: {paymentInfo.payPallTermsAccepted}</p>
+                </>
+              )}
+              {purchaseData.paymentMethod === 'Pague com Amazon' && (
+                <>
+                  <p>Amazon Email: {paymentInfo.amazonEmail}</p>
+                  <p>Amazon Password: {paymentInfo.amazonPassword}</p>
+                  <p>Amazon Termos Aceitos: {paymentInfo.amazonTermsAccepted}</p>
+                </>
+              )}
+              {purchaseData.paymentMethod === 'Cartão de Crédito' && (
+                <>
+                  <p>Marca do Cartão: {paymentInfo.creditCardBrand}</p>
+                  <p>Número do Cartão: {paymentInfo.creditCardNumber}</p>
+                  <p>Vencimento do Cartão: {paymentInfo.creditCardExpiry.toLocaleDateString()}</p>
+                  <p>CVS do Cartão: {paymentInfo.creditCardCVS}</p>
+                  <p>Nome do Cliente: {paymentInfo.clientName}</p>
+                  <p>CPF do Cliente: {paymentInfo.clienteCpf}</p>
+                  <p>Termos Aceitos: {paymentInfo.creditCardTermsAccepted}</p>
+                </>
+              )}
             </>
           )}
         </div>
       </div>
-      
     </div>
   );
 }
