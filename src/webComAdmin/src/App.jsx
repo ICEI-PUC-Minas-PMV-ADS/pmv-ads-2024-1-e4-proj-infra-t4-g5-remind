@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import AdminLogin from './pages/AdminLogin';
+import AdminHome from './pages/AdminHome';
+import Auth from './components/Auth';
+import logoName from '../public/assets/logoName.svg';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="flex-center">
+        <img src={logoName} className="logo" alt="Logo" />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
+      <Routes>
+        <Route path="/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<Auth><AdminHome /></Auth>} />
+      </Routes>
       <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+        Área dedicada a Administradores do Sistema.
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

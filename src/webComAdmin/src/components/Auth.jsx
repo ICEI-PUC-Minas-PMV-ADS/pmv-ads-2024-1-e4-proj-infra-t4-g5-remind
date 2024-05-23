@@ -1,19 +1,19 @@
-import { Redirect } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const Auth = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
-    return <Redirect to="/adm/login" />;
+    return <Navigate to="/login" />;
   }
 
   return children;
 };
 
 Auth.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  children: PropTypes.node.isRequired,
+};
 
 export default Auth;
