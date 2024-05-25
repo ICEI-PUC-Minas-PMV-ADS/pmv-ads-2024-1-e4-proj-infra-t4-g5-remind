@@ -1,7 +1,23 @@
+import PropTypes from 'prop-types';
 
-
-const ManageUsers = () => {
-  return <div>Manage Users Content</div>;
+const ManageUsersComponent = ({ users }) => {
+  return (
+    <div>
+      {users.map(user => (
+        <div key={user.id}>{user.name}</div>
+      ))}
+    </div>
+  );
 };
 
-export default ManageUsers;
+ManageUsersComponent.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      role: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default ManageUsersComponent;

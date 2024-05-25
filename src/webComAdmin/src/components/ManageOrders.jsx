@@ -1,7 +1,22 @@
+import PropTypes from 'prop-types';
 
-
-const ManageOrders = () => {
-  return <div>Manage Orders Content</div>;
+const ManageOrdersComponent = ({ orders }) => {
+  return (
+    <div>
+      {orders.map(order => (
+        <div key={order.id}>{order.name}</div>
+      ))}
+    </div>
+  );
 };
 
-export default ManageOrders;
+ManageOrdersComponent.propTypes = {
+  orders: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
+
+export default ManageOrdersComponent;

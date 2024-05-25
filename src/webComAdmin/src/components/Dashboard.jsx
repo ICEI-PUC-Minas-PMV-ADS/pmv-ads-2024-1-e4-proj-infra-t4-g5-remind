@@ -1,7 +1,15 @@
+import PropTypes from 'prop-types';
 
-
-const Dashboard = () => {
-  return <div>Dashboard Content</div>;
+const DashboardComponent = ({ user }) => {
+  // component logic here
+  return <div>Welcome, {user.name}</div>;
 };
 
-export default Dashboard;
+DashboardComponent.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default DashboardComponent;

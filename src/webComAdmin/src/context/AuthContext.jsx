@@ -20,12 +20,14 @@ export const AuthProvider = ({ children }) => {
   const login = (token) => {
     localStorage.setItem('AUTH_TOKEN', token);
     setIsAuthenticated(true);
+    console.log('User logged in with token:', token);
     navigate('/admin');
   };
 
   const logout = () => {
     localStorage.removeItem('AUTH_TOKEN');
     setIsAuthenticated(false);
+    console.log('User logged out');
     navigate('/login');
   };
 
