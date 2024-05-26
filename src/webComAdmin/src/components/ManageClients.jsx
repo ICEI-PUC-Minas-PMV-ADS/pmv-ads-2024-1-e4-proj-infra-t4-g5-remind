@@ -1,17 +1,19 @@
+
+// ManageClients.jsx
 import PropTypes from 'prop-types';
 
-const ManageUsersComponent = ({ users }) => {
+const ManageClients = ({ clients }) => {
   return (
     <div>
-      {users.map(user => (
-        <div key={user.id}>{user.name}</div>
+      {clients.map(client => (
+        <div key={client.id}>{client.name}</div>
       ))}
     </div>
   );
 };
 
-ManageUsersComponent.propTypes = {
-  users: PropTypes.arrayOf(
+ManageClients.propTypes = {
+  clients: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -20,4 +22,4 @@ ManageUsersComponent.propTypes = {
   ).isRequired,
 };
 
-export default ManageUsersComponent;
+export default ManageClients;

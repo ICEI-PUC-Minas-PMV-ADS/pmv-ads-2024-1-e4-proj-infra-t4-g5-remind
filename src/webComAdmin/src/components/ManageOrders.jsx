@@ -1,6 +1,8 @@
+
+// ManageOrders.jsx
 import PropTypes from 'prop-types';
 
-const ManageOrdersComponent = ({ orders }) => {
+const ManageOrders = ({ orders }) => {
   return (
     <div>
       {orders.map(order => (
@@ -10,7 +12,7 @@ const ManageOrdersComponent = ({ orders }) => {
   );
 };
 
-ManageOrdersComponent.propTypes = {
+ManageOrders.propTypes = {
   orders: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -19,4 +21,4 @@ ManageOrdersComponent.propTypes = {
   ).isRequired,
 };
 
-export default ManageOrdersComponent;
+export default ManageOrders;

@@ -6,10 +6,16 @@ const AdminHome = () => {
 
   return (
     <div>
-      <h1>Admin Home</h1>
-      <button onClick={logout}>Logout</button>
+      <h1 className="buynow-card-title">Admin Home</h1>
       {/* admin dashboard component */}
-      <Link to="/admin/register">Criar Novo Usuário</Link>
+      {/* master admin dashboard component */}
+      <div className='p-6' >
+      <button onClick={logout}>Logout</button>
+      </div>
+      <div>
+      <Link to="/admin/register">
+        <button> Criar Novo Usuário</button> </Link>
+      </div>
     </div>
   );
 };
