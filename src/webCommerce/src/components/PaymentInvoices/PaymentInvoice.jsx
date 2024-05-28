@@ -71,7 +71,7 @@ function PaymentInvoice() {
       };
 
       try {
-        const purchaseResponse = await axios.post('http://localhost:5000/purchase', purchase, {
+        const purchaseResponse = await axios.post('http://localhost:5500/purchase', purchase, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -93,7 +93,7 @@ function PaymentInvoice() {
       };
 
       try {
-        const paymentResponse = await axios.post('http://localhost:5000/payment', payment, {
+        const paymentResponse = await axios.post('http://localhost:5500/payment', payment, {
           headers: {
             'Content-Type': 'application/json'
           }
@@ -105,6 +105,7 @@ function PaymentInvoice() {
       }
     };
 
+
     const createStatus = async (purchaseId, paymentId) => {
       const statusData = {
         purchase_id: purchaseId,
@@ -112,7 +113,7 @@ function PaymentInvoice() {
       };
 
       try {
-        const statusResponse = await axios.post('http://localhost:5000/subscription-status', statusData, {
+        const statusResponse = await axios.post('http://localhost:5500/subscription-status', statusData, {
           headers: {
             'Content-Type': 'application/json'
           }

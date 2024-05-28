@@ -55,7 +55,7 @@ const PurchaseDetails = () => {
           <p><strong>User Name:</strong> {purchase.userName}</p>
           <p><strong>Email:</strong> {purchase.email}</p>
           <p><strong>Terms Renovação:</strong> {purchase.termsAccepted ? 'Sim' : 'Não'}</p>
-          <p><strong>Estatus:</strong> <span className={purchase.subscriptionStatus.status ? 'text-green-500' : 'text-red-500'}>{purchase.subscriptionStatus.status ? 'Ativa' : 'Inativa'}</span></p>
+          <p><strong>Status:</strong> <span className={purchase.subscriptionStatus.status ? 'text-green-500' : 'text-red-500'}>{purchase.subscriptionStatus.status ? 'Ativa' : 'Inativa'}</span></p>
           <p><strong>Data Renovação:</strong> {purchase.subscriptionStatus.renewDate ? format(new Date(purchase.subscriptionStatus.renewDate), 'dd/MM/yyyy') : 'N/A'}</p>
         </div>
       )}

@@ -10,7 +10,7 @@ function TermsCheckbox({ checked, onChange }) {
         className='ml-2' 
         required 
         checked={checked}
-        onChange={onChange} 
+        onChange={(e) => onChange(e.target.checked)} 
       />
       <label htmlFor="terms" className="checkbox-text-agree mt-3 ml-2">
         Eu autorizo o débito direto em conta corrente.
@@ -20,7 +20,7 @@ function TermsCheckbox({ checked, onChange }) {
 }
 
 TermsCheckbox.propTypes = {
-  checked: PropTypes.bool,
+  checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 

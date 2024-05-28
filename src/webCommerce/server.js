@@ -19,8 +19,8 @@ const app = express();
 
 // Configuração de CORS
 const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5000',
+  'http://localhost:5174',
+  'http://localhost:5500',
   'https://o4507142041436160.ingest.de.sentry.io'
 ];
 
@@ -44,7 +44,7 @@ app.use(helmet({
       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://apis.google.com"],
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       imgSrc: ["'self'", "data:", "https://sentry.io"],
-      connectSrc: ["'self'", "https://sentry.io", "https://o4507142041436160.ingest.de.sentry.io", "http://localhost:5173", "http://localhost:5000"],
+      connectSrc: ["'self'", "https://sentry.io", "https://o4507142041436160.ingest.de.sentry.io", "http://localhost:5174", "http://localhost:5000"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: [],
@@ -59,7 +59,7 @@ app.use(helmet({
   permittedCrossDomainPolicies: { permittedPolicies: 'none' },
   referrerPolicy: { policy: 'no-referrer' },
   xssFilter: true,
-}));
+} ));
 
 app.use(bodyParser.json());
 
@@ -107,5 +107,5 @@ app.post('/subscription-status', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

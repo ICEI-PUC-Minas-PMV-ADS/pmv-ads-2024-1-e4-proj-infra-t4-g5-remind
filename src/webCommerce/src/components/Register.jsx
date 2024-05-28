@@ -20,6 +20,7 @@ const Register = ({ selectedPlan, onButtonClick }) => {
       };
     }
   
+    
     if (tempPurchaseData.userName && tempPurchaseData.email && tempPurchaseData.password && tempPurchaseData.termsAccepted && tempPurchaseData.selectedPlan) {
       console.log("Plano selecionado em Register:", selectedPlan);
       console.log(tempPurchaseData);
