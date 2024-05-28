@@ -1,13 +1,12 @@
-
-//App.jsx
 import { Routes, Route, Link } from 'react-router-dom';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminHomePage from './pages/AdminHomePage';
 import AdminRegister from './pages/AdminRegister';
-
+import ManagePurchases from './components/ManagePurchases';
+import ManageCrew from './components/ManageCrew';
+import PurchaseDetails from './components/PurchaseDetails';
 import logoName from './assets/logoName.svg'
 import './App.css'
-
 
 function App() {
   
@@ -17,6 +16,9 @@ function App() {
       <Route path="/login" element={<AdminLoginPage />} />
       <Route path="/admin" element={<AdminHomePage />} />
       <Route path="/admin/register" element={<AdminRegister />} />
+      <Route path="/admin/purchases" element={<ManagePurchases />} />
+      <Route path="/admin/purchases/:id" element={<PurchaseDetails />} />
+      <Route path="/admin/crew" element={<ManageCrew />} />
     </Routes>
   );
 }

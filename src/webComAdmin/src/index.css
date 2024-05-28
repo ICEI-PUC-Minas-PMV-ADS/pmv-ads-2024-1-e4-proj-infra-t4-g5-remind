@@ -50,6 +50,31 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.table-container {
+  position: relative;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.table-container thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: black;
+}
+
+.text-green-500 {
+  font-weight: 900;
+  color: green;
+  background: black
+}
+
+.text-red-500 {
+  font-weight: 500;
+  color: red;
+  background: black
+}
+
 
 @layer utilities {
   .flex-center {
@@ -165,8 +190,8 @@ button:focus-visible {
     @apply flex items-center text-sm font-semibold text-neutral-200
   }
 
-  .buynow-card-title {
-    @apply text-2xl font-semibold text-neutral-100 leading-6
+  .admin-card-title {
+    @apply text-5xl mb-8 text-#646cff leading-6 text-center items-center justify-center
   }
 
   .buynow-card-ul {
@@ -184,7 +209,7 @@ button:focus-visible {
   .buynow-input-text {
     @apply text-black pb-4
   }
-
+/* 
 .invoice-container {
   @apply bg-gray-800 text-neutral-100 p-8 rounded-lg shadow-lg;
 }
@@ -215,5 +240,5 @@ button:focus-visible {
 
 .invoice-label {
   @apply font-bold ;
-}
+} */
 }

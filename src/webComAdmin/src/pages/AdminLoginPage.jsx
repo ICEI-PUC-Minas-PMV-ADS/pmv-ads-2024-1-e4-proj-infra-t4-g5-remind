@@ -15,9 +15,8 @@ const AdminLogin = () => {
 
     console.log('Attempting login with', { username, password });
 
-    // Exemplo: enviar solicitação para o backend
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', { // Atualize a URL conforme necessário
+      const response = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

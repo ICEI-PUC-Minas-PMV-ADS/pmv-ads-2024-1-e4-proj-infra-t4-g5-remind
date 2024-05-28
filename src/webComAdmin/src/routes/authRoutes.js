@@ -1,6 +1,4 @@
 
-
-// routes/auth.js
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -8,7 +6,6 @@ import Admin from '../models/Admin.js';
 
 const router = Router();
 
-// Endpoint para login
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -34,7 +31,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Register a new admin
 router.post('/admin/register', async (req, res) => {
   const { adminName, email, password, role } = req.body;
   try {

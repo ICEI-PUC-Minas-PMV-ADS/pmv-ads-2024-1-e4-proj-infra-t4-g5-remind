@@ -1,6 +1,4 @@
 
-
-// models/Admin.js
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 
@@ -29,7 +27,6 @@ const AdminSchema = new mongoose.Schema({
   },
 });
 
-// Hash the password before saving the admin
 AdminSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     return next();
@@ -39,7 +36,6 @@ AdminSchema.pre('save', async function (next) {
   next();
 });
 
-// Compare password method
 AdminSchema.methods.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
