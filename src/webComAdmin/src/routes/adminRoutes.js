@@ -1,4 +1,3 @@
-
 import express from 'express';
 import bcrypt from 'bcrypt';
 import Admin from '../models/Admin.js';
@@ -11,7 +10,6 @@ const router = express.Router();
 console.log('Arquivo de rotas admin carregado');
 
 // Rotas para o WebCommercial
-// Rota de Compras
 router.get('/purchases', async (req, res) => {
   console.log('Recebida solicitação GET para /purchases');
   try {
@@ -39,7 +37,6 @@ router.get('/purchases/:id', async (req, res) => {
   }
 });
 
-// Rotas de pagamentos
 router.get('/payments', async (req, res) => {
   console.log('Recebida solicitação GET para /payments');
   try {
@@ -67,7 +64,6 @@ router.get('/payments/:id', async (req, res) => {
   }
 });
 
-// Rota tabela relacional
 router.get('/subscription-status', async (req, res) => {
   console.log('Recebida solicitação GET para /subscription-status');
   try {
@@ -80,9 +76,7 @@ router.get('/subscription-status', async (req, res) => {
   }
 });
 
-
 // Rotas WebAdmin
-// Registro de um novo administrador
 router.post('/register', async (req, res) => {
   const { adminName, email, password, role } = req.body;
 
@@ -110,7 +104,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Obter todos os administradores
 router.get('/admins', async (req, res) => {
   try {
     const admins = await Admin.find();
@@ -120,8 +113,7 @@ router.get('/admins', async (req, res) => {
   }
 });
 
-// Obter administrador por ID
-/* router.get('admins/:id', async (req, res) => {
+router.get('/admins/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const admin = await Admin.findById(id);
@@ -129,22 +121,21 @@ router.get('/admins', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar administrador.' });
   }
-}); */
+});
 
-// Atualizar administrador por ID
-/* router.put('admins/:id', async (req, res) => {
+router.put('/admins/:id', async (req, res) => {
   const { id } = req.params;
   const { adminName, email, password, role } = req.body;
   try {
-    await Admin.findByIdAndUpdate(id, { adminName, email, password, role });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await Admin.findByIdAndUpdate(id, { adminName, email, password: hashedPassword, role });
     res.json({ message: 'Administrador atualizado com sucesso.' });
   } catch (error) {
     res.status(500).json({ error: 'Erro ao atualizar administrador.' });
   }
-}); */
+});
 
-// Excluir administrador por ID
-/* router.delete('admins/:id', async (req, res) => {
+router.delete('/admins/:id', async (req, res) => {
   const { id } = req.params;
   try {
     await Admin.findByIdAndDelete(id);
@@ -152,6 +143,6 @@ router.get('/admins', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'Erro ao excluir administrador.' });
   }
-}); */
+});
 
 export default router;

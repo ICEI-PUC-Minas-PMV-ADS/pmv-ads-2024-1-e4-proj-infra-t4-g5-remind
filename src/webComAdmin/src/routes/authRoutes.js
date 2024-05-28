@@ -1,4 +1,3 @@
-
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
@@ -39,10 +38,12 @@ router.post('/admin/register', async (req, res) => {
       return res.status(400).json({ msg: 'Admin already exists' });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     admin = new Admin({
       adminName,
       email,
-      password,
+      password: hashedPassword,
       role,
     });
 
@@ -54,40 +55,8 @@ router.post('/admin/register', async (req, res) => {
       },
     };
 
-    jwt.sign(payload, 'yourJWTSecret', { expiresIn: 360000 }, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
-  }
-});
-
-// Authenticate admin and get token
-router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    let admin = await Admin.findOne({ email });
-    if (!admin) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
-    }
-
-    const isMatch = await bcrypt.compare(password, admin.password);
-    if (!isMatch) {
-      return res.status(400).json({ msg: 'Invalid credentials' });
-    }
-
-    const payload = {
-      admin: {
-        id: admin.id,
-      },
-    };
-
-    jwt.sign(payload, 'yourJWTSecret', { expiresIn: 360000 }, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 360000 });
+    res.json({ token });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
