@@ -27,8 +27,6 @@ app.use(bodyParser.json());
 const staticPath = path.join(__dirname, 'src', 'webComAdmin', 'dist');
 app.use(express.static(staticPath));
 
-console.log(`Servindo arquivos estáticos de: ${staticPath}`);
-
 // Verificar se a aplicação está inicializando corretamente
 console.log('Inicializando servidor');
 
@@ -37,7 +35,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/admins', adminRoutes);
 
 // Verificar rotas de admin
-console.log('Rotas de admin carregadas: /api/admins');
+console.log('Rotas de admin carregadas');
 
 app.get('/*', (req, res) => {
   console.log(`Request para: ${req.url}`);
