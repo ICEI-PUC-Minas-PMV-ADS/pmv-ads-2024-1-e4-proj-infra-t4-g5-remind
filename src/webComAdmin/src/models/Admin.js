@@ -6,12 +6,10 @@ const AdminSchema = new mongoose.Schema({
   adminName: {
     type: String,
     required: true,
-    unique: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -33,11 +31,12 @@ AdminSchema.pre('save', async function (next) {
   }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
+  console.log('Password hashed:', this.password); // Adicionado log para depuração
   next();
 });
 
-AdminSchema.methods.comparePassword = async function (password) {
-  return bcrypt.compare(password, this.password);
+AdminSchema.methods.comparePassword = function (password) {
+  return bcrypt.compareSync(password, this.password);
 };
 
 const Admin = mongoose.model('Admin', AdminSchema);
