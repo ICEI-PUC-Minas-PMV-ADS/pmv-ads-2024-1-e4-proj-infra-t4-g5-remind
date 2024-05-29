@@ -221,7 +221,7 @@ const ManageCrew = () => {
           </div>
         </div>
       )}
-      {/* Janela pop-up de edição */}
+      {/* Janela pop-up edit */}
       {isEditModalOpen && (
         <EditAdminModal
           admin={selectedAdmin}
@@ -229,7 +229,7 @@ const ManageCrew = () => {
           onSave={handleEditAdmin}
         />
       )}
-      {/* Janela pop-up de exclusão */}
+      {/* Janela pop-up delete */}
       {isDeleteModalOpen && (
         <DeleteAdminModal
           admin={selectedAdmin}

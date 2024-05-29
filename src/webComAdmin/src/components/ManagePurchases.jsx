@@ -1,6 +1,3 @@
-
-
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -26,7 +23,7 @@ const ManagePurchases = () => {
           };
         });
 
-        // Ordenar as compras com base na data de renovação (subscriptionStatus.renewDate)
+        // Ordenar as compras com base na data de renovação
         combinedData.sort((a, b) => {
           // Use new Date() para converter as strings de data em objetos Date
           return new Date(b.subscriptionStatus.renewDate) - new Date(a.subscriptionStatus.renewDate);
@@ -48,7 +45,7 @@ const ManagePurchases = () => {
 
   return (
     <div className="overflow-x-auto">
-      <h2 className="text-center mb-4">Purchases</h2>
+      <h2 className="text-center mb-8">Acompanhamento de Subscrições - Administração de Vendas e Clientes</h2>
       <div className="table-container">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-800 text-white">

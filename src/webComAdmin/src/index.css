@@ -107,10 +107,6 @@ button:focus-visible {
     @apply px-5 py-2 rounded-3xl bg-primary my-5 hover:bg-transparent border border-transparent hover:border hover:text-semantic-purple hover:border-semantic-purple shadow-md
   }
 
-  .btn-buynow-popular {
-    @apply px-5 py-4 rounded-3xl text-neutral-200 font-semibold bg-purple-700 shadow-md hover:bg-purple-500
-  }
-  
   .btn-buynow {
     @apply px-5 py-4 rounded-3xl text-neutral-200 font-semibold bg-black hover:bg-purple-500 shadow-md
     
@@ -118,14 +114,6 @@ button:focus-visible {
 
   .color-container {
     @apply flex items-center justify-center px-4 py-4 rounded-full bg-gray-300 backdrop-blur
-  }
-
-  .size-btn-container {
-    @apply flex items-center justify-center p-1 rounded-full bg-gray-300 backdrop-blur ml-3 gap-1
-  }
-
-  .size-btn {
-    @apply w-10 h-10 text-sm flex justify-center items-center bg-white text-black rounded-full transition-all
   }
 
   .common-padding {
@@ -136,32 +124,8 @@ button:focus-visible {
     @apply text-gray lg:text-6xl md:text-5xl text-3xl lg:mb-0 mb-5 font-medium opacity-0 translate-y-20
   }
 
-  .userStories-text {
-    @apply text-gray max-w-md text-lg md:text-xl font-semibold opacity-0 translate-y-[100px]
-  }
-
-  .userStories-text-container {
-    @apply w-full flex-center flex-col md:flex-row mt-10 md:mt-16 gap-5
-  }
-
-  .userStories-video {
-    @apply w-full h-full object-cover object-center scale-150 opacity-0
-  }
-
-  .userStories-video-container {
-    @apply w-full flex flex-col md:flex-row gap-5 items-center
-  }
-
   .link {
     @apply text-purple-500 hover:underline cursor-pointer flex items-center text-xl opacity-0 translate-y-20
-  }
-
-  .control-btn {
-    @apply ml-4 p-4 rounded-full bg-gray-300 backdrop-blur flex-center
-  }
-
-  .hero-title {
-    @apply text-center font-semibold text-9xl text-semantic-purple opacity-0 max-md:mb-10
   }
 
   .buynow-title {
@@ -178,30 +142,6 @@ button:focus-visible {
 
   .buynow-text {
     @apply text-gray text-xl font-normal md:font-semibold
-  }
-
-  .buynow-bigtext {
-    @apply text-white text-3xl md:text-7xl font-normal md:font-semibold
-  }
-
-  .buynow-cards-container {
-    @apply relative flex flex-col items-center justify-center bg-black text-neutral-100 p-8 shadow-lg
-  }
-
-  .buynow-card-grid-3 {
-    @apply mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8
-  }
-
-  .buynow-card-border {
-    @apply relative flex flex-col rounded-2xl  border border-purple-500 bg-zinc  text-neutral-100 p-8 shadow-lg
-  }
-
-  .buynow-card-border-popular {
-    @apply absolute top-0 -translate-y-1/2 rounded-full bg-purple-600 
-    px-3 py-0.5 text-sm font-semibold tracking-wide text-neutral-200 shadow-md
-  }
-  .buynow-card-inside-black {
-    @apply -mx-6 rounded-lg bg-black p-6
   }
 
   .buynow-card-sale {
@@ -227,36 +167,4 @@ button:focus-visible {
   .buynow-input-text {
     @apply text-black pb-4
   }
-/* 
-.invoice-container {
-  @apply bg-gray-800 text-neutral-100 p-8 rounded-lg shadow-lg;
-}
-
-.invoice-header {
-  @apply mb-8 px-2;
-}
-
-.invoice-title {
-  @apply text-4xl font-bold mb-2;
-}
-
-.invoice-subtitle {
-  @apply text-xl font-medium text-gray-400;
-}
-
-.invoice-body {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
-}
-
-.invoice-section {
-  @apply bg-gray-900 p-6 rounded-lg;
-}
-
-.invoice-section-title {
-  @apply text-2xl font-semibold mb-4 text-gray-400;
-}
-
-.invoice-label {
-  @apply font-bold ;
-} */
 }

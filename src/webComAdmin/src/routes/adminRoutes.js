@@ -9,7 +9,7 @@ const router = express.Router();
 
 console.log('Arquivo de rotas admin carregado');
 
-// Rotas para o WebCommercial
+// Rotas WebCommercial
 router.get('/purchases', async (req, res) => {
   console.log('Recebida solicitação GET para /purchases');
   try {
