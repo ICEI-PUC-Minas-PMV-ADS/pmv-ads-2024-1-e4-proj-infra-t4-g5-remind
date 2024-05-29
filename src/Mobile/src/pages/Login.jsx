@@ -4,6 +4,8 @@ import { login } from '../services/userServices';
 import { useUser } from '../context/UserContext.jsx';
 import Input from '../components/Input';
 import Logo from "../assets/images/logo.svg"
+import { useNavigation } from '@react-navigation/native';
+
 
 const Login = () => {
     const { setSigned } = useUser();
@@ -11,6 +13,7 @@ const Login = () => {
     const [senha, setSenha] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState({});
+    const navigation = useNavigation();
 
     const handleSubmit = async () => {
         const values = { email: usuario, password: senha };
@@ -38,8 +41,9 @@ const Login = () => {
             setLoading(true);
             await login(values);
             setLoading(false);
-            setSigned(true);
             console.log('Login efetuado com sucesso!');
+            setSigned(true);
+            navigation.navigate('Home');
         } catch (error) {
             setLoading(false);
             console.error('Erro durante o login:', error);
