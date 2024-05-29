@@ -5,8 +5,6 @@ import ProductDetails from './pages/ProductDetails';
 import BuyNow from './pages/BuyNow';
 import Footer from './pages/Footer';
 
-import * as Sentry from '@sentry/react';
-
 
 const App = () => {
 
@@ -22,4 +20,4 @@ const App = () => {
   )
 }
 
-export default Sentry.withProfiler(App);
+export default App;
