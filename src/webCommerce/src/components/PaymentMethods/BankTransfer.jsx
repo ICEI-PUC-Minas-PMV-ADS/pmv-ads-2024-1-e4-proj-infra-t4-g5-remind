@@ -58,7 +58,7 @@ function BankTransfer({ onButtonClick, selectedPlan }) {
           value={bankTransferPaymentInfo.clienteCpf} 
           onChange={(value) => handleInputChange('clienteCpf', value)} />
         <NameInput 
-          value={bankTransferPaymentInfo.clienteName} onChange={(value) => handleInputChange('clientName', value)} />
+          value={bankTransferPaymentInfo.clientName} onChange={(value) => handleInputChange('clientName', value)} />
         <TermsCheckbox 
           checked={bankTransferPaymentInfo.bankTransferTermsAccepted} 
           onChange={(value) => handleInputChange('bankTransferTermsAccepted', value)} 

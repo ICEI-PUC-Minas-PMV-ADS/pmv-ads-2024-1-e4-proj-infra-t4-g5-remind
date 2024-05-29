@@ -1,5 +1,5 @@
 import express from 'express';
-import Purchase from '../models/PurchaseSchema';
+import Purchase from '../models/PurchaseSchema.js';
 
 const router = express.Router();
 

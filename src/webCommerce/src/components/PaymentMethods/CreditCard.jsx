@@ -48,7 +48,6 @@ function CreditCard({ onButtonClick, selectedPlan }) {
       alert('Por favor, preencha todos os campos.');
     }
   };
-
   
   return (
     <div>
