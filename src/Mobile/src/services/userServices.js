@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { VITE_ADMIN_TOKEN, VITE_API_URL } from '@env';
+import * as SecureStore from 'expo-secure-store';
+
 
 export const login = async (values) => {
   try {
@@ -9,6 +11,12 @@ export const login = async (values) => {
     });
 
     console.log(res.data);
+
+    await SecureStore.setItemAsync('USER_TOKEN', res.data.token.toString());
+    await SecureStore.setItemAsync('USER_ID', res.data._id.toString());
+
+    console.log('USER_TOKEN armazenado:', await SecureStore.getItemAsync('USER_TOKEN'));
+    console.log('USER_ID armazenado:', await SecureStore.getItemAsync('USER_ID'));
 
     return res.data;
   } catch (error) {
