@@ -18,9 +18,6 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const navigation = useNavigation();
 
-  
-  
-
   const logout = useCallback(async () => {
     try {
       await SecureStore.deleteItemAsync('USER_TOKEN');
@@ -30,12 +27,10 @@ export function UserProvider({ children }) {
       navigation.navigate('Login');
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
-      // ... lidar com erro do AsyncStorage
     }
   }, [navigation]);
 
   useEffect(() => {
-    
     const loadSigned = async () => {
       const secureSigned = await SecureStore.getItemAsync('USER_TOKEN');
       setSigned(!!secureSigned);
