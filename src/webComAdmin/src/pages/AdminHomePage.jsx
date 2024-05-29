@@ -26,7 +26,7 @@ const AdminHome = () => {
         </div>
       </div>
       <div className="fixed bottom-2 w-full">
-        <button className='w-auto p-4 mx-4' onClick={logout}>Logout</button>
+        <button className='w-auto p-4 mx-4 mb-12' onClick={logout}>Logout</button>
       </div>
     </div>
   );

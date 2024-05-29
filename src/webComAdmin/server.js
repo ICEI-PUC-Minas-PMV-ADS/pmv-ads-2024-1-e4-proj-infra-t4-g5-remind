@@ -17,6 +17,31 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Helmet configuração
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://apis.google.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:", "https://sentry.io"],
+      connectSrc: ["'self'", "https://sentry.io", "https://o4507142041436160.ingest.de.sentry.io", "http://localhost:5174", "http://localhost:5000"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: [],
+    },
+  },
+  dnsPrefetchControl: { allow: true },
+  frameguard: { action: 'deny' },
+  hidePoweredBy: true,
+  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
+  ieNoOpen: true,
+  noSniff: true,
+  permittedCrossDomainPolicies: { permittedPolicies: 'none' },
+  referrerPolicy: { policy: 'no-referrer' },
+  xssFilter: true,
+} ));
+
 connectDB();
 
 // Middleware
