@@ -42,3 +42,22 @@ export const getUserNotesAssigned = async () => {
     throw error;
   }
 }
+
+export const getUserNotesCreated = async () => {
+  try {
+    const res = await axios.get(`${VITE_API_URL}/notes/get/criador`, {
+      headers: {
+        Authorization: 'Bearer ' + (await SecureStore.getItemAsync('USER_TOKEN'))
+      },
+    });
+    console.log('getUserNotesCreated res:', res.data);
+    return res.data;
+  } catch (error) {
+    console.error(
+      'getUserNotesCreated error:',
+      error?.response.status,
+      error?.response.data,
+    );
+    throw error;
+  }
+};
