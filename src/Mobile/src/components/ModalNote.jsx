@@ -10,24 +10,6 @@ export default function ModalNote({ open, setOpen, note }) {
     note.remainingMessage = messageDateDiffInMinutes(note?.datafinal);
   }
 
-  async function handleCompleteTask() {
-    try {
-      await completeNote(note._id);
-
-      Toast.show({
-        type: 'success',
-        text1: 'Tarefa criada com sucesso!',
-      });
-      setOpen(false);
-    } catch (error) {
-      console.error(error);
-      Toast.show({
-        type: 'error',
-        text1: 'Algo deu errado, tente novamente.',
-      });
-    }
-  }
-
   return (
     <Modal visible={open} transparent animationType="slide" onRequestClose={setOpen}>
       <View style={styles.container}> 
