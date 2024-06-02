@@ -24,8 +24,8 @@ const NoteItem = ({ titulo, descricao, userInfo }) => {
 
 
       <View style={styles.contentContainer}>
-        <Text style={styles.titulo}>{titulo}</Text>
-        <Text style={styles.descricao}>{truncatedDescription}</Text>
+        <Text style={styles.titulo} numberOfLines={1}>{titulo}</Text>
+        {/* <Text style={styles.descricao} numberOfLines={1}>{truncatedDescription}</Text> */}
         <Text style={styles.criador}>De: {userInfo?.nome}</Text> 
       </View>
     </View>
