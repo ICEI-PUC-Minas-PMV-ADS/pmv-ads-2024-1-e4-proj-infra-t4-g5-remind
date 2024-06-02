@@ -1,24 +1,24 @@
 # Remind
 
-API:
+`API:`
 
-API para o serviço Remind Web e Mobile.
+**API para o serviço Remind Web e Mobile.
 
 [Remind API](https://remind-api.vercel.app/)
 
-Web:
+`Web:`
 
-Mobile:
+`Mobile:`
 
-Web Commercial: 
+`Web Commercial:` 
 
-Site para a comercializaçao do serviço Remind.
+**Site para a comercializaçao do serviço Remind.
 
 [Remind WebCommercial](https://pmv-ads-2024-1-e4-proj-infra-t4-g5-remind-a141.vercel.app/)
 
-Web Admin:
+`Web Admin:`
 
-Site para administração das assinaturas de venda do produto Remind.
+**Site para administração das assinaturas de venda do produto Remind.
 
 [Remind WebAdm](https://pmv-ads-2024-1-e4-proj-infra-t4-g5-remind.vercel.app/)
 
