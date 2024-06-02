@@ -1,21 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import HomeIcon from '../assets/icons/HomeIcon';
 import CreateButton from '../assets/icons/CreateButton';
 import SeadersIcon from '../assets/icons/SeadersIcon';
 
-const Navbar = () => {
+
+const Navbar = ({ onIconSelect }) => { // Adiciona a prop onIconSelect
+  const [selectedIcon, setSelectedIcon] = useState('HomeIcon'); // Estado para controlar o ícone selecionado
+
+  const handleIconPress = (iconName) => {
+    setSelectedIcon(iconName);
+    onIconSelect(iconName); // Chama a função passada como prop
+  };
+
   return (
     <View style={styles.navbarContainer}>
       <View style={styles.navbar}>
-        <TouchableOpacity style={styles.iconButton}>
+        <TouchableOpacity 
+          style={[
+            styles.iconButton, 
+            selectedIcon === 'HomeIcon' && styles.selectedIconButton 
+          ]}
+          onPress={() => handleIconPress('HomeIcon')}
+        >
           <HomeIcon />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.createButtonContainer}>
+
+        <TouchableOpacity 
+          style={styles.createButtonContainer}
+          onPress={() => handleIconPress('CreateButton')} // Ação para o botão central
+        >
           <CreateButton style={styles.createButton} />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.iconButton}>
+        <TouchableOpacity 
+          style={[
+            styles.iconButton, 
+            selectedIcon === 'SeadersIcon' && styles.selectedIconButton
+          ]}
+          onPress={() => handleIconPress('SeadersIcon')}
+        >
           <SeadersIcon />
         </TouchableOpacity>
       </View>
@@ -48,6 +72,9 @@ const styles = StyleSheet.create({
   },
   createButton: {
     // Estilos para o ícone do botão central (cor, tamanho, etc.)
+  },selectedIconButton: {
+    backgroundColor: '#DDD2FF', // Cor de fundo quando selecionado
+    borderRadius: 8, // Borda arredondada
   },
 });
 
