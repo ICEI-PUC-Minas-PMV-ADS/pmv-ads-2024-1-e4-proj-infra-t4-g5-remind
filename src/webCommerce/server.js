@@ -9,6 +9,7 @@ import Purchase from './src/models/PurchaseSchema.js';
 import Payment from './src/models/PaymentSchema.js';
 import SubscriptionStatus from './src/models/SubscriptionStatusSchema.js';
 
+
 const __dirname = path.resolve();
 dotenv.config({ path: path.join(__dirname, './.env') });
 
