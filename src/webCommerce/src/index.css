@@ -24,9 +24,9 @@ body {
   max-width: 1120px;
 }
 
-.userStories-video.g_text {
+.userStories-video .g_text {
   position: absolute;
-  top: 50%;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -50,20 +50,19 @@ body {
   
   .btn-buynow {
     @apply px-5 py-4 rounded-3xl text-neutral-200 font-semibold bg-black hover:bg-purple-500 shadow-md
-    
   }
 
   .color-container {
     @apply flex items-center justify-center px-4 py-4 rounded-full bg-gray-300 backdrop-blur
   }
 
-  .size-btn-container {
+  /* .size-btn-container {
     @apply flex items-center justify-center p-1 rounded-full bg-gray-300 backdrop-blur ml-3 gap-1
-  }
+  } */
 
-  .size-btn {
+  /* .size-btn {
     @apply w-10 h-10 text-sm flex justify-center items-center bg-white text-black rounded-full transition-all
-  }
+  } */
 
   .common-padding {
     @apply sm:py-32 py-20 sm:px-10 px-5
@@ -73,8 +72,16 @@ body {
     @apply text-gray lg:text-6xl md:text-5xl text-3xl lg:mb-0 mb-5 font-medium opacity-0 translate-y-20
   }
 
+  .section-sub-heading {
+    @apply text-gray lg:text-5xl md:text-3xl text-2xl lg:mb-0 mb-5 font-medium opacity-0 translate-y-20 ;
+  }
+  
   .userStories-text {
     @apply text-gray max-w-md text-lg md:text-xl font-semibold opacity-0 translate-y-[100px]
+  }
+
+  .userStories-container {
+    @apply flex-center flex-col sm:px-10 lg:text-2xl md:text-xl text-sm mb-12
   }
 
   .userStories-text-container {
@@ -88,11 +95,11 @@ body {
   .userStories-video-container {
     @apply w-full flex flex-col md:flex-row gap-5 items-center
   }
-
+/* 
   .link {
     @apply text-purple-500 hover:underline cursor-pointer flex items-center text-xl opacity-0 translate-y-20
   }
-
+ */
   .control-btn {
     @apply ml-4 p-4 rounded-full bg-gray-300 backdrop-blur flex-center
   }
@@ -125,18 +132,10 @@ body {
     @apply relative flex flex-col items-center justify-center bg-black text-neutral-100 p-8 shadow-lg
   }
 
+  .buynow-card-list {
+    @apply grid grid-cols-1 gap-28px;
+  }
   
-    .buynow-card-list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-
-  
-
-
-
-
   .buynow-card-grid-3 {
     @apply mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8
   }
@@ -193,47 +192,47 @@ body {
     @apply relative sm:w-[70vw] w-[88vw] md:h-[70vh] sm:h-[50vh] h-[35vh]
   }
 
-
   .g_fadeIn {
     @apply opacity-0 translate-y-[100px]
   }
+
   .animate {
     @apply opacity-0 translate-y-[100px]
   }
 }
 
+  .invoice-container {
+    @apply bg-gray-800 text-neutral-100 p-8 rounded-lg shadow-lg;
+  }
 
-.invoice-container {
-  @apply bg-gray-800 text-neutral-100 p-8 rounded-lg shadow-lg;
-}
+  .invoice-header {
+    @apply mb-8 px-2;
+  }
 
-.invoice-header {
-  @apply mb-8 px-2;
-}
+  .invoice-title {
+    @apply text-4xl font-bold mb-2;
+  }
 
-.invoice-title {
-  @apply text-4xl font-bold mb-2;
-}
+  .invoice-subtitle {
+    @apply text-xl font-medium text-gray-400;
+  }
 
-.invoice-subtitle {
-  @apply text-xl font-medium text-gray-400;
-}
+  .invoice-body {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+  }
 
-.invoice-body {
-  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
-}
+  .invoice-section {
+    @apply bg-gray-900 p-6 rounded-lg;
+  }
 
-.invoice-section {
-  @apply bg-gray-900 p-6 rounded-lg;
-}
+  .invoice-section-title {
+    @apply text-2xl font-semibold mb-4 text-gray-400;
+  }
 
-.invoice-section-title {
-  @apply text-2xl font-semibold mb-4 text-gray-400;
-}
+  .invoice-label {
+    @apply font-bold ;
+  }
 
-.invoice-label {
-  @apply font-bold ;
-}
 
 @media (max-width: 1024px) {
   #hero {
