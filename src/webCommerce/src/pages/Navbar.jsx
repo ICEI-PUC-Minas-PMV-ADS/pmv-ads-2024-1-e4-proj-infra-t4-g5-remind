@@ -9,13 +9,13 @@ const Navbar = () => {
             <img 
                 src={logoImg} 
                 alt='Remind' 
-                width={35} 
-                height={35}/> 
-                <p className='py-2 font-thin text-2xl text-neutral-100' 
+                width={30} 
+                height={30}/> 
+                <p className=' mt-1 font-thin lg:text-2xl md:text-xl text-md text-neutral-100' 
                 style={{
                     fontFamily: 'praise', 
                     fontStyle: 'italic',
-                    paddingLeft: '8px',
+                    paddingLeft: '5px',
                 }} 
                 >Remind</p>
 

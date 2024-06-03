@@ -57,7 +57,6 @@ export const ProductDetailsSlides = [
   {
     id: 1,
     textLists: [
-      "Slide 1",
       "Aplicação para mensagens",
       "rápidas e descomplicadas.",
     ],
@@ -67,7 +66,6 @@ export const ProductDetailsSlides = [
   {
     id: 2,
     textLists: [
-      "Slide 2", 
       "Administrador único",
       "Total Segurança e Controle."
     ],
@@ -77,7 +75,6 @@ export const ProductDetailsSlides = [
   {
     id: 3,
     textLists: [
-      "Slide 3",
       "Mobile - A equipe integrada",
       "sempre e em todos os lugares",
     ],
@@ -87,7 +84,6 @@ export const ProductDetailsSlides = [
   {
     id: 4,
     textLists: [
-      "Slide 4.", 
       "Desktop - Integração total com",
       "mobile e ainda mais funções."
     ],
