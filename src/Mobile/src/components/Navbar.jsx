@@ -3,47 +3,53 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import HomeIcon from '../assets/icons/HomeIcon';
 import CreateButton from '../assets/icons/CreateButton';
 import SeadersIcon from '../assets/icons/SeadersIcon';
+import ModalNoteForm from './ModalNoteForm';
 
 
-const Navbar = ({ onIconSelect }) => { // Adiciona a prop onIconSelect
-  const [selectedIcon, setSelectedIcon] = useState('HomeIcon'); // Estado para controlar o ícone selecionado
+const Navbar = ({ onIconSelect, selectedIcon, showModalForm, setShowModalForm }) => {
 
   const handleIconPress = (iconName) => {
-    setSelectedIcon(iconName);
-    onIconSelect(iconName); // Chama a função passada como prop
+      onIconSelect(iconName);
+      if (iconName === 'CreateButton') {
+          setShowModalForm(true);
+      } else {
+          setShowModalForm(false); // Garante que o modal feche se outro ícone for clicado
+      }
   };
 
   return (
-    <View style={styles.navbarContainer}>
-      <View style={styles.navbar}>
-        <TouchableOpacity 
-          style={[
-            styles.iconButton, 
-            selectedIcon === 'HomeIcon' && styles.selectedIconButton 
-          ]}
-          onPress={() => handleIconPress('HomeIcon')}
-        >
-          <HomeIcon />
-        </TouchableOpacity>
+      <View style={styles.navbarContainer}>
+          <View style={styles.navbar}>
+              <TouchableOpacity
+                  style={[
+                      styles.iconButton,
+                      selectedIcon === 'HomeIcon' && styles.selectedIconButton
+                  ]}
+                  onPress={() => handleIconPress('HomeIcon')}
+              >
+                  <HomeIcon />
+              </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.createButtonContainer}
-          onPress={() => handleIconPress('CreateButton')} // Ação para o botão central
-        >
-          <CreateButton style={styles.createButton} />
-        </TouchableOpacity>
+              <TouchableOpacity
+                  style={styles.createButtonContainer}
+                  onPress={() => handleIconPress('CreateButton')}
+              >
+                  <CreateButton style={styles.createButton} />
+              </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={[
-            styles.iconButton, 
-            selectedIcon === 'SeadersIcon' && styles.selectedIconButton
-          ]}
-          onPress={() => handleIconPress('SeadersIcon')}
-        >
-          <SeadersIcon />
-        </TouchableOpacity>
+              <TouchableOpacity
+                  style={[
+                      styles.iconButton,
+                      selectedIcon === 'SeadersIcon' && styles.selectedIconButton
+                  ]}
+                  onPress={() => handleIconPress('SeadersIcon')}
+              >
+                  <SeadersIcon />
+              </TouchableOpacity>
+
+              <ModalNoteForm open={showModalForm} setOpen={setShowModalForm} />
+          </View>
       </View>
-    </View>
   );
 };
 

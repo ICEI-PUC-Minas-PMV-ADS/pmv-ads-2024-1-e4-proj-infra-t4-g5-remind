@@ -3,28 +3,49 @@ import { View, Text, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import Toast from 'react-native-toast-message';
 import { completeNote } from '../services/noteServices';
 import { messageDateDiffInMinutes } from '../utils';
-import { Modal } from 'react-native'; 
+import { Modal } from 'react-native';
+import { useUser } from '../context/UserContext';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function ModalNote({ open, setOpen, note }) {
+  const { user } = useUser();
+  
   if (note) {
     note.remainingMessage = messageDateDiffInMinutes(note?.datafinal);
   }
 
+  const showCompleteButton = note?.destinatario === user?._id && note?.situacao !== 'concluido'; // Condition for showing button
+
   return (
     <Modal visible={open} transparent animationType="slide" onRequestClose={setOpen}>
       <View style={styles.container}> 
-        <View style={styles.modal}>
-          <Text style={styles.title}>{note?.titulo || 'Título'}</Text>
+        <View style={styles.header}>
+          <TouchableOpacity style={styles.backButton} onPress={setOpen}>
+            <Ionicons name="arrow-back" size={24} color={"#FFF"} /> 
+          </TouchableOpacity>
+          <Text style={styles.HeaderTitle} >Nota</Text>
+          
 
+          
+        </View>
+        <View style={styles.modal}>   
+         <Text style={styles.title}>{note?.titulo || 'Título'}</Text>
           <View style={styles.userInfoSection}>
             <View style={styles.userInfo}>
               <Text style={styles.user} >USER</Text>
               <Text style={styles.userInitial}>{note?.userInfo.nome[0] || '@'}</Text>
+              <Text style={styles.userName}>{note?.userInfo.nome || 'Nome'}</Text>
 
             </View>
             <View style={styles.userInfo}>
               <Text style={styles.user}>EST DATE</Text>
+              {note?.situacao === 'pendente' && note?.remainingMessage === 'Atrasada' ? 
+              <Text style={styles.remainingMessage}>Atrasada</Text> : null
+              }
+
+              
               <Text style={styles.estDate}>
+                
                 {new Date(note?.datafinal).toLocaleDateString('pt-BR', {
                   year: 'numeric',
                   month: 'short',
@@ -38,8 +59,29 @@ export default function ModalNote({ open, setOpen, note }) {
             <Text style={styles.user}>Descrição</Text>
             <Text style={styles.description}>{note?.descricao || 'Descrição'}</Text>
           </View>
-
-          {/* ... (Botão "Concluir Tarefa" se necessário) */}
+          <View style={styles.buttonContainer}>
+            {showCompleteButton && (
+              <Button title="Concluir" onPress={() => {
+                completeNote(note._id)
+                  .then(() => {
+                    setOpen(false);
+                    Toast.show({
+                      type: 'success',
+                      text1: 'Nota concluída!',
+                      text2: 'A nota foi concluída com sucesso.',
+                    });
+                  })
+                  .catch(() => {
+                    Toast.show({
+                      type: 'error',
+                      text1: 'Erro ao concluir nota',
+                      text2: 'Houve um erro ao tentar concluir a nota. Tente novamente.',
+                    });
+                  });
+              }}
+              />
+            )}
+          </View>
         </View>
       </View>
     </Modal>
@@ -49,34 +91,41 @@ export default function ModalNote({ open, setOpen, note }) {
 const styles = StyleSheet.create({
   backButton: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    padding: 16,
+    left: 16,
+    alignSelf: 'center',
   },
-  container: {
+  container: { // Modificado para centralizar o modal verticalmente
     flex: 1,
-    justifyContent: 'flex-end', // Posiciona o modal no final da tela (sobre a navbar)
-    backgroundColor: 'transparent', // Fundo transparente para que a navbar seja visível
+    backgroundColor: '#443368',
   },
   modal: {
     backgroundColor: '#FFF', // Cor de fundo branca para o conteúdo
     borderTopLeftRadius: 32,
     borderTopRightRadius: 32,
-    padding: 16,
-    height: '90%', // Ocupa 80% da altura da tela
-    width: '100%', // Ocupa toda a largura da tela
+    flex : 1,
+    padding: 16, // Adiciona um espaçamento interno
+
   },
   header: {
+    backgroundColor: '#443368',
+    padding: 16,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center', // Alinha os elementos ao
+    textAlign: 'center',
   },
   title: {
-    width: '100%',
-    textAlign: 'center', // Centraliza o texto
     fontSize: 28, // Tamanho de fonte maior
     fontWeight: 'bold',
-    marginBottom: 20, // Espaçamento inferior
+    textAlign: 'center', // Centraliza o texto horizontalmente
+    padding: 8
   },
+  HeaderTitle: {
+    fontSize: 28,
+    color: '#FFF',
+    TextAlign: 'center',
+    fontWeight : 'bold',
+  },
+
   closeButton: {
     backgroundColor: '#00000',
     padding: 8,
@@ -84,12 +133,14 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // Distribui os elementos horizontalmente
     marginBottom: 20, // Espaçamento inferior
+    justifyContent: 'space-between', // Distribui os elementos horizontalmente
+    alignContent: 'flex-start'
+    
   },
   userInfo: {
     justifyContent: 'space-between', // Distribui os elementos horizontalmente
-    alignItems: 'flex-start'
+    alignItems: 'center',
   },
   user: {
     fontSize: 14,
@@ -119,6 +170,7 @@ const styles = StyleSheet.create({
     color: '#888', // Cor mais clara para a data
   },
   descriptionSection: {
+    flex: 1, // Ocupa o espaço restante na linha
     alignItems: 'flex-start', // Alinha os elementos à esquerda
     marginBottom: 20, // Espaçamento inferior
   },
@@ -127,12 +179,17 @@ const styles = StyleSheet.create({
     textAlign: 'left', // Alinha o texto da descrição à esquerda
   },
   remainingMessage: {
-    fontSize: 14,
-    color: '#888',
+    fontSize: 20,
+    color: 'red',//red
     marginBottom: 16,
   },
   completeButtonContainer: {
     marginBottom: 16,
+  },
+  buttonContainer: {  // Novo estilo para o container do botão
+    alignSelf: 'center',   // Centraliza o botão horizontalmente
+    width: '100%',        // Garante que o botão ocupe a largura total
+    marginBottom: 20,     // Adiciona margem inferior para separar o botão do conteúdo
   },
   
 });

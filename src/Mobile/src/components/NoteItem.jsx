@@ -2,10 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { messageDateDiffInMinutes } from '../utils'; // Importe a função dateDiffInMinutes
+import { getUser } from '../services/userServices';
 
-const NoteItem = ({ titulo, descricao, userInfo }) => {
+const NoteItem = ({ titulo, descricao, criadorId, situacao, datafinal }) => {
+ 
   const [isCircleFilled, setIsCircleFilled] = useState(false);
   const maxDescriptionLength = 75;
+
+  const isAtrasada = situacao === 'pendente' && new Date(datafinal) < new Date(); // Verifica se a nota está atrasada
+
 
   const handleCirclePress = () => {
     setIsCircleFilled(!isCircleFilled);
@@ -17,16 +23,27 @@ const NoteItem = ({ titulo, descricao, userInfo }) => {
 
   return (
     
-    <View style={styles.container}>
+    <View style={[
+      styles.container,
+      situacao === 'concluido' && styles.containerConcluido,
+      isAtrasada && styles.containerAtrasado // Estilo condicional para borda vermelha
+    ]}>
       <TouchableOpacity onPress={handleCirclePress}> 
-        <View style={[styles.circle, isCircleFilled && styles.filledCircle]} />
+      <View 
+          style={[
+            styles.circle, 
+            isCircleFilled && styles.filledCircle,
+            situacao === 'concluido' && styles.filledCircle // Preenche se concluída
+          ]} 
+        />
       </TouchableOpacity>
 
 
-      <View style={styles.contentContainer}>
+      <View style={[styles.contentContainer,
+    situacao === 'concluido' && styles.containerConcluido // Estilo condicional
+  ]}>
         <Text style={styles.titulo}>{titulo}</Text>
         <Text style={styles.descricao}>{truncatedDescription}</Text>
-        <Text style={styles.criador}>De: {userInfo?.nome}</Text> 
       </View>
     </View>
   );
@@ -41,6 +58,8 @@ const styles = StyleSheet.create({
     marginBottom: 8, // Adiciona um espaçamento inferior
     gap: 16, // Adiciona um espaçamento entre os elementos
     borderRadius: 16,
+    borderWidth: 1, // Adiciona uma borda
+    borderColor: '#E0E0E0', // Cor da borda cinza
   },
   contentContainer: {
     display: 'flex', // Adiciona um display flex
@@ -80,6 +99,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 1, // Ocupa o espaço restante na linha
+  },
+  containerConcluido: {
+    backgroundColor: '#F0F1F5', // Cor de fundo mais escura
+  },
+  contentContainerConcluido: {
+    opacity: 0.5, // Diminui a opacidade
+  },
+  containerAtrasado: {
+    borderWidth: 2, // Largura da borda
+    borderColor: 'red', // Cor da borda
   },
 });
 

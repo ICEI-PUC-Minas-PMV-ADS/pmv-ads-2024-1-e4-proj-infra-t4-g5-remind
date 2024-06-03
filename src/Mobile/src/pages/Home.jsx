@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList, ActivityIndicator, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useUser } from '../context/UserContext.jsx';
 import { getUserNotesAssigned, getUserNotesCreated } from '../services/noteServices';
 import NoteItem from '../components/NoteItem';
 import Loading from '../components/Loading'; // Substitua pelo seu componente de carregamento
 import Navbar from '../components/Navbar';
 import ModalNote from '../components/ModalNote';
+import ModalNoteForm from '../components/ModalNoteForm';
 import { dateDiffInMinutes } from '../utils/index.js';
 
 
@@ -24,6 +25,9 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   
   const [selectedIcon, setSelectedIcon] = useState('HomeIcon'); // Estado para o ícone selecionado
+
+  const [showModalForm, setShowModalForm] = useState(false); // Estado para o ModalNoteForm
+
 
   const handleIconSelect = (iconName) => {
     setSelectedIcon(iconName);
@@ -89,7 +93,6 @@ const Home = () => {
         
         {selectedIcon === 'HomeIcon' && (
         <>
-          <Text style={styles.sectionTitle}>Bem-vindo, {user?.nome}!</Text>
         {notes.atrasadas.length > 0 && (
           <View>
             <Text style={styles.sectionTitle}>Notas Atrasadas</Text>
@@ -98,7 +101,7 @@ const Home = () => {
             ) : (
               notes.atrasadas.map(item => (
                 <TouchableOpacity key={item._id} onPress={() => openModal(item)}>
-                  <NoteItem {...item} />
+                  <NoteItem {...item} situacao={item.situacao} datafinal={item.datafinal} />
                 </TouchableOpacity>
               ))
             )}
@@ -126,7 +129,7 @@ const Home = () => {
             ) : (
               notes.concluidas.map(item => (
                 <TouchableOpacity key={item._id} onPress={() => openModal(item)}>
-                  <NoteItem {...item} />
+                  <NoteItem {...item} situacao={item.situacao} />
                 </TouchableOpacity>
               ))
             )}
@@ -153,9 +156,15 @@ const Home = () => {
             )}
           </View>
         )}
-        <ModalNote open={modalVisible} setOpen={closeModal} note={selectedNote} />
       </ScrollView>
-      <Navbar onIconSelect={handleIconSelect} />
+      <Navbar 
+        onIconSelect={handleIconSelect} 
+        selectedIcon={selectedIcon} 
+        showModalForm={showModalForm} // Passa o estado para a Navbar
+        setShowModalForm={setShowModalForm} // Passa a função para atualizar o estado
+      />
+      <ModalNote open={modalVisible} setOpen={closeModal} note={selectedNote} /> 
+      <ModalNoteForm open={showModalForm} setOpen={setShowModalForm} />
     </View>
   );
 };
@@ -169,7 +178,7 @@ const styles = StyleSheet.create({
   cards: {
   },
   sectionTitle: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 'bold',
     marginVertical: 16,
   },

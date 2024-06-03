@@ -4,7 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 
 export const createNote = async (values) => {
   try {
-    const res = await axios.post(`${VITE_API_URL}/notes/create`, values, {
+    const res = await axios.post(`${VITE_API_URL}/notes/criar`, values, {
       headers: {
         Authorization: 'Bearer ' + (await SecureStore.getItemAsync('USER_TOKEN')),
       },
@@ -55,6 +55,32 @@ export const getUserNotesCreated = async () => {
   } catch (error) {
     console.error(
       'getUserNotesCreated error:',
+      error?.response.status,
+      error?.response.data,
+    );
+    throw error;
+  }
+}
+
+export const completeNote = async (noteId) => {
+  try {
+    const res = await axios.put(`${VITE_API_URL}/notes/update/${noteId}`, {
+
+      situacao: 'concluido',
+      dataconclusao: new Date(
+        new Date().getTime() - new Date().getTimezoneOffset(),
+      ),
+    }, {
+      headers: {
+        Authorization: 'Bearer ' + (await SecureStore.getItemAsync('USER_TOKEN'))
+      },
+    });
+
+    console.log('completeNote res:', res.data);
+    return res.data;
+  } catch (error) {
+    console.error(
+      'completeNote error:',
       error?.response.status,
       error?.response.data,
     );
