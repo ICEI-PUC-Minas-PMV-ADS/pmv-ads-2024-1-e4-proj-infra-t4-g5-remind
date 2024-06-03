@@ -130,11 +130,12 @@ const Hero = () => {
       <div className='absolute top-68 left-1/2 transform -translate-x-1/2'>
         <div id='cta' className=' flex flex-col items-center opacity-0 translate-y-20'>
           <a href='#buynow' className='btn'>Compre</a>
-          <p className='font-normal text-xl'>À partir de $19,<span className='text-sm align-top '>90 </span>/mês</p>
+          <p className='font-normal text-xl whitespace-nowrap'>À partir de $19,<span className='text-sm align-top '>90 </span>/mês</p>
         </div>
       </div>
     </section>
   );
 };
+
 
 export default Hero

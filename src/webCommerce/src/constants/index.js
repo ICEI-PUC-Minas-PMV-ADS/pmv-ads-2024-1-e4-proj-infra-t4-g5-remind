@@ -8,8 +8,8 @@ import {
 } from "../utils";
 
 export const navLists = [
-  { name: "Histórias de Usuários", href: "#user-stories" },
-  { name: "O Produto", href: "#ProductDetails" },
+  { name: "Usuários", href: "#user-stories" },
+  { name: "Produto", href: "#ProductDetails" },
   { name: "Comprar", href: "#buynow" },
   { name: "Suporte", href: "#support" },
 ];
