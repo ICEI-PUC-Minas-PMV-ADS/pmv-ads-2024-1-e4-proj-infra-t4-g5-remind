@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { PurchaseContext } from '../context/PurchaseContext';
 import { useGSAP } from '@gsap/react';
-import { animateWithGsap } from '../utils/animations';
+import { animateWithGsapNoReverse } from '../utils/animations';
 import PricingPlans from '../components/PricingPlans';
 import Register from '../components/Register';
 import PayAndContract from '../components/PayAndContract';
@@ -18,12 +18,12 @@ const BuyNow = () => {
   const [paymentMethod, setPaymentMethod] = useState(null);
   
   useGSAP(() => {
-    animateWithGsap('.g_fadeIn', {
+    animateWithGsapNoReverse('.g_fadeIn', {
       delay: 0.3,
       opacity: 1,
       y: 0,
       duration: 1,
-      ease: 'power2.inOut'
+     /*  ease: 'power2.inOut' */
     })
   }, []);
 

@@ -133,6 +133,10 @@ body {
     }
 
   
+
+
+
+
   .buynow-card-grid-3 {
     @apply mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8
   }
@@ -234,5 +238,19 @@ body {
 @media (max-width: 1024px) {
   #hero {
     font-size: 26vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .buynow-card-grid-small {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    margin: 0;
+  }
+
+  .buynow-card-grid-small .buynow-card-border {
+    width: 100%;
+    margin: 0 auto;
   }
 }
