@@ -1,9 +1,28 @@
 import { pricingPlans } from '../constants';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { animateWithGsap } from '../utils/animations';
 
-const PricingPlans = ({onButtonClick}) => {
+const PricingPlans = ({ onButtonClick }) => {
+  // Estado para verificar a largura da tela
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    // Função para verificar a largura da tela e definir o estado de isSmallScreen
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 640 && window.innerHeight > window.innerWidth);
+    };
+
+    // Adicionando event listener para resize da janela
+    window.addEventListener('resize', handleResize);
+
+    // Chamando a função handleResize ao montar o componente
+    handleResize();
+
+    // Removendo event listener no cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     animateWithGsap('.animate', {
       opacity: 1,
@@ -19,7 +38,7 @@ const PricingPlans = ({onButtonClick}) => {
   };
 
   return (
-    <div className='buynow-card-grid-3'>
+    <div className={isSmallScreen ? 'buynow-card-list' : 'buynow-card-grid-3'}>
       {pricingPlans.map((plan) => (
         <div 
           key={plan.id}

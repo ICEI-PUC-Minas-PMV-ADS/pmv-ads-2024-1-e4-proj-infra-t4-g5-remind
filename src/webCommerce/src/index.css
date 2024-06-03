@@ -125,6 +125,14 @@ body {
     @apply relative flex flex-col items-center justify-center bg-black text-neutral-100 p-8 shadow-lg
   }
 
+  
+    .buynow-card-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+  
   .buynow-card-grid-3 {
     @apply mx-auto grid max-w-full grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8
   }

@@ -122,7 +122,7 @@ const Hero = () => {
             initials={messages[id].initials} 
           />
         ))}
-        <div className='absolute top-48'>
+        <div className='absolute'>
           <p id="hero" className='hero-title' style={{color: '#443368'}}>Remind</p>
           <div className='md:w-10/12 w-9/12'></div>
         </div>

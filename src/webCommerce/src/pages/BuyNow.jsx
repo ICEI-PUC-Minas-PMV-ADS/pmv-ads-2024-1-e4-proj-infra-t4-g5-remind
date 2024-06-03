@@ -102,7 +102,7 @@ const handleButtonClick = (data, method) => {
             {Component}
             
           </div>
-              <div className="top-0 flex-1 flex justify-center flex-col g_fadeIn mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="top-0 mt-4 flex-1 flex justify-center flex-col g_fadeIn mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div>
                   <p className="font-semibold text-gray text-xs">
                     Não encontrou um plano para a sua empresa? {' '}
