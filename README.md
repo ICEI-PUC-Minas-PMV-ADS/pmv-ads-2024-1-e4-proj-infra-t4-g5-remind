@@ -12,11 +12,11 @@
 
 `Web Commercial:` 
 
-* Site para a comercializaçao do serviço Remind. => [Remind WebCommercial](https://web-com-adm-frontend.vercel.app)
+* Site para a comercializaçao do serviço Remind. => [Remind WebCommercial](https://web-com-client-frontend.vercel.app/)
 
 `Web Admin:`
 
-* Site para administração das assinaturas de venda do produto Remind. => [Remind WebAdm](https://web-com-admin-backend.vercel.app)
+* Site para administração das assinaturas de venda do produto Remind. => [Remind WebAdm](https://web-com-adm-frontend.vercel.app)
 
 
 # Sobre
