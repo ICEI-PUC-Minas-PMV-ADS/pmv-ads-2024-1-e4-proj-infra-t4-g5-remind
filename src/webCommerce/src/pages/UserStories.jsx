@@ -26,18 +26,19 @@ const UserStories = () => {
   return (
     <section id="user-stories" className="h-full common-padding bg-zinc relative overflow-hidden">
       <div className="screen-max-wdith">
-        <div className="mb-12 w-full">
+        <div className="mb-6 w-full">
           <h1 id="userStories_title" className="section-heading">O usuário.</h1>
         </div>
         
         <div className="flex flex-col justify-center items-center overflow-hidden">
-          <div className="mt-12 mb-24">
+          <div className="mt-12 mb-12">
             <h2 id="userStories_title" className="text-7xl lg:text-7xl font-semibold pb-2">Remind.</h2>
             <h2 id="userStories_subtitle" className="section-sub-heading pl-12">Comunicação</h2>
             <h2 id="userStories_subtitle" className="section-sub-heading pl-24">descomplicada</h2>
             <h2 id="userStories_subtitle" className="section-sub-heading pl-40">para equipes.</h2>
           </div>
           
+
           <div className="userStories-container">
 
             <div className="flex flex-col w-full relative">
