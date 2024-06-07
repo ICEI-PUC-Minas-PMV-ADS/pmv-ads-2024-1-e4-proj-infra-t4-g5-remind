@@ -1,0 +1,9 @@
+<svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon / home">
+<path id="Path" fill-rule="evenodd" clip-rule="evenodd" d="M1 8.7L11 1L21 8.7V20.8C21 22.015 20.0051 23 18.7778 23H3.22222C1.99492 23 1 22.015 1 20.8V8.7Z" fill="#443368" stroke="#443368" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+<g id="Path_2">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.66675 23V12H14.3334V23" fill="white"/>
+<path d="M7.66675 23V12H14.3334V23" stroke="white" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="round"/>
+</g>
+</g>
+</svg>

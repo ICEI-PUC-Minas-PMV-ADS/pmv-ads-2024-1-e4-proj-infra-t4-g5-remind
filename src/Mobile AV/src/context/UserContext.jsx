@@ -1,46 +1,60 @@
-import React, { createContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useState, useEffect, useCallback, useContext } from 'react';
 import { getUser } from '../services/userServices';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 
 export const UserContext = createContext();
 
-export default function UserProvider({ children }) {
+export function useUser() {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
+}
+
+export function UserProvider({ children }) {
   const [signed, setSigned] = useState(undefined); 
   const [user, setUser] = useState(null);
   const navigation = useNavigation();
 
   const logout = useCallback(async () => {
     try {
-      await AsyncStorage.removeItem('USER_TOKEN');
-      await AsyncStorage.removeItem('USER_ID');
+      await SecureStore.deleteItemAsync('USER_TOKEN');
+      await SecureStore.deleteItemAsync('USER_ID');
       setSigned(false);
-      setUser(null);
+      setUser(false);
       navigation.navigate('Login');
     } catch (error) {
       console.error("Erro ao fazer logout:", error);
-      // ... lidar com erro do AsyncStorage
     }
   }, [navigation]);
 
   useEffect(() => {
     const loadSigned = async () => {
-      const localSigned = AsyncStorage.getItem('USER_TOKEN');
-      setSigned(!!localSigned);
-
-      const secureUserId = AsyncStorage.getItem('USER_ID');
+      const secureSigned = await SecureStore.getItemAsync('USER_TOKEN');
+      setSigned(!!secureSigned);
+  
+      const secureUserId = await SecureStore.getItemAsync('USER_ID');
       if (secureUserId) {
         const userInfo = await getUser(secureUserId);
         setUser(userInfo);
       }
     };
-
+  
     loadSigned();
   }, []);
 
   return (
     <UserContext.Provider
-      value={{ signed, setSigned, user, setUser, logout, isLoading }}
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
+      value={{
+        signed,
+        setSigned,
+        user,
+        setUser,
+        logout,
+      }}
     >
       {children}
     </UserContext.Provider>
