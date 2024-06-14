@@ -12,6 +12,7 @@ import Card from '../components/Card';
 import ModalNote from '../components/ModalNote';
 import CreateNote from '../components/CreateNote';
 import { useLocation } from 'react-router-dom';
+import Input from '../components/Input';
 
 export default function Home() {
   const pathName = useLocation().pathname.slice(1);
@@ -26,6 +27,12 @@ export default function Home() {
   useEffect(() => {
     const getNotes = async () => {
       let res = await getUserNotesAssigned();
+
+      // order notes by datafinal
+      res = res.sort((a, b) => new Date(a.datafinal) - new Date(b.datafinal));
+
+      // order notes by dataconclusao placing concluded notes at the end
+      res = res.sort((note) => (note.dataconclusao ? 1 : -1));
 
       if (pathName === 'recebidas') {
         res = res.filter((note) => note.destinatario === user?._id);
@@ -57,7 +64,7 @@ export default function Home() {
       <div className="flex flex-col w-screen">
         <Header pageTitle={`Tarefas ${pathName}`} />
 
-        <div className="flex flex-col">
+        <div className="flex-col hidden sm:flex">
           <div className="flex gap-6 p-4">
             <TopicItem
               Icon={ListaIcon}
@@ -83,7 +90,11 @@ export default function Home() {
             </p>
           </div> */}
           <div className="flex items-center justify-end w-full gap-6">
-            <div>Pesquisar</div>
+            <Input
+              placeholder="Pesquisar..."
+              required
+              className="border-0 valid:!border-[1px] w-full sm:w-24 sm:valid:w-56"
+            />
 
             <button
               id="home-criar-tarefa"

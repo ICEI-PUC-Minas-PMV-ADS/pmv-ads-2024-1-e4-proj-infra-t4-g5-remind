@@ -38,6 +38,12 @@ const SingleValue = ({ children, ...props }) => (
   </components.SingleValue>
 );
 
+const Group = (props) => (
+  <div className="border-lightGray border-b-[1px]">
+    <components.Group {...props} />
+  </div>
+);
+
 export default function CreateNote({ open, setOpen }) {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState({});
@@ -51,8 +57,23 @@ export default function CreateNote({ open, setOpen }) {
         value: user._id,
         label: user.nome,
         photo: user.photo || user.nome,
+        cargo: user.cargo,
       }));
-      setUsers(resFormatted);
+
+      const groupedOptions = Object.values(
+        resFormatted.reduce((acc, user) => {
+          if (!acc[user.cargo]) {
+            acc[user.cargo] = {
+              label: user.cargo,
+              options: [],
+            };
+          }
+          acc[user.cargo].options.push(user);
+          return acc;
+        }, {}),
+      );
+
+      setUsers(groupedOptions);
     };
 
     getUsers();
@@ -101,7 +122,7 @@ export default function CreateNote({ open, setOpen }) {
 
   return (
     <div
-      className={`absolute top-0 left-0 z-10 invisible opacity-0 flex items-center justify-center w-screen h-screen bg-black bg-opacity-50 ${open && '!visible !opacity-100'}`}
+      className={`absolute top-0 left-0 z-10 invisible opacity-0 flex items-center justify-center w-[1px] h-screen bg-black bg-opacity-50 ${open && '!w-screen !visible !opacity-100'}`}
       onClick={() => setOpen(false)}
     >
       <form
@@ -128,7 +149,7 @@ export default function CreateNote({ open, setOpen }) {
               name="titulo"
               id="titulo"
               placeholder="Título da tarefa"
-              className="text-2xl font-bold text-primary min-w-96"
+              className="text-2xl font-bold text-primary md:min-w-96"
             />
             <button
               type="button"
@@ -151,8 +172,9 @@ export default function CreateNote({ open, setOpen }) {
             <Select
               id="select-destinatario-create-task"
               name="destinatario"
-              components={{ Option, Control, SingleValue }}
+              components={{ Group, Option, Control, SingleValue }}
               options={users}
+              placeholder="Selecione um usuário..."
               closeMenuOnSelect
               theme={(theme) => ({
                 ...theme,

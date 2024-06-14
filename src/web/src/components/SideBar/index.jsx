@@ -27,11 +27,11 @@ export function SideBar() {
 
   return (
     <aside
-      className={`relative w-[40vw] h-screen bg-[#F9F8FE] p-4 pt-2 md:w-[20vw] lg:w-[10vw] ${!open && '!w-[12vw] md:!w-[5vw] lg:!w-[3vw] !p-[4px] flex flex-col items-center'}`}
+      className={`relative w-[40vw] h-[100dvh] bg-[#F9F8FE] p-4 pt-2 md:w-[20vw] lg:w-[12vw] ${!open && '!w-[12vw] md:!w-[5vw] lg:!w-[4vw] !p-[4px] flex flex-col items-center'}`}
     >
       <img
         src={open ? Logo : PartialLogo}
-        className={`mb-4 ${open && 'object-contain md:w-[125px] md:h-[50px]'}`}
+        className={`mb-4 ${open && 'object-contain md:w-[125px]'}`}
         alt=""
       />
 
@@ -41,9 +41,11 @@ export function SideBar() {
       />
 
       <nav
-        className={`flex flex-col justify-between h-[92%] ${open && 'pl-2'}`}
+        className={`flex flex-col items-center sm:items-baseline justify-between h-[92%] ${open && 'pl-2'}`}
       >
-        <div className="flex flex-col gap-4">
+        <div
+          className={`flex flex-col ${!open && 'w-[22px]'} gap-6 sm:w-fit md:gap-4`}
+        >
           <SideBarModel.Item
             Icon={ReceivedIcon}
             text="Recebidas"
@@ -67,7 +69,7 @@ export function SideBar() {
         </div>
 
         <button
-          className="w-fit gap-2 flex items-center text-[#E61010] hover:font-medium hover:scale-110"
+          className={`w-fit gap-2 flex items-center justify-center flex-wrap text-[#E61010] ${!open && 'ml-1 xl:ml-0'} hover:font-medium hover:scale-110`}
           onClick={() => handleLogout()}
         >
           <LogoutIcon /> Sair

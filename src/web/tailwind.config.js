@@ -33,10 +33,6 @@ export default {
           },
         },
       },
-      screens: {
-        mg: '825px',
-        // => @media (min-width: 825px) { ... }
-      },
     },
   },
   plugins: [

@@ -1,6 +1,5 @@
 export default function Input({
-  type = 'string',
-  width = '52',
+  type = 'text',
   max,
   min,
   required,
@@ -18,7 +17,7 @@ export default function Input({
       min={min ?? ''}
       name={name ?? ''}
       disabled={disabled}
-      className={`${props.className} p-1 border-[1px] border-lightGray border-solid focus:rounded-md w-${width} lg:w-72 lg:h-12 focus-visible:border-primary focus-visible:outline-primary ${error && 'border-red-600 outline-red-600'} disabled:bg-slate-200 disabled:rounded-md `}
+      className={`${props.className} p-1 border-[1px] border-lightGray border-solid focus:rounded-md lg:h-12 focus-visible:border-primary focus-visible:outline-primary ${error && 'border-red-600 outline-red-600'} disabled:bg-slate-200 disabled:rounded-md `}
     />
   );
 }

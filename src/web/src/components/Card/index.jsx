@@ -34,10 +34,7 @@ export default function Card({ note, setModalOpen, setSelectedNote }) {
           {note.userInfo.nome || 'Nome'}
         </h1>
       </div>
-      <h1
-        className="text-lg font-semibold sm:text-2xl text-subtleBlack"
-        id="card-titulo"
-      >
+      <h1 className="text-lg font-semibold sm:text-2xl text-subtleBlack">
         {note.titulo || 'Título'}
       </h1>
 

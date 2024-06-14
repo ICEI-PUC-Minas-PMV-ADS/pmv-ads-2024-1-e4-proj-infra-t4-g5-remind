@@ -66,7 +66,7 @@ export default function Login() {
   }
 
   return (
-    <div className="h-screen dflex">
+    <div className="h-dvh sm:h-screen dflex">
       <div className="dflex flex-col gap-12 w-[500px] h-[500px]">
         <div>
           <img src={Logo} alt="" />

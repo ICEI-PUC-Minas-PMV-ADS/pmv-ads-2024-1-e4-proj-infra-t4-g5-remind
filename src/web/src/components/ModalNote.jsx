@@ -25,7 +25,7 @@ export default function ModalNote({ open, setOpen, note }) {
       onClick={() => setOpen(false)}
     >
       <div
-        className={`invisible opacity-0 flex flex-col w-1/2 max-w-[500px] gap-6 p-4 rounded-md bg-white h-fit ${open && '!visible !opacity-100'}`}
+        className={`invisible opacity-0 flex flex-col w-[90dvw] sm:w-1/2 sm:max-w-[500px] gap-6 p-4 rounded-md bg-white h-fit ${open && '!visible !opacity-100'}`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col gap-6">
@@ -40,7 +40,7 @@ export default function ModalNote({ open, setOpen, note }) {
               X
             </button>
           </div>
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
             <div className="flex items-center gap-2">
               <p className="flex items-center justify-center text-xl font-bold bg-primary rounded-[50%] w-8 h-8 text-white">
                 {note?.userInfo.nome[0] || '@'}

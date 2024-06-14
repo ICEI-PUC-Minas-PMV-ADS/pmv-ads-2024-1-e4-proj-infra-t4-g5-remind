@@ -5,14 +5,13 @@ export default function SideBarItem({ Icon, text, open, href, ...rest }) {
   const { pathname } = useLocation();
 
   return (
-    <li {...rest} className={`${rest.className}`}>
+    <li {...rest} className={`${rest.className} ${!open && 'md:ml-5'}`}>
       <Link to={href}>
         <TopicItem
           Icon={Icon}
           text={text}
           open={open}
           active={pathname == href}
-          className={!open ? '!pl-4' : ''}
         />
       </Link>
     </li>
