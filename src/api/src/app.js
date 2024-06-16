@@ -16,16 +16,15 @@ const swaggerYaml = path.resolve(
   `${developEnv ? './swagger.yaml' : './src/api/swagger.yaml'}`,
 );
 
-const swaggerDocument = YAML.load(swaggerYaml);
-
 const CSS_URL =
-  'https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.3.0/swagger-ui.css';
+'https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.3.0/swagger-ui.css';
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 
-app.use(cors());
+const swaggerDocument = YAML.load(swaggerYaml);
 
 app.use('/users', userRoutes);
 
