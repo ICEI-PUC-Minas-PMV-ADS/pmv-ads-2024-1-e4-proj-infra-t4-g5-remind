@@ -39,8 +39,6 @@ export default function Home() {
         res = await getUserNotesCreator();
       }
 
-      console.log(res)
-
       // order notes by datafinal
       res = res.sort((a, b) => new Date(a.datafinal) - new Date(b.datafinal));
 
