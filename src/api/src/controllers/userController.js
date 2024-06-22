@@ -43,6 +43,7 @@ async function login(req, res) {
       nome: user.nome,
       email: user.email,
       token: generateToken(user._id),
+      permissao: user.permissao,
     });
   } else {
     return res.status(400).json('Email ou senha invalido');
