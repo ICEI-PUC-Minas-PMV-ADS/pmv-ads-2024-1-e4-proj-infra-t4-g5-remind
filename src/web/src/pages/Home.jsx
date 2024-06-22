@@ -27,6 +27,7 @@ export default function Home() {
   const [modalTaskOpen, setModalTaskOpen] = useState(false);
   const [modalCreateOpen, setModalCreateOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [filter, setFilter] = useState(null);
 
   // Função para buscar as notas do usuário.
   useEffect(() => {
@@ -52,6 +53,10 @@ export default function Home() {
     getNotes();
   }, [modalCreateOpen, modalTaskOpen, pathName, user?._id]);
 
+  useEffect(() => {
+    filterNotes();
+  }, [filter]);
+
   // Se o usuário não estiver carregado, exibe um loading.
   if (!user) {
     return <Loading />;
@@ -69,6 +74,16 @@ export default function Home() {
     setNotes(
       Object.values(fuse.search(searchPattern)).map((note) => note.item),
     );
+  }
+
+  function filterNotes() {
+    if (filter === 'emaberto') {
+      setNotes(unfilteredNotes.filter((note) => !note.dataconclusao));
+    } else if (filter === 'concluidas') {
+      setNotes(unfilteredNotes.filter((note) => note.dataconclusao));
+    } else {
+      setNotes(unfilteredNotes);
+    }
   }
 
   return (
@@ -104,11 +119,26 @@ export default function Home() {
 
         <div className="flex items-center px-6 pt-4">
           {/* //!TODO: Implementar filtros */}
-          {/* <div className="flex w-full gap-4">
-            <p className="p-1 text-sm font-medium border rounded-md border-textSecondary bg-textSecondary bg-opacity-15 text-textSecondary">
-            Filtros
-            </p>
-          </div> */}
+          <div className="flex w-full gap-4">
+            <button
+              className={`p-1 text-sm font-medium border rounded-md ${filter === 'emaberto' ? 'active' : 'inactive'}`}
+              onClick={() =>
+                setFilter((prev) => (prev === 'emaberto' ? null : 'emaberto'))
+              }
+            >
+              <p className="text-sm font-medium ">Em aberto</p>
+            </button>
+            <button
+              className={`p-1 text-sm font-medium border rounded-md ${filter === 'concluidas' ? 'active' : 'inactive'}`}
+              onClick={() =>
+                setFilter((prev) =>
+                  prev === 'concluidas' ? null : 'concluidas',
+                )
+              }
+            >
+              <p className="text-sm font-medium ">Concluídas</p>
+            </button>
+          </div>
           <div className="flex items-center justify-end w-full gap-6">
             <Input
               placeholder="Pesquisar..."

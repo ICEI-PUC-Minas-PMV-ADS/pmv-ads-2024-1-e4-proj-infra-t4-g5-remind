@@ -65,6 +65,22 @@ li{
   animation: waveAnimate 30s alternate-reverse infinite;
 }
 
+.inactive{
+  @apply
+  border-textSecondary 
+  bg-textSecondary 
+  text-textSecondary
+  bg-opacity-15
+}
+
+.active{
+  @apply
+  border-primary 
+  bg-bgPrimary 
+  text-primary
+  font-semibold
+}
+
 @keyframes waveAnimate {
   0%{
     background-position-x: 0px;
