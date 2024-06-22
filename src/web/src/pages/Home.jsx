@@ -118,7 +118,6 @@ export default function Home() {
         </div>
 
         <div className="flex items-center px-6 pt-4">
-          {/* //!TODO: Implementar filtros */}
           <div className="flex w-full gap-4">
             <button
               className={`p-1 text-sm font-medium border rounded-md ${filter === 'emaberto' ? 'active' : 'inactive'}`}

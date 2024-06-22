@@ -17,7 +17,7 @@ export function messageDateDiffInMinutes(date) {
   }
 
   if (remainingTime > 1440) {
-    remainingMessage = `${Math.floor(remainingTime)} dias restantes`;
+    remainingMessage = `${Math.floor(remainingTime / 1440)} dias restantes`;
   } else if (remainingTime % 60 == 0) {
     remainingMessage = `${remainingTime} horas restantes`;
   } else if (remainingTime / 60 > 1) {
