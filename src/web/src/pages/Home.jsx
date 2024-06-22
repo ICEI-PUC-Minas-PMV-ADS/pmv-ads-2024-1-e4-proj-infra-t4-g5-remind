@@ -6,17 +6,22 @@ import Loading from '../components/Loading';
 import { SideBar } from '../components/SideBar';
 import TopicItem from '../components/TopicItem';
 import useUser from '../context/UserContextHook';
-import { getUserNotesAssigned } from '../services/noteServices';
+import {
+  getUserNotesAssigned,
+  getUserNotesCreator,
+} from '../services/noteServices';
 import Header from '../components/Header';
 import Card from '../components/Card';
 import ModalNote from '../components/ModalNote';
 import CreateNote from '../components/CreateNote';
 import { useLocation } from 'react-router-dom';
 import Input from '../components/Input';
+import Fuse from 'fuse.js';
 
 export default function Home() {
   const pathName = useLocation().pathname.slice(1);
   const { user } = useUser();
+  const [unfilteredNotes, setUnfilteredNotes] = useState([]);
   const [notes, setNotes] = useState([]);
   const [viewType, setViewType] = useState('card');
   const [modalTaskOpen, setModalTaskOpen] = useState(false);
@@ -26,7 +31,15 @@ export default function Home() {
   // Função para buscar as notas do usuário.
   useEffect(() => {
     const getNotes = async () => {
-      let res = await getUserNotesAssigned();
+      let res = null;
+
+      if (pathName === 'recebidas') {
+        res = await getUserNotesAssigned();
+      } else {
+        res = await getUserNotesCreator();
+      }
+
+      console.log(res)
 
       // order notes by datafinal
       res = res.sort((a, b) => new Date(a.datafinal) - new Date(b.datafinal));
@@ -34,13 +47,8 @@ export default function Home() {
       // order notes by dataconclusao placing concluded notes at the end
       res = res.sort((note) => (note.dataconclusao ? 1 : -1));
 
-      if (pathName === 'recebidas') {
-        res = res.filter((note) => note.destinatario === user?._id);
-      } else {
-        res = res.filter((note) => note.criador === user?._id);
-      }
-
       setNotes(res);
+      setUnfilteredNotes(res);
     };
 
     getNotes();
@@ -49,6 +57,20 @@ export default function Home() {
   // Se o usuário não estiver carregado, exibe um loading.
   if (!user) {
     return <Loading />;
+  }
+
+  function search(searchPattern) {
+    const fuseOptions = {
+      keys: ['titulo', 'descricao'],
+    };
+
+    if (searchPattern === '') return setNotes(unfilteredNotes);
+
+    const fuse = new Fuse(notes, fuseOptions);
+
+    setNotes(
+      Object.values(fuse.search(searchPattern)).map((note) => note.item),
+    );
   }
 
   return (
@@ -94,6 +116,7 @@ export default function Home() {
               placeholder="Pesquisar..."
               required
               className="border-0 valid:!border-[1px] w-full sm:w-24 sm:valid:w-56"
+              onKeyUp={search}
             />
 
             <button
@@ -109,6 +132,11 @@ export default function Home() {
         <div
           className={`grid grid-flow-row gap-6 p-2 overflow-y-auto sm:p-6 ${viewType == 'card' ? 'sm:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]' : 'sm:grid-cols-[repeat(auto-fill,1fr)]'}`}
         >
+          {notes.length === 0 && (
+            <p className="text-center text-textSecondary">
+              Nenhuma tarefa encontrada
+            </p>
+          )}
           {notes.map((note) => (
             <Card
               note={note}

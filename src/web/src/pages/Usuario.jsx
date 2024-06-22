@@ -137,7 +137,7 @@ export default function Usuario() {
   }
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen overflow-x-hidden">
       <SideBar />
       <div className="flex flex-col w-full">
         <Header pageTitle="Central de Usuários" />
