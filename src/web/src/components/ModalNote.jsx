@@ -65,7 +65,8 @@ export default function ModalNote({ open, setOpen, note }) {
           {note?.descricao || 'Descrição'}
         </p>
 
-        {!note?.dataconclusao ? (
+        {!note?.dataconclusao &&
+        note?.criador !== localStorage.getItem('USER_ID') ? (
           <>
             <p className="text-sm text-textSecondary">
               {note?.remainingMessage}
