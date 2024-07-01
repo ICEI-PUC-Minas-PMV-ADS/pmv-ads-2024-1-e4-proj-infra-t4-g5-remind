@@ -1,29 +1,27 @@
 message: Please cite this software using these metadata.
-title:
+title: Remind: troca de mensagens para ambientes profissionais.
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
+  - family-names: Soares
+    given-names:  Álvaro
+  - family-names: Azevedo Ferreira Carvalho
+    given-names: André
+  - family-names: Reinis
+    given-names: Carlos Eduardo
+  - family-names: Alves Moreira Neto
+    given-names: Florisvaldo
+  - family-names: Morais Gonçalves
+    given-names: Breno
+  - family-names: Silva Oliveira
+    given-names: Vitor
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Alves de Oliveira
+    given-names: Pedro
 keywords:
-  - 
-  - 
-repository-code: 
+  - Mensagem
+  - Gestão de Tempo
+  - Mensagem Instantanea
+  - Comunicação
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e4-proj-infra-t4-g5-remind.git
 version: 1.0.0
-date-released: 2023-10-31
+date-released: 2024–07-23
